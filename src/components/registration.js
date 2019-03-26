@@ -1,9 +1,34 @@
 import React from 'react';
+import { Form, Field, reduxForm, focus } from 'redux-form';
+import {registerUser} from '../actions/register';
 
-export default class Registration extends React.Component{
-  render(){
+class RegisterForm extends React.Component{
+  onSubmit(values){
+   return this.dispatch(registerUser(values));
+  }
+  render() {
     return (
-      <div>This is the registration!</div>
-    )
+    <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+      <div>This is the registration form!</div>
+      <Field
+        className="username"
+        name="userName"
+        component="input"
+        type="text" />
+      <Field
+        className="password"
+        name="password"
+        component="input"
+        type="password" />
+      <button
+        type="submit"
+        >Register</button>
+    </Form>)
   }
 }
+
+export default reduxForm({
+  form: 'registration-form',
+  onSubmitFail: (errors, dispatch) =>
+    dispatch(focus('registration-form', Object.keys(errors)[0]))
+})(RegisterForm);
