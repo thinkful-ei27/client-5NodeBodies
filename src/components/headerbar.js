@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { clearAuth } from '../actions/auth';
+import { clearAuth } from '../actions/loginreg';
 import { clearAuthToken } from '../utils/local-storage';
 // import { Link } from 'react-router-dom';
 
@@ -33,9 +33,8 @@ export class Headerbar extends React.Component {
   }
 }
 
-// TO-DO: GOTTA SET THIS TO THAT CORRECT STATE/STORE VALUE
 const mapStateToProps = state => ({
-  // loggedIn: state.auth.currentUser !== null
+  loggedIn: state.loginReg.currentUser !== null
 });
 
 export default connect(mapStateToProps)(Headerbar);
