@@ -10,6 +10,7 @@ const initialState = {
     authToken: null,
     currentUser: null,
     loading: false,
+    login: false,
     error: null
 };
 
