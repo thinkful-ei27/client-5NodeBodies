@@ -4,14 +4,24 @@ import {registerUser} from '../actions/register';
 
 class RegisterForm extends React.Component{
   onSubmit(values){
-   let {password, username} = values;
-   let user = {password, username};
+   let {password, username, firstName, lastName} = values;
+   let user = {password, username, firstName, lastName};
    return this.dispatch(registerUser(user));
   }
   render() {
     return (
     <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
       <div>This is the registration form!</div>
+      <Field
+        className="firstName"
+        name="firstName"
+        component="input"
+        type="text" />
+      <Field
+        className="lastName"
+        name="lastName"
+        component="input"
+        type="text" />
       <Field
         className="username"
         name="username"

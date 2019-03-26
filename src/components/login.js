@@ -1,30 +1,35 @@
 import React from 'react';
+import { Form, Field, reduxForm, focus } from 'redux-form';
+import { loginUser } from '../actions/login';
 
-import { connect } from 'react-redux';
-
-class Login extends React.Component{
-
-
-
-  render(){
-    return (
-      <div>This is the Login!
-        <form>
-          <input 
-            className="user-name" 
-            type="text"></input>
-          <input 
-            className="user-password"
-            type="password"></input>
-          <button 
-            className="submit-button"
-            type="submit">Login</button>
-        </form>
-      </div>
-    )
+class LoginForm extends React.Component{
+  onSubmit(values){
+   let {password, username} = values;
+   let user = {password, username};
+   console.log(user);
+   return this.dispatch(loginUser(user));
   }
-
+  render() {
+    return (
+    <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+      <div>This is the Login Form</div>
+      <Field
+        className="username"
+        name="username"
+        component="input"
+        type="text" />
+      <Field
+        className="password"
+        name="password"
+        component="input"
+        type="password" />
+      <button>Login</button>
+    </Form>)
+  }
 }
 
-
-export default connect()(Login);
+export default reduxForm({
+  form: 'login',
+  onSubmitFail: (errors, dispatch) =>
+    dispatch(focus('login'/*, Object.keys(errors)[0]*/
+    ))})(LoginForm);
