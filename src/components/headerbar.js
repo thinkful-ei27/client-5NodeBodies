@@ -19,7 +19,9 @@ export class Headerbar extends React.Component {
         <a className="button" href="/dashboard">
           <button className="home-button">Home</button>
         </a>
-        <button type="button" onClick={() => this.logOut()}>Log Out</button>
+        <button type="button" onClick={() => {
+          this.logOut()
+        }}>Log Out</button>
       </div>
     }
     return (
@@ -33,7 +35,7 @@ export class Headerbar extends React.Component {
 
 // TO-DO: GOTTA SET THIS TO THAT CORRECT STATE/STORE VALUE
 const mapStateToProps = state => ({
-  loggedIn: state.auth.currentUser !== null
+  // loggedIn: state.auth.currentUser !== null
 });
 
 export default connect(mapStateToProps)(Headerbar);
