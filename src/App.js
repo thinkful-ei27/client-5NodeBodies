@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Headerbar from './components/headerbar.js';
 import Login from './components/login.js';
 import RegisterForm from './components/registration.js';
+import Dashboard from './components/dashboard'
 import './App.css';
 
 class App extends Component {
@@ -10,7 +11,8 @@ class App extends Component {
       <div>
         <Headerbar />
         <Login />
-        <RegisterForm  />
+        <RegisterForm />
+        <Dashboard />
       </div>
     );
   }
