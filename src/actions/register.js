@@ -1,11 +1,7 @@
 import {SubmissionError} from 'redux-form';
-// import {API_BASE_URL} from '../config';
+import {API_BASE_URL} from '../config';
+import {normalizeResponseErrors} from '../utils';
 
-
-/* 
-
-import {normalizeResponseErrors} from './utils';
-*/
 
 export const REG_REQUEST = 'REG_REQUEST';
 export const regRequest = () => ({
@@ -25,9 +21,6 @@ export const regError = error => ({
 });
 
 export const registerUser = user => {
-    console.log(user);
-}
-/*export const registerUser = user => dispatch => {
     return fetch(`${API_BASE_URL}/users`, {
         method: 'POST',
         headers: {
@@ -35,12 +28,12 @@ export const registerUser = user => {
         },
         body: JSON.stringify(user)
     })
-        // .then(res => normalizeResponseErrors(res))
+        .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
         .catch(err => {
             const {reason, message, location} = err;
             if (reason === 'ValidationError') {
-                // Convert ValidationErrors into SubmissionErrors for Redux Form
+                //Convert ValidationErrors into SubmissionErrors for Redux Form
                 return Promise.reject(
                     new SubmissionError({
                         [location]: message
@@ -48,4 +41,4 @@ export const registerUser = user => {
                 );
             }
         });
-};*/
+};

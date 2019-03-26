@@ -4,7 +4,9 @@ import {registerUser} from '../actions/register';
 
 class RegisterForm extends React.Component{
   onSubmit(values){
-   return this.dispatch(registerUser(values));
+   let {password, username} = values;
+   let user = {password, username};
+   return this.dispatch(registerUser(user));
   }
   render() {
     return (
@@ -12,7 +14,7 @@ class RegisterForm extends React.Component{
       <div>This is the registration form!</div>
       <Field
         className="username"
-        name="userName"
+        name="username"
         component="input"
         type="text" />
       <Field
@@ -20,15 +22,13 @@ class RegisterForm extends React.Component{
         name="password"
         component="input"
         type="password" />
-      <button
-        type="submit"
-        >Register</button>
+      <button>Register</button>
     </Form>)
   }
 }
 
 export default reduxForm({
-  form: 'registration-form',
+  form: 'registration',
   onSubmitFail: (errors, dispatch) =>
-    dispatch(focus('registration-form', Object.keys(errors)[0]))
-})(RegisterForm);
+    dispatch(focus('registration'/*, Object.keys(errors)[0]*/
+    ))})(RegisterForm);
