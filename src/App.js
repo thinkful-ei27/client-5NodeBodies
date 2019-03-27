@@ -3,7 +3,7 @@ import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { refreshAuthToken } from './actions/auth';
 import Headerbar from './components/headerbar.js';
-import Login from './components/login.js';
+import Login from './components/login-form.js';
 import RegisterForm from './components/registration.js';
 import AdventureForm from './components/newAdventure'
 import Dashboard from './components/dashboard'
