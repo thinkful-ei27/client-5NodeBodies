@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { clearAuth } from '../actions/loginreg';
+import { clearAuth } from '../actions/auth';
 import { clearAuthToken } from '../utils/local-storage';
 // import { Link } from 'react-router-dom';
 
@@ -34,7 +34,7 @@ export class Headerbar extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  // loggedIn: state.loginReg.currentUser !== null
+  // loggedIn: state.auth.currentUser !== null
 });
 
 export default connect(mapStateToProps)(Headerbar);

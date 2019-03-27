@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
+import { Link } from 'react-router-dom'
 
 
 
@@ -11,7 +12,7 @@ export class Dashboard extends React.Component {
   // }
 
   AdventureList(props) {
-    const adventures = this.props.adventures.map(adventure, index) => (
+    const adventures = this.props.adventures.map((adventure, index) => (
       <li key={index}>
         <Link
           className="li-adventure"
@@ -19,7 +20,7 @@ export class Dashboard extends React.Component {
             pathname: `/adventures/${adventure.id}`,
           }}>{adventure.name}</Link>
       </li>
-    )
+    ))
 
     return (
       <div className="dashboard">
