@@ -7,13 +7,12 @@ import Login from "./login-form";
 export function LoginPage(props) {
   // If we are logged in (which happens automatically when registration
   // is successful) redirect to the main browse area
-  const { loggedIn } = props;
-  if (loggedIn) {
+  if (props.loggedIn) {
+    console.log("Redirecting")
     return <Redirect to="/dashboard" />;
   }
   return (
-    <div className="mt-32 container mx-auto">
-      <h2 className="mb-4">Login</h2>
+    <div className="">
       <Login />
     </div>
   );
