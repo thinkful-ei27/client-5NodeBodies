@@ -11,7 +11,7 @@ class LoginForm extends React.Component {
     let { password, username } = values;
     let user = { password, username };
     console.log(user);
-    console.log("Error is: ", this.props.error)
+    console.log("Error is: ", this.props.error);
     return this.props.dispatch(loginUser(user))
   }
   render() {
