@@ -4,7 +4,7 @@ import {
     AUTH_REQUEST,
     AUTH_SUCCESS,
     AUTH_ERROR
-} from '../actions/loginreg'
+} from '../actions/auth'
 
 const initialState = {
     authToken: null,
@@ -14,7 +14,7 @@ const initialState = {
     error: null
 };
 
-export default function reducer(state = initialState, action) {
+export function reducer(state = initialState, action) {
     switch (action.type) {
         case SET_AUTH_TOKEN: {
             console.log('set auth token ran');
