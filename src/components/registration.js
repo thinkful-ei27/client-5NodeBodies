@@ -1,7 +1,8 @@
 import React from 'react';
 import { Form, Field, reduxForm, focus } from 'redux-form';
 import { registerUser } from '../actions/register';
-import { loginUser } from '../actions/auth'
+import { loginUser } from '../actions/auth';
+
 
 class RegisterForm extends React.Component {
   onSubmit(values) {

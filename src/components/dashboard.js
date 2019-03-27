@@ -27,6 +27,7 @@ export class Dashboard extends React.Component {
         <ul className="adventures-list" id="adventures">
           {adventures}
         </ul>
+        <button className="create-adventure" onClick={console.log('CREATE WAS CLICKED')}>Create new Adventure</button>
       </div>
     );
   }
@@ -39,11 +40,11 @@ export class Dashboard extends React.Component {
 }
 
 const mapStateToProps = state => {
-  const { currentUser } = state.login;
+  const { currentUser } = state.auth;
   // TO-DO ADD ADVENTURE STATE/STORE
   return {
-    username: state.login.currentUser.username,
-    name: `${currentUser.name}`,
+    username: state.auth.currentUser.username,
+    name: `${currentUser.firstName} ${currentUser.lastName}`,
     // adventures: adventures
   };
 };

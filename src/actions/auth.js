@@ -36,11 +36,12 @@ export const authError = error => ({
 const storeAuthInfo = (authToken, dispatch) => {
   const decodedToken = jwtDecode(authToken);
   dispatch(setAuthToken(authToken));
-  dispatch(authSuccess(decodedToken.user))
+  dispatch(authSuccess(decodedToken.user));
   saveAuthToken(authToken);
 }
 
 export const loginUser = user => dispatch => {
+  console.log('LOGNIN USER RAN')
   dispatch(authRequest())
   return fetch(`${API_BASE_URL}/auth/login`, {
     method: 'POST',

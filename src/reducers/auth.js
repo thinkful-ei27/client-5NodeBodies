@@ -8,6 +8,7 @@ import {
 
 const initialState = {
     authToken: null,
+    loggedIn: null,
     currentUser: null,
     loading: false,
     error: null
@@ -35,7 +36,8 @@ export function reducer(state = initialState, action) {
         case AUTH_SUCCESS: {
             return Object.assign({}, state, {
                 loading: false,
-                currentUser: action.currentUser
+                currentUser: action.currentUser,
+                loggedIn: true
             });
         }
         case AUTH_ERROR: {

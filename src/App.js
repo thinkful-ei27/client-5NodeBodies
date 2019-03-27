@@ -36,7 +36,7 @@ class App extends Component {
 
   render() {
     return (
-      <div classname="app">
+      <div className="app">
         <Headerbar />
         <Route exact path="/" component={RegisterForm} />
         <Route exact path="/login" component={Login} />
