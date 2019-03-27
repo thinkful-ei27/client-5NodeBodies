@@ -1,6 +1,6 @@
-import {SubmissionError} from 'redux-form';
-import {API_BASE_URL} from '../config';
-import {normalizeResponseErrors} from '../utils';
+import { SubmissionError } from 'redux-form';
+import { API_BASE_URL } from '../config';
+import { normalizeResponseErrors } from '../utils';
 
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
@@ -20,18 +20,18 @@ export const loginError = error => ({
     error
 });
 
-export const loginUser = user => {
+export const loginUser = (username, password) => dispatch => {
     return fetch(`${API_BASE_URL}/auth/login`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
         },
-        body: JSON.stringify(user)
+        body: JSON.stringify(username, password)
     })
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
         .catch(err => {
-            const {reason, message, location} = err;
+            const { reason, message, location } = err;
             if (reason === 'ValidationError') {
                 //Convert ValidationErrors into SubmissionErrors for Redux Form
                 return Promise.reject(
