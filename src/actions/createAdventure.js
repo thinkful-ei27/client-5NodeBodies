@@ -20,20 +20,21 @@ export const createAdventureError = error => ({
     error
 });
 
-export const createAdventure = adventure => (dispatch) => {
-    dispatch(createAdventureRequest())
+export const createAdventure = adventure => (dispatch, getState) => {
+    dispatch(createAdventureRequest());
+    const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/adventure/newAdventure`, {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(adventure)
-    })
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${authToken}`
+    },
+    body: JSON.stringify(adventure)
+  })
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
         .then(res => dispatch(createAdventureSuccess(res)))
-        .catch(err => {
-          dispatch(createAdventureError(err))
+        .catch(error => {
+          dispatch(createAdventureError(error))
 
         });
 };

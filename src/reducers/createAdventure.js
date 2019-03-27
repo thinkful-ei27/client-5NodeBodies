@@ -27,7 +27,7 @@ export default function reducer(state = initialState, action) {
     case CREATE_ADVENTURE_ERROR: {
       return Object.assign({}, state, {
         loading: false,
-        error: action.err
+        error: action.error
       });
     }
     default:
