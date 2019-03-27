@@ -1,7 +1,6 @@
 import React from 'react';
 import { Form, Field, reduxForm, focus } from 'redux-form';
 import { loginUser } from '../actions/auth';
-import { Redirect } from 'react-router-dom';
 
 
 class LoginForm extends React.Component {
@@ -11,8 +10,8 @@ class LoginForm extends React.Component {
     let { password, username } = values;
     let user = { password, username };
     console.log(user);
-    return this.props.dispatch(loginUser(user))
-      .then(<Redirect to="/dashboard" />)
+    this.props.dispatch(loginUser(user))
+      .then(this.props.history.push("/adventure"));
   }
   render() {
     return (
