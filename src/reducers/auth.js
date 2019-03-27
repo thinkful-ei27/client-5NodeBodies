@@ -27,6 +27,7 @@ export function reducer(state = initialState, action) {
             });
         }
         case AUTH_REQUEST: {
+            console.log('auth request ran');
             return Object.assign({}, state, {
                 loading: true,
                 error: null
