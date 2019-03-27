@@ -5,6 +5,7 @@ import { refreshAuthToken } from './actions/auth';
 import Headerbar from './components/headerbar.js';
 import Login from './components/login.js';
 import RegisterForm from './components/registration.js';
+import AdventureForm from './components/newAdventure'
 import Dashboard from './components/dashboard'
 import './App.css';
 
@@ -41,6 +42,7 @@ class App extends Component {
         <Route exact path="/" component={RegisterForm} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/adventure" component={AdventureForm} />
       </div>
     );
   }

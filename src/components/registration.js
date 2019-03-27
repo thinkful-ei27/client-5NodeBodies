@@ -12,30 +12,34 @@ class RegisterForm extends React.Component {
   }
   render() {
     return (
-      <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-        <div>This is the registration form!</div>
-        <Field
-          className="firstName"
-          name="firstName"
-          component="input"
-          type="text" />
-        <Field
-          className="lastName"
-          name="lastName"
-          component="input"
-          type="text" />
-        <Field
-          className="username"
-          name="username"
-          component="input"
-          type="text" />
-        <Field
-          className="password"
-          name="password"
-          component="input"
-          type="password" />
-        <button>Register</button>
-      </Form>)
+    <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+      <div>This is the registration form!</div>
+      <Field
+        className="firstName"
+        placeholder="First Name"
+        name="firstName"
+        component="input"
+        type="text" />
+      <Field
+        className="lastName"
+        placeholder="Last Name"
+        name="lastName"
+        component="input"
+        type="text" />
+      <Field
+        className="username"
+        placeholder="Username"
+        name="username"
+        component="input"
+        type="text" />
+      <Field
+        className="password"
+        placeholder="Password"
+        name="password"
+        component="input"
+        type="password" />
+      <button>Register</button>
+    </Form>)
   }
 }
 

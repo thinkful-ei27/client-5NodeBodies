@@ -34,7 +34,7 @@ export class Headerbar extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  // loggedIn: state.auth.currentUser !== null
+  loggedIn: state.auth.currentUser !== null
 });
 
 export default connect(mapStateToProps)(Headerbar);
