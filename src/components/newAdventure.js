@@ -21,8 +21,14 @@ class AdventureForm extends React.Component{
         type="text" />
       <Field
         className="startContent"
-        placeholder="Content"
+        placeholder="Intro Content"
         name="startContent"
+        component="input"
+        type="text" />     
+         <Field
+        className="videoURL"
+        placeholder="http://(videoURL)"
+        name="videoURL"
         component="input"
         type="text" />
       <div> You have to create your first question as well</div>
@@ -30,6 +36,18 @@ class AdventureForm extends React.Component{
         className="question"
         placeholder="what is the meaning of life?"
         name="question"
+        component="input"
+        type="text" />
+        <Field
+        className="leftAnswer"
+        placeholder="First Answer"
+        name="leftAnswer"
+        component="input"
+        type="text" />
+        <Field
+        className="rightAnswer"
+        placeholder="Second Answer"
+        name="rightAnswer"
         component="input"
         type="text" />
       <button>New Adventure!</button>
