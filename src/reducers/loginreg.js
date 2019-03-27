@@ -17,6 +17,7 @@ const initialState = {
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case SET_AUTH_TOKEN: {
+            console.log('set auth token ran');
             return Object.assign({}, state, {
                 authToken: action.authToken
             });
@@ -28,15 +29,17 @@ export default function reducer(state = initialState, action) {
             });
         }
         case AUTH_REQUEST: {
+            console.log('auth request ran');
             return Object.assign({}, state, {
                 loading: true,
                 error: null
             });
         }
         case AUTH_SUCCESS: {
+            console.log('auth success ran');
             return Object.assign({}, state, {
                 loading: false,
-                currentUser: action.currentUser
+                authToken: action.authToken
             });
         }
         case AUTH_ERROR: {
