@@ -1,12 +1,14 @@
 import React from 'react';
 import { Form, Field, reduxForm, focus } from 'redux-form';
-import {registerUser} from '../actions/register';
+import { registerUser } from '../actions/register';
+import { loginUser } from '../actions/auth'
 
-class RegisterForm extends React.Component{
-  onSubmit(values){
-   let {password, username, firstName, lastName} = values;
-   let user = {password, username, firstName, lastName};
-   return this.dispatch(registerUser(user));
+class RegisterForm extends React.Component {
+  onSubmit(values) {
+    let { password, username, firstName, lastName } = values;
+    let user = { password, username, firstName, lastName };
+    return this.dispatch(registerUser(user))
+      .then(() => this.props.dispatch(loginUser(user)));
   }
   render() {
     return (
@@ -45,4 +47,5 @@ export default reduxForm({
   form: 'registration',
   onSubmitFail: (errors, dispatch) =>
     dispatch(focus('registration'/*, Object.keys(errors)[0]*/
-    ))})(RegisterForm);
+    ))
+})(RegisterForm);
