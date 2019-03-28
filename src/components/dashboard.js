@@ -74,7 +74,7 @@ export class Dashboard extends React.Component {
           <Link
             className="li-adventure"
             to={{
-              pathname: `/adventures/${adventure._id.$oid}`,
+              pathname: `/adventures/${adventure.id}`,
             }}>{adventure.title}</Link>
         </li>
       ))
@@ -90,6 +90,9 @@ export class Dashboard extends React.Component {
   }
 
   render() {
+    if (this.props.loading) {
+      return <div className="loading">loading...</div>;
+    }
     return (
       this.AdventureList(this.props)
     );

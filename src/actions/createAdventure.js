@@ -67,8 +67,8 @@ export const getAllAdventures = () => (dispatch, getState) => {
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .then(res => dispatch(createAdventureSuccess(res)))
+    .then(res => dispatch(getAllAdventuresSuccess(res)))
     .catch(error => {
-      dispatch(createAdventureError(error))
+      dispatch(getAllAdventuresError(error))
     });
 };
