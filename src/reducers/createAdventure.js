@@ -2,19 +2,21 @@ import {
   CREATE_ADVENTURE_REQUEST,
   CREATE_ADVENTURE_SUCCESS,
   CREATE_ADVENTURE_ERROR,
-  GET_ADVENTURE_SUCCESS
+  GET_ALL_ADVENTURES_ERROR,
+  GET_ALL_ADVENTURES_REQUEST,
+  GET_ALL_ADVENTURES_SUCCESS
 } from '../actions/createAdventure'
 
 const initialState = {
   loading: false,
   error: null,
   adventureId: null,
-  adventure: null
+  adventures: []
 };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case CREATE_ADVENTURE_REQUEST : {
+    case CREATE_ADVENTURE_REQUEST: {
       return Object.assign({}, state, {
         loading: true,
         error: null
@@ -36,6 +38,24 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         loading: false,
         adventure : action.adventure
+      })
+    }
+    case GET_ALL_ADVENTURES_REQUEST: {
+      return Object.assign({}, state, {
+        loading: true,
+        error: null
+      });
+    }
+    case GET_ALL_ADVENTURES_SUCCESS: {
+      return Object.assign({}, state, {
+        loading: false,
+        adventures: action.adventures
+      });
+    }
+    case GET_ALL_ADVENTURES_ERROR: {
+      return Object.assign({}, state, {
+        loading: false,
+        error: action.error
       });
     }
     default:
