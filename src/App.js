@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import { refreshAuthToken } from './actions/auth';
 import Headerbar from './components/headerbar.js';
 import Login from './components/login.js';
-import RegisterForm from './components/registration.js';
+import RegisterForm from './components/d.js';
 import AdventureForm from './components/newAdventure'
 import Dashboard from './components/dashboard'
 import ParentForm from './components/parent-form'
+import StudentLanding from './components/studentLandingPage'
 import './App.css';
 
 class App extends Component {
@@ -45,6 +46,7 @@ class App extends Component {
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/adventure" component={AdventureForm} />
         <Route exact path="/parent" component={ParentForm} />
+        <Route exact path="/studentlanding" component={StudentLanding} />
       </div>
     );
   }
