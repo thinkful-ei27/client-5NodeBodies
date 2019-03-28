@@ -2,12 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { clearAuth } from '../actions/auth';
 import { clearAuthToken } from '../utils/local-storage';
-// import { Link } from 'react-router-dom';
+import { withRouter, Redirect, Link } from 'react-router-dom';
 
 export class Headerbar extends React.Component {
   logOut() {
     this.props.dispatch(clearAuth());
     clearAuthToken()
+    return <Redirect to="/login" />;
   }
 
   render() {
@@ -16,9 +17,9 @@ export class Headerbar extends React.Component {
     if (this.props.loggedIn) {
       navButtons = <div className="nav-buttons">
         {/* TO-DO: REACT-ROUTER INSTEAD???????????????? */}
-        <a className="button" href="/dashboard">
+        <Link to="/dashboard">
           <button className="home-button">Home</button>
-        </a>
+        </Link>
         <button type="button" onClick={() => {
           this.logOut()
         }}>Log Out</button>
@@ -37,4 +38,4 @@ const mapStateToProps = state => ({
   loggedIn: state.auth.currentUser !== null
 });
 
-export default connect(mapStateToProps)(Headerbar);
+export default withRouter(connect(mapStateToProps)(Headerbar));
