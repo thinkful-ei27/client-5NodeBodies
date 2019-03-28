@@ -5,11 +5,17 @@ import { connect } from "react-redux";
 import Input from "./input";
 import { } from '../actions/createAdventure';
 import { required, nonEmpty } from "../utils/validators";
+import { NodeFormWithPointer } from '../actions/nodes';
 
 export default function ParentForm(props) {
     // if (!props.loggedIn) {
     //   return <Redirect to="/" />;
     // }
+
+    defineParentPointerForNewNode(){
+     props.dispatch(NodeFormWithPointer())
+    }
+
     return (
       <div className="parentForm">
         <div className="question">What is the meaning of life</div>

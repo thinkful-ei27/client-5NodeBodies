@@ -4,14 +4,17 @@ import {
   CREATE_ADVENTURE_ERROR,
   GET_ALL_ADVENTURES_ERROR,
   GET_ALL_ADVENTURES_REQUEST,
-  GET_ALL_ADVENTURES_SUCCESS
+  GET_ALL_ADVENTURES_SUCCESS,
+  GET_ADVENTURE_SUCCESS,
+
 } from '../actions/createAdventure'
 
 const initialState = {
   loading: false,
   error: null,
   adventureId: null,
-  adventures: []
+  adventures: [],
+  adventure: null
 };
 
 export default function reducer(state = initialState, action) {
