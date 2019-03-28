@@ -7,6 +7,7 @@ import Login from './components/login.js';
 import RegisterForm from './components/registration.js';
 import AdventureForm from './components/newAdventure'
 import Dashboard from './components/dashboard'
+import ParentForm from './components/parent-form'
 import './App.css';
 
 class App extends Component {
@@ -43,6 +44,7 @@ class App extends Component {
         <Route exact path="/login" component={Login} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/adventure" component={AdventureForm} />
+        <Route exact path="/parent" component={ParentForm} />
       </div>
     );
   }

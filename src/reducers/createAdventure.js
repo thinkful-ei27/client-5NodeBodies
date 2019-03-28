@@ -1,13 +1,15 @@
 import {
   CREATE_ADVENTURE_REQUEST,
   CREATE_ADVENTURE_SUCCESS,
-  CREATE_ADVENTURE_ERROR
+  CREATE_ADVENTURE_ERROR,
+  GET_ADVENTURE_SUCCESS
 } from '../actions/createAdventure'
 
 const initialState = {
   loading: false,
   error: null,
-  adventureId: null
+  adventureId: null,
+  adventure: null
 };
 
 export default function reducer(state = initialState, action) {
@@ -28,6 +30,12 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         loading: false,
         error: action.error
+      });
+    }
+    case GET_ADVENTURE_SUCCESS: {
+      return Object.assign({}, state, {
+        loading: false,
+        adventure : action.adventure
       });
     }
     default:
