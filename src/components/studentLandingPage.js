@@ -1,24 +1,27 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { getStudentAdventure } from '../actions/student'
 
-export default class StudentLanding extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { value: '' };
+let inputVal, error;
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+export class StudentLanding extends React.Component {
+  handleSubmit(e) {
+    e.preventDefault();
+    let adventureId = inputVal
+    this.props.dispatch(getStudentAdventure(adventureId))
   }
 
-  handleChange(event) {
-    this.setState({ studentAdventure: event.target.value });
-  }
-
-  handleSubmit(event) {
-    alert('An adventure was submitted: ' + this.state.studentAdventure);
-    event.preventDefault();
+  onChange(e) {
+    inputVal = e.target.value
   }
 
   render() {
+    if (this.props.loading) {
+      return <div className="loading">loading...</div>;
+    }
+    if (this.props.error) {
+      error = <div className="form-error">{this.props.error.message}</div>;
+    }
     return (
       <div className="student-landing">
         <div className="student-instructions">
@@ -28,16 +31,26 @@ export default class StudentLanding extends React.Component {
           </p>
         </div>
         <div className="register-adventure">
-          <form onSubmit={this.handleSubmit}>
-            <input className="adventure-input" type="text"
+          <form onSubmit={e => this.handleSubmit(e)}>
+            {error}
+            <input className="adventure-input" type="text" name="adventureId" id="adventureId"
               placeholder="5c9ceaeac543f706bf407cae"
-              value={this.state.studentAdventure} onChange={this.handleChange}></input>
+              onChange={e => this.onChange(e)}
+            ></input>
             <button className="student-adventure-submit" type="submit">Start Adventure!</button>
           </form>
-
         </div>
       </div>
     );
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    adventure: state.student.adventure,
+    error: state.student.error,
+    loading: state.student.loading
+  };
+};
+
+export default (connect(mapStateToProps)(StudentLanding));
