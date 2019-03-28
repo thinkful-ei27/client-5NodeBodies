@@ -8,7 +8,8 @@ class AdventureForm extends React.Component {
   onSubmit(values) {
     let { title, startContent, question } = values;
     let adventure = { title, startContent, question };
-    return this.props.dispatch(createAdventure(adventure));
+    return this.props.dispatch(createAdventure(adventure))
+    .then(this.props.history.push())
   }
   render() {
     let error;
