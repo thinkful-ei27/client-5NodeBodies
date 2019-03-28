@@ -14,7 +14,7 @@ const initialState = {
   error: null,
   adventureId: null,
   adventures: [],
-  adventure: null
+  currentAdventure: null
 };
 
 export default function reducer(state = initialState, action) {
@@ -28,7 +28,7 @@ export default function reducer(state = initialState, action) {
     case CREATE_ADVENTURE_SUCCESS: {
       return Object.assign({}, state, {
         loading: false,
-        adventureId: action.adventureId
+        currentAdventure: action.currentAdventure
       });
     }
     case CREATE_ADVENTURE_ERROR: {
@@ -40,7 +40,7 @@ export default function reducer(state = initialState, action) {
     case GET_ADVENTURE_SUCCESS: {
       return Object.assign({}, state, {
         loading: false,
-        adventure : action.adventure
+        adventure: action.adventure
       })
     }
     case GET_ALL_ADVENTURES_REQUEST: {

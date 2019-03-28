@@ -3,13 +3,15 @@ import {
   CREATE_NODE_SUCCESS,
   CREATE_NODE_ERROR,
   NODE_FORM_WITH_POINTER,
+  SET_CURRENT_NODE,
 } from '../actions/nodes'
 
 const initialState = {
   loading: false,
   error: null,
   nodeId: null,
-  parentNode: null
+  parentsAnswerReference: null,
+  currentNode: null,
 };
 
 export default function reducer(state = initialState, action) {
@@ -35,8 +37,15 @@ export default function reducer(state = initialState, action) {
     case NODE_FORM_WITH_POINTER: {
       return Object.assign({}, state, {
         loading: false,
-        parentNode: action.parentNode
+        parentsAnswerReference: action.nodeIdandPointer
       });
+
+    }
+    case SET_CURRENT_NODE: {
+      return Object.assign({}, state, {
+        loading: false,
+        currentNode: action.node
+      })
     }
     default:
       return state

@@ -1,6 +1,7 @@
 
 import { API_BASE_URL } from '../config';
 import { normalizeResponseErrors } from '../utils';
+import { setCurrentNode } from './nodes.js'
 
 export const CREATE_ADVENTURE_REQUEST = 'CREATE_ADVENTURE_REQUEST';
 export const createAdventureRequest = () => ({
@@ -14,9 +15,9 @@ export const createAdventureSuccess = (adventureId) => ({
 });
 
 export const GET_ADVENTURE_SUCCESS = 'GET_ADVENTURE_SUCCESS';
-export const getAdventureSuccess = (adventure) => ({
-    type: GET_ADVENTURE_SUCCESS,
-    adventure
+export const getAdventureSuccess = (currentAdventure) => ({
+  type: GET_ADVENTURE_SUCCESS,
+  currentAdventure
 });
 
 export const CREATE_ADVENTURE_ERROR = 'CREATE_ADVENTURE_ERROR';
@@ -27,26 +28,32 @@ export const createAdventureError = error => ({
 
 export const GET_ADVENTURE_BY_ID = 'GET_ADVENTURE_BY_ID';
 export const getAdventureById = adventureId => (dispatch, getState) => {
-    dispatch(createAdventureRequest());
-    const authToken = getState().auth.authToken;
-    return fetch(`${API_BASE_URL}/adventure/${adventureId}`, {
+  dispatch(createAdventureRequest());
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/adventure/${adventureId}`, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${authToken}`
     },
   })
-        .then(res => normalizeResponseErrors(res))
-        .then(res => res.json())
-        .then(res => dispatch(getAdventureSuccess(res)))
-        .catch(error => {
-          dispatch(createAdventureError(error))
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(res => dispatch(getAdventureSuccess(res)))
+    .catch(error => {
+      return dispatch(createAdventureError(error))
+    });
+}
 
-        });
+// helper function that gets the head node from newadventure object
+function getHeadNodefromAdventure(adventure) {
+  const headNode = adventure.head;
+  return headNode
 }
 
 export const createAdventure = adventure => (dispatch, getState) => {
   dispatch(createAdventureRequest());
   const authToken = getState().auth.authToken;
+  debugger;
   return fetch(`${API_BASE_URL}/adventure/newAdventure`, {
     method: 'POST',
     headers: {
@@ -54,14 +61,49 @@ export const createAdventure = adventure => (dispatch, getState) => {
     },
     body: JSON.stringify(adventure)
   })
-        .then(res => normalizeResponseErrors(res))
-        .then(res => res.json())
-        .then(res => {
-            dispatch(createAdventureSuccess(res))
-            dispatch(getAdventureById(res)) //maybe later, update to put this into a single enpoint?
-        })
-        .catch(error => {
-          dispatch(createAdventureError(error))
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(res => {
+      const headNode = getHeadNodefromAdventure(res);
+      dispatch(setCurrentNode(headNode))
+      return dispatch(createAdventureSuccess(res))
+    })
+    .catch(error => {
+      return dispatch(createAdventureError(error))
+    });
+};
 
-        });
+export const GET_ALL_ADVENTURES_REQUEST = 'GET_ALL_ADVENTURES_REQUEST';
+export const getAllAdventuresRequest = () => ({
+  type: GET_ALL_ADVENTURES_REQUEST,
+});
+
+export const GET_ALL_ADVENTURES_SUCCESS = 'GET_ALL_ADVENTURES_SUCCESS';
+export const getAllAdventuresSuccess = adventures => ({
+  type: GET_ALL_ADVENTURES_SUCCESS,
+  adventures
+});
+
+export const GET_ALL_ADVENTURES_ERROR = 'GET_ALL_ADVENTURES_ERROR';
+export const getAllAdventuresError = error => ({
+  type: GET_ALL_ADVENTURES_ERROR,
+  error
+});
+
+export const getAllAdventures = () => (dispatch, getState) => {
+  console.log('getAllAdventures Ran')
+  dispatch(createAdventureRequest());
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/adventure`, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(res => dispatch(getAllAdventuresSuccess(res)))
+    .catch(error => {
+      dispatch(getAllAdventuresError(error))
+    });
 };
