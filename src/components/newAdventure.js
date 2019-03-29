@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Field, reduxForm, focus } from 'redux-form';
+import { Form, Field, reduxForm } from 'redux-form';
 import Input from "./input";
 import { createAdventure } from '../actions/createAdventure';
 import { required, nonEmpty } from "../utils/validators";
