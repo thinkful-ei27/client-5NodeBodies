@@ -77,9 +77,9 @@ class AdventureForm extends React.Component {
           validate={[required, nonEmpty]} />
         <button>New Adventure!</button>
       </Form>
-      <Link to="/adventure/adventureBuilder">
+      {/*<Link to="/adventure/adventureBuilder">
         <button className="">go to node adventure builder</button>
-      </Link>
+    </Link>*/}
 
     </div>
     )
