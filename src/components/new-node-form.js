@@ -2,16 +2,27 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Form, Field, reduxForm, focus } from 'redux-form';
 import Input from "./input";
-import { createAdventure } from '../actions/createAdventure';
+import { createNode } from '../actions/nodes';
 import { required, nonEmpty } from "../utils/validators";
 
 class NewNodeForm extends React.Component {
   onSubmit(values) {
-    let { title, startContent, question } = values;
-    let adventure = { title, startContent, question };
-    console.log("adventure Pre-post is: ", adventure);
+    const parentInt = this.props.parentInt;
+    const adventureId = this.props.adventureId;
+    const parentId = this.props.parentId;
+    let { question, leftAnswer, rightAnswer, videoURL } = values;
+    let newNode = {
+      leftAnswer,
+      rightAnswer,
+      videoURL,
+      question,
+      parentInt,
+      adventureId,
+      parentId
+    };
+    console.log("adventure Pre-post is: ", newNode);
     console.log("Error is: ", this.props.error);
-    return this.props.dispatch(createAdventure(adventure));
+    return this.props.dispatch(createNode(newNode));
   }
   render() {
     let error;
@@ -73,7 +84,9 @@ const mapStateToProps = state => {
 
   return {
     currentNode: state.node.currentNode,
-    parentInt: state.node.parentInt
+    parentInt: state.node.parentInt,
+    adventureId: state.adventure.currentAdventure.id,
+    parentId: state.node.currentNode.id
   };
 };
 

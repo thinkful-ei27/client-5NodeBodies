@@ -1,6 +1,7 @@
 
 import { API_BASE_URL } from '../config';
 import { normalizeResponseErrors } from '../utils';
+import { getAdventureById } from './createAdventure';
 
 export const NODE_FORM_WITH_POINTER = 'NODE_FORM_WITH_POINTER';
 export const nodeFormWithPointer = (nodeIdAndPointer) => {
@@ -33,18 +34,23 @@ export const createNodeError = error => ({
   error
 });
 
-export const createNode = node => (dispatch) => {
+export const createNode = node => (dispatch, getState) => {
   dispatch(createNodeRequest())
+  const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/adventure/newNode`, {
     method: 'POST',
     headers: {
+      Authorization: `Bearer ${authToken}`,
       'content-type': 'application/json'
     },
     body: JSON.stringify(node)
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .then(res => dispatch(createNodeSuccess(res)))
+    .then(res => {
+      dispatch(getAdventureById(res.adventureId));
+      dispatch(createNodeSuccess(res))
+    })
     .catch(err => {
       dispatch(createNodeError(err))
 

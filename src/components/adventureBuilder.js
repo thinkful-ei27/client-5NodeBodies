@@ -11,6 +11,7 @@ export class AdventureBuilder extends React.Component {
     const { id } = this.props.match.params;
     console.log(id)
     this.props.dispatch(getAdventureById(id))
+    // clear new node form (parent int)
   }
 
   checkForPointer() {
@@ -44,7 +45,8 @@ const mapStateToProps = state => {
     name: `${currentUser.firstName} ${currentUser.lastName}`,
     currentAdventure: state.adventure.currentAdventure,
     parentInt: state.node.parentInt,
-    loading: state.adventure.loading
+    loading: state.adventure.loading,
+   
   };
 };
 
