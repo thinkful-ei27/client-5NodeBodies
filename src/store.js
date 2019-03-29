@@ -4,7 +4,7 @@ import { loadAuthToken } from './utils/local-storage'
 import adventureReducer from './reducers/createAdventure'
 import nodeReducer from './reducers/nodes'
 import { reducer as loginReducer } from './reducers/auth';
-import { reducer as studentReducer } from './reducers/student';
+import studentReducer from './reducers/student';
 import thunk from 'redux-thunk';
 import { setAuthToken, refreshAuthToken } from './actions/auth';
 

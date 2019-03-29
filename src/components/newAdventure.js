@@ -11,13 +11,13 @@ class AdventureForm extends React.Component {
       startContent,
       question,
       leftAnswer,
-      rightAnswer } = values;
+      rightAnswer, videoURL } = values;
     let adventure = {
       title,
       startContent,
       question,
       leftAnswer,
-      rightAnswer
+      rightAnswer, videoURL
     };
     return this.props.dispatch(createAdventure(adventure));
   }
