@@ -6,7 +6,7 @@ import {getStudentCurrentNode} from '../actions/student'
 export class StudentDisplay extends React.Component {
 
   updateNode() {
-    console.log("Adventure Id is:", this.props.student)
+    console.log(this.props.adventure, this.props.error, this.props.loading, this.props.currentNode)
     // getStudentCurrentNode(this.props.adventure[0].id, this.props.adventure[0].head)
   }
   render() {
