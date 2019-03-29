@@ -4,8 +4,14 @@ import requiresLogin from './requires-login';
 import { Link } from 'react-router-dom';
 import NewNodeForm from './new-node-form';
 import CurrentNodeBrancher from './current-node-brancher';
+import { getAdventureById } from '../actions/createAdventure'
 
 export class AdventureBuilder extends React.Component {
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    console.log(id)
+    this.props.dispatch(getAdventureById(id))
+  }
 
   checkForPointer() {
 
@@ -13,20 +19,18 @@ export class AdventureBuilder extends React.Component {
   }
 
   render() {
+    const adventure = this.props.currentAdventure
     let nodeForm;
-    if (this.props.parentsAnswerReference) {
+    if (this.props.parentInt) {
       nodeForm = <NewNodeForm />
     }
-    if (this.props.loading) {
+    if (!adventure) {
       return <div className="loading">loading...</div>;
     }
     return (
       <div>
         <CurrentNodeBrancher />
         {nodeForm}
-        <Link to="/dashboard">
-        <button className="">go to node brancher</button>
-      </Link>
       </div>
     );
   }
@@ -39,7 +43,8 @@ const mapStateToProps = state => {
     username: state.auth.currentUser.username,
     name: `${currentUser.firstName} ${currentUser.lastName}`,
     currentAdventure: state.adventure.currentAdventure,
-    parentsAnswerReference: state.node.parentsAnswerReference,
+    parentInt: state.node.parentInt,
+    loading: state.adventure.loading
   };
 };
 

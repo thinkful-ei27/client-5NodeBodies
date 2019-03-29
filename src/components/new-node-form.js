@@ -23,10 +23,10 @@ class NewNodeForm extends React.Component {
       );
     }
     let parentAnswer;
-    if (this.props.pointerInt === 1) {
+    if (this.props.parentInt === 1) {
       parentAnswer = this.props.currentNode.leftAnswer
     }
-    if (this.props.pointerInt === 2) {
+    if (this.props.parentInt === 2) {
       parentAnswer = this.props.currentNode.rightAnswer
     }
 
@@ -45,7 +45,7 @@ class NewNodeForm extends React.Component {
         <div>Question for new node</div>
         <Field
           className="question"
-          label="what is the meaning of life?"
+          label="New Question"
           name="question"
           component={Input}
           type="text"
@@ -73,7 +73,7 @@ const mapStateToProps = state => {
 
   return {
     currentNode: state.node.currentNode,
-    pointerInt: state.node.parentsAnswerReference.pointerInt
+    parentInt: state.node.parentInt
   };
 };
 

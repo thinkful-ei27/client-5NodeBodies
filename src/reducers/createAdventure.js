@@ -41,7 +41,7 @@ export default function reducer(state = initialState, action) {
     case GET_ADVENTURE_SUCCESS: {
       return Object.assign({}, state, {
         loading: false,
-        adventure: action.currentAdventure
+        currentAdventure: action.currentAdventure
       })
     }
     case GET_ALL_ADVENTURES_REQUEST: {

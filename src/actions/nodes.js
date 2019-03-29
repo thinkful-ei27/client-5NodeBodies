@@ -35,7 +35,7 @@ export const createNodeError = error => ({
 
 export const createNode = node => (dispatch) => {
   dispatch(createNodeRequest())
-  return fetch(`${API_BASE_URL}/node`, {
+  return fetch(`${API_BASE_URL}/adventure/newNode`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json'

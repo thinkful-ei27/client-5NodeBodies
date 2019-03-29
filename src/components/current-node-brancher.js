@@ -11,7 +11,7 @@ export class CurrentNodeBrancher extends React.Component {
 
   defineParentPointerForNewNode(value) {
     const parentReferenceObj = {
-      pointerInt: value,
+      parentInt: value,
       nodeId: this.props.currentNode.id
     }
     return this.props.dispatch(nodeFormWithPointer(parentReferenceObj))
