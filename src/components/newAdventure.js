@@ -30,7 +30,7 @@ class AdventureForm extends React.Component {
         </div>
       );
     }
-    return (<div>
+    return (<div className="form-field">
       <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
         <div>Create a new adventure!</div>
         {error}
@@ -56,7 +56,7 @@ class AdventureForm extends React.Component {
         <div> You have to create your first question as well</div>
         <Field
           className="question"
-          label="Whats your starting question? (the meaning of life)"
+          label="What's your starting question? (the meaning of life)"
           name="question"
           component={Input}
           type="text"
