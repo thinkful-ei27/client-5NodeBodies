@@ -6,24 +6,34 @@ import {getStudentCurrentNode} from '../actions/student'
 export class StudentDisplay extends React.Component {
 
   updateNode() {
-    console.log(this.props, this.props.error, this.props.loading, this.props.currentNode)
-    // getStudentCurrentNode(this.props.adventure[0].id, this.props.adventure[0].head)
+    this.props.dispatch(getStudentCurrentNode(this.props.adventure[0].id, this.props.adventure[0].head))
   }
+
   render() {
+    let nodeVideo;
+    let nodeQuestion;
     if (this.props.currentNode) {
+      if (this.props.currentNode.videoURL){
+        nodeVideo = (<iframe width="420" height="315" src={this.props.currentNode.videoURL}></iframe>)
+      }
+      if (this.props.currentNode.question){
+        nodeQuestion = <p>{this.props.currentNode.question}</p>
+      }
       return (
         <div>
-          {this.props.currentNode}
+          {this.props.currentNode.id}
+          {nodeVideo}
+          {nodeQuestion}
         </div>
       )
     } else {
       return (
         <div>
-          <h1>Adventure Title</h1>
-          <p>Created by: Me!</p>
+          <h1>{this.props.adventure.title}</h1>
+          <p>Created by: {this.props.adventure.creator}</p>
           <h2>This is an adventure about the titanic</h2>
-          <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
-          <button onClick={() => this.updateNode()}>   Next Node    </button>
+          <iframe width="420" height="315" src={this.props.adventure.videoURL}></iframe>
+          <button onClick={() => this.updateNode()}>Embark</button>
         </div>
       )
     }

@@ -58,7 +58,9 @@ export const getStudentCurrentNode = (adventureId, nodeId) => (dispatch) => {
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .then(res => dispatch(getStudentCurrentNodeSuccess(res)))
+    .then(([res]) => {
+        console.log(res);
+        dispatch(getStudentCurrentNodeSuccess(res))})
     .catch(error => {
       dispatch(getStudentCurrentNodeError(error))
     });

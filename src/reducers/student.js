@@ -44,7 +44,7 @@ export default function reducer(state = initialState, action) {
     case GET_STUDENT_CURRENTNODE_SUCCESS: {
       return Object.assign({}, state, {
         loading: false,
-        adventure: action.node,
+        currentNode: action.node,
         error: null
       });
     }

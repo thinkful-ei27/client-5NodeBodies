@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getStudentAdventure } from '../actions/student'
-import studentDisplay, {StudentDisplay} from './student-display'
+import StudentDisplay from './student-display'
 
 let inputVal, error;
 
