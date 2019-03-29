@@ -1,13 +1,17 @@
 import {
   GET_STUDENT_ADVENTURE_ERROR,
   GET_STUDENT_ADVENTURE_REQUEST,
-  GET_STUDENT_ADVENTURE_SUCCESS
+  GET_STUDENT_ADVENTURE_SUCCESS,
+  GET_STUDENT_CURRENTNODE_ERROR,
+  GET_STUDENT_CURRENTNODE_REQUEST,
+  GET_STUDENT_CURRENTNODE_SUCCESS
 } from '../actions/student'
 
 const initialState = {
   loading: false,
   error: null,
-  adventure: null
+  adventure: null, 
+  currentNode: null
 };
 
 export function reducer(state = initialState, action) {
@@ -26,6 +30,25 @@ export function reducer(state = initialState, action) {
       });
     }
     case GET_STUDENT_ADVENTURE_ERROR: {
+      return Object.assign({}, state, {
+        loading: false,
+        error: action.error
+      });
+    }
+    case GET_STUDENT_CURRENTNODE_REQUEST: {
+      return Object.assign({}, state, {
+        loading: true,
+        error: null
+      });
+    }
+    case GET_STUDENT_CURRENTNODE_SUCCESS: {
+      return Object.assign({}, state, {
+        loading: false,
+        adventure: action.node,
+        error: null
+      });
+    }
+    case GET_STUDENT_CURRENTNODE_ERROR: {
       return Object.assign({}, state, {
         loading: false,
         error: action.error

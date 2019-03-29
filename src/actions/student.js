@@ -18,6 +18,24 @@ export const getStudentAdventureError = error => ({
   error
 });
 
+
+export const GET_STUDENT_CURRENTNODE_REQUEST = 'GET_STUDENT_CURRENTNODE_REQUEST';
+export const getStudentCurrentNodeRequest = () => ({
+  type: GET_STUDENT_CURRENTNODE_REQUEST,
+});
+
+export const GET_STUDENT_CURRENTNODE_SUCCESS = 'GET_STUDENT_CURRENTNODE_SUCCESS';
+export const getStudentCurrentNodeSuccess = node => ({
+  type: GET_STUDENT_CURRENTNODE_SUCCESS,
+  node
+});
+
+export const GET_STUDENT_CURRENTNODE_ERROR = 'GET_STUDENT_CURRENTNODE_ERROR';
+export const getStudentCurrentNodeError = error => ({
+  type: GET_STUDENT_CURRENTNODE_ERROR,
+  error
+});
+
 export const getStudentAdventure = (id) => (dispatch) => {
   console.log('getStudentAdventure Ran')
   dispatch(getStudentAdventureRequest());
@@ -29,5 +47,19 @@ export const getStudentAdventure = (id) => (dispatch) => {
     .then(res => dispatch(getStudentAdventureSuccess(res)))
     .catch(error => {
       dispatch(getStudentAdventureError(error))
+    });
+};
+
+export const getStudentCurrentNode = (adventureId, nodeId) => (dispatch) => {
+  console.log('getStudentCurrentNode Ran')
+  dispatch(getStudentCurrentNodeRequest());
+  return fetch(`${API_BASE_URL}/student/${adventureId}/${nodeId}`, {
+    method: 'GET'
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(res => dispatch(getStudentCurrentNodeSuccess(res)))
+    .catch(error => {
+      dispatch(getStudentCurrentNodeError(error))
     });
 };
