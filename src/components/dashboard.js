@@ -23,7 +23,9 @@ export class Dashboard extends React.Component {
           <Link
             className="li-adventure"
             to={{
+
               pathname: `/adventure/${adventure.id}`,
+
             }}>{adventure.title}</Link>
         </li>
       ))

@@ -1,6 +1,7 @@
 
 import { API_BASE_URL } from '../config';
 import { normalizeResponseErrors } from '../utils';
+import { setCurrentNode } from './nodes.js'
 
 export const CREATE_ADVENTURE_REQUEST = 'CREATE_ADVENTURE_REQUEST';
 export const createAdventureRequest = () => ({
@@ -8,10 +9,19 @@ export const createAdventureRequest = () => ({
 });
 
 export const CREATE_ADVENTURE_SUCCESS = 'CREATE_ADVENTURE_SUCCESS';
-export const createAdventureSuccess = (adventureId) => ({
+export const createAdventureSuccess = (currentAdventure) => ({
   type: CREATE_ADVENTURE_SUCCESS,
-  adventureId
+  currentAdventure
 });
+
+export const GET_ADVENTURE_SUCCESS = 'GET_ADVENTURE_SUCCESS';
+export const getAdventureSuccess = (currentAdventure) => {
+
+  return ({
+    type: GET_ADVENTURE_SUCCESS,
+    currentAdventure
+  })
+};
 
 export const CREATE_ADVENTURE_ERROR = 'CREATE_ADVENTURE_ERROR';
 export const createAdventureError = error => ({
@@ -19,22 +29,51 @@ export const createAdventureError = error => ({
   error
 });
 
+export const GET_ADVENTURE_BY_ID = 'GET_ADVENTURE_BY_ID';
+export const getAdventureById = adventureId => (dispatch, getState) => {
+  dispatch(createAdventureRequest());
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/adventure/${adventureId}`, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${authToken}`
+    },
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(res => dispatch(getAdventureSuccess(res)))
+    .catch(error => {
+      return dispatch(createAdventureError(error))
+    });
+}
+
+// helper function that gets the head node from newadventure object
+function getHeadNodefromAdventure(adventure) {
+  const headNode = adventure.head;
+  return headNode
+}
+
 export const createAdventure = adventure => (dispatch, getState) => {
   dispatch(createAdventureRequest());
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/adventure/newAdventure`, {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${authToken}`
+      Authorization: `Bearer ${authToken}`,
+      'content-type': 'application/json'
     },
     body: JSON.stringify(adventure)
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .then(res => dispatch(createAdventureSuccess(res)))
+    .then(res => {
+      const headNode = getHeadNodefromAdventure(res);
+    
+      dispatch(setCurrentNode(headNode))
+      return dispatch(createAdventureSuccess(res))
+    })
     .catch(error => {
-      dispatch(createAdventureError(error))
-
+      return dispatch(createAdventureError(error))
     });
 };
 
