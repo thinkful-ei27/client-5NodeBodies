@@ -4,29 +4,43 @@ import requiresLogin from './requires-login';
 import { Link } from 'react-router-dom';
 import NewNodeForm from './new-node-form';
 import CurrentNodeBrancher from './current-node-brancher';
+import { getAdventureById } from '../actions/createAdventure'
+import { setCurrentNode } from '../actions/nodes'
 
 export class AdventureBuilder extends React.Component {
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    console.log(id)
+    this.props.dispatch(getAdventureById(id))
+    // clear new node form (parent int)
+  }
 
-  checkForPointer() {
-
-
+  changeCurrentNode(optionSelected) {
+    const index = optionSelected.value
+    let node = this.props.currentAdventure.nodes[index];
+    console.log(node)
+    this.props.dispatch(setCurrentNode(node))
   }
 
   render() {
+    const adventure = this.props.currentAdventure
     let nodeForm;
-    if (this.props.parentsAnswerReference) {
+    if (this.props.parentInt) {
       nodeForm = <NewNodeForm />
     }
-    if (this.props.loading) {
+    if (!adventure) {
       return <div className="loading">loading...</div>;
     }
+    const options = this.props.currentAdventure.nodes.map((node, index) =>
+      <option key={node.id} value={index}>{node.question}</option>);
     return (
       <div>
+        <select className="nodeSelect"
+          label="Current Node"
+          name="nodeSelect"
+          onChange={() => this.changeCurrentNode()}>{options}</select>
         <CurrentNodeBrancher />
         {nodeForm}
-        <Link to="/dashboard">
-        <button className="">go to node brancher</button>
-      </Link>
       </div>
     );
   }
@@ -39,7 +53,8 @@ const mapStateToProps = state => {
     username: state.auth.currentUser.username,
     name: `${currentUser.firstName} ${currentUser.lastName}`,
     currentAdventure: state.adventure.currentAdventure,
-    parentsAnswerReference: state.node.parentsAnswerReference,
+    parentInt: state.node.parentInt,
+    loading: state.adventure.loading,
   };
 };
 
