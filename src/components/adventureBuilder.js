@@ -15,10 +15,8 @@ export class AdventureBuilder extends React.Component {
     // clear new node form (parent int)
   }
 
-  changeCurrentNode(optionSelected) {
-    const index = optionSelected.value
+  changeCurrentNode(index) {
     let node = this.props.currentAdventure.nodes[index];
-    console.log(node)
     this.props.dispatch(setCurrentNode(node))
   }
 
@@ -38,7 +36,8 @@ export class AdventureBuilder extends React.Component {
         <select className="nodeSelect"
           label="Current Node"
           name="nodeSelect"
-          onChange={() => this.changeCurrentNode()}>{options}</select>
+          options={options}
+          onChange={e => this.changeCurrentNode(e.target.value)}>{options}</select>
         <CurrentNodeBrancher />
         {nodeForm}
       </div>
