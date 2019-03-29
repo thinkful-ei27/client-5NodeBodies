@@ -1,24 +1,16 @@
 import React from 'react';
-import { Form, Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { Form, Field, reduxForm, focus } from 'redux-form';
 import Input from "./input";
 import { createAdventure } from '../actions/createAdventure';
 import { required, nonEmpty } from "../utils/validators";
-import { withRouter, Redirect, Link } from 'react-router-dom';
 
-class AdventureForm extends React.Component {
+class NewNodeForm extends React.Component {
   onSubmit(values) {
-    let { title,
-      startContent,
-      question,
-      leftAnswer,
-      rightAnswer } = values;
-    let adventure = {
-      title,
-      startContent,
-      question,
-      leftAnswer,
-      rightAnswer
-    };
+    let { title, startContent, question } = values;
+    let adventure = { title, startContent, question };
+    console.log("adventure Pre-post is: ", adventure);
+    console.log("Error is: ", this.props.error);
     return this.props.dispatch(createAdventure(adventure));
   }
   render() {
@@ -30,33 +22,30 @@ class AdventureForm extends React.Component {
         </div>
       );
     }
-    return (<div>
+    let parentAnswer;
+    if (this.props.pointerInt === 1) {
+      parentAnswer = this.props.currentNode.leftAnswer
+    }
+    if (this.props.pointerInt === 2) {
+      parentAnswer = this.props.currentNode.rightAnswer
+    }
+
+    return (
       <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-        <div>Create a new adventure!</div>
+        <h3>add new Child node</h3>
+        <h4>answer that points to this node: {parentAnswer}</h4>
         {error}
-        <Field
-          className="title"
-          label="title"
-          name="title"
-          component={Input}
-          type="text"
-          validate={[required, nonEmpty]} />
-        <Field
-          className="startContent"
-          label="Intro Content"
-          name="startContent"
-          component={Input}
-          type="text" />
+        {/* TODO placeholder for existing node dropdown */}
         <Field
           className="videoURL"
           label="http://(videoURL)"
           name="videoURL"
           component={Input}
           type="text" />
-        <div> You have to create your first question as well</div>
+        <div>Question for new node</div>
         <Field
           className="question"
-          label="Whats your starting question? (the meaning of life)"
+          label="what is the meaning of life?"
           name="question"
           component={Input}
           type="text"
@@ -75,23 +64,22 @@ class AdventureForm extends React.Component {
           component={Input}
           type="text"
           validate={[required, nonEmpty]} />
-        <button>New Adventure!</button>
-      </Form>
-      <Link to="/adventure/adventureBuilder">
-        <button className="">go to node adventure builder</button>
-      </Link>
-
-    </div>
-    )
+        <button>Add node to adventure</button>
+      </Form>)
   }
 }
 
+const mapStateToProps = state => {
 
+  return {
+    currentNode: state.node.currentNode,
+    pointerInt: state.node.parentsAnswerReference.pointerInt
+  };
+};
 
-export default withRouter(reduxForm({
-  form: 'Adventure',
-
+export default connect(mapStateToProps)(reduxForm({
+  form: 'NewNode',
   // onSubmitFail: (errors, dispatch) =>
   //   dispatch(focus('Adventure'/*, Object.keys(errors)[0]*/
   //   ))
-})(AdventureForm));
+})(NewNodeForm));

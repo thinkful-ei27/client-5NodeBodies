@@ -4,14 +4,17 @@ import {
   CREATE_ADVENTURE_ERROR,
   GET_ALL_ADVENTURES_ERROR,
   GET_ALL_ADVENTURES_REQUEST,
-  GET_ALL_ADVENTURES_SUCCESS
+  GET_ALL_ADVENTURES_SUCCESS,
+  GET_ADVENTURE_SUCCESS,
+
 } from '../actions/createAdventure'
 
 const initialState = {
   loading: false,
   error: null,
   adventureId: null,
-  adventures: []
+  adventures: [],
+  currentAdventure: null
 };
 
 export default function reducer(state = initialState, action) {
@@ -23,9 +26,10 @@ export default function reducer(state = initialState, action) {
       });
     }
     case CREATE_ADVENTURE_SUCCESS: {
+
       return Object.assign({}, state, {
         loading: false,
-        adventureId: action.adventureId
+        currentAdventure: action.currentAdventure
       });
     }
     case CREATE_ADVENTURE_ERROR: {
@@ -33,6 +37,12 @@ export default function reducer(state = initialState, action) {
         loading: false,
         error: action.error
       });
+    }
+    case GET_ADVENTURE_SUCCESS: {
+      return Object.assign({}, state, {
+        loading: false,
+        adventure: action.currentAdventure
+      })
     }
     case GET_ALL_ADVENTURES_REQUEST: {
       return Object.assign({}, state, {
