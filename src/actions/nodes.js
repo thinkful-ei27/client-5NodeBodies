@@ -49,7 +49,7 @@ export const createNode = node => (dispatch, getState) => {
     .then(res => res.json())
     .then(res => {
       dispatch(getAdventureById(res.adventureId));
-      dispatch(createNodeSuccess(res))
+      dispatch(createNodeSuccess(res.createdNode.id))
     })
     .catch(err => {
       dispatch(createNodeError(err))

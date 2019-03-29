@@ -19,7 +19,7 @@ export class CurrentNodeBrancher extends React.Component {
   render() {
     return (
       <div className="parentForm">
-        <h2>current Node</h2>
+        <h2>Current Node</h2>
         <h3 className="question">{this.props.currentNode.question}</h3>
         <p>{this.props.currentNode.leftAnswer}</p>
         <button value='1'
