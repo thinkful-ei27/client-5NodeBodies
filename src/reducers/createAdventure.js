@@ -26,6 +26,7 @@ export default function reducer(state = initialState, action) {
       });
     }
     case CREATE_ADVENTURE_SUCCESS: {
+
       return Object.assign({}, state, {
         loading: false,
         currentAdventure: action.currentAdventure
@@ -40,7 +41,7 @@ export default function reducer(state = initialState, action) {
     case GET_ADVENTURE_SUCCESS: {
       return Object.assign({}, state, {
         loading: false,
-        adventure: action.adventure
+        adventure: action.currentAdventure
       })
     }
     case GET_ALL_ADVENTURES_REQUEST: {

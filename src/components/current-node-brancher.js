@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Redirect, Link } from 'react-router-dom';
 import { connect } from "react-redux";
-import { NodeFormWithPointer } from '../actions/nodes';
+import { nodeFormWithPointer } from '../actions/nodes';
 
 
 export class CurrentNodeBrancher extends React.Component {
@@ -12,19 +12,19 @@ export class CurrentNodeBrancher extends React.Component {
   defineParentPointerForNewNode(value) {
     const parentReferenceObj = {
       pointerInt: value,
-      nodeId: this.props.nodeId
+      nodeId: this.props.currentNode.id
     }
-    this.props.dispatch(NodeFormWithPointer(parentReferenceObj))
+    return this.props.dispatch(nodeFormWithPointer(parentReferenceObj))
   }
   render() {
     return (
       <div className="parentForm">
-      <h2>current Node</h2>
+        <h2>current Node</h2>
         <h3 className="question">{this.props.currentNode.question}</h3>
         <p>{this.props.currentNode.leftAnswer}</p>
         <button value='1'
           onClick={() => this.defineParentPointerForNewNode(1)}>
-         new Branch from answer 1
+          new Branch from answer 1
          </button>
         <p>{this.props.currentNode.rightAnswer}</p>
         <button value='2'
@@ -40,7 +40,7 @@ const mapStateToProps = (state, props) => ({
   loggedIn: state.auth.currentUser !== null,
   adventureId: state.adventure.adventureId,
   adventure: state.adventure.currentAdventure,
-  nodeId: state.node.currentNode,
+  currentNode: state.node.currentNode,
 });
 
 export default withRouter(connect(mapStateToProps)(CurrentNodeBrancher));

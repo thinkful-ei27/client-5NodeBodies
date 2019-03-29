@@ -74,7 +74,7 @@ export class Dashboard extends React.Component {
           <Link
             className="li-adventure"
             to={{
-              pathname: `/adventures/${adventure.id}`,
+              pathname: `/adventures/${adventure.id}`, // add adventure builder to path
             }}>{adventure.title}</Link>
         </li>
       ))

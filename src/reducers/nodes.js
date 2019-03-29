@@ -12,6 +12,7 @@ const initialState = {
   nodeId: null,
   parentsAnswerReference: null,
   currentNode: null,
+ 
 };
 
 export default function reducer(state = initialState, action) {
@@ -35,13 +36,14 @@ export default function reducer(state = initialState, action) {
       });
     }
     case NODE_FORM_WITH_POINTER: {
+      
       return Object.assign({}, state, {
         loading: false,
-        parentsAnswerReference: action.nodeIdandPointer
+        parentsAnswerReference: action.nodeIdAndPointer
       });
-
     }
     case SET_CURRENT_NODE: {
+    
       return Object.assign({}, state, {
         loading: false,
         currentNode: action.node

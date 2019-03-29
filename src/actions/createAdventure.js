@@ -9,16 +9,19 @@ export const createAdventureRequest = () => ({
 });
 
 export const CREATE_ADVENTURE_SUCCESS = 'CREATE_ADVENTURE_SUCCESS';
-export const createAdventureSuccess = (adventureId) => ({
+export const createAdventureSuccess = (currentAdventure) => ({
   type: CREATE_ADVENTURE_SUCCESS,
-  adventureId
+  currentAdventure
 });
 
 export const GET_ADVENTURE_SUCCESS = 'GET_ADVENTURE_SUCCESS';
-export const getAdventureSuccess = (currentAdventure) => ({
-  type: GET_ADVENTURE_SUCCESS,
-  currentAdventure
-});
+export const getAdventureSuccess = (currentAdventure) => {
+
+  return ({
+    type: GET_ADVENTURE_SUCCESS,
+    currentAdventure
+  })
+};
 
 export const CREATE_ADVENTURE_ERROR = 'CREATE_ADVENTURE_ERROR';
 export const createAdventureError = error => ({
@@ -53,11 +56,11 @@ function getHeadNodefromAdventure(adventure) {
 export const createAdventure = adventure => (dispatch, getState) => {
   dispatch(createAdventureRequest());
   const authToken = getState().auth.authToken;
-  debugger;
   return fetch(`${API_BASE_URL}/adventure/newAdventure`, {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${authToken}`
+      Authorization: `Bearer ${authToken}`,
+      'content-type': 'application/json'
     },
     body: JSON.stringify(adventure)
   })
@@ -65,6 +68,7 @@ export const createAdventure = adventure => (dispatch, getState) => {
     .then(res => res.json())
     .then(res => {
       const headNode = getHeadNodefromAdventure(res);
+    
       dispatch(setCurrentNode(headNode))
       return dispatch(createAdventureSuccess(res))
     })

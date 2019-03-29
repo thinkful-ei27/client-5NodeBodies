@@ -7,9 +7,10 @@ import Login from './components/login.js';
 import RegisterForm from './components/registration';
 import AdventureForm from './components/newAdventure'
 import Dashboard from './components/dashboard'
-import CurrentNodeBrancher from './components/current-node-brancher'
+import AdventureBuilder from './components/adventureBuilder'
 import StudentLanding from './components/studentLandingPage'
 import './App.css';
+import adventureBuilder from './components/adventureBuilder';
 
 class App extends Component {
   componentDidUpdate(prevProps) {
@@ -45,7 +46,7 @@ class App extends Component {
         <Route exact path="/login" component={Login} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/adventure" component={AdventureForm} />
-        <Route exact path="/parent" component={CurrentNodeBrancher} />
+        <Route exact path="/adventure/adventureBuilder" component={AdventureBuilder} />
         <Route exact path="/studentlanding" component={StudentLanding} />
       </div>
     );

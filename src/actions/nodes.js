@@ -3,10 +3,12 @@ import { API_BASE_URL } from '../config';
 import { normalizeResponseErrors } from '../utils';
 
 export const NODE_FORM_WITH_POINTER = 'NODE_FORM_WITH_POINTER';
-export const NodeFormWithPointer = (nodeIdAndPointer) => ({
-  type: NODE_FORM_WITH_POINTER,
-  nodeIdAndPointer,
-});
+export const nodeFormWithPointer = (nodeIdAndPointer) => {
+  return ({
+    type: NODE_FORM_WITH_POINTER,
+    nodeIdAndPointer, //parent ref object
+  })
+};
 
 export const SET_CURRENT_NODE = 'SET_CURRENT_NODE';
 export const setCurrentNode = (node) => ({

@@ -3,11 +3,22 @@ import { Form, Field, reduxForm, focus } from 'redux-form';
 import Input from "./input";
 import { createAdventure } from '../actions/createAdventure';
 import { required, nonEmpty } from "../utils/validators";
+import { withRouter, Redirect, Link } from 'react-router-dom';
 
 class AdventureForm extends React.Component {
   onSubmit(values) {
-    let { title, startContent, question } = values;
-    let adventure = { title, startContent, question };
+    let { title,
+      startContent,
+      question,
+      leftAnswer,
+      rightAnswer } = values;
+    let adventure = {
+      title,
+      startContent,
+      question,
+      leftAnswer,
+      rightAnswer
+    };
     return this.props.dispatch(createAdventure(adventure));
   }
   render() {
@@ -19,7 +30,7 @@ class AdventureForm extends React.Component {
         </div>
       );
     }
-    return (
+    return (<div>
       <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
         <div>Create a new adventure!</div>
         {error}
@@ -45,7 +56,7 @@ class AdventureForm extends React.Component {
         <div> You have to create your first question as well</div>
         <Field
           className="question"
-          label="what is the meaning of life?"
+          label="Whats your starting question? (the meaning of life)"
           name="question"
           component={Input}
           type="text"
@@ -65,13 +76,22 @@ class AdventureForm extends React.Component {
           type="text"
           validate={[required, nonEmpty]} />
         <button>New Adventure!</button>
-      </Form>)
+      </Form>
+      <Link to="/adventure/adventureBuilder">
+        <button className="">go to node adventure builder</button>
+      </Link>
+
+    </div>
+    )
   }
 }
 
-export default reduxForm({
+
+
+export default withRouter(reduxForm({
   form: 'Adventure',
+
   // onSubmitFail: (errors, dispatch) =>
   //   dispatch(focus('Adventure'/*, Object.keys(errors)[0]*/
   //   ))
-})(AdventureForm);
+})(AdventureForm));
