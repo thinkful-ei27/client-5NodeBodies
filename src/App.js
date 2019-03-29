@@ -4,11 +4,13 @@ import { connect } from 'react-redux';
 import { refreshAuthToken } from './actions/auth';
 import Headerbar from './components/headerbar.js';
 import Login from './components/login.js';
-import RegisterForm from './components/registration.js';
+import RegisterForm from './components/registration';
 import AdventureForm from './components/newAdventure'
 import Dashboard from './components/dashboard'
+import AdventureBuilder from './components/adventureBuilder'
 import StudentLanding from './components/studentLandingPage'
 import './App.css';
+import adventureBuilder from './components/adventureBuilder';
 
 class App extends Component {
   componentDidUpdate(prevProps) {
@@ -44,6 +46,7 @@ class App extends Component {
         <Route exact path="/login" component={Login} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/adventure" component={AdventureForm} />
+        <Route exact path="/adventure/adventureBuilder" component={AdventureBuilder} />
         <Route exact path="/studentlanding" component={StudentLanding} />
       </div>
     );

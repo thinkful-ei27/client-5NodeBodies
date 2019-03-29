@@ -2,6 +2,7 @@ import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import { loadAuthToken } from './utils/local-storage'
 import adventureReducer from './reducers/createAdventure'
+import nodeReducer from './reducers/nodes'
 import { reducer as loginReducer } from './reducers/auth';
 import studentReducer from './reducers/student';
 import thunk from 'redux-thunk';
@@ -15,6 +16,7 @@ const store = createStore(
     form: formReducer,
     auth: loginReducer,
     adventure: adventureReducer,
+    node: nodeReducer,
     student: studentReducer
   }),
   composeEnhancers(applyMiddleware(thunk)));

@@ -2,6 +2,20 @@
 import { API_BASE_URL } from '../config';
 import { normalizeResponseErrors } from '../utils';
 
+export const NODE_FORM_WITH_POINTER = 'NODE_FORM_WITH_POINTER';
+export const nodeFormWithPointer = (nodeIdAndPointer) => {
+  return ({
+    type: NODE_FORM_WITH_POINTER,
+    nodeIdAndPointer, //parent ref object
+  })
+};
+
+export const SET_CURRENT_NODE = 'SET_CURRENT_NODE';
+export const setCurrentNode = (node) => ({
+  type: SET_CURRENT_NODE,
+  node,
+})
+
 export const CREATE_NODE_REQUEST = 'CREATE_NODE_REQUEST';
 export const createNodeRequest = () => ({
   type: CREATE_NODE_REQUEST,
