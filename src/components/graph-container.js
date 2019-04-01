@@ -8,6 +8,14 @@ let data = {
     nodes: [],
     links: []
 }
+
+//toDo: Set up links
+//Source is the "parent"
+//target is the "child"
+
+//links:
+// [{ source: '4534095834985', target: '345345340958' },
+// { source: '345345340958', target: '234234293048' }]
 class GraphContainer extends React.Component{
 
     onClickNode(nodeId) {
@@ -16,22 +24,28 @@ class GraphContainer extends React.Component{
     }
     componentWillMount() {
         console.log(this.props.nodez);
-            for (let i =0; i < this.props.nodez.length; i++) {
-                data.nodes.push({id: this.props.nodez[i].id})
+        for (let i =0; i < this.props.nodez.length; i++) {
+            data.nodes.push({id: this.props.nodez[i].id})
+            if (this.props.nodez[i].pointerA !== undefined) {
+                console.log(`sourceA: ${this.props.nodez[i].id}, target: ${this.props.nodez[i].pointerA}`)
+                data.links.push({source: this.props.nodez[i].id, target: this.props.nodez[i].pointerA})
             }
-            // data = {
-            // nodes: [{ id: '4534095834985' }, { id: '345345340958' }, { id: '234234293048' }],
-            // links: [{ source: '4534095834985', target: '345345340958' }, { source: '345345340958', target: '234234293048' }]
-        // };
+            if (this.props.nodez[i].pointerB !== undefined) {
+                console.log(`sourceB: ${this.props.nodez[i].id}, target: ${this.props.nodez[i].pointerB}`)
+                data.links.push({source: this.props.nodez[i].id, target: this.props.nodez[i].pointerB})
+            }
+            if (this.props.nodez[i].pointerC !== undefined) {
+                console.log(`sourceC: ${this.props.nodez[i].id}, target: ${this.props.nodez[i].pointerC}`)
+                data.links.push({source: this.props.nodez[i].id, target: this.props.nodez[i].pointerC})
+            }
+            if (this.props.nodez[i].pointerD !== undefined) {
+                console.log(`sourceD: ${this.props.nodez[i].id}, target: ${this.props.nodez[i].pointerD}`)
+                data.links.push({source: this.props.nodez[i].id, target: this.props.nodez[i].pointerD})
+            }
+        }
+
     }
     render(){
-        // const data = {
-        //     nodes: [{ id: '4534095834985' }, { id: '345345340958' }, { id: '234234293048' }],
-        //     links: [{ source: '4534095834985', target: '345345340958' }, { source: '345345340958', target: '234234293048' }]
-        // };
-         
-        // the graph configuration, you only need to pass down properties
-        // that you want to override, otherwise default ones will be used
         const myConfig = {
             nodeHighlightBehavior: true,
             node: {
