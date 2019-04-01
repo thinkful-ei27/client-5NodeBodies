@@ -11,13 +11,13 @@ class NewNodeForm extends React.Component {
     const parentInt = this.props.parentInt;
     const adventureId = this.props.adventureId;
     const parentId = this.props.parentId;
-    let { question, answerA, answerB, answerC, answerD, videoURL, description } = values;
+    let { question, answerA, answerB, answerC, answerD, videoURL, textContent } = values;
     let newNode = {
       answerA,
       answerB,
       answerC,
       answerD,
-      description,
+      textContent,
       videoURL,
       question,
       parentInt,
@@ -67,9 +67,9 @@ class NewNodeForm extends React.Component {
           component={Input}
           type="text" />
         <Field
-          className="description"
+          className="textContent"
           label="Scenario Description"
-          name="description"
+          name="textContent"
           component={TextArea}
           type="text"
           validate={[required, nonEmpty]} />

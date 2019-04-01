@@ -9,15 +9,25 @@ class AdventureForm extends React.Component {
   onSubmit(values) {
     let { title,
       startContent,
+      textContent,
       question,
-      leftAnswer,
-      rightAnswer, videoURL } = values;
+      answerA,
+      answerB,
+      answerC,
+      answerD,
+      startVideoURL,
+      videoURL } = values;
     let adventure = {
       title,
       startContent,
+      textContent,
       question,
-      leftAnswer,
-      rightAnswer, videoURL
+      answerA,
+      answerB,
+      answerC,
+      answerD,
+      startVideoURL,
+      videoURL
     };
     return this.props.dispatch(createAdventure(adventure));
   }
@@ -50,7 +60,7 @@ class AdventureForm extends React.Component {
         <Field
           className="videoURL"
           label="http://(videoURL)"
-          name="videoURL"
+          name="startVideoURL"
           component={Input}
           type="text" />
         <div> You have to create your first question as well</div>
@@ -62,19 +72,42 @@ class AdventureForm extends React.Component {
           type="text"
           validate={[required, nonEmpty]} />
         <Field
-          className="leftAnswer"
-          label="First Answer"
-          name="leftAnswer"
+          className="textContent"
+          label="Text Content for head Node"
+          name="textContent"
+          component={Input}
+          type="text" />
+        <Field
+          className="video"
+          label="Videl URL for head Node"
+          name="videoURL"
+          component={Input}
+          type="text" />
+        <Field
+          className="answer A"
+          label="Answer A"
+          name="answerA"
           component={Input}
           type="text"
           validate={[required, nonEmpty]} />
         <Field
-          className="rightAnswer"
-          label="Second Answer"
-          name="rightAnswer"
+          className="answer B"
+          label="Answer B"
+          name="answerB"
           component={Input}
-          type="text"
-          validate={[required, nonEmpty]} />
+          type="text" />
+        <Field
+          className="answer C"
+          label="Answer C"
+          name="answerC"
+          component={Input}
+          type="text" />
+        <Field
+          className="answer D"
+          label="Answer D"
+          name="answerD"
+          component={Input}
+          type="text" />
         <button>New Adventure!</button>
       </Form>
       {/*<Link to="/adventure/adventureBuilder">
