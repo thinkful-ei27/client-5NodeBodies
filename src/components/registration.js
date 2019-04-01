@@ -8,29 +8,33 @@ import Input from "./input";
 const passwordLength = length({ min: 10, max: 72 });
 const matchesPassword = matches('password');
 
-export class RegisterForm extends React.Component {
-  onSubmit(values, dispatch) {
-    let { username, password, firstName, lastName } = values;
-    let user = { username, password, firstName, lastName };
-    let loginInfo = { username, password }
-    console.log(loginInfo)
-    return this.props.dispatch(registerUser(user))
+class RegisterForm extends React.Component {
+
+  onSubmit(values) {
+    let { password, username, firstName, lastName } = values;
+    let user = { password, username, firstName, lastName };
+    let loginInfo = { password, username }
+    return this.props
+      .dispatch(registerUser(user))
       .then(() => this.props.dispatch(loginUser(loginInfo)))
-    // .then(this.props.history.push('/dashboard'));
+
   }
   render() {
-    let error;
-    if (this.props.error) {
-      error = (
-        <div className="form-error" aria-live="polite">
-          {this.props.error}
-        </div>
-      );
-    }
+    // let error;
+    // if (this.props.error) {
+    //   error = (
+    //     <div className="form-error" aria-live="polite">
+    //       {this.props.error}
+    //     </div>
+    //   );
+    // }
     return (
-      <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-        <div>This is the registration form!</div>
-        {error}
+      <Form
+        className="registration-form"
+        name="registration-form"
+        onSubmit={this.props.handleSubmit(values =>
+          this.onSubmit(values))}>
+        {/*error*/}
         <Field
           className="firstName"
           placeholder="First Name"
@@ -64,17 +68,17 @@ export class RegisterForm extends React.Component {
           component={Input}
           type="password"
           validate={[required, nonEmpty, isTrimmed, matchesPassword]} />
-        <button type="submit">Register</button>
+        <button
+          type="submit"
+          disabled={this.props.pristine || this.props.submitting}>
+          Register</button>
         <Link className="login-from-register" to="/login"><button>Log In Page</button></Link>
       </Form>)
   }
 }
 
 export default reduxForm({
-  form: 'registration',
-  // onSubmitFail: (errors, dispatch) => {
-  //   if (errors === null) { return null }
-  //   dispatch(focus('registration', Object.keys(errors)[0]
-  //   ))
-  // }
+  form: 'registration-form',
+  onSubmitFail: (errors, dispatch) =>
+    dispatch(focus('registration-form'/*, Object.keys(errors)[0]*/))
 })(RegisterForm);
