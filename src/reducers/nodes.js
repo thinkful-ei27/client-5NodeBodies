@@ -40,7 +40,7 @@ export default function reducer(state = initialState, action) {
 
       return Object.assign({}, state, {
         loading: false,
-        parentInt: action.nodeIdAndPointer.parentInt
+        parentInt: action.parentInt
       });
     }
     case SET_CURRENT_NODE: {
