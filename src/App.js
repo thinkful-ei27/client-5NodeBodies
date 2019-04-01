@@ -42,8 +42,9 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        {/* <Headerbar /> */}
-        <Route exact path="/" component={GraphContainer} />
+        <Headerbar />
+        <Route exact path="/" component={RegisterForm} />
+        <Route exact path="/GraphContainer" component={GraphContainer} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/adventure" component={AdventureForm} />

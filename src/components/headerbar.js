@@ -23,6 +23,9 @@ export class Headerbar extends React.Component {
         <button type="button" onClick={() => {
           this.logOut()
         }}>Log Out</button>
+        <Link to="/GraphContainer">
+          <button className="graph-button">Graph Button</button>
+        </Link>
       </div>
     }
     return (
