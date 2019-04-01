@@ -79,7 +79,7 @@ class AdventureForm extends React.Component {
           type="text" />
         <Field
           className="video"
-          label="Videl URL for head Node"
+          label="Video URL for head Node"
           name="videoURL"
           component={Input}
           type="text" />
