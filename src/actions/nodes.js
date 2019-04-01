@@ -35,7 +35,6 @@ export const createNodeError = error => ({
 });
 
 export const createNode = node => (dispatch, getState) => {
-  debugger;
   dispatch(createNodeRequest())
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/adventure/newNode`, {
