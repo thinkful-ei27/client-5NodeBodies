@@ -4,10 +4,10 @@ import { normalizeResponseErrors } from '../utils';
 import { getAdventureById } from './createAdventure';
 
 export const NODE_FORM_WITH_POINTER = 'NODE_FORM_WITH_POINTER';
-export const nodeFormWithPointer = (nodeIdAndPointer) => {
+export const nodeFormWithPointer = (parentInt) => {
   return ({
     type: NODE_FORM_WITH_POINTER,
-    nodeIdAndPointer, //parent ref object
+    parentInt, 
   })
 };
 
@@ -35,6 +35,7 @@ export const createNodeError = error => ({
 });
 
 export const createNode = node => (dispatch, getState) => {
+  debugger;
   dispatch(createNodeRequest())
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/adventure/newNode`, {
