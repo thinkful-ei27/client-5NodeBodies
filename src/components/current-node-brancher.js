@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter, Redirect, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 import { nodeFormWithPointer } from '../actions/nodes';
 
