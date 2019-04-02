@@ -9,6 +9,11 @@ export class StudentDisplay extends React.Component {
     this.props.dispatch(getStudentCurrentNode(this.props.adventure.id, nodeId))
   }
 
+  validateURL(videoURL){
+    if(videoURL){
+    return videoURL;}
+  }
+
   render() {
     let nodeVideo;
     let nodeText;
@@ -23,7 +28,8 @@ export class StudentDisplay extends React.Component {
     let buttonD;
     if (this.props.currentNode) {
       if (this.props.currentNode.videoURL) {
-        nodeVideo = (<iframe title='node-video' width="420" height="315" src={this.props.currentNode.videoURL}></iframe>)
+        let videoPlay = this.validateURL(this.props.currentNode.videoURL);
+        nodeVideo = (<iframe title='node-video' width="420" height="315" src={videoPlay}></iframe>)
       }
       if (this.props.currentNode.textContent) {
         nodeText = <p>{this.props.currentNode.textContent}</p>
