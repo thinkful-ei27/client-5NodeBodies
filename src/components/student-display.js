@@ -82,7 +82,8 @@ const mapStateToProps = state => {
     adventure: state.student.adventure[0],
     error: state.student.error,
     loading: state.student.loading,
-    currentNode: state.student.currentNode
+    currentNode: state.student.currentNode,
+    results: state.student.results
   };
 };
 
