@@ -6,11 +6,12 @@ import {getStudentCurrentNode} from '../actions/student'
 export class StudentDisplay extends React.Component {
 
   updateNode(nodeId) {
-    this.props.dispatch(getStudentCurrentNode(this.props.adventure[0].id, nodeId))
+    this.props.dispatch(getStudentCurrentNode(this.props.adventure.id, nodeId))
   }
 
   render() {
     let nodeVideo;
+    let nodeText;
     let nodeQuestion;
     let answerA;
     let buttonA;
@@ -22,7 +23,10 @@ export class StudentDisplay extends React.Component {
     let buttonD;
     if (this.props.currentNode) {
       if (this.props.currentNode.videoURL){
-        nodeVideo = (<iframe width="420" height="315" src={this.props.currentNode.videoURL}></iframe>)
+        nodeVideo = (<iframe title='node-video' width="420" height="315" src={this.props.currentNode.videoURL}></iframe>)
+      }
+      if (this.props.currentNode.textContent){
+        nodeText = <p>{this.props.currentNode.textContent}</p>
       }
       if (this.props.currentNode.question){
         nodeQuestion = <p>{this.props.currentNode.question}</p>
@@ -47,6 +51,7 @@ export class StudentDisplay extends React.Component {
         <div>
           {this.props.currentNode.id}
           {nodeVideo}
+          {nodeText}
           {nodeQuestion}
           {answerA}
           {buttonA}
@@ -61,11 +66,11 @@ export class StudentDisplay extends React.Component {
     } else {
       return (
         <div>
-          <h1>{this.props.adventure[0].title}</h1>
-          <p>Created by: {this.props.adventure[0].creator}</p>
-          <h2>{this.props.adventure[0].startContent}</h2>
-          <iframe width="420" height="315" src={this.props.adventure[0].startVideoURL}></iframe>
-          <button onClick={() => this.updateNode(this.props.adventure[0].head)}>Embark</button>
+          <h1>{this.props.adventure.title}</h1>
+          <p>Created by: {this.props.adventure.creator}</p>
+          <h2>{this.props.adventure.startContent}</h2>
+          <iframe title="starting-video" width="420" height="315" src={this.props.adventure.startVideoURL}></iframe>
+          <button onClick={() => this.updateNode(this.props.adventure.head)}>Embark</button>
         </div>
       )
     }
