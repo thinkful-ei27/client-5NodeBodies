@@ -1,17 +1,39 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Form, Field, reduxForm, focus } from 'redux-form';
+import { Field, reduxForm, focus } from 'redux-form';
 import Input from "./input";
 import TextArea from "./textarea";
-import { createNode } from '../actions/nodes';
+import { createNode, toggleEnding } from '../actions/nodes';
 import { required, nonEmpty } from "../utils/validators";
+import { Checkbox, Form } from 'semantic-ui-react';
+
+
+
 
 class NewNodeForm extends React.Component {
+  renderCheckBox = ({ input, label }) => {
+    return (
+      <Form.Field>
+        <Checkbox
+          label={label}
+          checked={input.value ? true : false}
+          onChange={(e, { checked }) => {
+            input.onChange(checked)
+            this.toggleIsEnding()
+          }
+          }
+        />
+      </Form.Field>
+    );
+  };
+  toggleIsEnding() {
+    return this.props.dispatch(toggleEnding())
+  }
   onSubmit(values) {
     const parentInt = this.props.parentInt;
     const adventureId = this.props.adventureId;
     const parentId = this.props.parentId;
-    let { question, answerA, answerB, answerC, answerD, videoURL, textContent } = values;
+    let { question, answerA, answerB, answerC, answerD, videoURL, textContent, ending } = values;
     let newNode = {
       answerA,
       answerB,
@@ -22,7 +44,8 @@ class NewNodeForm extends React.Component {
       question,
       parentInt,
       adventureId,
-      parentId
+      parentId,
+      ending
     };
     return this.props.dispatch(createNode(newNode));
   }
@@ -49,65 +72,91 @@ class NewNodeForm extends React.Component {
       parentAnswer = this.props.currentNode.answerD
     }
 
-    // if ending is true... change form to only have a description section
-
-    return (
-      <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-        <h3>add new Child node</h3>
-        <h4>answer that points to this node: {parentAnswer}</h4>
-        {error}
-        {/* radio button to pick ending  */}
-
-        <Field
-          className="videoURL"
-          label="http://(videoURL)"
-          name="videoURL"
-          component={Input}
-          type="text" />
+    let questions;
+    if (this.props.isEnding) {
+      questions = (
         <Field
           className="textContent"
-          label="Scenario Description"
+          label="Ending Description"
           name="textContent"
           component={TextArea}
           type="text"
           validate={[required, nonEmpty]} />
+      )
+    } else {
+      questions = (
+        <div className="questionAndAnswers">
+          <Field
+            className="textContent"
+            label="Scenario Description"
+            name="textContent"
+            component={TextArea}
+            type="text"
+            validate={[required, nonEmpty]} />
+          <Field
+            className="question"
+            label="New Question"
+            name="question"
+            component={Input}
+            type="text"
+            validate={[required, nonEmpty]} />
+          <Field
+            className="answer A"
+            label="Answer A"
+            name="answerA"
+            component={Input}
+            type="text"
+            validate={[required, nonEmpty]} />
+          <Field
+            className="answer B"
+            label="Answer B"
+            name="answerB"
+            component={Input}
+            type="text"
+          />
+          <Field
+            className="answer C"
+            label="Answer C"
+            name='answerC'
+            component={Input}
+            type="text"
+          />
+          <Field
+            className="answer D"
+            label="Answer D"
+            name="answerD"
+            component={Input}
+            type="text"
+          />
+        </div>
+      )
+    }
+
+    // if ending is true... change form to only have a description section
+
+    return (
+      <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+        <h3>add new Child node</h3>
+        <h4>answer that points to this node: {parentAnswer}</h4>
+        {error}
+        {/* radio button to pick ending  */}
         <Field
-          className="question"
-          label="New Question"
-          name="question"
-          component={Input}
-          type="text"
-          validate={[required, nonEmpty]} />
+          className="ending"
+          name="ending"
+          label="Is this an Ending?"
+          component={this.renderCheckBox}
+          type="checkbox" />
         <Field
-          className="answer A"
-          label="Answer A"
-          name="answerA"
+          className="videoURL"
+          label="Video URL (optional)"
+          placeholder="http://(videoURL)"
+          name="videoURL"
           component={Input}
-          type="text"
-          validate={[required, nonEmpty]} />
-        <Field
-          className="answer B"
-          label="Answer B"
-          name="answerB"
-          component={Input}
-          type="text"
-        />
-        <Field
-          className="answer C"
-          label="Answer C"
-          name='answerC'
-          component={Input}
-          type="text"
-        />
-        <Field
-          className="answer D"
-          label="Answer D"
-          name="answerD"
-          component={Input}
-          type="text"
-        />
+          type="text" />
+        {questions}
+
         <button>Add node to adventure</button>
-      </Form>)
+      </form>)
   }
 }
 
@@ -118,13 +167,13 @@ const mapStateToProps = state => {
     parentInt: state.node.parentInt,
     adventureId: state.adventure.currentAdventure.id,
     parentId: state.node.currentNode.id,
-
+    isEnding: state.node.isEnding
   };
 };
 
 export default connect(mapStateToProps)(reduxForm({
   form: 'NewNode',
-  // onSubmitFail: (errors, dispatch) =>
-  //   dispatch(focus('Adventure'/*, Object.keys(errors)[0]*/
-  //   ))
+  onSubmitFail: (errors, dispatch) =>
+    dispatch(focus('Adventure'/*, Object.keys(errors)[0]*/
+    ))
 })(NewNodeForm));

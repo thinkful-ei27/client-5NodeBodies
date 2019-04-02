@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { withRouter, Redirect } from "react-router-dom";
-import { Link } from 'react-router-dom'
+import { withRouter, Link } from "react-router-dom";
 import Login from "./login-form";
 
 export function LoginPage(props) {
