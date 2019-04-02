@@ -4,10 +4,10 @@ import { normalizeResponseErrors } from '../utils';
 import { getAdventureById } from './createAdventure';
 
 export const NODE_FORM_WITH_POINTER = 'NODE_FORM_WITH_POINTER';
-export const nodeFormWithPointer = (nodeIdAndPointer) => {
+export const nodeFormWithPointer = (parentInt) => {
   return ({
     type: NODE_FORM_WITH_POINTER,
-    nodeIdAndPointer, //parent ref object
+    parentInt, //parent ref object
   })
 };
 
@@ -102,6 +102,5 @@ export const updateNode = node => (dispatch, getState) => {
     })
     .catch(err => {
       dispatch(createNodeError(err))
-
     });
 };

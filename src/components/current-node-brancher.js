@@ -10,7 +10,7 @@ export class CurrentNodeBrancher extends React.Component {
   // }
 
   defineParentPointerForNewNode(parentInt) {
-    
+    console.log("parent int is: ", parentInt)
     return this.props.dispatch(nodeFormWithPointer(parentInt))
   }
   render() {
