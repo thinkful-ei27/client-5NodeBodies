@@ -79,3 +79,29 @@ export const createNode = node => (dispatch, getState) => {
 
     });
 };
+
+export const updateNode = node => (dispatch, getState) => {
+  dispatch(updateNodeRequest())
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/adventure/${node.adventureId}/${node.nodeId}`, {
+    method: 'PUT',
+    headers: {
+      Authorization: `Bearer ${authToken}`,
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(node)
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(res => {
+      console.log("New Node From Backend is: ", res)
+      dispatch(getAdventureById(node.adventureId));
+    })
+    .then( () => {
+      dispatch(updateNodeSuccess())
+    })
+    .catch(err => {
+      dispatch(createNodeError(err))
+
+    });
+};

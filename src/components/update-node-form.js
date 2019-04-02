@@ -5,12 +5,14 @@ import Input from "./input";
 import TextArea from "./textarea";
 import { createNode } from '../actions/nodes';
 import { required, nonEmpty } from "../utils/validators";
+import { updateNode } from '../actions/nodes'
 
 class UpdateNodeForm extends React.Component {
   onSubmit(values) {
     const parentInt = this.props.parentInt;
     const adventureId = this.props.adventureId;
     const parentId = this.props.parentId;
+    const nodeId = this.props.currentNodeId
     let { question, answerA, answerB, answerC, answerD, videoURL, textContent } = values;
     let newNode = {
       answerA,
@@ -22,9 +24,10 @@ class UpdateNodeForm extends React.Component {
       question,
       parentInt,
       adventureId,
-      parentId
+      parentId,
+      nodeId
     };
-    // return this.props.dispatch(createNode(newNode));
+    return this.props.dispatch(updateNode(newNode));
   }
   render() {
     let error;
@@ -114,7 +117,7 @@ class UpdateNodeForm extends React.Component {
 const mapStateToProps = state => {
 
   return {
-    currentNode: state.node.currentNode,
+    currentNodeId: state.adventure.currentNode[0].id,
     parentInt: state.node.parentInt,
     adventureId: state.adventure.currentAdventure.id,
     parentId: state.node.currentNode.id,
