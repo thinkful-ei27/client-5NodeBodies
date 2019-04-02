@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { clearAuth } from '../actions/auth';
 import { clearAuthToken } from '../utils/local-storage';
 import { withRouter, Redirect, Link } from 'react-router-dom';
+import './headerbar.css';
 
 export class Headerbar extends React.Component {
   logOut() {
@@ -34,7 +35,7 @@ export class Headerbar extends React.Component {
     return (
       <header className="header-bar">
         <h1 className="app-title"
-        >This is Our App Title!</h1>
+        >LearnVenture</h1>
         {navButtons}
       </header>
     )

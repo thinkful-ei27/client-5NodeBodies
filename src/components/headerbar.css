@@ -1,0 +1,27 @@
+body {
+  background: #f0f8fa;
+}
+
+.app-title {
+  color: #51646b;
+  display: block;
+}
+
+.header-bar {
+  display: block;
+  justify-content: center;
+  align-content: center;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-button {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.logout-button {
+  display: inline-block;
+  margin-left: 5px;
+}
