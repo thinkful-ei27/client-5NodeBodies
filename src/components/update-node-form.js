@@ -118,12 +118,14 @@ const mapStateToProps = state => {
     parentInt: state.node.parentInt,
     adventureId: state.adventure.currentAdventure.id,
     parentId: state.node.currentNode.id,
+    initialValues: Object.assign({}, state.adventure.currentNode[0]),
 
   };
 };
 
 export default connect(mapStateToProps)(reduxForm({
   form: 'NewNode',
+  enableReinitialize: true
   // onSubmitFail: (errors, dispatch) =>
   //   dispatch(focus('Adventure'/*, Object.keys(errors)[0]*/
   //   ))
