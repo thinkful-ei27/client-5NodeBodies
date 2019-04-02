@@ -18,6 +18,7 @@
     "redux-form": "^8.1.0",
     "redux-form-validators": "^3.0.1",
     "redux-thunk": "^2.3.0",
+    "semantic-ui-react": "^0.86.0",
     "typescript": "^3.3.4000"
   },
   "scripts": {

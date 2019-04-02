@@ -7,7 +7,7 @@ export const NODE_FORM_WITH_POINTER = 'NODE_FORM_WITH_POINTER';
 export const nodeFormWithPointer = (parentInt) => {
   return ({
     type: NODE_FORM_WITH_POINTER,
-    parentInt, 
+    parentInt,
   })
 };
 
@@ -57,3 +57,8 @@ export const createNode = node => (dispatch, getState) => {
 
     });
 };
+
+export const TOGGLE_ENDING = 'TOGGLE_ENDING';
+export const toggleEnding = () => ({
+  type: TOGGLE_ENDING
+});

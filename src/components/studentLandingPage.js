@@ -1,11 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getStudentAdventure } from '../actions/student'
-import StudentDisplay from './student-display'
-
+import { getStudentAdventure, getStudentAll } from '../actions/student';
+import StudentDisplay from './student-display';
+import AdventureSearch from './adventureSearch';
+import SearchResults from './searchResults';
 let inputVal, error;
 
 export class StudentLanding extends React.Component {
+
+  componentDidMount(){
+      this.props.dispatch(getStudentAll());
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     let adventureId = inputVal
@@ -44,6 +50,8 @@ export class StudentLanding extends React.Component {
               <button className="student-adventure-submit" type="submit">Start Adventure!</button>
             </form>
           </div>
+          <AdventureSearch />
+          <SearchResults />
         </div>
       );
     }
@@ -54,7 +62,8 @@ const mapStateToProps = state => {
   return {
     adventure: state.student.adventure,
     error: state.student.error,
-    loading: state.student.loading
+    loading: state.student.loading,
+    results: state.student.results
   };
 };
 
