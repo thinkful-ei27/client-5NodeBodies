@@ -4,7 +4,7 @@ import Input from "./input";
 import TextArea from "./textarea";
 import { createAdventure } from '../actions/createAdventure';
 import { required, nonEmpty } from "../utils/validators";
-import { withRouter, Redirect, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class AdventureForm extends React.Component {
   onSubmit(values) {
