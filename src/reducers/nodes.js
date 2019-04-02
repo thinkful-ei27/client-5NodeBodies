@@ -6,7 +6,6 @@ import {
   SET_CURRENT_NODE,
   TOGGLE_ENDING
 } from '../actions/nodes'
-import { stat } from 'fs';
 
 const initialState = {
   loading: false,
