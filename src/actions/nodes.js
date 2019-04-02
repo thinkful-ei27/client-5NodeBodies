@@ -98,7 +98,7 @@ export const updateNode = node => (dispatch, getState) => {
       dispatch(getAdventureById(node.adventureId));
     })
     .then( () => {
-      dispatch(updateNodeSuccess())
+      // dispatch(updateNodeSuccess())
     })
     .catch(err => {
       dispatch(createNodeError(err))
