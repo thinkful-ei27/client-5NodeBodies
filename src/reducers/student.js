@@ -4,13 +4,14 @@ import {
   GET_STUDENT_ADVENTURE_SUCCESS,
   GET_STUDENT_CURRENTNODE_ERROR,
   GET_STUDENT_CURRENTNODE_REQUEST,
-  GET_STUDENT_CURRENTNODE_SUCCESS
+  GET_STUDENT_CURRENTNODE_SUCCESS,
+  RESTART_STUDENT_ADVENTURE
 } from '../actions/student'
 
 const initialState = {
   loading: false,
   error: null,
-  adventure: null, 
+  adventure: null,
   currentNode: null
 };
 
@@ -53,6 +54,11 @@ export default function reducer(state = initialState, action) {
         loading: false,
         error: action.error
       });
+    }
+    case RESTART_STUDENT_ADVENTURE: {
+      return Object.assign({}, state, {
+        currentNode: null
+      })
     }
     default:
       return state

@@ -18,7 +18,6 @@ export const getStudentAdventureError = error => ({
   error
 });
 
-
 export const GET_STUDENT_CURRENTNODE_REQUEST = 'GET_STUDENT_CURRENTNODE_REQUEST';
 export const getStudentCurrentNodeRequest = () => ({
   type: GET_STUDENT_CURRENTNODE_REQUEST,
@@ -35,6 +34,11 @@ export const getStudentCurrentNodeError = error => ({
   type: GET_STUDENT_CURRENTNODE_ERROR,
   error
 });
+
+export const RESTART_STUDENT_ADVENTURE = 'RESTART_STUDENT_ADVENTURE'
+export const restartStudentAdventure = () => ({
+  type: RESTART_STUDENT_ADVENTURE
+})
 
 export const getStudentAdventure = (id) => (dispatch) => {
   dispatch(getStudentAdventureRequest());

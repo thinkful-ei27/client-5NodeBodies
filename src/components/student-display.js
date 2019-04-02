@@ -1,7 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getStudentCurrentNode } from '../actions/student'
-
+import {
+  getStudentCurrentNode,
+  restartStudentAdventure,
+  getStudentAdventure
+} from '../actions/student'
+import { Link } from 'react-router-dom'
 
 export class StudentDisplay extends React.Component {
 
@@ -9,7 +13,18 @@ export class StudentDisplay extends React.Component {
     this.props.dispatch(getStudentCurrentNode(this.props.adventure.id, nodeId))
   }
 
+  restart(adventureId) {
+    this.props.dispatch(restartStudentAdventure())
+    this.props.dispatch(getStudentAdventure(adventureId))
+    // this.props.dispatch(getStudentAdventure(adventureId))
+  }
+
+  register() {
+    this.props.history.push("/")
+  }
+
   render() {
+    let display;
     let nodeVideo;
     let nodeText;
     let nodeQuestion;
@@ -21,7 +36,9 @@ export class StudentDisplay extends React.Component {
     let buttonC;
     let answerD;
     let buttonD;
+    let ending;
     if (this.props.currentNode) {
+
       if (this.props.currentNode.videoURL) {
         nodeVideo = (<iframe title='node-video' width="420" height="315" src={this.props.currentNode.videoURL}></iframe>)
       }
@@ -47,20 +64,40 @@ export class StudentDisplay extends React.Component {
         answerD = <p>{this.props.currentNode.answerD}</p>
         buttonD = <button onClick={() => this.updateNode(this.props.currentNode.pointerD)}>Submit</button>
       }
+      if (!this.props.currentNode.ending) {
+        display = (
+          <div>
+            {nodeVideo}
+            {nodeText}
+            {nodeQuestion}
+            {answerA}
+            {buttonA}
+            {answerB}
+            {buttonB}
+            {answerC}
+            {buttonC}
+            {answerD}
+            {buttonD}
+          </div>
+        )
+      } else {
+        display = (
+          <div>
+            {nodeVideo}
+            {nodeText}
+            <p>Congratulations! This is the end of your LearnVenture.</p>
+            <button className="return-to-start" onClick={() => this.restart(this.props.adventure.id)}>Return to Start</button>
+            <p>If you'd like to create your own LearnVenture, <Link to='/'>click here</Link> to create an account</p>
+          </div>
+        )
+      }
+
       return (
+
         <div>
           {this.props.currentNode.id}
-          {nodeVideo}
-          {nodeText}
-          {nodeQuestion}
-          {answerA}
-          {buttonA}
-          {answerB}
-          {buttonB}
-          {answerC}
-          {buttonC}
-          {answerD}
-          {buttonD}
+          {display}
+
         </div>
       )
     } else {
