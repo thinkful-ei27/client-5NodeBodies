@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter, Redirect, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 import { nodeFormWithPointer } from '../actions/nodes';
 
@@ -10,7 +10,7 @@ export class CurrentNodeBrancher extends React.Component {
   // }
 
   defineParentPointerForNewNode(parentInt) {
-    
+
     return this.props.dispatch(nodeFormWithPointer(parentInt))
   }
   render() {
@@ -28,7 +28,7 @@ export class CurrentNodeBrancher extends React.Component {
           onClick={() => this.defineParentPointerForNewNode(2)}>
           new Branch from answer B
          </button>
-         <p>{this.props.currentNode.answerC}</p>
+        <p>{this.props.currentNode.answerC}</p>
         <button value='3'
           onClick={() => this.defineParentPointerForNewNode(3)}>
           new Branch from answer C

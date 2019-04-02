@@ -4,7 +4,9 @@ import {
   CREATE_NODE_ERROR,
   NODE_FORM_WITH_POINTER,
   SET_CURRENT_NODE,
+  TOGGLE_ENDING
 } from '../actions/nodes'
+import { stat } from 'fs';
 
 const initialState = {
   loading: false,
@@ -12,7 +14,7 @@ const initialState = {
   nodeId: null,
   parentInt: null,
   currentNode: null,
-
+  isEnding: false
 };
 
 export default function reducer(state = initialState, action) {
@@ -47,6 +49,11 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         loading: false,
         currentNode: action.node
+      })
+    }
+    case TOGGLE_ENDING: {
+      return Object.assign({}, state, {
+        isEnding: !state.isEnding
       })
     }
     default:
