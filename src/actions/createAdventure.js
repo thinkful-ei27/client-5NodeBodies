@@ -98,7 +98,6 @@ export const getAllAdventuresError = error => ({
 });
 
 export const getAllAdventures = () => (dispatch, getState) => {
-  console.log('getAllAdventures Ran')
   dispatch(createAdventureRequest());
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/adventure`, {

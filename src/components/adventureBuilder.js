@@ -9,7 +9,6 @@ import { setCurrentNode } from '../actions/nodes'
 export class AdventureBuilder extends React.Component {
   componentDidMount() {
     const { id } = this.props.match.params;
-    console.log(id)
     this.props.dispatch(getAdventureById(id))
     // clear new node form (parent int)
   }
