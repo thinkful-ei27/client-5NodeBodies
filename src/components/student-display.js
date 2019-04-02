@@ -69,7 +69,7 @@ export class StudentDisplay extends React.Component {
           <h1>{this.props.adventure.title}</h1>
           <p>Created by: {this.props.adventure.creator}</p>
           <h2>{this.props.adventure.startContent}</h2>
-          <iframe title="starting-video" width="420" height="315" src={this.props.adventure.startVideoURL}></iframe>
+          <iframe title="starting-video" width="420" height="315" src={this.props.adventure.videoURL}></iframe>
           <button onClick={() => this.updateNode(this.props.adventure.head)}>Embark</button>
         </div>
       )
@@ -79,7 +79,7 @@ export class StudentDisplay extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    adventure: state.student.adventure,
+    adventure: state.student.adventure[0],
     error: state.student.error,
     loading: state.student.loading,
     currentNode: state.student.currentNode
