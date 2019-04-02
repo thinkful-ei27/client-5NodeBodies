@@ -32,6 +32,8 @@ export default class Textarea extends React.Component {
           id={this.props.input.name}
           type={this.props.type}
           maxLength={this.props.maxlength}
+          placeholder={this.props.placeholder}
+          aria-label={this.props.ariaLabel}
           ref={textarea => (this.textarea = textarea)}
         />
       </div>
