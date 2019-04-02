@@ -4,6 +4,11 @@ import {
   CREATE_NODE_ERROR,
   NODE_FORM_WITH_POINTER,
   SET_CURRENT_NODE,
+  UPDATE_NODE_REQUEST,
+  UPDATE_NODE_SUCCESS,
+  UPDATE_NODE_ERROR,
+  UPDATE_NODE_CLICKED,
+  UPDATE_CURRENT_NODE
 } from '../actions/nodes'
 
 const initialState = {
@@ -12,7 +17,7 @@ const initialState = {
   nodeId: null,
   parentInt: null,
   currentNode: null,
-
+  showUpdate: false
 };
 
 export default function reducer(state = initialState, action) {
@@ -36,8 +41,30 @@ export default function reducer(state = initialState, action) {
         error: action.err
       });
     }
+    case UPDATE_NODE_REQUEST: {
+      return Object.assign({}, state, {
+        loading: true,
+        error: null
+      });
+    }
+    case UPDATE_NODE_CLICKED: {
+      return Object.assign({}, state, {
+        showUpdate: true,
+        nodeId: action.nodeId
+      });
+    }
+    case UPDATE_NODE_SUCCESS: {
+      return Object.assign({}, state, {
+        showUpdate: false
+      });
+    }
+    case UPDATE_NODE_ERROR: {
+      return Object.assign({}, state, {
+        loading: false,
+        error: action.err
+      });
+    }
     case NODE_FORM_WITH_POINTER: {
-
       return Object.assign({}, state, {
         loading: false,
         parentInt: action.parentInt
