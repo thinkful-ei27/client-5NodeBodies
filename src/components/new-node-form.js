@@ -24,8 +24,6 @@ class NewNodeForm extends React.Component {
       adventureId,
       parentId
     };
-    console.log("adventure Pre-post is: ", newNode);
-    console.log("Error is: ", this.props.error);
     return this.props.dispatch(createNode(newNode));
   }
   render() {
