@@ -9,6 +9,7 @@ import AdventureForm from './components/newAdventure'
 import Dashboard from './components/dashboard'
 import AdventureBuilder from './components/adventureBuilder'
 import StudentLanding from './components/studentLandingPage'
+import GraphContainer from './components/graph-container'
 import './App.css';
 
 class App extends Component {
@@ -41,6 +42,7 @@ class App extends Component {
     return (
       <div className="app">
         <Headerbar />
+        <Route exact path="/GraphContainer" component={GraphContainer} />
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/dashboard" component={Dashboard} />
