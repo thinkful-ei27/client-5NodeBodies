@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-
+import { withRouter, Link } from "react-router-dom";
 import Login from "./login-form";
 
 export function LoginPage(props) {
@@ -12,6 +11,8 @@ export function LoginPage(props) {
   }
   return (
     <div className="">
+      <p>Login Below</p>
+      <p>New User? Click here to <Link className="login-from-register" to="/">Register</Link></p>
       <Login />
     </div>
   );
