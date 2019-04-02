@@ -1,9 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: Lato, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -13,7 +11,7 @@ code {
     monospace;
 }
 
-/* .headerbar {
+.header-bar {
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
@@ -24,8 +22,3 @@ code {
   height: 100px;
   padding: 0 20px;
 }
-
-h1 {
-  margin-block-start: 0;
-    margin-block-end: 0;
-} */

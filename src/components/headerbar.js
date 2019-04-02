@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { clearAuth } from '../actions/auth';
 import { clearAuthToken } from '../utils/local-storage';
 import { withRouter, Redirect, Link } from 'react-router-dom';
+import './headerbar.css';
 
 export class Headerbar extends React.Component {
   logOut() {
@@ -18,9 +19,15 @@ export class Headerbar extends React.Component {
       navButtons = <div className="nav-buttons">
         {/* TO-DO: REACT-ROUTER INSTEAD???????????????? */}
         <Link to="/dashboard">
-          <button className="home-button">Home</button>
+          <button 
+          className="home-button"
+          type="button"
+          >Home</button>
         </Link>
-        <button type="button" onClick={() => {
+        <button 
+          className="logout-button"
+          type="button" 
+          onClick={() => {
           this.logOut()
         }}>Log Out</button>
         <Link to="/GraphContainer">
@@ -29,8 +36,9 @@ export class Headerbar extends React.Component {
       </div>
     }
     return (
-      <header className="headerbar">
-        <h1>This is Our App Title!</h1>
+      <header className="header-bar">
+        <h1 className="app-title"
+        >LearnVenture</h1>
         {navButtons}
       </header>
     )

@@ -8,8 +8,10 @@ import {
   UPDATE_NODE_SUCCESS,
   UPDATE_NODE_ERROR,
   UPDATE_NODE_CLICKED,
-  UPDATE_CURRENT_NODE
+  UPDATE_CURRENT_NODE,
+  TOGGLE_ENDING
 } from '../actions/nodes'
+import { stat } from 'fs';
 
 const initialState = {
   loading: false,
@@ -17,7 +19,8 @@ const initialState = {
   nodeId: null,
   parentInt: null,
   currentNode: null,
-  showUpdate: false
+  showUpdate: false,
+  isEnding: false
 };
 
 export default function reducer(state = initialState, action) {
@@ -74,6 +77,11 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         loading: false,
         currentNode: action.node
+      })
+    }
+    case TOGGLE_ENDING: {
+      return Object.assign({}, state, {
+        isEnding: !state.isEnding
       })
     }
     default:

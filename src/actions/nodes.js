@@ -80,6 +80,7 @@ export const createNode = node => (dispatch, getState) => {
     });
 };
 
+
 export const updateNode = node => (dispatch, getState) => {
   dispatch(updateNodeRequest())
   const authToken = getState().auth.authToken;
@@ -104,3 +105,8 @@ export const updateNode = node => (dispatch, getState) => {
       dispatch(createNodeError(err))
     });
 };
+
+export const TOGGLE_ENDING = 'TOGGLE_ENDING';
+export const toggleEnding = () => ({
+  type: TOGGLE_ENDING
+});

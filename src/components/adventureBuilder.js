@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
-import { Link } from 'react-router-dom';
 import NewNodeForm from './new-node-form';
 import CurrentNodeBrancher from './current-node-brancher';
 import { getAdventureById } from '../actions/createAdventure'
