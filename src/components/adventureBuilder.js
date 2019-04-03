@@ -29,12 +29,13 @@ export class AdventureBuilder extends React.Component {
       return <div className="loading">loading...</div>;
     }
     const options = this.props.currentAdventure.nodes.map((node, index) =>
-      <option key={node.id} value={index}>{node.question}</option>);
+      <option label={node.question} value={index}>{node.question}</option>);
     return (
       <div>
         <select className="nodeSelect"
           label="Current Node"
           name="nodeSelect"
+          value={this.props.currentNode.question}
           options={options}
           onChange={e => this.changeCurrentNode(e.target.value)}>{options}</select>
         <GraphContainer />
@@ -54,6 +55,7 @@ const mapStateToProps = state => {
     currentAdventure: state.adventure.currentAdventure,
     parentInt: state.node.parentInt,
     loading: state.adventure.loading,
+    currentNode: state.node.currentNode
   };
 };
 

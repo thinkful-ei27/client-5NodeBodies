@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { Form, Field, reduxForm, focus } from 'redux-form';
 import Input from "./input";
 import TextArea from "./textarea";
-import { createNode } from '../actions/nodes';
+// import { createNode } from '../actions/nodes';
 import { required, nonEmpty } from "../utils/validators";
-import { updateNode } from '../actions/nodes'
+import { updateNode, updateNodeClicked } from '../actions/nodes'
 
 class UpdateNodeForm extends React.Component {
   onSubmit(values) {
@@ -27,7 +27,8 @@ class UpdateNodeForm extends React.Component {
       parentId,
       nodeId
     };
-    return this.props.dispatch(updateNode(newNode));
+    this.props.dispatch(updateNode(newNode))
+    this.props.dispatch(updateNodeClicked())
   }
   render() {
     let error;
@@ -109,7 +110,8 @@ class UpdateNodeForm extends React.Component {
           component={Input}
           type="text"
         />
-        <button>Add node to adventure</button>
+        <button type="submit">Update Node</button>
+        <button onClick={() => updateNodeClicked()}>Cancel</button>
       </Form>)
   }
 }
@@ -117,12 +119,11 @@ class UpdateNodeForm extends React.Component {
 const mapStateToProps = state => {
 
   return {
-    currentNodeId: state.adventure.currentNode[0].id,
+    currentNodeId: state.node.currentNode.id,
     parentInt: state.node.parentInt,
     adventureId: state.adventure.currentAdventure.id,
     parentId: state.node.currentNode.id,
-    initialValues: Object.assign({}, state.adventure.currentNode[0]),
-
+    initialValues: Object.assign({}, state.node.currentNode),
   };
 };
 

@@ -51,7 +51,7 @@ export default function reducer(state = initialState, action) {
     }
     case UPDATE_NODE_CLICKED: {
       return Object.assign({}, state, {
-        showUpdate: true,
+        showUpdate: !state.showUpdate,
         nodeId: action.nodeId
       });
     }

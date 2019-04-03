@@ -2,9 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Graph } from 'react-d3-graph';
 import { authError } from '../actions/auth';
-import { updateNodeClicked } from '../actions/nodes'
-import { updateCurrentNode } from '../actions/createAdventure'
-import UpdateNodeForm from './update-node-form'
+
 import { setCurrentNode } from '../actions/nodes'
 
 let data = {
@@ -17,8 +15,6 @@ class GraphContainer extends React.Component {
 
     onClickNode(nodeId) {
         let nodeArr = this.props.nodez.filter((node) => node.id === nodeId)
-        this.props.dispatch(updateNodeClicked(nodeId))
-        this.props.dispatch(updateCurrentNode(nodeId))
         this.props.dispatch(setCurrentNode(nodeArr[0]))
     }
 
@@ -51,7 +47,7 @@ class GraphContainer extends React.Component {
             nodeHighlightBehavior: true,
             node: {
                 color: 'lightgreen',
-                size: 120,
+                size: 800,
                 highlightStrokeColor: 'blue'
             },
             link: {
@@ -82,7 +78,7 @@ class GraphContainer extends React.Component {
                         // onMouseOutLink={onMouseOutLink}
                         />
                     </div>
-                    <UpdateNodeForm />
+                    
                 </div>
             );
         } else {
