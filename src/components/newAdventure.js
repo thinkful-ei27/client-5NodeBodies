@@ -17,7 +17,14 @@ class AdventureForm extends React.Component {
       answerC,
       answerD,
       startVideoURL,
-      videoURL } = values;
+      videoURL,
+      hasPassword,
+      password } = values;
+    if(hasPassword === 'True'){
+      hasPassword = true;
+    } else {
+      hasPassword = false;
+    }
     let adventure = {
       title,
       startContent,
@@ -28,7 +35,9 @@ class AdventureForm extends React.Component {
       answerC,
       answerD,
       startVideoURL,
-      videoURL
+      videoURL,
+      hasPassword,
+      password
     };
     return this.props.dispatch(createAdventure(adventure));
   }
@@ -93,6 +102,20 @@ class AdventureForm extends React.Component {
           ariaLabel="Video URL for Starting Node"
           placeholder="https://www.youtube.com/embed/Mun1dKkc_As"
           name="videoURL"
+          component={Input}
+          type="text" />
+        <Field
+          className="textContent"
+          label="hasPassword True/False"
+          ariaLabel="Temporary"
+          name="hasPassword"
+          component={Input}
+          type="text" />
+        <Field
+          className="textContent"
+          label="password"
+          ariaLabel="Temporary"
+          name="password"
           component={Input}
           type="text" />
         <Field
