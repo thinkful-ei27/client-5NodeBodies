@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import NewNodeForm from './new-node-form';
 import CurrentNodeBrancher from './current-node-brancher';
+import ExistingNodeSelector from './existingNodeSelector';
 import { getAdventureById } from '../actions/createAdventure'
 import { setCurrentNode } from '../actions/nodes'
 import Sidebar from './sidebar';
@@ -25,13 +26,22 @@ export class AdventureBuilder extends React.Component {
     if (this.props.parentInt) {
       nodeForm = <NewNodeForm />
     }
+    if (this.props.parentInt && this.props.useExistingNode) {
+      nodeForm = <ExistingNodeSelector />;
+    }
     if (!adventure) {
       return <div className="loading">loading...</div>;
     }
+
+ 
+
     const options = this.props.currentAdventure.nodes.map((node, index) =>
       <option key={node.id} value={index}>{node.question}</option>);
+
+
     return (
       <div>
+
         <Sidebar />
         <select className="node-select"
           label="Current Question"
@@ -53,7 +63,9 @@ const mapStateToProps = state => {
     name: `${currentUser.firstName} ${currentUser.lastName}`,
     currentAdventure: state.adventure.currentAdventure,
     parentInt: state.node.parentInt,
+    useExistingNode: state.node.useExistingNode,
     loading: state.adventure.loading,
+    currentNode: state.node.currentNode
   };
 };
 
