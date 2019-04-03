@@ -121,6 +121,7 @@ const mapStateToProps = state => {
     parentInt: state.node.parentInt,
     adventureId: state.adventure.currentAdventure.id,
     parentId: state.node.currentNode.id,
+    currNode : state.adventure.currentNode[0],
     initialValues: Object.assign({}, state.adventure.currentNode[0]),
 
   };

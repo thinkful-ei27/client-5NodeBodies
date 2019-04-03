@@ -18,25 +18,37 @@ export class CurrentNodeBrancher extends React.Component {
         <h2>Current Node</h2>
         <h3 className="question">{this.props.currentNode.question}</h3>
         <p>{this.props.currentNode.answerA}</p>
-        <button value='1'
-          onClick={() => this.defineParentPointerForNewNode(1)}>
-          new Branch from answer A
-         </button>
+        { this.props.currentNode.pointerA
+          ? <br/>
+          : <button value='1'
+            onClick={() => this.defineParentPointerForNewNode(1)}>
+            new Branch from answer A
+            </button> 
+        }
         <p>{this.props.currentNode.answerB}</p>
-        <button value='2'
-          onClick={() => this.defineParentPointerForNewNode(2)}>
-          new Branch from answer B
-         </button>
+        { this.props.currentNode.pointerB
+          ? <br/>
+          : <button value='1'
+            onClick={() => this.defineParentPointerForNewNode(1)}>
+            new Branch from answer A
+            </button> 
+        }
         <p>{this.props.currentNode.answerC}</p>
-        <button value='3'
-          onClick={() => this.defineParentPointerForNewNode(3)}>
-          new Branch from answer C
-         </button>
+        { this.props.currentNode.pointerC
+          ? <br/>
+          : <button value='1'
+            onClick={() => this.defineParentPointerForNewNode(1)}>
+            new Branch from answer A
+            </button> 
+        }
         <p>{this.props.currentNode.answerD}</p>
-        <button value='4'
-          onClick={() => this.defineParentPointerForNewNode(4)}>
-          new Branch from answer D
-         </button>
+        { this.props.currentNode.pointerD
+          ? <br/>
+          : <button value='1'
+            onClick={() => this.defineParentPointerForNewNode(1)}>
+            new Branch from answer A
+            </button> 
+        }
       </div>
     )
   }
