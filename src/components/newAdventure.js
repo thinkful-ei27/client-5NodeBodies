@@ -1,9 +1,9 @@
 import React from 'react';
-import { Form, Field, reduxForm } from 'redux-form';
+import { Form, Field, reduxForm } from 'redux-form';import { url } from 'redux-form-validators'
 import Input from "./input";
 import TextArea from "./textarea";
 import { createAdventure } from '../actions/createAdventure';
-import { required, nonEmpty } from "../utils/validators";
+import { required, nonEmpty, isTrimmedPassword } from "../utils/validators";
 import { withRouter } from 'react-router-dom';
 
 class AdventureForm extends React.Component {
@@ -17,7 +17,9 @@ class AdventureForm extends React.Component {
       answerC,
       answerD,
       startVideoURL,
-      videoURL } = values;
+      videoURL,
+      password } = values;
+      console.log(password);
     let adventure = {
       title,
       startContent,
@@ -28,7 +30,8 @@ class AdventureForm extends React.Component {
       answerC,
       answerD,
       startVideoURL,
-      videoURL
+      videoURL,
+      password
     };
     return this.props.dispatch(createAdventure(adventure));
   }
@@ -69,6 +72,7 @@ class AdventureForm extends React.Component {
           placeholder="https://www.youtube.com/embed/dHSQAEam2yc"
           name="startVideoURL"
           component={Input}
+          validate={url({ protocols: ['http', 'https'] })}
           type="text" />
         <Field
           className="question"
@@ -94,7 +98,17 @@ class AdventureForm extends React.Component {
           placeholder="https://www.youtube.com/embed/Mun1dKkc_As"
           name="videoURL"
           component={Input}
+          validate={url({ protocols: ['http', 'https'] })}
           type="text" />
+        <Field
+          className="textContent"
+          label="Optional Password:"
+          ariaLabel="Temporary"
+          name="password"
+          component={Input}
+          placeholder="Not Required"
+          type="text"
+          validate={[isTrimmedPassword]} />
         <Field
           className="answerA"
           label="Answer A"
