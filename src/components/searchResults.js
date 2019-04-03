@@ -20,7 +20,7 @@ class SearchResults extends React.Component{
                 className="adventure-list-item" 
                 key={adventure.id}><p>title: {adventure.title}</p>
                 <button 
-                    className="adventure-link-button" 
+                    className="adventure-link-button below" 
                     value={adventure.id} 
                     onClick={e => {this.handleClick(e.target.value)}}>Click to start</button>
             </li>)
