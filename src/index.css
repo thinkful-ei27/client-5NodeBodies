@@ -10,15 +10,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-.header-bar {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-content: center;
-  text-align: center;
-  width: 100vw;
-  min-width: 100vw;
-  height: 100px;
-  padding: 0 20px;
-}
