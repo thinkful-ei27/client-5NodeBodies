@@ -20,7 +20,9 @@ class AdventureSearch extends React.Component{
     return (
       <form onSubmit={e => this.handleSubmit(e)}>
         <input onChange={e => this.onChange(e)} type="text"></input>
-        <button type="submit">Search Adventures!</button>
+        <button 
+        className="search-adventures on-right"
+        type="submit">Search Adventures!</button>
       </form>
     )
   }

@@ -18,22 +18,30 @@ export class CurrentNodeBrancher extends React.Component {
         <h2>Current Node</h2>
         <h3 className="question">{this.props.currentNode.question}</h3>
         <p>{this.props.currentNode.answerA}</p>
-        <button value='1'
+        <button 
+          className="new-branch below"
+          value='1'
           onClick={() => this.defineParentPointerForNewNode(1)}>
           Branch from answer A
          </button>
         <p>{this.props.currentNode.answerB}</p>
-        <button value='2'
+        <button 
+          className="new-branch below"
+          value='2'
           onClick={() => this.defineParentPointerForNewNode(2)}>
           Branch from answer B
          </button>
         <p>{this.props.currentNode.answerC}</p>
-        <button value='3'
+        <button 
+          className="new-branch below"
+          value='3'
           onClick={() => this.defineParentPointerForNewNode(3)}>
           Branch from answer C
          </button>
         <p>{this.props.currentNode.answerD}</p>
-        <button value='4'
+        <button 
+          className="new-branch below"
+          value='4'
           onClick={() => this.defineParentPointerForNewNode(4)}>
           Branch from answer D
          </button>
