@@ -5,13 +5,30 @@
   margin-right: auto;
 }
 
+.adventure-list-item {
+  padding-top: 10px;
+}
+
+.app-title {
+  color: #51646b;
+  display: block;
+  font-weight: 300;
+  font-size: 400%;
+  margin: 0 auto;
+}
+
 .below {
   margin-top: 0;
   margin-bottom: 5px;
 }
 
-li.adventure-list-item {
-  padding-top: 10px;
+body {
+  background: #f0f8fa;
+  margin: 0;
+  padding: 0;
+  font-family: Lato, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 button {
@@ -31,6 +48,11 @@ button:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
 .form-field {
   width: 80%;
   max-width: 600px;
@@ -40,6 +62,27 @@ button:hover {
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
+}
+
+.header-bar {
+  display: block;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  min-width: 100vw;
+  padding: 0 20px;
+  max-width: 80%;
+  margin: 20px auto;
+}
+
+.home-button {
+  display: inline-block;
+  background: #da8624;
+  border-color: #da8624;
+}
+
+.home-button:hover {
+  background: #da8624;
 }
 
 .login-button, .adventure-link-button {
@@ -54,6 +97,10 @@ button:hover {
 
 .login-from-register:hover {
   transform: scale(1.2);
+}
+
+.logout-button {
+  display: inline-block;
 }
 
 .on-left {
