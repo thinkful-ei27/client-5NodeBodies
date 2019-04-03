@@ -16,6 +16,7 @@ export class CurrentNodeBrancher extends React.Component {
     return (
       <div className="parentForm">
         <h2>Current Node</h2>
+        <p>{this.props.currentNode.count ? `This node has been visited ${this.props.currentNode.count} times` : ""} </p>
         <h3 className="question">{this.props.currentNode.question}</h3>
         <p>{this.props.currentNode.answerA}</p>
         <button value='1'
