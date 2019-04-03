@@ -91,6 +91,28 @@ export const createNode = node => (dispatch, getState) => {
     });
 };
 
+export const linkNodesById = idObjectWithParentInt => (dispatch, getState) => {
+  dispatch(updateNodeRequest())
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/adventure/linkNodes`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${authToken}`,
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(idObjectWithParentInt)
+  })
+    .then(() => {
+      dispatch(getAdventureById(idObjectWithParentInt.adventureId));
+    })
+    .then(() => {
+      // dispatch(updateNodeSuccess())
+    })
+    .catch(err => {
+      dispatch(createNodeError(err))
+    });
+}
+
 
 export const updateNode = node => (dispatch, getState) => {
   dispatch(updateNodeRequest())

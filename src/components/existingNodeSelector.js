@@ -1,9 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
-import { toggleChildType, stageChildNode} from '../actions/nodes'
+import { toggleChildType, stageChildNode, linkNodesById } from '../actions/nodes'
 
 export class ExistingNodeSelector extends React.Component {
+
+  componentDidMount() {
+    const currentNodeRemoved = this.filterCurrentNodeFromPotentialChildren()
+    this.props.dispatch(stageChildNode(currentNodeRemoved[0]))
+  }
+
+  filterCurrentNodeFromPotentialChildren() {
+    // adds index to node object to be used after filter 
+    const nodesWithIndexArray = this.props.currentAdventure.nodes.map((node, index) => {
+      const nodeWithIndex = { ...node, index }
+      return nodeWithIndex;
+    });
+
+    // filters out current node to avoid a node answer pointing to itself
+    const currentNodeRemoved = nodesWithIndexArray.filter(node =>
+      node.id !== this.props.currentNode.id
+    )
+    return currentNodeRemoved
+  }
+
 
   stageSelectedChildNode(index) {
     let node = this.props.currentAdventure.nodes[index];
@@ -12,7 +32,14 @@ export class ExistingNodeSelector extends React.Component {
   }
 
   linkNodes() {
-    
+    let idObjectWithParentInt = {
+      adventureId: this.props.currentAdventure.id,
+      parentId: this.props.currentNode.id,
+      childId: this.props.stagedChildNode.id,
+      parentInt: this.props.parentInt,
+    }
+    this.props.dispatch(linkNodesById(idObjectWithParentInt))
+
   }
 
   toggleNewOrExistingNodeForm() {
@@ -35,16 +62,7 @@ export class ExistingNodeSelector extends React.Component {
     }
 
 
-    // adds index to node object to be used after filter 
-    const nodesWithIndexArray = this.props.currentAdventure.nodes.map((node, index) => {
-      const nodeWithIndex = { ...node, index }
-      return nodeWithIndex;
-    });
-
-    // filters out current node to avoid a node answer pointing to itself
-    const currentNodeRemoved = nodesWithIndexArray.filter(node =>
-      node.id !== this.props.currentNode.id
-    )
+    const currentNodeRemoved = this.filterCurrentNodeFromPotentialChildren()
 
     // generates JSX of options with values that point to index of itself in currentAdventure.nodes
     const options = currentNodeRemoved.map((node) =>
@@ -83,6 +101,7 @@ const mapStateToProps = state => {
     currentNode: state.node.currentNode,
     adventureId: state.adventure.currentAdventure.id,
     parentId: state.node.currentNode.id,
+    stagedChildNode: state.node.stagedChildNode
   };
 };
 

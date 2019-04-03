@@ -93,7 +93,7 @@ export default function reducer(state = initialState, action) {
     case TOGGLE_CHILD_TYPE: {
       return Object.assign({}, state, {
         useExistingNode: !state.useExistingNode,
-        stagedChildNode: null
+        // stagedChildNode: null
       })
     }
 
