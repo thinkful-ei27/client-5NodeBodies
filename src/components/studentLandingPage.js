@@ -47,7 +47,7 @@ export class StudentLanding extends React.Component {
                 placeholder="5c9ceaeac543f706bf407cae"
                 onChange={e => this.onChange(e)}
               ></input>
-              <button className="student-adventure-submit" type="submit">Start Adventure!</button>
+              <button className="start-adventure on-right" type="submit">Start Adventure!</button>
             </form>
           </div>
           <AdventureSearch />

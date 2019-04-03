@@ -5,6 +5,14 @@
   margin-right: auto;
 }
 
+.adventure-link-button {
+  margin-top: 0;
+}
+
+li.adventure-list-item {
+  padding-top: 10px;
+}
+
 button {
   color: white;
   border:#b4cedd 1px solid;
@@ -33,15 +41,20 @@ button:hover {
   margin-top: 20px;
 }
 
-.login-button {
+.login-button, .adventure-link-button {
   display: inline-block;
   background: #da8624;
   border-color: #da8624;
 }
 
-.login-button:hover {
+.login-button:hover, .adventure-link-button:hover {
   background: #da8624;
 }
+
+.login-from-register:hover {
+  transform: scale(1.2);
+}
+
 .on-left {
   margin-right: 5px;
 }
