@@ -5,6 +5,7 @@ import NewNodeForm from './new-node-form';
 import CurrentNodeBrancher from './current-node-brancher';
 import { getAdventureById } from '../actions/createAdventure'
 import { setCurrentNode } from '../actions/nodes'
+import GraphContainer from './graph-container'
 
 export class AdventureBuilder extends React.Component {
   componentDidMount() {
@@ -36,6 +37,7 @@ export class AdventureBuilder extends React.Component {
           name="nodeSelect"
           options={options}
           onChange={e => this.changeCurrentNode(e.target.value)}>{options}</select>
+        <GraphContainer />
         <CurrentNodeBrancher />
         {nodeForm}
       </div>

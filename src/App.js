@@ -8,6 +8,7 @@ import LandingPage from './components/landing-page';
 import AdventureForm from './components/newAdventure'
 import Dashboard from './components/dashboard'
 import AdventureBuilder from './components/adventureBuilder'
+// import CombinedAdventure from './components/combinedAdventure'
 import StudentLanding from './components/studentLandingPage'
 import GraphContainer from './components/graph-container'
 import './App.css';
