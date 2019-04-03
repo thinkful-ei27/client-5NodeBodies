@@ -103,6 +103,11 @@ code {
   display: inline-block;
 }
 
+.current-node-question {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
 .on-left {
   margin-right: 5px;
 }
@@ -113,4 +118,18 @@ code {
 ul {
   padding: 0;
   list-style-type: none;
+}
+
+@media all and (max-width: 600px) {
+
+	.app-title {
+    font-size: 300%;
+  }
+}
+  
+@media all and (max-width: 400px) {
+
+  .app-title {
+    font-size: 200%;
+  }
 }

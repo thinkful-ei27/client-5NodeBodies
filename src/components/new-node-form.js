@@ -15,6 +15,7 @@ class NewNodeForm extends React.Component {
     return (
       <Form.Field>
         <Checkbox
+          autoFocus={true}
           label={label}
           checked={input.value ? true : false}
           onChange={(e, { checked }) => {
