@@ -25,6 +25,7 @@ export class Dashboard extends React.Component {
             to={{
               pathname: `/adventure/adventurebuilder/${adventure.id}`,
             }}>{adventure.title}</Link>
+            <p>{adventure.count ? `This node has been visited ${adventure.count} times` : ""} </p>
         </li>
       ))
       return (
