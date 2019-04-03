@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm, focus } from 'redux-form';
 import Input from "./input";
 import TextArea from "./textarea";
-import { createNode, toggleEnding } from '../actions/nodes';
+import { createNode, toggleEnding, toggleChildType } from '../actions/nodes';
 import { required, nonEmpty } from "../utils/validators";
 import { Checkbox, Form } from 'semantic-ui-react';
 
@@ -29,6 +29,10 @@ class NewNodeForm extends React.Component {
   toggleIsEnding() {
     return this.props.dispatch(toggleEnding())
   }
+  toggleNewOrExistingNodeForm() {
+    this.props.dispatch(toggleChildType())
+  }
+
   onSubmit(values) {
     const parentInt = this.props.parentInt;
     const adventureId = this.props.adventureId;
@@ -132,14 +136,15 @@ class NewNodeForm extends React.Component {
       )
     }
 
-    // if ending is true... change form to only have a description section
-
     return (
       <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-        <h3>add new Child node</h3>
+        <h3>Add A New Child Node</h3>
         <h4>answer that points to this node: {parentAnswer}</h4>
+        <button
+          onClick={() => this.toggleNewOrExistingNodeForm()}>
+          Use existing node
+         </button>
         {error}
-        {/* radio button to pick ending  */}
         <Field
           className="ending"
           name="ending"

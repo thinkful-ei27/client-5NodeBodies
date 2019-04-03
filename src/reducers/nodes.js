@@ -9,7 +9,9 @@ import {
   UPDATE_NODE_ERROR,
   UPDATE_NODE_CLICKED,
   UPDATE_CURRENT_NODE,
-  TOGGLE_ENDING
+  TOGGLE_ENDING,
+  TOGGLE_CHILD_TYPE,
+  STAGE_CHILD_NODE
 } from '../actions/nodes'
 
 const initialState = {
@@ -19,7 +21,9 @@ const initialState = {
   parentInt: null,
   currentNode: null,
   showUpdate: false,
-  isEnding: false
+  isEnding: false,
+  useExistingNode: false,
+  stagedChildNode: null
 };
 
 export default function reducer(state = initialState, action) {
@@ -69,7 +73,9 @@ export default function reducer(state = initialState, action) {
     case NODE_FORM_WITH_POINTER: {
       return Object.assign({}, state, {
         loading: false,
-        parentInt: action.parentInt
+        useExistingNode: false,
+        stagedChildNode: null,
+        parentInt: action.parentInt,
       });
     }
     case SET_CURRENT_NODE: {
@@ -81,6 +87,18 @@ export default function reducer(state = initialState, action) {
     case TOGGLE_ENDING: {
       return Object.assign({}, state, {
         isEnding: !state.isEnding
+      })
+    }
+    case TOGGLE_CHILD_TYPE: {
+      return Object.assign({}, state, {
+        useExistingNode: !state.useExistingNode,
+        stagedChildNode: null
+      })
+    }
+
+    case STAGE_CHILD_NODE: {
+      return Object.assign({}, state, {
+        stagedChildNode: action.node
       })
     }
     default:

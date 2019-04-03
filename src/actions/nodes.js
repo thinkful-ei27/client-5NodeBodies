@@ -7,9 +7,20 @@ export const NODE_FORM_WITH_POINTER = 'NODE_FORM_WITH_POINTER';
 export const nodeFormWithPointer = (parentInt) => {
   return ({
     type: NODE_FORM_WITH_POINTER,
-    parentInt, //parent ref object
+    parentInt,
   })
 };
+
+export const STAGE_CHILD_NODE = 'STAGE_CHILD_NODE';
+export const stageChildNode = (node) => ({
+  type: STAGE_CHILD_NODE,
+  node,
+})
+
+export const TOGGLE_CHILD_TYPE = 'TOGGLE_CHILD_TYPE';
+export const toggleChildType = () => ({
+  type: TOGGLE_CHILD_TYPE
+})
 
 export const SET_CURRENT_NODE = 'SET_CURRENT_NODE';
 export const setCurrentNode = (node) => ({
@@ -98,7 +109,7 @@ export const updateNode = node => (dispatch, getState) => {
       console.log("New Node From Backend is: ", res)
       dispatch(getAdventureById(node.adventureId));
     })
-    .then( () => {
+    .then(() => {
       // dispatch(updateNodeSuccess())
     })
     .catch(err => {

@@ -70,16 +70,7 @@ class AdventureForm extends React.Component {
           name="startVideoURL"
           component={Input}
           type="text" />
-        <Field
-          className="question"
-          label="Starting question"
-          placeholder="Where will you start?"
-          ariaLabel="starting question"
-          name="question"
-          component={Input}
-          type="text"
-          validate={[required, nonEmpty]} />
-        <Field
+            <Field
           className="textContent"
           label="Scenario Description for Starting Node"
           ariaLabel="Scenario Description for Starting Node"
@@ -95,6 +86,16 @@ class AdventureForm extends React.Component {
           name="videoURL"
           component={Input}
           type="text" />
+        <Field
+          className="question"
+          label="Starting question"
+          placeholder="Where will you start?"
+          ariaLabel="starting question"
+          name="question"
+          component={Input}
+          type="text"
+          validate={[required, nonEmpty]} />
+      
         <Field
           className="answerA"
           label="Answer A"
