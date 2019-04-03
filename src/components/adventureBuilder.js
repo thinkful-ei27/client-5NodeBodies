@@ -5,6 +5,7 @@ import NewNodeForm from './new-node-form';
 import CurrentNodeBrancher from './current-node-brancher';
 import { getAdventureById } from '../actions/createAdventure'
 import { setCurrentNode } from '../actions/nodes'
+import Sidebar from './sidebar';
 
 export class AdventureBuilder extends React.Component {
   componentDidMount() {
@@ -31,8 +32,9 @@ export class AdventureBuilder extends React.Component {
       <option key={node.id} value={index}>{node.question}</option>);
     return (
       <div>
-        <select className="nodeSelect"
-          label="Current Node"
+        <Sidebar />
+        <select className="node-select"
+          label="Current Question"
           name="nodeSelect"
           options={options}
           onChange={e => this.changeCurrentNode(e.target.value)}>{options}</select>

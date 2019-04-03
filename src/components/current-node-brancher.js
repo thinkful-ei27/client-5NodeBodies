@@ -14,8 +14,8 @@ export class CurrentNodeBrancher extends React.Component {
   }
   render() {
     return (
-      <div className="parentForm">
-        <h2>Current Node</h2>
+      <div className="parent-form">
+        <h2>Current Question</h2>
         <h3 className="question">{this.props.currentNode.question}</h3>
         <p className="current-node-question">{this.props.currentNode.answerA}</p>
         <button 

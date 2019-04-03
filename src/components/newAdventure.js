@@ -5,6 +5,7 @@ import TextArea from "./textarea";
 import { createAdventure } from '../actions/createAdventure';
 import { required, nonEmpty, isTrimmedPassword } from "../utils/validators";
 import { withRouter } from 'react-router-dom';
+import Sidebar from "./sidebar";
 
 class AdventureForm extends React.Component {
   onSubmit(values) {
@@ -44,7 +45,9 @@ class AdventureForm extends React.Component {
         </div>
       );
     }
-    return (<div className="form-field">
+    return (<div>
+      <Sidebar />
+    <div className="form-field">
       <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
         <div>Create a new adventure!</div>
         {error}
@@ -144,6 +147,7 @@ class AdventureForm extends React.Component {
           type="text" />
         <button>New Adventure!</button>
       </Form>
+    </div>
     </div>
     )
   }
