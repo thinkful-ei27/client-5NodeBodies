@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Graph } from 'react-d3-graph';
 import { authError } from '../actions/auth';
-
 import { setCurrentNode } from '../actions/nodes'
 
 let data = {
@@ -25,7 +24,7 @@ class GraphContainer extends React.Component {
 
     componentWillMount() {
         for (let i = 0; i < this.props.nodez.length; i++) {
-            data.nodes.push({ id: this.props.nodez[i].id })
+            data.nodes.push({ id: this.props.nodez[i].id, question: this.props.nodez[i].question })
             if (this.props.nodez[i].pointerA) {
                 data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerA })
             }
@@ -45,10 +44,13 @@ class GraphContainer extends React.Component {
     render() {
         const myConfig = {
             nodeHighlightBehavior: true,
+            automaticRearrangeAfterDropNode: true,
+            directed: true,
             node: {
                 color: 'lightgreen',
                 size: 800,
-                highlightStrokeColor: 'blue'
+                highlightStrokeColor: 'blue',
+                labelProperty: 'question',
             },
             link: {
                 highlightColor: 'lightblue'
@@ -58,50 +60,26 @@ class GraphContainer extends React.Component {
             margin: 'auto',
             border: '1px solid lightgreen'
         };
-        if (this.props.showUpdate) {
-            return (
-                <div>
-                    <div style={cyStyle}>
-                        <Graph
-                            props={this.props}
-                            id="graph-id" // id is mandatory, if no id is defined rd3g will throw an error
-                            data={data}
-                            config={myConfig}
-                            onClickNode={this.onClickNode}
-                        // onRightClickNode={onRightClickNode}
-                        // onClickGraph={onClickGraph}
-                        // onClickLink={onClickLink}
-                        // onRightClickLink={onRightClickLink}
-                        // onMouseOverNode={onMouseOverNode}
-                        // onMouseOutNode={onMouseOutNode}
-                        // onMouseOverLink={onMouseOverLink}
-                        // onMouseOutLink={onMouseOutLink}
-                        />
-                    </div>
-                    
-                </div>
-            );
-        } else {
-            return (
-                <div style={cyStyle}>
-                    <Graph
-                        props={this.props}
-                        id="graph-id" // id is mandatory, if no id is defined rd3g will throw an error
-                        data={data}
-                        config={myConfig}
-                        onClickNode={this.onClickNode}
-                    // onRightClickNode={onRightClickNode}
-                    // onClickGraph={onClickGraph}
-                    // onClickLink={onClickLink}
-                    // onRightClickLink={onRightClickLink}
-                    // onMouseOverNode={onMouseOverNode}
-                    // onMouseOutNode={onMouseOutNode}
-                    // onMouseOverLink={onMouseOverLink}
-                    // onMouseOutLink={onMouseOutLink}
-                    />
-                </div>
-            );
-        }
+
+        return (
+            <div style={cyStyle}>
+                <Graph
+                    props={this.props}
+                    id="graph-id" // id is mandatory, if no id is defined rd3g will throw an error
+                    data={data}
+                    config={myConfig}
+                    onClickNode={this.onClickNode}
+                // onRightClickNode={onRightClickNode}
+                // onClickGraph={onClickGraph}
+                // onClickLink={onClickLink}
+                // onRightClickLink={onRightClickLink}
+                // onMouseOverNode={onMouseOverNode}
+                // onMouseOutNode={onMouseOutNode}
+                // onMouseOverLink={onMouseOverLink}
+                // onMouseOutLink={onMouseOutLink}
+                />
+            </div>
+        );
     }
 }
 

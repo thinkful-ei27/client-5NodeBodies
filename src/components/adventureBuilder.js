@@ -8,15 +8,24 @@ import { setCurrentNode } from '../actions/nodes'
 import GraphContainer from './graph-container'
 
 export class AdventureBuilder extends React.Component {
+
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.dispatch(getAdventureById(id))
     // clear new node form (parent int)
   }
 
-  changeCurrentNode(index) {
-    let node = this.props.currentAdventure.nodes[index];
+  changeCurrentNode(value) {
+    let node = this.props.currentAdventure.nodes.find(node => node.id === value);
     this.props.dispatch(setCurrentNode(node))
+  }
+
+  setValueObject() {
+    let value = {
+      value: this.props.currentNode.question
+    }
+    console.log(value)
+    return value;
   }
 
   render() {
@@ -28,14 +37,13 @@ export class AdventureBuilder extends React.Component {
     if (!adventure) {
       return <div className="loading">loading...</div>;
     }
-    const options = this.props.currentAdventure.nodes.map((node, index) =>
-      <option label={node.question} value={index}>{node.question}</option>);
+    const options = this.props.currentAdventure.nodes.map((node) =>
+      <option label={node.question} value={node.id}>{node.question}</option>);
     return (
       <div>
         <select className="nodeSelect"
-          label="Current Node"
           name="nodeSelect"
-          value={this.props.currentNode.question}
+          value={this.props.currentNode.id}
           options={options}
           onChange={e => this.changeCurrentNode(e.target.value)}>{options}</select>
         <GraphContainer />

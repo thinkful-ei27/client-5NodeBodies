@@ -19,20 +19,20 @@ export class Headerbar extends React.Component {
       navButtons = <div className="nav-buttons">
         {/* TO-DO: REACT-ROUTER INSTEAD???????????????? */}
         <Link to="/dashboard">
-          <button 
-          className="home-button on-left"
-          type="button"
+          <button
+            className="home-button on-left"
+            type="button"
           >Home</button>
         </Link>
-        <button 
+        <button
           className="logout-button on-right on-left"
-          type="button" 
+          type="button"
           onClick={() => {
-          this.logOut()
-        }}>Log Out</button>
-        <Link to="/GraphContainer">
+            this.logOut()
+          }}>Log Out</button>
+        {/*<Link to="/GraphContainer">
           <button className="graph-button on-right">Graph Button</button>
-        </Link>
+      </Link>*/}
       </div>
     }
     return (
