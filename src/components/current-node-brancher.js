@@ -12,39 +12,59 @@ export class CurrentNodeBrancher extends React.Component {
   defineParentPointerForNewNode(parentInt) {
     return this.props.dispatch(nodeFormWithPointer(parentInt))
   }
+
+
+
   render() {
-    return (
-      <div className="parentForm">
-        <h2>Current Node</h2>
-        <h3 className="question">{this.props.currentNode.question}</h3>
-        <p>{this.props.currentNode.answerA}</p>
-        <button 
-          className="new-branch below"
-          value='1'
-          onClick={() => this.defineParentPointerForNewNode(1)}>
-          new Branch from answer A
-         </button>
-        <p>{this.props.currentNode.answerB}</p>
-        <button 
+    let answerB;
+    let answerC;
+    let answerD;
+    if (this.props.currentNode.answerB) {
+      answerB = (<div><p>{this.props.currentNode.answerB}</p>
+        <button
           className="new-branch below"
           value='2'
           onClick={() => this.defineParentPointerForNewNode(2)}>
           new Branch from answer B
-         </button>
+       </button>
+      </div>)
+    }
+    if (this.props.currentNode.answerC) {
+      answerC = (<div>
         <p>{this.props.currentNode.answerC}</p>
-        <button 
+        <button
           className="new-branch below"
           value='3'
           onClick={() => this.defineParentPointerForNewNode(3)}>
           new Branch from answer C
          </button>
-        <p>{this.props.currentNode.answerD}</p>
-        <button 
+      </div>)
+    }
+    if (this.props.currentNode.answerD) {
+      answerD = (<div><p>{this.props.currentNode.answerD}</p>
+        <button
           className="new-branch below"
           value='4'
           onClick={() => this.defineParentPointerForNewNode(4)}>
           new Branch from answer D
          </button>
+      </div>)
+    }
+
+    return (
+      <div className="parentForm">
+        <h2>Current Node</h2>
+        <h3 className="question">{this.props.currentNode.question}</h3>
+        <p>{this.props.currentNode.answerA}</p>
+        <button
+          className="new-branch below"
+          value='1'
+          onClick={() => this.defineParentPointerForNewNode(1)}>
+          new Branch from answer A
+         </button>
+        {answerB}
+        {answerC}
+        {answerD}
       </div>
     )
   }
