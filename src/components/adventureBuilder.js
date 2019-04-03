@@ -40,8 +40,7 @@ export class AdventureBuilder extends React.Component {
 
     return (
       <div>
-        <h3>Use Existing Node as Child</h3>
-        <select className="nodeSelect"
+        <span>select current node</span><select className="nodeSelect"
           label="Current Node"
           name="nodeSelect"
           options={options}

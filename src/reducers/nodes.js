@@ -81,7 +81,8 @@ export default function reducer(state = initialState, action) {
     case SET_CURRENT_NODE: {
       return Object.assign({}, state, {
         loading: false,
-        currentNode: action.node
+        currentNode: action.node,
+        parentInt: null
       })
     }
     case TOGGLE_ENDING: {
