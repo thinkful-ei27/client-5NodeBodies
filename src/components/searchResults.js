@@ -16,8 +16,13 @@ class SearchResults extends React.Component{
         if(this.props.results){
             console.log('searchResults is running!');
             console.log(this.props.results);
-            adventures = this.props.results.map((adventure) => <li className="adventureList" key={adventure.id}><p>title: {adventure.title}</p>
-            <button className="adventureButton" value={adventure.id} onClick={e => {this.handleClick(e.target.value)}}>Click</button>
+            adventures = this.props.results.map((adventure) => <li
+                className="adventure-list-item" 
+                key={adventure.id}><p>title: {adventure.title}</p>
+                <button 
+                    className="adventure-link-button below" 
+                    value={adventure.id} 
+                    onClick={e => {this.handleClick(e.target.value)}}>Click to start</button>
             </li>)
             console.log(adventures);
         }
