@@ -6,6 +6,7 @@ import CurrentNodeBrancher from './current-node-brancher';
 import ExistingNodeSelector from './existingNodeSelector';
 import { getAdventureById } from '../actions/createAdventure'
 import { setCurrentNode } from '../actions/nodes'
+import Sidebar from './sidebar';
 
 export class AdventureBuilder extends React.Component {
   componentDidMount() {
@@ -40,8 +41,10 @@ export class AdventureBuilder extends React.Component {
 
     return (
       <div>
-        <span>select current node</span><select className="nodeSelect"
-          label="Current Node"
+
+        <Sidebar />
+        <select className="node-select"
+          label="Current Question"
           name="nodeSelect"
           options={options}
           onChange={e => this.changeCurrentNode(e.target.value)}>{options}</select>
