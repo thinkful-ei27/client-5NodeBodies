@@ -25,13 +25,13 @@ export class Headerbar extends React.Component {
           >Home</button>
         </Link>
         <button 
-          className="logout-button on-right"
+          className="logout-button on-right on-left"
           type="button" 
           onClick={() => {
           this.logOut()
         }}>Log Out</button>
         <Link to="/GraphContainer">
-          <button className="graph-button">Graph Button</button>
+          <button className="graph-button on-right">Graph Button</button>
         </Link>
       </div>
     }
