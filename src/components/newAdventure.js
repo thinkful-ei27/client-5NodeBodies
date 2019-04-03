@@ -5,6 +5,7 @@ import TextArea from "./textarea";
 import { createAdventure } from '../actions/createAdventure';
 import { required, nonEmpty, isTrimmedPassword } from "../utils/validators";
 import { withRouter } from 'react-router-dom';
+import Sidebar from "./sidebar";
 
 class AdventureForm extends React.Component {
   onSubmit(values) {
@@ -44,7 +45,9 @@ class AdventureForm extends React.Component {
         </div>
       );
     }
-    return (<div className="form-field">
+    return (<div>
+      <Sidebar />
+    <div className="form-field">
       <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
         <div>Create a new adventure!</div>
         {error}
@@ -74,16 +77,7 @@ class AdventureForm extends React.Component {
           component={Input}
           validate={url({ protocols: ['http', 'https'] })}
           type="text" />
-        <Field
-          className="question"
-          label="Starting question"
-          placeholder="Where will you start?"
-          ariaLabel="starting question"
-          name="question"
-          component={Input}
-          type="text"
-          validate={[required, nonEmpty]} />
-        <Field
+            <Field
           className="textContent"
           label="Scenario Description for Starting Node"
           ariaLabel="Scenario Description for Starting Node"
@@ -100,6 +94,15 @@ class AdventureForm extends React.Component {
           component={Input}
           validate={url({ protocols: ['http', 'https'] })}
           type="text" />
+        <Field
+          className="question"
+          label="Starting question"
+          placeholder="Where will you start?"
+          ariaLabel="starting question"
+          name="question"
+          component={Input}
+          type="text"
+          validate={[required, nonEmpty]} />
         <Field
           className="textContent"
           label="Optional Password:"
@@ -144,6 +147,7 @@ class AdventureForm extends React.Component {
           type="text" />
         <button>New Adventure!</button>
       </Form>
+    </div>
     </div>
     )
   }
