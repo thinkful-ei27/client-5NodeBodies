@@ -5,23 +5,32 @@ body {
 .app-title {
   color: #51646b;
   display: block;
+  font-weight: 300;
+  font-size: 400%;
+  margin: 0 auto;
 }
 
 .header-bar {
   display: block;
   justify-content: center;
   align-content: center;
+  text-align: center;
+  min-width: 100vw;
+  padding: 0 20px;
   max-width: 80%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 20px auto;
 }
 
 .home-button {
   display: inline-block;
-  margin-right: 5px;
+  background: #da8624;
+  border-color: #da8624;
+}
+
+.home-button:hover {
+  background: #da8624;
 }
 
 .logout-button {
   display: inline-block;
-  margin-left: 5px;
 }

@@ -12,6 +12,7 @@ button {
   border-radius: 5px;
   font-weight: 900;
   padding: 7px 10px;
+  margin-top: 10px;
 }
 
 button:hover {
@@ -22,7 +23,33 @@ button:hover {
 }
 
 .form-field {
-  max-width: 80%;
-  border: 1px solid black;
-  padding: 5px;
+  width: 80%;
+  max-width: 600px;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 10px 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
+.login-button {
+  display: inline-block;
+  background: #da8624;
+  border-color: #da8624;
+}
+
+.login-button:hover {
+  background: #da8624;
+}
+.on-left {
+  margin-right: 5px;
+}
+.on-right {
+  margin-left: 5px;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
 }

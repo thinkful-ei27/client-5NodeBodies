@@ -70,9 +70,12 @@ class RegisterForm extends React.Component {
           validate={[required, nonEmpty, isTrimmed, matchesPassword]} />
         <button
           type="submit"
+          className="register-button on-left"
           disabled={this.props.pristine || this.props.submitting}>
           Register</button>
-        <Link className="login-from-register" to="/login"><button>Log In Page</button></Link>
+        <Link className="login-from-register" to="/login"><button
+          className="login-button on-right"
+          >Log In Page</button></Link>
       </Form>)
   }
 }

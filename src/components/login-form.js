@@ -41,8 +41,8 @@ class LoginForm extends React.Component {
           component={Input}
           type="password"
           validate={[required, nonEmpty]} />
-        <button>Login</button>
-        <Link className="register-from-login" to="/"><button>Registration</button></Link>
+        <button className="login-button on-left">Login</button>
+        <Link className="register-from-login" to="/"><button className="registration-button on-right">Registration</button></Link>
       </Form>)
   }
 }
