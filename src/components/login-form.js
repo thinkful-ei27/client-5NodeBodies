@@ -2,7 +2,6 @@ import React from 'react';
 import { Form, Field, reduxForm, focus } from 'redux-form';
 import Input from "./input";
 import { loginUser } from '../actions/auth';
-import { Link } from 'react-router-dom'
 import { required, nonEmpty } from "../utils/validators";
 
 class LoginForm extends React.Component {
@@ -23,7 +22,6 @@ class LoginForm extends React.Component {
     }
     return (
       <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-        <div>This is the Login Form</div>
         {error}
         <Field
           placeholder="Username"
@@ -33,7 +31,6 @@ class LoginForm extends React.Component {
           type="text"
           validate={[required, nonEmpty]}
         />
-
         <Field
           placeholder="Password"
           className="password"
@@ -41,8 +38,7 @@ class LoginForm extends React.Component {
           component={Input}
           type="password"
           validate={[required, nonEmpty]} />
-        <button className="login-button on-left">Login</button>
-        <Link className="register-from-login" to="/"><button className="registration-button on-right">Registration</button></Link>
+        <button className="login-button">Login</button>
       </Form>)
   }
 }

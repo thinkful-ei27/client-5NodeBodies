@@ -2,7 +2,6 @@ import React from 'react';
 import { Form, Field, reduxForm, focus } from 'redux-form';
 import { registerUser } from '../actions/register';
 import { loginUser } from '../actions/auth';
-import { Link } from 'react-router-dom'
 import { required, nonEmpty, matches, length, isTrimmed } from '../utils/validators';
 import Input from "./input";
 const passwordLength = length({ min: 10, max: 72 });
@@ -73,9 +72,6 @@ class RegisterForm extends React.Component {
           className="register-button on-left"
           disabled={this.props.pristine || this.props.submitting}>
           Register</button>
-        <Link className="login-from-register" to="/login"><button
-          className="login-button on-right"
-          >Log In Page</button></Link>
       </Form>)
   }
 }

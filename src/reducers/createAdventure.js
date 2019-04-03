@@ -6,7 +6,7 @@ import {
   GET_ALL_ADVENTURES_REQUEST,
   GET_ALL_ADVENTURES_SUCCESS,
   GET_ADVENTURE_SUCCESS,
-
+  UPDATE_CURRENT_NODE
 } from '../actions/createAdventure'
 
 const initialState = {
@@ -14,7 +14,8 @@ const initialState = {
   error: null,
   adventureId: null,
   adventures: [],
-  currentAdventure: null
+  currentAdventure: null,
+  currentNode: null
 };
 
 export default function reducer(state = initialState, action) {
@@ -23,6 +24,11 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         loading: true,
         error: null
+      });
+    }
+    case UPDATE_CURRENT_NODE: {
+      return Object.assign({}, state, {
+        currentNode: state.currentAdventure.nodes.filter( node => node.id === action.nodeId)
       });
     }
     case CREATE_ADVENTURE_SUCCESS: {

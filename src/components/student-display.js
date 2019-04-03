@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {getStudentCurrentNode} from '../actions/student'
+import { getStudentCurrentNode } from '../actions/student'
 
 
 export class StudentDisplay extends React.Component {
@@ -22,28 +22,28 @@ export class StudentDisplay extends React.Component {
     let answerD;
     let buttonD;
     if (this.props.currentNode) {
-      if (this.props.currentNode.videoURL){
+      if (this.props.currentNode.videoURL) {
         nodeVideo = (<iframe title='node-video' width="420" height="315" src={this.props.currentNode.videoURL}></iframe>)
       }
-      if (this.props.currentNode.textContent){
+      if (this.props.currentNode.textContent) {
         nodeText = <p>{this.props.currentNode.textContent}</p>
       }
-      if (this.props.currentNode.question){
+      if (this.props.currentNode.question) {
         nodeQuestion = <p>{this.props.currentNode.question}</p>
       }
-      if (this.props.currentNode.answerA){
+      if (this.props.currentNode.answerA) {
         answerA = <p>{this.props.currentNode.answerA}</p>
         buttonA = <button onClick={() => this.updateNode(this.props.currentNode.pointerA)}>Submit</button>
       }
-      if (this.props.currentNode.answerB){
+      if (this.props.currentNode.answerB) {
         answerB = <p>{this.props.currentNode.answerB}</p>
         buttonB = <button onClick={() => this.updateNode(this.props.currentNode.pointerB)}>Submit</button>
       }
-      if (this.props.currentNode.answerC){
+      if (this.props.currentNode.answerC) {
         answerC = <p>{this.props.currentNode.answerC}</p>
         buttonC = <button onClick={() => this.updateNode(this.props.currentNode.pointerC)}>Submit</button>
       }
-      if (this.props.currentNode.answerD){
+      if (this.props.currentNode.answerD) {
         answerD = <p>{this.props.currentNode.answerD}</p>
         buttonD = <button onClick={() => this.updateNode(this.props.currentNode.pointerD)}>Submit</button>
       }
@@ -69,7 +69,7 @@ export class StudentDisplay extends React.Component {
           <h1>{this.props.adventure.title}</h1>
           <p>Created by: {this.props.adventure.creator}</p>
           <h2>{this.props.adventure.startContent}</h2>
-          <iframe title="starting-video" width="420" height="315" src={this.props.adventure.startVideoURL}></iframe>
+          <iframe title="starting-video" width="420" height="315" src={this.props.adventure.videoURL}></iframe>
           <button onClick={() => this.updateNode(this.props.adventure.head)}>Embark</button>
         </div>
       )
@@ -79,10 +79,11 @@ export class StudentDisplay extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    adventure: state.student.adventure,
+    adventure: state.student.adventure[0],
     error: state.student.error,
     loading: state.student.loading,
-    currentNode: state.student.currentNode
+    currentNode: state.student.currentNode,
+    results: state.student.results
   };
 };
 

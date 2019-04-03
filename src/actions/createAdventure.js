@@ -50,6 +50,12 @@ export const getAdventureById = adventureId => (dispatch, getState) => {
       return dispatch(createAdventureError(error))
     });
 }
+export const UPDATE_CURRENT_NODE = 'UPDATE_CURRENT_NODE';
+export const updateCurrentNode = (nodeId, nodeArr) => ({
+  type: UPDATE_CURRENT_NODE,
+  nodeId,
+  nodeArr
+});
 
 // helper function that gets the head node from newadventure object
 function getHeadNodefromAdventure(adventure) {
