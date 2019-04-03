@@ -3,7 +3,7 @@ import { Form, Field, reduxForm } from 'redux-form';
 import Input from "./input";
 import TextArea from "./textarea";
 import { createAdventure } from '../actions/createAdventure';
-import { required, nonEmpty } from "../utils/validators";
+import { required, nonEmpty, isTrimmedPassword } from "../utils/validators";
 import { withRouter } from 'react-router-dom';
 
 class AdventureForm extends React.Component {
@@ -18,13 +18,8 @@ class AdventureForm extends React.Component {
       answerD,
       startVideoURL,
       videoURL,
-      hasPassword,
       password } = values;
-    if(hasPassword === 'True'){
-      hasPassword = true;
-    } else {
-      hasPassword = false;
-    }
+      console.log(password);
     let adventure = {
       title,
       startContent,
@@ -36,7 +31,6 @@ class AdventureForm extends React.Component {
       answerD,
       startVideoURL,
       videoURL,
-      hasPassword,
       password
     };
     return this.props.dispatch(createAdventure(adventure));
@@ -106,18 +100,13 @@ class AdventureForm extends React.Component {
           type="text" />
         <Field
           className="textContent"
-          label="hasPassword True/False"
-          ariaLabel="Temporary"
-          name="hasPassword"
-          component={Input}
-          type="text" />
-        <Field
-          className="textContent"
-          label="password"
+          label="Optional Password:"
           ariaLabel="Temporary"
           name="password"
           component={Input}
-          type="text" />
+          placeholder="Not Required"
+          type="text"
+          validate={[isTrimmedPassword]} />
         <Field
           className="answerA"
           label="Answer A"
