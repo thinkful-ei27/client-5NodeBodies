@@ -38,7 +38,7 @@ class LoginForm extends React.Component {
           component={Input}
           type="password"
           validate={[required, nonEmpty]} />
-        <button>Login</button>
+        <button className="login-button">Login</button>
       </Form>)
   }
 }

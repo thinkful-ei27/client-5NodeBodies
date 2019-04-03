@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Graph } from 'react-d3-graph';
 import { authError } from '../actions/auth';
