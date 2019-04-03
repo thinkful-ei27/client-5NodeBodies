@@ -5,6 +5,7 @@ import {
   GET_STUDENT_CURRENTNODE_ERROR,
   GET_STUDENT_CURRENTNODE_REQUEST,
   GET_STUDENT_CURRENTNODE_SUCCESS,
+  RESTART_STUDENT_ADVENTURE,
   GET_STUDENT_SEARCH_ERROR,
   GET_STUDENT_SEARCH_REQUEST,
   GET_STUDENT_SEARCH_SUCCESS
@@ -13,6 +14,8 @@ import {
 const initialState = {
   loading: false,
   error: null,
+  adventure: null,
+  currentNode: null,
   adventure: null, 
   currentNode: null,
   searchResults: null
@@ -56,6 +59,11 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         loading: false,
         error: action.error
+      });
+    }
+    case RESTART_STUDENT_ADVENTURE: {
+      return Object.assign({}, state, {
+        currentNode: null
       });
     }
     case GET_STUDENT_SEARCH_REQUEST: {
