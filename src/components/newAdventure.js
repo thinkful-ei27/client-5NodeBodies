@@ -1,5 +1,6 @@
 import React from 'react';
-import { Form, Field, reduxForm } from 'redux-form';import { url } from 'redux-form-validators'
+import { Form, Field, reduxForm } from 'redux-form';
+import { url } from 'redux-form-validators'
 import Input from "./input";
 import TextArea from "./textarea";
 import { createAdventure } from '../actions/createAdventure';
@@ -156,8 +157,6 @@ class AdventureForm extends React.Component {
     )
   }
 }
-
-
 
 export default withRouter(reduxForm({
   form: 'Adventure',
