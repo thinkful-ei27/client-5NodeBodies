@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import NewNodeForm from './new-node-form';
 import CurrentNodeBrancher from './current-node-brancher';
-import { getAdventureById, toggleAdventureDeleting, deleteAdventure } from '../actions/createAdventure'
+import { getAdventureById } from '../actions/createAdventure'
 import { setCurrentNode } from '../actions/nodes'
 import GraphContainer from './graph-container'
 import ExistingNodeSelector from './existingNodeSelector';
@@ -21,7 +21,7 @@ export class AdventureBuilder extends React.Component {
     let node = this.props.currentAdventure.nodes.find(node => node.id === value);
     this.props.dispatch(setCurrentNode(node))
   }
-
+  
   displayAdventureDeleting() {
     return this.props.dispatch(toggleAdventureDeleting())
   }
@@ -34,14 +34,6 @@ export class AdventureBuilder extends React.Component {
         this.props.history.push('/dashboard')
 
       })
-  }
-
-  setValueObject() {
-    let value = {
-      value: this.props.currentNode.question
-    }
-    console.log(value)
-    return value;
   }
 
   render() {
@@ -57,50 +49,30 @@ export class AdventureBuilder extends React.Component {
       return <div className="loading">loading...</div>;
     }
 
-    
-    const options = this.props.currentAdventure.nodes.map((node) =>
-      <option label={node.question} value={node.id}>{node.question}</option>);
+    const options = this.props.currentAdventure.nodes.map((node) => {
+      if (node.title) {
+        return <option label={node.title} value={node.id}>{node.question}</option>
+      }
+            // this else is temporary(?) until all nodes have titles
+      else {
+        return <option label={node.question} value={node.id}>{node.question}</option>
+      }
+    });
 
-    if (this.props.isDeleting) {
-      return (
-        <div className="confirm-delete-adventure">
-          <h3>Are you sure you want to delete this Entire Adventure?</h3>
-          <h2>All data will be lost. This cannot be undone</h2>
-          <div className="buttons">
-            <button
-              className="delete-it"
-              type='button'
-              onClick={() => this.onClickDelete()}
-            >Delete It
-            </button>
-            <button
-              className="keep-it"
-              type='button'
-              onClick={() => this.displayAdventureDeleting()}
-            >Keep It
-            </button>
-          </div>
-        </div>
-      )
-    }
-    else {
-
-
-      return (
-        <div>
-          <button className="delete-adventure-toggle" onClick={() => this.displayAdventureDeleting()}>Delete Entire Adventure</button>
-          <Sidebar />
-          <select className="node-select"
-            label="Current Question"
-            name="nodeSelect"
-            options={options}
-            onChange={e => this.changeCurrentNode(e.target.value)}>{options}</select>
-          <GraphContainer />
-          <CurrentNodeBrancher />
-          {nodeForm}
-        </div>
-      );
-    }
+    return (
+      <div>
+        <button className="delete-adventure-toggle" onClick={() => this.displayAdventureDeleting()}>Delete Entire Adventure</button>
+        <Sidebar />
+        <select className="node-select"
+          label="Current Question"
+          name="nodeSelect"
+          options={options}
+          onChange={e => this.changeCurrentNode(e.target.value)}>{options}</select>
+        <GraphContainer />
+        <CurrentNodeBrancher />
+        {nodeForm}
+      </div>
+    );
   }
 }
 
