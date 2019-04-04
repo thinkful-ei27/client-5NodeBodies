@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import NewNodeForm from './new-node-form';
 import CurrentNodeBrancher from './current-node-brancher';
-import { getAdventureById, toggleAdventureDeleting, deleteAdventure } from '../actions/createAdventure'
+import { getAdventureById } from '../actions/createAdventure'
 import { setCurrentNode } from '../actions/nodes'
 import GraphContainer from './graph-container'
 import ExistingNodeSelector from './existingNodeSelector';
@@ -21,7 +21,7 @@ export class AdventureBuilder extends React.Component {
     let node = this.props.currentAdventure.nodes.find(node => node.id === value);
     this.props.dispatch(setCurrentNode(node))
   }
-
+  
   displayAdventureDeleting() {
     return this.props.dispatch(toggleAdventureDeleting())
   }
@@ -34,14 +34,6 @@ export class AdventureBuilder extends React.Component {
         this.props.history.push('/dashboard')
 
       })
-  }
-
-  setValueObject() {
-    let value = {
-      value: this.props.currentNode.question
-    }
-    console.log(value)
-    return value;
   }
 
   render() {

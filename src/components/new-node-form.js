@@ -38,7 +38,7 @@ class NewNodeForm extends React.Component {
     const parentInt = this.props.parentInt;
     const adventureId = this.props.adventureId;
     const parentId = this.props.parentId;
-    let { question, answerA, answerB, answerC, answerD, videoURL, textContent, ending } = values;
+    let {title, question, answerA, answerB, answerC, answerD, videoURL, textContent, ending } = values;
     let newNode = {
       answerA,
       answerB,
@@ -50,7 +50,8 @@ class NewNodeForm extends React.Component {
       parentInt,
       adventureId,
       parentId,
-      ending
+      ending,
+      title,
     };
     return this.props.dispatch(createNode(newNode))
       .then(_res => {
@@ -155,6 +156,13 @@ class NewNodeForm extends React.Component {
           label="Is this an Ending?"
           component={this.renderCheckBox}
           type="checkbox" />
+          <Field
+            className="title"
+            label="New Title"
+            name="title"
+            component={Input}
+            type="text"
+            validate={[required, nonEmpty]} />
         <Field
           className="videoURL"
           label="Video URL (optional)"

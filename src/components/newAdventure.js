@@ -78,8 +78,6 @@ class AdventureForm extends React.Component {
   }
 }
 
-
-
 export default withRouter(reduxForm({
   form: 'Adventure',
 

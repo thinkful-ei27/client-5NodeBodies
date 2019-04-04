@@ -10,7 +10,11 @@ import {
   DELETE_ADVENTURE_ERROR,
   DELETE_ADVENTURE_REQUEST,
   DELETE_ADVENTURE_SUCCESS,
-  TOGGLE_ADVENTURE_DELETING
+  TOGGLE_ADVENTURE_DELETING,
+  EDIT_ADVENTURE_ERROR,
+  EDIT_ADVENTURE_REQUEST,
+  EDIT_ADVENTURE_SUCCESS,
+  TOGGLE_ADVENTURE_EDITING
 } from '../actions/createAdventure'
 
 const initialState = {
@@ -20,12 +24,19 @@ const initialState = {
   adventures: [],
   currentAdventure: null,
   currentNode: null,
-  isDeleting: false
+  isDeleting: false,
+  isEditing: true,
 };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case CREATE_ADVENTURE_REQUEST: {
+      return Object.assign({}, state, {
+        loading: true,
+        error: null
+      });
+    }
+    case EDIT_ADVENTURE_REQUEST: {
       return Object.assign({}, state, {
         loading: true,
         error: null
@@ -78,6 +89,11 @@ export default function reducer(state = initialState, action) {
         isDeleting: !state.isDeleting
       })
     }
+    case TOGGLE_ADVENTURE_EDITING: {
+      return Object.assign({}, state, {
+        isEditing: !state.isEditing
+      })
+    }
     case DELETE_ADVENTURE_REQUEST: {
       return Object.assign({}, state, {
         loading: true,
@@ -91,6 +107,18 @@ export default function reducer(state = initialState, action) {
       });
     }
     case DELETE_ADVENTURE_ERROR: {
+      return Object.assign({}, state, {
+        loading: false,
+        error: action.error
+      });
+    }
+    case EDIT_ADVENTURE_SUCCESS: {
+      return Object.assign({}, state, {
+        loading: false,
+        currentAdventure: action.currentAdventure
+      });
+    }
+    case EDIT_ADVENTURE_ERROR: {
       return Object.assign({}, state, {
         loading: false,
         error: action.error
