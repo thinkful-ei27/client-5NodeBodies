@@ -51,7 +51,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/GraphContainer" component={GraphContainer} />
-          <Route exact path="/landingPage" component={LandingPage} />
+          <Route exact path="/registration" component={LandingPage} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/adventure/headnode" component={CreateHeadNode} />
           <Route exact path="/dashboard" component={Dashboard} />
