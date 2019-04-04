@@ -13,6 +13,7 @@ import StudentLanding from './components/studentLandingPage'
 import GraphContainer from './components/graph-container'
 import WrongTurn from './components/wrongTurn'
 import Home from './components/home'
+import AdventureInfo from './components/adventureInfo'
 import './App.css';
 
 class App extends Component {
@@ -54,6 +55,7 @@ class App extends Component {
           <Route exact path="/adventure" component={AdventureForm} />
           <Route exact path="/adventure/adventurebuilder/:id" component={AdventureBuilder} />
           <Route exact path="/studentlanding" component={StudentLanding} />
+          <Route exact path="/adventure/:id" component={AdventureInfo} />
           <Route component={WrongTurn} />
         </Switch>
       </div>

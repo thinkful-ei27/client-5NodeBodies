@@ -8,6 +8,11 @@ export const toggleAdventureDeleting = () => ({
   type: TOGGLE_ADVENTURE_DELETING
 });
 
+export const TOGGLE_ADVENTURE_EDITING = 'TOGGLE_ADVENTURE_EDITING';
+export const toggleAdventureEditing = () => ({
+  type: TOGGLE_ADVENTURE_EDITING
+});
+
 export const CREATE_ADVENTURE_REQUEST = 'CREATE_ADVENTURE_REQUEST';
 export const createAdventureRequest = () => ({
   type: CREATE_ADVENTURE_REQUEST,
@@ -159,5 +164,45 @@ export const deleteAdventure = adventureId => (dispatch, getState) => {
     })
     .catch(err => {
       dispatch(deleteAdventureError(err))
+    });
+};
+
+export const EDIT_ADVENTURE_REQUEST = 'EDIT_ADVENTURE_REQUEST';
+export const editAdventureRequest = () => ({
+  type: EDIT_ADVENTURE_REQUEST,
+});
+
+export const EDIT_ADVENTURE_SUCCESS = 'EDIT_ADVENTURE_SUCCESS';
+export const editAdventureSuccess = (currentAdventure) => ({
+  type: EDIT_ADVENTURE_SUCCESS,
+  currentAdventure
+});
+
+export const EDIT_ADVENTURE_ERROR = 'EDIT_ADVENTURE_ERROR';
+export const editAdventureError = error => ({
+  type: EDIT_ADVENTURE_ERROR,
+  error
+});
+
+export const editAdventure = adventure => (dispatch, getState) => {
+  dispatch(editAdventureRequest());
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/adventure/${adventure.id}`, {
+    method: 'PUT',
+    headers: {
+      Authorization: `Bearer ${authToken}`,
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(adventure)
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(res => {
+      const headNode = getHeadNodefromAdventure(res);
+      dispatch(setCurrentNode(headNode))
+      return dispatch(editAdventureSuccess(res))
+    })
+    .catch(error => {
+      return dispatch(editAdventureError(error))
     });
 };
