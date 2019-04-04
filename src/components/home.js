@@ -1,9 +1,14 @@
 import React from 'react';
+
 import {  Link } from 'react-router-dom';
+
 
 export default class Home extends React.Component {
   render(){
     return(
+
+     <p> This is the home page!</p>
+
       <div>
         <p>Are you a teacher?</p>
         <Link to="/login">
@@ -20,6 +25,7 @@ export default class Home extends React.Component {
           >Students</button>
         </Link>
       </div>
+
     )
   }
 }

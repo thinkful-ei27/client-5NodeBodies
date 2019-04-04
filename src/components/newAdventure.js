@@ -68,7 +68,79 @@ class AdventureForm extends React.Component {
           placeholder="https://www.youtube.com/embed/dHSQAEam2yc"
           name="startVideoURL"
           component={Input}
+
+          // validate={url({ protocols: ['http', 'https'] })}
+          type="text" />
+            <Field
+          className="textContent"
+          label="Scenario Description for Starting Node"
+          ariaLabel="Scenario Description for Starting Node"
+          placeholder="You are in a situation that requires a choice. What will you do?"
+          name="textContent"
+          component={TextArea}
+          type="text" />
+        <Field
+          className="video"
+          label="Video URL for Starting Node"
+          ariaLabel="Video URL for Starting Node"
+          placeholder="https://www.youtube.com/embed/Mun1dKkc_As"
+          name="videoURL"
+          component={Input}
+          // validate={url({ protocols: ['http', 'https'] })}
+          type="text" />
+        <Field
+          className="question"
+          label="Starting question"
+          placeholder="Where will you start?"
+          ariaLabel="starting question"
+          name="question"
+          component={Input}
+          type="text"
+          validate={[required, nonEmpty]} />
+        <Field
+          className="textContent"
+          label="Optional Password:"
+          ariaLabel="Temporary"
+          name="password"
+          component={Input}
+          placeholder="Not Required"
+          type="text"
+          validate={[isTrimmedPassword]} />
+        <Field
+          className="answerA"
+          label="Answer A"
+          ariaLabel="Answer A"
+          placeholder="Turn Right"
+          name="answerA"
+          component={Input}
+          type="text"
+          validate={[required, nonEmpty]} />
+        <Field
+          className="answerB"
+          label="Answer B"
+          ariaLabel="Answer B"
+          placeholder="Turn Left"
+          name="answerB"
+          component={Input}
+          type="text" />
+        <Field
+          className="answerC"
+          label="Answer C"
+          ariaLabel="Answer C"
+          placeholder="Forge Ahead"
+          name="answerC"
+          component={Input}
+          type="text" />
+        <Field
+          className="answerD"
+          label="Answer D"
+          ariaLabel="Answer D"
+          placeholder="Turn Back"
+          name="answerD"
+          component={Input}
+
           // validate={url({ protocols: ['http', 'https'] })} validation in now being done on the backend
+
           type="text" />
         <button>New Adventure!</button>
       </Form>
