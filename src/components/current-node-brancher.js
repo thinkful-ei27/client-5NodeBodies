@@ -21,37 +21,64 @@ export class CurrentNodeBrancher extends React.Component {
     this.props.dispatch(updateNodeClicked(nodeId))
   }
 
+  
+
+
   render() {
-    if (!this.props.showUpdate) {
-      return (
-        <div className="parentForm">
-          <h2>Current Node</h2>
-          <button className="edit-current-node"
-            onClick={() => this.editClicked()}>Edit Current Node</button>
-          <h3 className="question">{this.props.currentNode.question}</h3>
-          <p>{this.props.currentNode.answerA}</p>
-          <button value='1'
-            onClick={() => this.defineParentPointerForNewNode(1)}>
-            new Branch from answer A
+    let answerB;
+    let answerC;
+    let answerD;
+    if (this.props.currentNode.answerB) {
+      answerB = (<div><p>{this.props.currentNode.answerB}</p>
+        <button
+          className="new-branch below"
+          value='2'
+          onClick={() => this.defineParentPointerForNewNode(2)}>
+          new Branch from answer B
+       </button>
+      </div>)
+    }
+    if (this.props.currentNode.answerC) {
+      answerC = (<div>
+        <p>{this.props.currentNode.answerC}</p>
+        <button
+          className="new-branch below"
+          value='3'
+          onClick={() => this.defineParentPointerForNewNode(3)}>
+          Branch from answer C
          </button>
-          <p>{this.props.currentNode.answerB}</p>
-          <button value='2'
-            onClick={() => this.defineParentPointerForNewNode(2)}>
-            new Branch from answer B
+      </div>)
+    }
+    if (this.props.currentNode.answerD) {
+      answerD = (<div>
+         <p>{this.props.currentNode.answerD}</p>
+        <button
+          className="new-branch below"
+          value='4'
+          onClick={() => this.defineParentPointerForNewNode(4)}>
+          Branch from answer D
          </button>
-          <p>{this.props.currentNode.answerC}</p>
-          <button value='3'
-            onClick={() => this.defineParentPointerForNewNode(3)}>
-            new Branch from answer C
+      </div>)
+    }
+
+    if (!this.props.showUpdate)
+    {return (
+      <div className="parentForm">
+      <h2>Current Question</h2>
+        <p>{this.props.currentNode.count ? `This node has been visited ${this.props.currentNode.count} times` : ""}</p>
+        <h3 className="question">{this.props.currentNode.question}</h3>
+        <p>{this.props.currentNode.answerA}</p>
+        <button
+          className="new-branch below"
+          value='1'
+          onClick={() => this.defineParentPointerForNewNode(1)}>
+          new Branch from answer A
          </button>
-          <p>{this.props.currentNode.answerD}</p>
-          <button value='4'
-            onClick={() => this.defineParentPointerForNewNode(4)}>
-            new Branch from answer D
-         </button>
-        </div>
-      )
-    } else {
+        {answerB}
+        {answerC}
+        {answerD}
+      </div>
+    )}else {
       return (
         <UpdateNodeForm />
       )

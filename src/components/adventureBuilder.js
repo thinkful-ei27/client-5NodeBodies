@@ -6,6 +6,8 @@ import CurrentNodeBrancher from './current-node-brancher';
 import { getAdventureById, toggleAdventureDeleting, deleteAdventure } from '../actions/createAdventure'
 import { setCurrentNode } from '../actions/nodes'
 import GraphContainer from './graph-container'
+import ExistingNodeSelector from './existingNodeSelector';
+import Sidebar from './sidebar';
 
 export class AdventureBuilder extends React.Component {
 
@@ -48,9 +50,14 @@ export class AdventureBuilder extends React.Component {
     if (this.props.parentInt) {
       nodeForm = <NewNodeForm />
     }
+    if (this.props.parentInt && this.props.useExistingNode) {
+      nodeForm = <ExistingNodeSelector />;
+    }
     if (!adventure) {
       return <div className="loading">loading...</div>;
     }
+
+    
     const options = this.props.currentAdventure.nodes.map((node) =>
       <option label={node.question} value={node.id}>{node.question}</option>);
 
@@ -77,12 +84,15 @@ export class AdventureBuilder extends React.Component {
       )
     }
     else {
+
+
       return (
         <div>
           <button className="delete-adventure-toggle" onClick={() => this.displayAdventureDeleting()}>Delete Entire Adventure</button>
-          <select className="nodeSelect"
+          <Sidebar />
+          <select className="node-select"
+            label="Current Question"
             name="nodeSelect"
-            value={this.props.currentNode.id}
             options={options}
             onChange={e => this.changeCurrentNode(e.target.value)}>{options}</select>
           <GraphContainer />
@@ -101,6 +111,7 @@ const mapStateToProps = state => {
     name: `${currentUser.firstName} ${currentUser.lastName}`,
     currentAdventure: state.adventure.currentAdventure,
     parentInt: state.node.parentInt,
+    useExistingNode: state.node.useExistingNode,
     loading: state.adventure.loading,
     currentNode: state.node.currentNode,
     isDeleting: state.adventure.isDeleting

@@ -1,10 +1,11 @@
 import React from 'react';
-import { Form, Field, reduxForm } from 'redux-form';
+import { Form, Field, reduxForm } from 'redux-form';import { url } from 'redux-form-validators'
 import Input from "./input";
 import TextArea from "./textarea";
 import { createAdventure } from '../actions/createAdventure';
-import { required, nonEmpty } from "../utils/validators";
+import { required, nonEmpty, isTrimmedPassword } from "../utils/validators";
 import { withRouter } from 'react-router-dom';
+import Sidebar from "./sidebar";
 
 class AdventureForm extends React.Component {
   onSubmit(values) {
@@ -17,7 +18,9 @@ class AdventureForm extends React.Component {
       answerC,
       answerD,
       startVideoURL,
-      videoURL } = values;
+      videoURL,
+      password } = values;
+      console.log(password);
     let adventure = {
       title,
       startContent,
@@ -28,7 +31,8 @@ class AdventureForm extends React.Component {
       answerC,
       answerD,
       startVideoURL,
-      videoURL
+      videoURL,
+      password
     };
     return this.props.dispatch(createAdventure(adventure))
       .then(newAdventure => {
@@ -45,7 +49,9 @@ class AdventureForm extends React.Component {
         </div>
       );
     }
-    return (<div className="form-field">
+    return (<div>
+      <Sidebar />
+    <div className="form-field">
       <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
         <div>Create a new adventure!</div>
         {error}
@@ -73,17 +79,9 @@ class AdventureForm extends React.Component {
           placeholder="https://www.youtube.com/embed/dHSQAEam2yc"
           name="startVideoURL"
           component={Input}
+          validate={url({ protocols: ['http', 'https'] })}
           type="text" />
-        <Field
-          className="question"
-          label="Starting question"
-          placeholder="Where will you start?"
-          ariaLabel="starting question"
-          name="question"
-          component={Input}
-          type="text"
-          validate={[required, nonEmpty]} />
-        <Field
+            <Field
           className="textContent"
           label="Scenario Description for Starting Node"
           ariaLabel="Scenario Description for Starting Node"
@@ -98,7 +96,26 @@ class AdventureForm extends React.Component {
           placeholder="https://www.youtube.com/embed/Mun1dKkc_As"
           name="videoURL"
           component={Input}
+          validate={url({ protocols: ['http', 'https'] })}
           type="text" />
+        <Field
+          className="question"
+          label="Starting question"
+          placeholder="Where will you start?"
+          ariaLabel="starting question"
+          name="question"
+          component={Input}
+          type="text"
+          validate={[required, nonEmpty]} />
+        <Field
+          className="textContent"
+          label="Optional Password:"
+          ariaLabel="Temporary"
+          name="password"
+          component={Input}
+          placeholder="Not Required"
+          type="text"
+          validate={[isTrimmedPassword]} />
         <Field
           className="answerA"
           label="Answer A"
@@ -134,6 +151,7 @@ class AdventureForm extends React.Component {
           type="text" />
         <button>New Adventure!</button>
       </Form>
+    </div>
     </div>
     )
   }

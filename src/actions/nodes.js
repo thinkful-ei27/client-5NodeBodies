@@ -7,9 +7,20 @@ export const NODE_FORM_WITH_POINTER = 'NODE_FORM_WITH_POINTER';
 export const nodeFormWithPointer = (parentInt) => {
   return ({
     type: NODE_FORM_WITH_POINTER,
-    parentInt, //parent ref object
+    parentInt,
   })
 };
+
+export const STAGE_CHILD_NODE = 'STAGE_CHILD_NODE';
+export const stageChildNode = (node) => ({
+  type: STAGE_CHILD_NODE,
+  node,
+})
+
+export const TOGGLE_CHILD_TYPE = 'TOGGLE_CHILD_TYPE';
+export const toggleChildType = () => ({
+  type: TOGGLE_CHILD_TYPE
+})
 
 export const SET_CURRENT_NODE = 'SET_CURRENT_NODE';
 export const setCurrentNode = (node) => ({
@@ -121,6 +132,28 @@ export const deleteNode = (adventureId, nodeId) => (dispatch, getState) => {
       dispatch(deleteNodeError(err))
     });
 };
+export const linkNodesById = idObjectWithParentInt => (dispatch, getState) => {
+  dispatch(updateNodeRequest())
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/adventure/linkNodes`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${authToken}`,
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(idObjectWithParentInt)
+  })
+    .then(() => {
+      dispatch(getAdventureById(idObjectWithParentInt.adventureId));
+    })
+    .then(() => {
+      // dispatch(updateNodeSuccess())
+    })
+    .catch(err => {
+      dispatch(createNodeError(err))
+    });
+}
+
 
 export const updateNode = node => (dispatch, getState) => {
   dispatch(updateNodeRequest())

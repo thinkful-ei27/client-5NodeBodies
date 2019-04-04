@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { clearAuth } from '../actions/auth';
 import { clearAuthToken } from '../utils/local-storage';
 import { withRouter, Redirect, Link } from 'react-router-dom';
-import './headerbar.css';
 
 export class Headerbar extends React.Component {
   logOut() {
@@ -16,7 +15,7 @@ export class Headerbar extends React.Component {
     // Only render log out button if we are logged in
     let navButtons;
     if (this.props.loggedIn) {
-      navButtons = <div className="nav-buttons">
+      navButtons = <div className="nav-buttons col-6">
         {/* TO-DO: REACT-ROUTER INSTEAD???????????????? */}
         <Link to="/dashboard">
           <button
@@ -30,14 +29,11 @@ export class Headerbar extends React.Component {
           onClick={() => {
             this.logOut()
           }}>Log Out</button>
-        {/*<Link to="/GraphContainer">
-          <button className="graph-button on-right">Graph Button</button>
-      </Link>*/}
       </div>
     }
     return (
-      <header className="header-bar">
-        <h1 className="app-title"
+      <header className="header-bar row">
+        <h1 className="app-title col-6"
         >LearnVenture</h1>
         {navButtons}
       </header>

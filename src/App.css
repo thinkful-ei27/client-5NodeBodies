@@ -1,8 +1,35 @@
+/* Mobile defaults, by default*/
 * {
   box-sizing: border-box;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+}
+
+.adventure-list-item {
+  padding-top: 10px;
+}
+
+.app-title {
+  color: #51646b;
+  display: block;
+  font-weight: 300;
+  font-size: 200%;
+  margin: 0 auto;
+}
+
+.below {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+body {
+  background: #f0f8fa;
+  margin: 0;
+  padding: 0;
+  font-family: Lato, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 button {
@@ -22,8 +49,31 @@ button:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.col-3, .col-4, .col-6, .col-12 {
+
+  /* Gutters:
+   * Each column is padded by half-a-gutter on each side,
+   *
+   * Half a gutter is 10px, 10/960 (context) = 1.041666%
+   *
+   */
+  padding-left: 1.04166666%;
+  padding-right: 1.04166666%;
+  width: 100%;
+}
+
+.current-node-question {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
 .form-field {
-  width: 80%;
+  width: 75%;
   max-width: 600px;
   border: 2px solid white;
   border-radius: 5px;
@@ -33,23 +83,164 @@ button:hover {
   margin-top: 20px;
 }
 
-.login-button {
+.full-screen-only {
+  display: none;
+}
+
+.graph-button {
+  width: 140px;
+}
+
+.header-bar {
+  display: block;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  min-width: 100vw;
+  padding: 0 20px;
+  max-width: 80%;
+  margin: 20px auto;
+}
+
+.home-button {
+  display: inline-block;
+  background: #da8624;
+  border-color: #da8624;
+  width: 60px;
+}
+
+.home-button:hover {
+  background: #da8624;
+}
+
+.login-button, .adventure-link-button {
   display: inline-block;
   background: #da8624;
   border-color: #da8624;
 }
 
-.login-button:hover {
+.login-button:hover, .adventure-link-button:hover {
   background: #da8624;
 }
+
+.login-from-register:hover {
+  transform: scale(1.2);
+}
+
+.logout-button {
+  display: inline-block;
+  width: 70px;
+}
+
+.mobile-only {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+}
+
 .on-left {
   margin-right: 5px;
 }
+
 .on-right {
   margin-left: 5px;
+}
+
+.nav-buttons {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 75%;
+}
+
+.node-select {
+  margin-top: 10px;
+}
+
+.row {
+  max-width: 1000px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+}
+
+/* Clearfix */
+.row::before,
+.row::after {
+  display: table;
+  content: '';
+}
+
+.row::after {
+  clear: both;
 }
 
 ul {
   padding: 0;
   list-style-type: none;
+}
+
+@media only screen and (min-width: 531px) {
+
+	.app-title {
+    font-size: 275%;
+  }
+
+  .mobile-only {
+    display: inline-block;
+    margin-left: 5px;
+  }
+}
+
+@media only screen and (min-width: 640px) {
+
+  .col-3 {
+    width: 25%;
+  }
+
+  /* 4 columns */
+  .col-4 {
+  }
+
+  /* 6 columns */
+  .col-6 {
+
+  }
+
+  /* 12 columns */
+  .col-12 {
+  }
+
+}
+  
+@media only screen and (min-width: 960px) {
+
+  .col-3 {
+    width: 25%;
+  }
+
+  /* 4 columns */
+  .col-4 {
+  }
+
+  /* 6 columns */
+  .col-6 {
+
+  }
+
+  /* 12 columns */
+  .col-12 {
+  }
+
+  .full-screen-only {
+    display: inline-block;
+  }
+
+  .mobile-only {
+    display: none;
+  }
+
+  .not-full-screen {
+    display: none;
+  }
+
 }
