@@ -8,6 +8,7 @@ import { setCurrentNode } from '../actions/nodes'
 import GraphContainer from './graph-container'
 import ExistingNodeSelector from './existingNodeSelector';
 import Sidebar from './sidebar';
+import { toggleAdventureDeleting, deleteAdventure } from '../actions/createAdventure';
 
 export class AdventureBuilder extends React.Component {
 
@@ -22,19 +23,19 @@ export class AdventureBuilder extends React.Component {
     this.props.dispatch(setCurrentNode(node))
   }
   
-  // displayAdventureDeleting() {
-  //   return this.props.dispatch(toggleAdventureDeleting())
-  // }
+  displayAdventureDeleting() {
+    return this.props.dispatch(toggleAdventureDeleting())
+  }
 
-  // onClickDelete() {
-  //   let adId = this.props.currentAdventure.id;
-  //   return this.props.dispatch(deleteAdventure(adId))
-  //     .then(() => {
-  //       this.props.dispatch(toggleAdventureDeleting())
-  //       this.props.history.push('/dashboard')
+  onClickDelete() {
+    let adId = this.props.currentAdventure.id;
+    return this.props.dispatch(deleteAdventure(adId))
+      .then(() => {
+        this.props.dispatch(toggleAdventureDeleting())
+        this.props.history.push('/dashboard')
 
-  //     })
-  // }
+      })
+  }
 
   render() {
     const adventure = this.props.currentAdventure
