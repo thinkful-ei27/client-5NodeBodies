@@ -57,10 +57,16 @@ export const getStudentSearchError = error => ({
   error
 });
 
-export const getStudentAdventure = (id) => (dispatch) => {
+export const getStudentAdventure = (id, password) => (dispatch) => {
+  console.log('getStudentAdventure ran');
+  console.log(id);
   dispatch(getStudentAdventureRequest());
   return fetch(`${API_BASE_URL}/student/adventure/${id}`, {
-    method: 'GET'
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify({password})
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
@@ -97,7 +103,6 @@ export const getStudentAll = () => (dispatch) => {
       return res.json()
     })
     .then(res => {
-      console.log(res);
       return dispatch(getStudentSearchSuccess(res))
     })
     .catch(error => {
@@ -117,7 +122,6 @@ export const getStudentSearch = (searchTerm) => (dispatch) => {
       return res.json()
     })
     .then(res => {
-      console.log(res);
       return dispatch(getStudentSearchSuccess(res))
     })
     .catch(error => {

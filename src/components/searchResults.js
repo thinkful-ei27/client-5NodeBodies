@@ -3,19 +3,19 @@ import { connect } from 'react-redux';
 import { getStudentAdventure } from '../actions/student.js'
 
 
-let inputVal;
+let passwordVal;
 class SearchResults extends React.Component{
 
 
     handleClick(id){
         console.log(id.target.value);
         console.log(id);
-        console.log(inputVal);
-        this.props.dispatch(getStudentAdventure(id));
+        console.log(passwordVal);
+        this.props.dispatch(getStudentAdventure(id.target.value, passwordVal));
     }
     handleChange(e){
         console.log(e.target.value);
-        inputVal = e.target.value;
+        passwordVal = e.target.value;
     }
 
     render(){
@@ -23,7 +23,6 @@ class SearchResults extends React.Component{
         if(this.props.results){
             adventures = this.props.results.map((adventure) => {
             let pass;
-            console.log(adventure);
             if(adventure.hasPassword){
                 pass = <input onChange={e => this.handleChange(e)} type='password' placeholder='Password Required'></input>
             }
