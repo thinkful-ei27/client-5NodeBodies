@@ -44,7 +44,15 @@ class GraphContainer extends React.Component {
             nodeHighlightBehavior: true,
             directed: true,
             d3: {
-                gravity: -300
+                gravity: -300,
+                forceManyBody: true,
+                forceY: function y() {
+                    return 1
+                },
+                "alphaTarget": 0.05,
+
+                "linkLength": 100,
+                "linkStrength": 1
             },
             node: {
                 fontSize: 18,
@@ -55,7 +63,7 @@ class GraphContainer extends React.Component {
                 highlightFontSize: 'same'
             },
             link: {
-                highlightColor: 'lightblue'
+                highlightColor: 'lightblue',
             }
         };
         const cyStyle = {
