@@ -36,9 +36,19 @@ export class AdventureBuilder extends React.Component {
       })
   }
 
+
+  //  what does this do?
   setValueObject() {
-    let value = {
-      value: this.props.currentNode.question
+    let value;
+    if (this.props.currentNode.title) {
+      value = {
+        value: this.props.currentNode.title
+      }
+    } else {
+      // this else is temporary(?) until all nodes have titles
+      value = {
+        value: this.props.currentNode.question
+      }
     }
     console.log(value)
     return value;
@@ -57,9 +67,16 @@ export class AdventureBuilder extends React.Component {
       return <div className="loading">loading...</div>;
     }
 
-    
-    const options = this.props.currentAdventure.nodes.map((node) =>
-      <option label={node.question} value={node.id}>{node.question}</option>);
+
+    const options = this.props.currentAdventure.nodes.map((node) => {
+      if (node.title) {
+        return <option label={node.title} value={node.id}>{node.question}</option>
+      }
+            // this else is temporary(?) until all nodes have titles
+      else {
+        return <option label={node.question} value={node.id}>{node.question}</option>
+      }
+    });
 
     if (this.props.isDeleting) {
       return (
