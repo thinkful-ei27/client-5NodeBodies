@@ -70,6 +70,14 @@ class AdventureForm extends React.Component {
             component={Input}
             // validate={url({ protocols: ['http', 'https'] })}
             type="text" />
+            <Field className="textContent"
+              label="Optional Password:"
+              ariaLabel="Temporary"
+              name="password"
+              component={Input}
+              placeholder="Not Required"
+              type="text"
+              validate={[isTrimmedPassword]} />
           <button>New Adventure!</button>
         </Form>
       </div>

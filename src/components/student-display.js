@@ -40,7 +40,7 @@ export class StudentDisplay extends React.Component {
     if (this.props.currentNode) {
 
       if (this.props.currentNode.startVideoURL) {
-        let videoPlay = this.validateURL(this.props.currentNode.startVideoURL);
+        let videoPlay = this.props.currentNode.startVideoURL;
         nodeVideo = (<iframe title='node-video' width="420" height="315" src={videoPlay}></iframe>)
       }
       if (this.props.currentNode.textContent) {
