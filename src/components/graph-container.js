@@ -62,7 +62,9 @@ class GraphContainer extends React.Component {
             margin: 'auto',
             border: '1px solid lightgreen'
         };
-
+        if (!this.props.nodez){
+            return <div>Loading....</div>
+        } else {
         return (
             <div style={cyStyle}>
                 <Graph
@@ -82,6 +84,7 @@ class GraphContainer extends React.Component {
                 />
             </div>
         );
+        }
     }
 }
 

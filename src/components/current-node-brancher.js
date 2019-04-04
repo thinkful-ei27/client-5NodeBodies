@@ -20,10 +20,7 @@ export class CurrentNodeBrancher extends React.Component {
     // this.props.dispatch(updateCurrentNode(nodeId))
     this.props.dispatch(updateNodeClicked(nodeId))
   }
-
-
-
-
+  
   render() {
     let answerB;
     let answerC;
