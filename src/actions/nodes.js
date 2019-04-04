@@ -57,9 +57,26 @@ export const updateNodeError = error => ({
   error
 });
 
+export const DELETE_NODE_REQUEST = 'DELETE_NODE_REQUEST';
+export const deleteNodeRequest = () => ({
+  type: DELETE_NODE_REQUEST,
+});
+
+export const DELETE_NODE_SUCCESS = 'DELETE_NODE_SUCCESS';
+export const deleteNodeSuccess = (nodeId) => ({
+  type: DELETE_NODE_SUCCESS,
+  nodeId
+});
+
+export const DELETE_NODE_ERROR = 'DELETE_NODE_ERROR';
+export const deleteNodeError = error => ({
+  type: DELETE_NODE_ERROR,
+  error
+});
+
 export const TOGGLE_NODE_DELETING = 'TOGGLE_NODE_DELETING';
 export const toggleNodeDeleting = () => ({
-  type: TOGGLE_NODE_DELETING,
+  type: TOGGLE_NODE_DELETING
 });
 
 export const createNode = node => (dispatch, getState) => {
@@ -85,6 +102,25 @@ export const createNode = node => (dispatch, getState) => {
     });
 };
 
+export const deleteNode = (adventureId, nodeId) => (dispatch, getState) => {
+  dispatch(deleteNodeRequest())
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/adventure/${adventureId}/${nodeId}`, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${authToken}`,
+      'content-type': 'application/json'
+    }
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(res => {
+      dispatch(deleteNodeSuccess())
+    })
+    .catch(err => {
+      dispatch(deleteNodeError(err))
+    });
+};
 
 export const updateNode = node => (dispatch, getState) => {
   dispatch(updateNodeRequest())

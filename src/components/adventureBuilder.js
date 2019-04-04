@@ -49,6 +49,7 @@ export class AdventureBuilder extends React.Component {
         <GraphContainer />
         <CurrentNodeBrancher />
         {nodeForm}
+        <button className="delete-adventure-toggle">Delete Entire Adventure</button>
       </div>
     );
   }

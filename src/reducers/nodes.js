@@ -10,7 +10,10 @@ import {
   UPDATE_NODE_CLICKED,
   // UPDATE_CURRENT_NODE,
   TOGGLE_ENDING,
-  TOGGLE_NODE_DELETING
+  TOGGLE_NODE_DELETING,
+  DELETE_NODE_ERROR,
+  DELETE_NODE_REQUEST,
+  DELETE_NODE_SUCCESS
 } from '../actions/nodes'
 
 const initialState = {
@@ -89,6 +92,23 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         isDeleting: !state.isDeleting
       })
+    }
+    case DELETE_NODE_REQUEST: {
+      return Object.assign({}, state, {
+        loading: true,
+        error: null
+      });
+    }
+    case DELETE_NODE_SUCCESS: {
+      return Object.assign({}, state, {
+        loading: false
+      });
+    }
+    case DELETE_NODE_ERROR: {
+      return Object.assign({}, state, {
+        loading: false,
+        error: action.err
+      });
     }
     default:
       return state

@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import { Field, reduxForm, focus } from 'redux-form';
 import Input from "./input";
 import TextArea from "./textarea";
-// import { createNode } from '../actions/nodes';
+import { deleteNode } from '../actions/nodes';
 import { required, nonEmpty } from "../utils/validators";
 import {
   updateNode,
   updateNodeClicked,
   toggleNodeDeleting,
-  toggleEnding
+  toggleEnding,
+  setCurrentNode
 } from '../actions/nodes'
 import { Checkbox, Form } from 'semantic-ui-react';
 
@@ -23,8 +24,7 @@ class UpdateNodeForm extends React.Component {
           onChange={(e, { checked }) => {
             input.onChange(checked)
             this.toggleIsEnding()
-          }
-          }
+          }}
         />
       </Form.Field>
     );
@@ -32,6 +32,25 @@ class UpdateNodeForm extends React.Component {
   toggleIsEnding() {
     return this.props.dispatch(toggleEnding())
   }
+  toggleNodeDeleting() {
+    console.log('deletingtoggle clicked')
+    return this.props.dispatch(toggleNodeDeleting())
+  }
+
+  onClickDelete() {
+    let nodeId = this.props.currentNodeId;
+    let adId = this.props.adventureId;
+    return this.props.dispatch(deleteNode(adId, nodeId))
+      .then(() => {
+        let head = this.props.nodes[0]
+        this.toggleNodeDeleting()
+        this.props.dispatch(updateNodeClicked())
+        this.props.dispatch(setCurrentNode(head))
+
+      })
+  }
+
+
   onSubmit(values) {
     const parentInt = this.props.parentInt;
     const adventureId = this.props.adventureId;
@@ -54,6 +73,7 @@ class UpdateNodeForm extends React.Component {
     };
     this.props.dispatch(updateNode(newNode))
     this.props.dispatch(updateNodeClicked())
+    this.props.dispatch(setCurrentNode(newNode))
   }
   render() {
     let error;
@@ -139,44 +159,65 @@ class UpdateNodeForm extends React.Component {
     }
 
     // if ending is true... change form to only have a description section
-
-    return (
-      <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-        <h3>add new Child node</h3>
-        <h4>answer that points to this node: {parentAnswer}</h4>
-        {error}
-        {/* radio button to pick ending  */}
-        <Field
-          className="ending"
-          name="ending"
-          label="Is this an Ending?"
-          component={this.renderCheckBox}
-          type="checkbox" />
-        <Field
-          className="videoURL"
-          label="Video URL (optional)"
-          placeholder="http://(videoURL)"
-          name="videoURL"
-          component={Input}
-          type="text" />
-        {questions}
-
-        <button type="submit">Update Node</button>
-        <button onClick={() => updateNodeClicked()}>Cancel</button>
-      </form>)
+    if (this.props.isDeleting) {
+      return (
+        <div className="confirm-delete">
+          <h3>Are you sure you want to delete this Node?</h3>
+          <div className="buttons">
+            <button
+              className="delete-it"
+              type='button'
+              onClick={id => this.onClickDelete(id)}
+            >Delete It
+            </button>
+            <button
+              className="keep-it"
+              type='button'
+              onClick={() => this.toggleNodeDeleting()}
+            >Keep It
+            </button>
+          </div>
+        </div>
+      )
+    } else
+      return (
+        <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+          <h3>add new Child node</h3>
+          <h4>answer that points to this node: {parentAnswer}</h4>
+          {error}
+          {/* radio button to pick ending  */}
+          <Field
+            className="ending"
+            name="ending"
+            label="Is this an Ending?"
+            component={this.renderCheckBox}
+            type="checkbox" />
+          <Field
+            className="videoURL"
+            label="Video URL (optional)"
+            placeholder="http://(videoURL)"
+            name="videoURL"
+            component={Input}
+            type="text" />
+          {questions}
+          <button type="submit">Update Node</button>
+          <button onClick={() => updateNodeClicked()}>Cancel</button>
+          <button className="delete-node-toggle" onClick={() => this.toggleNodeDeleting()}>Delete Node</button>
+        </form>)
   }
 }
-
 
 const mapStateToProps = state => {
 
   return {
+    nodes: state.adventure.currentAdventure.nodes,
     currentNodeId: state.node.currentNode.id,
     parentInt: state.node.parentInt,
     adventureId: state.adventure.currentAdventure.id,
     parentId: state.node.currentNode.id,
     initialValues: Object.assign({}, state.node.currentNode),
-    isEnding: state.node.isEnding
+    isEnding: state.node.isEnding,
+    isDeleting: state.node.isDeleting
   };
 };
 

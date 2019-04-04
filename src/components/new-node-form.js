@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm, focus } from 'redux-form';
 import Input from "./input";
 import TextArea from "./textarea";
-import { createNode, toggleEnding } from '../actions/nodes';
+import { createNode, toggleEnding, setCurrentNode } from '../actions/nodes';
 import { required, nonEmpty } from "../utils/validators";
 import { Checkbox, Form } from 'semantic-ui-react';
 
@@ -47,7 +47,10 @@ class NewNodeForm extends React.Component {
       parentId,
       ending
     };
-    return this.props.dispatch(createNode(newNode));
+    return this.props.dispatch(createNode(newNode))
+      .then(_res => {
+        console.log(_res)
+      })
   }
   render() {
     let error;

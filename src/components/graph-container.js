@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Graph } from 'react-d3-graph';
-import { authError } from '../actions/auth';
 import { setCurrentNode } from '../actions/nodes'
 
 let data = {
@@ -22,6 +21,7 @@ class GraphContainer extends React.Component {
     }
 
     componentWillMount() {
+
         for (let i = 0; i < this.props.nodez.length; i++) {
             data.nodes.push({ id: this.props.nodez[i].id, question: this.props.nodez[i].question })
             if (this.props.nodez[i].pointerA) {
@@ -42,10 +42,9 @@ class GraphContainer extends React.Component {
     render() {
         const myConfig = {
             nodeHighlightBehavior: true,
-            automaticRearrangeAfterDropNode: true,
             directed: true,
             d3: {
-                gravity: -400
+                gravity: -300
             },
             node: {
                 fontSize: 18,
@@ -53,6 +52,7 @@ class GraphContainer extends React.Component {
                 size: 800,
                 highlightStrokeColor: 'blue',
                 labelProperty: 'question',
+                highlightFontSize: 'same'
             },
             link: {
                 highlightColor: 'lightblue'
