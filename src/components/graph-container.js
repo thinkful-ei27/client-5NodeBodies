@@ -23,18 +23,34 @@ class GraphContainer extends React.Component {
     componentWillMount() {
 
         for (let i = 0; i < this.props.nodez.length; i++) {
-            data.nodes.push({ id: this.props.nodez[i].id, question: this.props.nodez[i].question })
-            if (this.props.nodez[i].pointerA) {
-                data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerA })
-            }
-            if (this.props.nodez[i].pointerB) {
-                data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerB })
-            }
-            if (this.props.nodez[i].pointerC) {
-                data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerC })
-            }
-            if (this.props.nodez[i].pointerD) {
-                data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerD })
+            if (i === 0) {
+                data.nodes.push({ id: this.props.nodez[i].id, question: this.props.nodez[i].question, color: 'red', symbolType: "triangle" })
+                if (this.props.nodez[i].pointerA) {
+                    data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerA })
+                }
+                if (this.props.nodez[i].pointerB) {
+                    data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerB })
+                }
+                if (this.props.nodez[i].pointerC) {
+                    data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerC })
+                }
+                if (this.props.nodez[i].pointerD) {
+                    data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerD })
+                }
+            } else {
+                data.nodes.push({ id: this.props.nodez[i].id, question: this.props.nodez[i].question })
+                if (this.props.nodez[i].pointerA) {
+                    data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerA })
+                }
+                if (this.props.nodez[i].pointerB) {
+                    data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerB })
+                }
+                if (this.props.nodez[i].pointerC) {
+                    data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerC })
+                }
+                if (this.props.nodez[i].pointerD) {
+                    data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerD })
+                }
             }
         }
     }
@@ -43,16 +59,13 @@ class GraphContainer extends React.Component {
         const myConfig = {
             nodeHighlightBehavior: true,
             directed: true,
+            automaticRearrangeAfterDropNode: true,
             d3: {
                 gravity: -300,
-                forceManyBody: true,
-                forceY: function y() {
-                    return 1
+                linkLength: 120,
+                forceManyBody: function strength() {
+                    return -1000;
                 },
-                "alphaTarget": 0.05,
-
-                "linkLength": 100,
-                "linkStrength": 1
             },
             node: {
                 fontSize: 18,
@@ -64,6 +77,7 @@ class GraphContainer extends React.Component {
             },
             link: {
                 highlightColor: 'lightblue',
+                strokeWidth: 4
             }
         };
         const cyStyle = {
