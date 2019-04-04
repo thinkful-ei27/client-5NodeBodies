@@ -16,12 +16,17 @@ export class Headerbar extends React.Component {
     let navButtons;
     if (this.props.loggedIn) {
       navButtons = <div className="nav-buttons col-6">
-        {/* TO-DO: REACT-ROUTER INSTEAD???????????????? */}
-        <Link to="/dashboard">
+        <Link to="/">
           <button
             className="home-button on-left"
             type="button"
           >Home</button>
+        </Link>
+        <Link to="/dashboard">
+          <button
+            className="home-button on-left on-right"
+            type="button"
+          >Dashboard</button>
         </Link>
         <button
           className="logout-button on-right on-left"
@@ -29,6 +34,15 @@ export class Headerbar extends React.Component {
           onClick={() => {
             this.logOut()
           }}>Log Out</button>
+      </div>
+    } else {
+      navButtons = <div className="nav-buttons col-6">
+        <Link to="/">
+          <button
+            className="home-button on-left"
+            type="button"
+          >Home</button>
+        </Link>
       </div>
     }
     return (
