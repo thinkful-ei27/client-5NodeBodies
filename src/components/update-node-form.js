@@ -161,7 +161,7 @@ class UpdateNodeForm extends React.Component {
     // if ending is true... change form to only have a description section
     if (this.props.isDeleting) {
       return (
-        <div className="confirm-delete">
+        <div className="confirm-delete-node">
           <h3>Are you sure you want to delete this Node?</h3>
           <div className="buttons">
             <button
