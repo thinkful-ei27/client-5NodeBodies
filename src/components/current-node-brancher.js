@@ -29,8 +29,8 @@ export class CurrentNodeBrancher extends React.Component {
     let answerB;
     let answerC;
     let answerD;
-    if (this.props.currentNode.answerB) {
-      answerB = (<div>
+    if (this.props.currentNode.answerA) {
+      answerA = (<div>
         <p>{this.props.currentNode.answerA}</p>
         <button
           className="new-branch below"
