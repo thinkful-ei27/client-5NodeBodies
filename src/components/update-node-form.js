@@ -49,8 +49,7 @@ class UpdateNodeForm extends React.Component {
 
       })
   }
-
-
+  
   onSubmit(values) {
     const parentInt = this.props.parentInt;
     const adventureId = this.props.adventureId;
@@ -192,6 +191,13 @@ class UpdateNodeForm extends React.Component {
             label="Is this an Ending?"
             component={this.renderCheckBox}
             type="checkbox" />
+             <Field
+            className="title"
+            label="New Title"
+            name="title"
+            component={Input}
+            type="text"
+            validate={[required, nonEmpty]} />
           <Field
             className="videoURL"
             label="Video URL (optional)"

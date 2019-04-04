@@ -23,7 +23,10 @@ class GraphContainer extends React.Component {
     componentWillMount() {
 
         for (let i = 0; i < this.props.nodez.length; i++) {
-            data.nodes.push({ id: this.props.nodez[i].id, question: this.props.nodez[i].question })
+            data.nodes.push({
+                id: this.props.nodez[i].id,
+                title: this.props.nodez[i].title ? this.props.nodez[i].title : this.props.nodez[i].question
+            })
             if (this.props.nodez[i].pointerA) {
                 data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerA })
             }
@@ -51,7 +54,7 @@ class GraphContainer extends React.Component {
                 color: 'lightgreen',
                 size: 800,
                 highlightStrokeColor: 'blue',
-                labelProperty: 'question',
+                labelProperty: 'title',
                 highlightFontSize: 'same'
             },
             link: {
