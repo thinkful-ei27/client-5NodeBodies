@@ -21,20 +21,6 @@ export class AdventureBuilder extends React.Component {
     let node = this.props.currentAdventure.nodes.find(node => node.id === value);
     this.props.dispatch(setCurrentNode(node))
   }
-  
-  displayAdventureDeleting() {
-    return this.props.dispatch(toggleAdventureDeleting())
-  }
-
-  onClickDelete() {
-    let adId = this.props.currentAdventure.id;
-    return this.props.dispatch(deleteAdventure(adId))
-      .then(() => {
-        this.props.dispatch(toggleAdventureDeleting())
-        this.props.history.push('/dashboard')
-
-      })
-  }
 
   render() {
     const adventure = this.props.currentAdventure
@@ -49,20 +35,11 @@ export class AdventureBuilder extends React.Component {
       return <div className="loading">loading...</div>;
     }
 
-    const options = this.props.currentAdventure.nodes.map((node) => {
-      if (node.title) {
-        return <option label={node.title} value={node.id}>{node.question}</option>
-      }
-            // this else is temporary(?) until all nodes have titles
-      else {
-        return <option label={node.question} value={node.id}>{node.question}</option>
-      }
-    });
+    const options = this.props.currentAdventure.nodes.map((node) =>
+      <option label={node.question} value={node.id}>{node.question}</option>);
 
     return (
       <div>
-        <button className="delete-adventure-toggle" onClick={() => this.displayAdventureDeleting()}>Delete Entire Adventure</button>
-        <Sidebar />
         <select className="node-select"
           label="Current Question"
           name="nodeSelect"
