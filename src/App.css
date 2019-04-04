@@ -18,11 +18,6 @@
   margin: 0 auto;
 }
 
-.below {
-  margin-top: 0;
-  margin-bottom: 5px;
-}
-
 body {
   background: #f0f8fa;
   margin: 0;
@@ -54,16 +49,7 @@ code {
     monospace;
 }
 
-.col-3, .col-4, .col-6, .col-12 {
-
-  /* Gutters:
-   * Each column is padded by half-a-gutter on each side,
-   *
-   * Half a gutter is 10px, 10/960 (context) = 1.041666%
-   *
-   */
-  padding-left: 1.04166666%;
-  padding-right: 1.04166666%;
+.col-6 {
   width: 100%;
 }
 
@@ -152,10 +138,6 @@ code {
   max-width: 75%;
 }
 
-.node-select {
-  margin-top: 10px;
-}
-
 .row {
   max-width: 1000px;
   padding-left: 20px;
@@ -174,9 +156,20 @@ code {
   clear: both;
 }
 
+.top-margin {
+  margin-top: 10px;
+  align-content: top;
+}
+
 ul {
   padding: 0;
   list-style-type: none;
+}
+
+.with-border {
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 10px 0;
 }
 
 @media only screen and (min-width: 531px) {
@@ -191,44 +184,14 @@ ul {
   }
 }
 
-@media only screen and (min-width: 640px) {
-
-  .col-3 {
-    width: 25%;
-  }
-
-  /* 4 columns */
-  .col-4 {
-  }
-
-  /* 6 columns */
-  .col-6 {
-
-  }
-
-  /* 12 columns */
-  .col-12 {
-  }
-
-}
   
 @media only screen and (min-width: 960px) {
 
-  .col-3 {
-    width: 25%;
-  }
-
-  /* 4 columns */
-  .col-4 {
-  }
 
   /* 6 columns */
   .col-6 {
-
-  }
-
-  /* 12 columns */
-  .col-12 {
+    float: left;
+    width: 50%;
   }
 
   .full-screen-only {

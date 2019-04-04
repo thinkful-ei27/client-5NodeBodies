@@ -15,7 +15,7 @@ export class Headerbar extends React.Component {
     // Only render log out button if we are logged in
     let navButtons;
     if (this.props.loggedIn) {
-      navButtons = <div className="nav-buttons col-6">
+      navButtons = <div className="nav-buttons">
         {/* TO-DO: REACT-ROUTER INSTEAD???????????????? */}
         <Link to="/dashboard">
           <button 
@@ -32,8 +32,8 @@ export class Headerbar extends React.Component {
       </div>
     }
     return (
-      <header className="header-bar row">
-        <h1 className="app-title col-6"
+      <header className="header-bar">
+        <h1 className="app-title"
         >LearnVenture</h1>
         {navButtons}
       </header>

@@ -31,15 +31,19 @@ export class AdventureBuilder extends React.Component {
     const options = this.props.currentAdventure.nodes.map((node, index) =>
       <option key={node.id} value={index}>{node.question}</option>);
     return (
-      <div>
-        <Sidebar />
-        <select className="node-select"
-          label="Current Question"
-          name="nodeSelect"
-          options={options}
-          onChange={e => this.changeCurrentNode(e.target.value)}>{options}</select>
-        <CurrentNodeBrancher />
-        {nodeForm}
+      <div className="row">
+        <div className="col-6">
+          <Sidebar />
+        </div>
+        <div className="col-6 with-border top-margin">
+          <select className="node-select top-margin"
+            label="Current Question"
+            name="nodeSelect"
+            options={options}
+            onChange={e => this.changeCurrentNode(e.target.value)}>{options}</select>
+          <CurrentNodeBrancher />
+          {nodeForm}
+        </div>
       </div>
     );
   }
