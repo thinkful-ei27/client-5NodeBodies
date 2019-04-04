@@ -2,7 +2,9 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 import { nodeFormWithPointer } from '../actions/nodes';
-
+import { updateNodeClicked } from '../actions/nodes'
+// import { updateCurrentNode } from '../actions/createAdventure'
+import UpdateNodeForm from './update-node-form'
 
 export class CurrentNodeBrancher extends React.Component {
   // if (!props.loggedIn) {
@@ -13,6 +15,13 @@ export class CurrentNodeBrancher extends React.Component {
     return this.props.dispatch(nodeFormWithPointer(parentInt))
   }
 
+  editClicked() {
+    let nodeId = this.props.currentNode.id
+    // this.props.dispatch(updateCurrentNode(nodeId))
+    this.props.dispatch(updateNodeClicked(nodeId))
+  }
+
+  
 
 
   render() {
@@ -52,7 +61,8 @@ export class CurrentNodeBrancher extends React.Component {
       </div>)
     }
 
-    return (
+    if (!this.props.showUpdate)
+    {return (
       <div className="parentForm">
       <h2>Current Question</h2>
         <p>{this.props.currentNode.count ? `This node has been visited ${this.props.currentNode.count} times` : ""}</p>
@@ -68,7 +78,11 @@ export class CurrentNodeBrancher extends React.Component {
         {answerC}
         {answerD}
       </div>
-    )
+    )}else {
+      return (
+        <UpdateNodeForm />
+      )
+    }
   }
 }
 
@@ -77,6 +91,7 @@ const mapStateToProps = (state, props) => ({
   adventureId: state.adventure.adventureId,
   adventure: state.adventure.currentAdventure,
   currentNode: state.node.currentNode,
+  showUpdate: state.node.showUpdate
 });
 
 export default withRouter(connect(mapStateToProps)(CurrentNodeBrancher));

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, withRouter } from 'react-router-dom';
+import { Route, withRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { refreshAuthToken } from './actions/auth';
 import Headerbar from './components/headerbar.js';
@@ -8,8 +8,10 @@ import LandingPage from './components/landing-page';
 import AdventureForm from './components/newAdventure'
 import Dashboard from './components/dashboard'
 import AdventureBuilder from './components/adventureBuilder'
+// import CombinedAdventure from './components/combinedAdventure'
 import StudentLanding from './components/studentLandingPage'
 import GraphContainer from './components/graph-container'
+import WrongTurn from './components/wrongTurn'
 import './App.css';
 
 class App extends Component {
@@ -42,13 +44,16 @@ class App extends Component {
     return (
       <div className="app">
         <Headerbar />
-        <Route exact path="/GraphContainer" component={GraphContainer} />
-        <Route exact path="/" component={LandingPage} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/adventure" component={AdventureForm} />
-        <Route exact path="/adventure/adventurebuilder/:id" component={AdventureBuilder} />
-        <Route exact path="/studentlanding" component={StudentLanding} />
+        <Switch>
+          <Route exact path="/GraphContainer" component={GraphContainer} />
+          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/adventure" component={AdventureForm} />
+          <Route exact path="/adventure/adventurebuilder/:id" component={AdventureBuilder} />
+          <Route exact path="/studentlanding" component={StudentLanding} />
+          <Route component={WrongTurn} />
+        </Switch>
       </div>
     );
   }
