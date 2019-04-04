@@ -57,50 +57,21 @@ export class AdventureBuilder extends React.Component {
       return <div className="loading">loading...</div>;
     }
 
-    
     const options = this.props.currentAdventure.nodes.map((node) =>
       <option label={node.question} value={node.id}>{node.question}</option>);
 
-    if (this.props.isDeleting) {
-      return (
-        <div className="confirm-delete-adventure">
-          <h3>Are you sure you want to delete this Entire Adventure?</h3>
-          <h2>All data will be lost. This cannot be undone</h2>
-          <div className="buttons">
-            <button
-              className="delete-it"
-              type='button'
-              onClick={() => this.onClickDelete()}
-            >Delete It
-            </button>
-            <button
-              className="keep-it"
-              type='button'
-              onClick={() => this.displayAdventureDeleting()}
-            >Keep It
-            </button>
-          </div>
-        </div>
-      )
-    }
-    else {
-
-
-      return (
-        <div>
-          <button className="delete-adventure-toggle" onClick={() => this.displayAdventureDeleting()}>Delete Entire Adventure</button>
-          <Sidebar />
-          <select className="node-select"
-            label="Current Question"
-            name="nodeSelect"
-            options={options}
-            onChange={e => this.changeCurrentNode(e.target.value)}>{options}</select>
-          <GraphContainer />
-          <CurrentNodeBrancher />
-          {nodeForm}
-        </div>
-      );
-    }
+    return (
+      <div>
+        <select className="node-select"
+          label="Current Question"
+          name="nodeSelect"
+          options={options}
+          onChange={e => this.changeCurrentNode(e.target.value)}>{options}</select>
+        <GraphContainer />
+        <CurrentNodeBrancher />
+        {nodeForm}
+      </div>
+    );
   }
 }
 
