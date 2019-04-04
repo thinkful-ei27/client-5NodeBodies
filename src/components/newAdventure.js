@@ -76,7 +76,7 @@ class AdventureForm extends React.Component {
           placeholder="https://www.youtube.com/embed/dHSQAEam2yc"
           name="startVideoURL"
           component={Input}
-          validate={url({ protocols: ['http', 'https'] })}
+          // validate={url({ protocols: ['http', 'https'] })}
           type="text" />
             <Field
           className="textContent"
@@ -93,7 +93,7 @@ class AdventureForm extends React.Component {
           placeholder="https://www.youtube.com/embed/Mun1dKkc_As"
           name="videoURL"
           component={Input}
-          validate={url({ protocols: ['http', 'https'] })}
+          // validate={url({ protocols: ['http', 'https'] })}
           type="text" />
         <Field
           className="question"
