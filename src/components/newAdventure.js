@@ -30,7 +30,11 @@ class AdventureForm extends React.Component {
       startVideoURL,
       videoURL
     };
-    return this.props.dispatch(createAdventure(adventure));
+    return this.props.dispatch(createAdventure(adventure))
+      .then(newAdventure => {
+        let id = newAdventure.id
+        this.props.history.push(`/adventure/adventurebuilder/${id}`)
+      })
   }
   render() {
     let error;
