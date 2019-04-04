@@ -116,7 +116,7 @@ export class StudentDisplay extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    adventure: state.student.adventure[0],
+    adventure: state.student.adventure,
     error: state.student.error,
     loading: state.student.loading,
     currentNode: state.student.currentNode,
