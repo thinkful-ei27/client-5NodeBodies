@@ -22,18 +22,18 @@ export class AdventureBuilder extends React.Component {
     this.props.dispatch(setCurrentNode(node))
   }
   
-  displayAdventureDeleting() {
-    return this.props.dispatch(toggleAdventureDeleting())
-  }
+  // displayAdventureDeleting() {
+  //   return this.props.dispatch(toggleAdventureDeleting())
+  // }
 
   onClickDelete() {
-    let adId = this.props.currentAdventure.id;
-    return this.props.dispatch(deleteAdventure(adId))
-      .then(() => {
-        this.props.dispatch(toggleAdventureDeleting())
-        this.props.history.push('/dashboard')
+    // let adId = this.props.currentAdventure.id;
+    // return this.props.dispatch(deleteAdventure(adId))
+    //   .then(() => {
+    //     this.props.dispatch(toggleAdventureDeleting())
+    //     this.props.history.push('/dashboard')
 
-      })
+    //   })
   }
 
   render() {

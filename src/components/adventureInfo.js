@@ -63,8 +63,12 @@ export class AdventureInfo extends React.Component {
         </div>
       )
     } else if (adventure && adventure.startVideoURL && !this.props.isEditing) {
-      let videoPlay = this.validateURL(this.props.currentNode.videoURL);
-      let nodeVideo = (<iframe title='node-video' width="420" height="315" src={videoPlay}></iframe>)
+      let videoPlay;
+      let nodeVideo;
+      if (this.props.currentNode.videoURL) {
+        videoPlay = this.validateURL(this.props.currentNode.videoURL);
+        nodeVideo = (<iframe title='node-video' width="420" height="315" src={videoPlay}></iframe>)
+      }
       return (
         <div className='adventure-info'>
           <h2 className="adventure-title">{adventure.title}</h2>

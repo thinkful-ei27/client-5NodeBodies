@@ -54,6 +54,7 @@ class GraphContainer extends React.Component {
 
             }
         }
+    }
 
     render() {
         const myConfig = {
