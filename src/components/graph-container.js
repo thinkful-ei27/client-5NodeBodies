@@ -51,9 +51,9 @@ class GraphContainer extends React.Component {
                 if (this.props.nodez[i].pointerD) {
                     data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerD })
                 }
+
             }
         }
-    }
 
     render() {
         const myConfig = {
@@ -72,7 +72,7 @@ class GraphContainer extends React.Component {
                 color: 'lightgreen',
                 size: 800,
                 highlightStrokeColor: 'blue',
-                labelProperty: 'question',
+                labelProperty: 'title',
                 highlightFontSize: 'same'
             },
             link: {

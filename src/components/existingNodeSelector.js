@@ -65,9 +65,15 @@ export class ExistingNodeSelector extends React.Component {
     const currentNodeRemoved = this.filterCurrentNodeFromPotentialChildren()
 
     // generates JSX of options with values that point to index of itself in currentAdventure.nodes
-    const options = currentNodeRemoved.map((node) =>
-      <option key={node.id} value={node.index}>{node.question}</option>);
-
+    const options = currentNodeRemoved.map((node) => {
+      if (node.title) {
+        return <option key={node.id} label={node.title} value={node.index}>{node.question}</option>
+      }
+      // this else is temporary(?) until all nodes have titles
+      else {
+        return <option key={node.id} label={node.question} value={node.index}>{node.question}</option>
+      }
+    });
 
     return (
       <div>
