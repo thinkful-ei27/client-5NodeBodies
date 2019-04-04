@@ -3,6 +3,11 @@ import { API_BASE_URL } from '../config';
 import { normalizeResponseErrors } from '../utils';
 import { setCurrentNode } from './nodes.js'
 
+export const TOGGLE_ADVENTURE_DELETING = 'TOGGLE_ADVENTURE_DELETING';
+export const toggleAdventureDeleting = () => ({
+  type: TOGGLE_ADVENTURE_DELETING
+});
+
 export const CREATE_ADVENTURE_REQUEST = 'CREATE_ADVENTURE_REQUEST';
 export const createAdventureRequest = () => ({
   type: CREATE_ADVENTURE_REQUEST,
@@ -26,6 +31,23 @@ export const getAdventureSuccess = (currentAdventure) => {
 export const CREATE_ADVENTURE_ERROR = 'CREATE_ADVENTURE_ERROR';
 export const createAdventureError = error => ({
   type: CREATE_ADVENTURE_ERROR,
+  error
+});
+
+export const DELETE_ADVENTURE_REQUEST = 'DELETE_ADVENTURE_REQUEST';
+export const deleteAdventureRequest = () => ({
+  type: DELETE_ADVENTURE_REQUEST,
+});
+
+export const DELETE_ADVENTURE_SUCCESS = 'DELETE_ADVENTURE_SUCCESS';
+export const deleteAdventureSuccess = (adventureId) => ({
+  type: DELETE_ADVENTURE_SUCCESS,
+  adventureId
+});
+
+export const DELETE_ADVENTURE_ERROR = 'DELETE_ADVENTURE_ERROR';
+export const deleteAdventureError = error => ({
+  type: DELETE_ADVENTURE_ERROR,
   error
 });
 
@@ -117,5 +139,25 @@ export const getAllAdventures = () => (dispatch, getState) => {
     .then(res => dispatch(getAllAdventuresSuccess(res)))
     .catch(error => {
       dispatch(getAllAdventuresError(error))
+    });
+};
+
+export const deleteAdventure = adventureId => (dispatch, getState) => {
+  dispatch(deleteAdventureRequest())
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/adventure/${adventureId}/`, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${authToken}`,
+      'content-type': 'application/json'
+    }
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(res => {
+      dispatch(deleteAdventureSuccess())
+    })
+    .catch(err => {
+      dispatch(deleteAdventureError(err))
     });
 };
