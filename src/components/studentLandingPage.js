@@ -4,7 +4,7 @@ import { getStudentAdventure, getStudentAll } from '../actions/student';
 import StudentDisplay from './student-display';
 import AdventureSearch from './adventureSearch';
 import SearchResults from './searchResults';
-let inputVal, error;
+let inputVal, error, passwordVal;
 
 export class StudentLanding extends React.Component {
 
@@ -14,12 +14,16 @@ export class StudentLanding extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let adventureId = inputVal
-    this.props.dispatch(getStudentAdventure(adventureId))
+    let adventureId = inputVal;
+    this.props.dispatch(getStudentAdventure(adventureId, passwordVal));
   }
 
   onChange(e) {
-    inputVal = e.target.value
+    inputVal = e.target.value;
+  }
+
+  onChangePassword(e) {
+    passwordVal = e.target.value;
   }
 
   render() {
@@ -46,7 +50,12 @@ export class StudentLanding extends React.Component {
               <input className="adventure-input" type="text" name="adventureId" id="adventureId"
                 placeholder="5c9ceaeac543f706bf407cae"
                 onChange={e => this.onChange(e)}
-              ></input>
+              ></input><br/>
+              <input className="adventure-password" type="password" name="adventurePass"
+                id="adventurePass"
+                placeholder="Password, if it has one"
+                onChange={e => this.onChangePassword(e)}
+              ></input><br/>
               <button className="start-adventure on-right" type="submit">Start Adventure!</button>
             </form>
           </div>
