@@ -49,14 +49,15 @@ class UpdateNodeForm extends React.Component {
 
       })
   }
-  
+
   onSubmit(values) {
     const parentInt = this.props.parentInt;
     const adventureId = this.props.adventureId;
     const parentId = this.props.parentId;
     const nodeId = this.props.currentNodeId
-    let { question, answerA, answerB, answerC, answerD, videoURL, textContent, ending } = values;
+    let { title, question, answerA, answerB, answerC, answerD, videoURL, textContent, ending } = values;
     let newNode = {
+      title,
       answerA,
       answerB,
       answerC,
@@ -181,7 +182,10 @@ class UpdateNodeForm extends React.Component {
     } else
       return (
         <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-          <h3>add new Child node</h3>
+          <h2>This Node: {
+            this.props.currentNode.title ?
+              this.props.currentNode.title :
+              this.props.currentNode.question}</h2>
           <h4>answer that points to this node: {parentAnswer}</h4>
           {error}
           {/* radio button to pick ending  */}
@@ -191,7 +195,7 @@ class UpdateNodeForm extends React.Component {
             label="Is this an Ending?"
             component={this.renderCheckBox}
             type="checkbox" />
-             <Field
+          <Field
             className="title"
             label="New Title"
             name="title"
@@ -216,6 +220,7 @@ class UpdateNodeForm extends React.Component {
 const mapStateToProps = state => {
 
   return {
+    currentNode: state.node.currentNode,
     nodes: state.adventure.currentAdventure.nodes,
     currentNodeId: state.node.currentNode.id,
     parentInt: state.node.parentInt,
