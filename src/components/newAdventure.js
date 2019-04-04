@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Field, reduxForm } from 'redux-form';
-import { url } from 'redux-form-validators'
+// import { url } from 'redux-form-validators'
 import Input from "./input";
 import TextArea from "./textarea";
 import { createAdventure } from '../actions/createAdventure';
@@ -13,32 +13,20 @@ class AdventureForm extends React.Component {
     let { title,
       startContent,
       textContent,
-      question,
-      answerA,
-      answerB,
-      answerC,
-      answerD,
       startVideoURL,
-      videoURL,
       password } = values;
       console.log(password);
     let adventure = {
       title,
       startContent,
       textContent,
-      question,
-      answerA,
-      answerB,
-      answerC,
-      answerD,
       startVideoURL,
-      videoURL,
       password
     };
     return this.props.dispatch(createAdventure(adventure))
-      .then(newAdventure => {
-        let id = newAdventure.id
-        this.props.history.push(`/adventure/adventurebuilder/${id}`)
+      .then(adventurez => {
+        console.log("adventure is", adventurez)
+        this.props.history.push(`/adventure/headnode`)
       })
   }
   render() {
@@ -80,7 +68,8 @@ class AdventureForm extends React.Component {
           placeholder="https://www.youtube.com/embed/dHSQAEam2yc"
           name="startVideoURL"
           component={Input}
-          validate={url({ protocols: ['http', 'https'] })}
+
+          // validate={url({ protocols: ['http', 'https'] })}
           type="text" />
             <Field
           className="textContent"
@@ -97,7 +86,7 @@ class AdventureForm extends React.Component {
           placeholder="https://www.youtube.com/embed/Mun1dKkc_As"
           name="videoURL"
           component={Input}
-          validate={url({ protocols: ['http', 'https'] })}
+          // validate={url({ protocols: ['http', 'https'] })}
           type="text" />
         <Field
           className="question"
@@ -149,6 +138,9 @@ class AdventureForm extends React.Component {
           placeholder="Turn Back"
           name="answerD"
           component={Input}
+
+          // validate={url({ protocols: ['http', 'https'] })} validation in now being done on the backend
+
           type="text" />
         <button>New Adventure!</button>
       </Form>
