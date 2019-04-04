@@ -9,7 +9,6 @@ let data = {
     links: []
 }
 
-
 class GraphContainer extends React.Component {
 
     onClickNode(nodeId) {
@@ -38,7 +37,6 @@ class GraphContainer extends React.Component {
                 data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerD })
             }
         }
-
     }
 
     render() {
@@ -46,7 +44,11 @@ class GraphContainer extends React.Component {
             nodeHighlightBehavior: true,
             automaticRearrangeAfterDropNode: true,
             directed: true,
+            d3: {
+                gravity: -400
+            },
             node: {
+                fontSize: 18,
                 color: 'lightgreen',
                 size: 800,
                 highlightStrokeColor: 'blue',
@@ -56,7 +58,7 @@ class GraphContainer extends React.Component {
                 highlightColor: 'lightblue'
             }
         };
-        let cyStyle = {
+        const cyStyle = {
             margin: 'auto',
             border: '1px solid lightgreen'
         };

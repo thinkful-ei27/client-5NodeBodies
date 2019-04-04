@@ -57,6 +57,11 @@ export const updateNodeError = error => ({
   error
 });
 
+export const TOGGLE_NODE_DELETING = 'TOGGLE_NODE_DELETING';
+export const toggleNodeDeleting = () => ({
+  type: TOGGLE_NODE_DELETING,
+});
+
 export const createNode = node => (dispatch, getState) => {
   dispatch(createNodeRequest())
   const authToken = getState().auth.authToken;
@@ -98,7 +103,7 @@ export const updateNode = node => (dispatch, getState) => {
       console.log("New Node From Backend is: ", res)
       dispatch(getAdventureById(node.adventureId));
     })
-    .then( () => {
+    .then(() => {
       // dispatch(updateNodeSuccess())
     })
     .catch(err => {

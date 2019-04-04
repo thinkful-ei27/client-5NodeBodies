@@ -8,8 +8,9 @@ import {
   UPDATE_NODE_SUCCESS,
   UPDATE_NODE_ERROR,
   UPDATE_NODE_CLICKED,
-  UPDATE_CURRENT_NODE,
-  TOGGLE_ENDING
+  // UPDATE_CURRENT_NODE,
+  TOGGLE_ENDING,
+  TOGGLE_NODE_DELETING
 } from '../actions/nodes'
 
 const initialState = {
@@ -19,6 +20,7 @@ const initialState = {
   parentInt: null,
   currentNode: null,
   showUpdate: false,
+  isDeleting: false,
   isEnding: false
 };
 
@@ -81,6 +83,11 @@ export default function reducer(state = initialState, action) {
     case TOGGLE_ENDING: {
       return Object.assign({}, state, {
         isEnding: !state.isEnding
+      })
+    }
+    case TOGGLE_NODE_DELETING: {
+      return Object.assign({}, state, {
+        isDeleting: !state.isDeleting
       })
     }
     default:
