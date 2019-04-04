@@ -24,7 +24,7 @@ class GraphContainer extends React.Component {
 
         for (let i = 0; i < this.props.nodez.length; i++) {
             if (i === 0) {
-                data.nodes.push({ id: this.props.nodez[i].id, question: this.props.nodez[i].question, color: 'red', symbolType: "triangle" })
+                data.nodes.push({ id: this.props.nodez[i].id,title: this.props.nodez[i].title ? this.props.nodez[i].title : this.props.nodez[i].question, color: 'red', symbolType: "triangle" })
                 if (this.props.nodez[i].pointerA) {
                     data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerA })
                 }
