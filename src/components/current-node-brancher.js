@@ -21,7 +21,7 @@ export class CurrentNodeBrancher extends React.Component {
     this.props.dispatch(updateNodeClicked(nodeId))
   }
 
-  
+
 
 
   render() {
@@ -51,7 +51,7 @@ export class CurrentNodeBrancher extends React.Component {
     }
     if (this.props.currentNode.answerD) {
       answerD = (<div>
-         <p>{this.props.currentNode.answerD}</p>
+        <p>{this.props.currentNode.answerD}</p>
         <button
           className="new-branch below"
           value='4'
@@ -61,24 +61,27 @@ export class CurrentNodeBrancher extends React.Component {
       </div>)
     }
 
-    if (!this.props.showUpdate)
-    {return (
-      <div className="parentForm">
-      <h2>Current Question</h2>
-        <p>{this.props.currentNode.count ? `This node has been visited ${this.props.currentNode.count} times` : ""}</p>
-        <h3 className="question">{this.props.currentNode.question}</h3>
-        <p>{this.props.currentNode.answerA}</p>
-        <button
-          className="new-branch below"
-          value='1'
-          onClick={() => this.defineParentPointerForNewNode(1)}>
-          new Branch from answer A
+    if (!this.props.showUpdate) {
+      return (
+        <div className="parentForm">
+          <h2>Current Question</h2>
+          <button className="edit-current-node"
+            onClick={() => this.editClicked()}>Edit Current Node</button>
+          <p>{this.props.currentNode.count ? `This node has been visited ${this.props.currentNode.count} times` : ""}</p>
+          <h3 className="question">{this.props.currentNode.question}</h3>
+          <p>{this.props.currentNode.answerA}</p>
+          <button
+            className="new-branch below"
+            value='1'
+            onClick={() => this.defineParentPointerForNewNode(1)}>
+            new Branch from answer A
          </button>
-        {answerB}
-        {answerC}
-        {answerD}
-      </div>
-    )}else {
+          {answerB}
+          {answerC}
+          {answerD}
+        </div>
+      )
+    } else {
       return (
         <UpdateNodeForm />
       )
