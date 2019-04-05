@@ -13,6 +13,11 @@ export const toggleAdventureEditing = () => ({
   type: TOGGLE_ADVENTURE_EDITING
 });
 
+export const TOGGLE_ANALYTICS_DISPLAY = 'TOGGLE_ANALYTICS_DISPLAY';
+export const toggleAnalyticsDisplay = () => ({
+  type: TOGGLE_ANALYTICS_DISPLAY
+})
+
 export const CREATE_ADVENTURE_REQUEST = 'CREATE_ADVENTURE_REQUEST';
 export const createAdventureRequest = () => ({
   type: CREATE_ADVENTURE_REQUEST,
