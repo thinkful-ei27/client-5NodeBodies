@@ -1,4 +1,4 @@
-/* Mobile defaults, by default*/
+/* Mobile ƒefaults, by default*/
 * {
   box-sizing: border-box;
   text-align: center;
@@ -41,6 +41,7 @@ button {
   padding: 7px 10px;
   margin-top: 10px;
 }
+
 
 button:hover {
   background: #51646b;
@@ -113,6 +114,13 @@ code {
   background: #da8624;
 }
 
+.input-field {
+  border: none;
+  border-radius: 5px;
+  height: 20px;
+  margin-bottom: 5px;
+}
+
 .login-button, .adventure-link-button {
   display: inline-block;
   background: #da8624;
@@ -144,6 +152,10 @@ code {
 
 .on-right {
   margin-left: 5px;
+}
+
+.on-top {
+  margin-bottom: 5px;
 }
 
 .nav-buttons {
@@ -179,10 +191,37 @@ ul {
   list-style-type: none;
 }
 
+
+/* BASIC CURRENT-NODE-BRANCHER STYLING */
+.brancher-answer, .brancher-pointer{
+  display:inline-block;
+  max-width: 500px;
+  text-align: center;
+  padding: 0px 20px;
+} 
+.brancher-answer p{
+  font-size: 20px;
+}
+
+.wide-button {
+  width: 80px;
+}
+
+.with-border {
+  border: 2px solid white;
+  border-collapse: collapse;
+}
+
 @media only screen and (min-width: 531px) {
 
 	.app-title {
     font-size: 275%;
+  }
+  .col-3 {
+    float: left;
+    width: 50%;
+    height: 150px;
+    align-content: center;
   }
 
   .mobile-only {
@@ -194,7 +233,10 @@ ul {
 @media only screen and (min-width: 640px) {
 
   .col-3 {
-    width: 25%;
+    float: left;
+    width: 30%;
+    height: 150px;
+    align-content: center;
   }
 
   /* 4 columns */
@@ -215,7 +257,9 @@ ul {
 @media only screen and (min-width: 960px) {
 
   .col-3 {
+    float: left;
     width: 25%;
+    display: block;
   }
 
   /* 4 columns */

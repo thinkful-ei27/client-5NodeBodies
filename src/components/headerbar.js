@@ -24,7 +24,7 @@ export class Headerbar extends React.Component {
         </Link>
         <Link to="/dashboard">
           <button
-            className="home-button on-left on-right"
+            className="home-button on-left on-right wide-button"
             type="button"
           >Dashboard</button>
         </Link>

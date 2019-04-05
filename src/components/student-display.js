@@ -16,7 +16,6 @@ export class StudentDisplay extends React.Component {
   restart(adventureId) {
     this.props.dispatch(restartStudentAdventure())
     this.props.dispatch(getStudentAdventure(adventureId))
-    // this.props.dispatch(getStudentAdventure(adventureId))
   }
 
   register() {
@@ -88,7 +87,7 @@ export class StudentDisplay extends React.Component {
             {nodeText}
             <p>Congratulations! This is the end of your LearnVenture.</p>
             <button className="return-to-start" onClick={() => this.restart(this.props.adventure.id)}>Return to Start</button>
-            <p>If you'd like to create your own LearnVenture, <Link to='/'>click here</Link> to create an account</p>
+            <p>If you'd like to create your own LearnVenture, <Link to='/registration'>click here</Link> to create an account</p>
           </div>
         )
       }
@@ -96,9 +95,7 @@ export class StudentDisplay extends React.Component {
       return (
 
         <div>
-          {this.props.currentNode.id}
           {display}
-
         </div>
       )
     } else {
@@ -107,8 +104,10 @@ export class StudentDisplay extends React.Component {
           <h1>{this.props.adventure.title}</h1>
           <p>Created by: {this.props.adventure.creator}</p>
           <h2>{this.props.adventure.startContent}</h2>
-          <iframe title="starting-video" width="420" height="315" src={this.props.adventure.startVideoURL}></iframe>
-          <button onClick={() => this.updateNode(this.props.adventure.head)}>Embark</button>
+          <iframe title="starting-video" width="420" height="315" src={this.props.adventure.startVideoURL}></iframe><br />
+          <button 
+            className="embark-button"
+            onClick={() => this.updateNode(this.props.adventure.head)}>Embark</button>
         </div>
       )
     }
