@@ -14,7 +14,8 @@ import {
   EDIT_ADVENTURE_ERROR,
   EDIT_ADVENTURE_REQUEST,
   EDIT_ADVENTURE_SUCCESS,
-  TOGGLE_ADVENTURE_EDITING
+  TOGGLE_ADVENTURE_EDITING,
+  TOGGLE_ANALYTICS_DISPLAY
 } from '../actions/createAdventure'
 
 const initialState = {
@@ -26,6 +27,7 @@ const initialState = {
   currentNode: null,
   isDeleting: false,
   isEditing: true,
+  showAnalytics: false
 };
 
 export default function reducer(state = initialState, action) {
@@ -123,6 +125,12 @@ export default function reducer(state = initialState, action) {
         loading: false,
         error: action.error
       });
+    }
+    case TOGGLE_ANALYTICS_DISPLAY: {
+      return Object.assign({}, state, {
+        loading: false,
+        showAnalytics: !state.showAnalytics
+      })
     }
     default:
       return state

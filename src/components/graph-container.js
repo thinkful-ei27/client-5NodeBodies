@@ -24,7 +24,7 @@ class GraphContainer extends React.Component {
 
         for (let i = 0; i < this.props.nodez.length; i++) {
             if (i === 0) {
-                data.nodes.push({ id: this.props.nodez[i].id, question: this.props.nodez[i].question, color: 'red', symbolType: "triangle" })
+                data.nodes.push({ id: this.props.nodez[i].id, title: this.props.nodez[i].title ? this.props.nodez[i].title : this.props.nodez[i].question, color: 'red', symbolType: "triangle" })
                 if (this.props.nodez[i].pointerA) {
                     data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerA })
                 }
@@ -38,7 +38,7 @@ class GraphContainer extends React.Component {
                     data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerD })
                 }
             } else {
-                data.nodes.push({ id: this.props.nodez[i].id, question: this.props.nodez[i].question })
+                data.nodes.push({ id: this.props.nodez[i].id, title: this.props.nodez[i].title ? this.props.nodez[i].title : this.props.nodez[i].question })
                 if (this.props.nodez[i].pointerA) {
                     data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerA })
                 }
@@ -85,31 +85,31 @@ class GraphContainer extends React.Component {
             margin: 'auto',
             border: '1px solid lightgreen'
         };
-        if (!this.props.nodez){
+        if (!this.props.nodez) {
             return <div>Loading....</div>
         } else {
-        return (
-            <div style={cyStyle}>
-                <Graph
-                    props={this.props}
-                    id="graph-id" // id is mandatory, if no id is defined rd3g will throw an error
-                    data={data}
-                    config={myConfig}
-                    onClickNode={this.onClickNode}
-                // onRightClickNode={onRightClickNode}
-                // onClickGraph={onClickGraph}
-                // onClickLink={onClickLink}
-                // onRightClickLink={onRightClickLink}
-                // onMouseOverNode={onMouseOverNode}
-                // onMouseOutNode={onMouseOutNode}
-                // onMouseOverLink={onMouseOverLink}
-                // onMouseOutLink={onMouseOutLink}
-                />
-            </div>
-        );
+            return (
+                <div style={cyStyle}>
+                    <Graph
+                        props={this.props}
+                        id="graph-id" // id is mandatory, if no id is defined rd3g will throw an error
+                        data={data}
+                        config={myConfig}
+                        onClickNode={this.onClickNode}
+                    // onRightClickNode={onRightClickNode}
+                    // onClickGraph={onClickGraph}
+                    // onClickLink={onClickLink}
+                    // onRightClickLink={onRightClickLink}
+                    // onMouseOverNode={onMouseOverNode}
+                    // onMouseOutNode={onMouseOutNode}
+                    // onMouseOverLink={onMouseOverLink}
+                    // onMouseOutLink={onMouseOutLink}
+                    />
+                </div>
+            );
         }
     }
-    }
+}
 
 
 const mapStateToProps = state => ({
