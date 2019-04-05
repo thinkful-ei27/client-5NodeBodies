@@ -7,25 +7,25 @@ let data = {
     nodes: [],
     links: []
 }
-let reRender = false;
+
 class GraphContainer extends React.Component {
 
     onClickNode(nodeId) {
-
         let nodeArr = this.props.nodez.filter((node) => node.id === nodeId)
         this.props.dispatch(setCurrentNode(nodeArr[0]))
         console.log("reRender is: ", this.props.reRender)
         this.props.dispatch(reRenderGraph())
+        }
         
-    }
 
     getFullNode(nodeId) { //get full node is outside of the class due to *this* being binded to the graph
         const nodeArr = this.props.nodez.filter((node) => node.id === nodeId)
         return nodeArr[0]
     }
 
-    componentWillMount() {
-
+    populateGraph() {
+        data.nodes = [];
+        data.links = [];
         for (let i = 0; i < this.props.nodez.length; i++) {
             if (i === 0) {
                 data.nodes.push({ id: this.props.nodez[i].id, title: this.props.nodez[i].title ? this.props.nodez[i].title : this.props.nodez[i].question, color: 'red', symbolType: "triangle" })
@@ -58,6 +58,10 @@ class GraphContainer extends React.Component {
 
             }
         }
+    }
+
+    componentWillMount() {
+       this.populateGraph()
     }
 
     render() {
@@ -145,5 +149,5 @@ const mapStateToProps = state => ({
     reRender : state.adventure.reRender
 })
 
-connect(mapStateToProps)(Graph)
+// connect(mapStateToProps)(Graph)
 export default connect(mapStateToProps)(GraphContainer);
