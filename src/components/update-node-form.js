@@ -15,6 +15,7 @@ import {
 import { Checkbox, Form } from 'semantic-ui-react';
 
 class UpdateNodeForm extends React.Component {
+  
   componentDidMount() {
     const currentNodeEndingValue = this.props.currentNode.ending;
     const stateIsEndingValue = this.props.isEnding;
@@ -22,21 +23,6 @@ class UpdateNodeForm extends React.Component {
       this.toggleIsEnding()
     }
   }
-
-  renderCheckBox = ({ input, label }) => {
-    return (
-      <Form.Field>
-        <Checkbox
-          label={label}
-          checked={input.value ? true : false}
-          onChange={(e, { checked }) => {
-            input.onChange(checked)
-            this.toggleIsEnding()
-          }}
-        />
-      </Form.Field>
-    );
-  };
   toggleIsEnding() {
     return this.props.dispatch(toggleEnding())
   }
@@ -54,10 +40,8 @@ class UpdateNodeForm extends React.Component {
         this.toggleNodeDeleting()
         this.props.dispatch(updateNodeClicked())
         this.props.dispatch(setCurrentNode(head))
-
       })
   }
-
   onSubmit(values) {
     const parentInt = this.props.parentInt;
     const adventureId = this.props.adventureId;
@@ -83,6 +67,25 @@ class UpdateNodeForm extends React.Component {
     this.props.dispatch(updateNodeClicked())
     this.props.dispatch(setCurrentNode(newNode))
   }
+
+  renderCheckBox = ({ input, label }) => {
+    return (
+      <Form.Field>
+        <Checkbox
+          label={label}
+          checked={input.value ? true : false}
+          onChange={(e, { checked }) => {
+            input.onChange(checked)
+            this.toggleIsEnding()
+          }}
+        />
+      </Form.Field>
+    );
+  };
+ 
+
+
+  
   render() {
     let error;
     if (this.props.error) {
@@ -92,6 +95,8 @@ class UpdateNodeForm extends React.Component {
         </div>
       );
     }
+
+    // Used to display which parent points to this node only
     let parentAnswer;
     if (this.props.parentInt === 1) {
       parentAnswer = this.props.currentNode.answerA
@@ -106,7 +111,9 @@ class UpdateNodeForm extends React.Component {
       parentAnswer = this.props.currentNode.answerD
     }
 
+
     let questions;
+
     if (this.props.isEnding) {
       questions = (
         <Field

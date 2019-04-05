@@ -54,6 +54,11 @@ code {
     monospace;
 }
 
+.buttons{
+
+  margin-bottom: 50px;
+}
+
 .col-3, .col-4, .col-6, .col-12 {
 
   /* Gutters:
