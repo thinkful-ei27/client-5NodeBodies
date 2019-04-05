@@ -15,14 +15,6 @@ import {
 import { Checkbox, Form } from 'semantic-ui-react';
 
 class UpdateNodeForm extends React.Component {
-
-  // componentDidMount() {
-  //   const currentNodeEndingValue = this.props.currentNode.ending;
-  //   const stateIsEndingValue = this.props.isEnding;
-  //   if (currentNodeEndingValue !== stateIsEndingValue) {
-  //     this.toggleIsEnding()
-  //   }
-  // }
   
   toggleIsEnding() {
     return this.props.dispatch(toggleEnding())
