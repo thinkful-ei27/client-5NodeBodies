@@ -135,6 +135,10 @@ export const getAllAdventuresError = error => ({
   error
 });
 
+export const RERENDER_GRAPH = 'RERENDER_GRAPH ';
+export const reRenderGraph = () => ({
+  type: RERENDER_GRAPH,
+});
 export const getAllAdventures = () => (dispatch, getState) => {
   dispatch(createAdventureRequest());
   const authToken = getState().auth.authToken;

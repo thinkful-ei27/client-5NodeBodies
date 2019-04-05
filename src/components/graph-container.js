@@ -2,20 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Graph } from 'react-d3-graph';
 import { setCurrentNode } from '../actions/nodes'
-
+import { reRenderGraph } from '../actions/createAdventure'
 let data = {
     nodes: [],
     links: []
 }
-let reRender;
+let reRender = false;
 class GraphContainer extends React.Component {
 
     onClickNode(nodeId) {
-        // if (reRender) {
-        //     reRender = false :
-        // }
+
         let nodeArr = this.props.nodez.filter((node) => node.id === nodeId)
         this.props.dispatch(setCurrentNode(nodeArr[0]))
+        console.log("reRender is: ", this.props.reRender)
+        this.props.dispatch(reRenderGraph())
         
     }
 
@@ -92,25 +92,47 @@ class GraphContainer extends React.Component {
         if (!this.props.nodez) {
             return <div>Loading....</div>
         } else {
-            return (
-                <div style={cyStyle}>
-                    <Graph
-                        props={this.props}
-                        id="graph-id" // id is mandatory, if no id is defined rd3g will throw an error
-                        data={data}
-                        config={myConfig}
-                        onClickNode={this.onClickNode}
-                    // onRightClickNode={onRightClickNode}
-                    // onClickGraph={onClickGraph}
-                    // onClickLink={onClickLink}
-                    // onRightClickLink={onRightClickLink}
-                    // onMouseOverNode={onMouseOverNode}
-                    // onMouseOutNode={onMouseOutNode}
-                    // onMouseOverLink={onMouseOverLink}
-                    // onMouseOutLink={onMouseOutLink}
-                    />
-                </div>
-            );
+            if (this.props.reRender) {
+                return (
+                    <div style={cyStyle}>
+                        <Graph
+                            props={this.props}
+                            id="graph-id" // id is mandatory, if no id is defined rd3g will throw an error
+                            data={data}
+                            config={myConfig}
+                            onClickNode={this.onClickNode}
+                        // onRightClickNode={onRightClickNode}
+                        // onClickGraph={onClickGraph}
+                        // onClickLink={onClickLink}
+                        // onRightClickLink={onRightClickLink}
+                        // onMouseOverNode={onMouseOverNode}
+                        // onMouseOutNode={onMouseOutNode}
+                        // onMouseOverLink={onMouseOverLink}
+                        // onMouseOutLink={onMouseOutLink}
+                        />
+                    </div>
+                );
+            } else {
+                return (
+                    <div style={cyStyle}>
+                        <Graph
+                            props={this.props}
+                            id="graph-id" // id is mandatory, if no id is defined rd3g will throw an error
+                            data={data}
+                            config={myConfig}
+                            onClickNode={this.onClickNode}
+                        // onRightClickNode={onRightClickNode}
+                        // onClickGraph={onClickGraph}
+                        // onClickLink={onClickLink}
+                        // onRightClickLink={onRightClickLink}
+                        // onMouseOverNode={onMouseOverNode}
+                        // onMouseOutNode={onMouseOutNode}
+                        // onMouseOverLink={onMouseOverLink}
+                        // onMouseOutLink={onMouseOutLink}
+                        />
+                    </div>
+                );
+            }
         }
     }
 }
@@ -120,6 +142,7 @@ const mapStateToProps = state => ({
     nodez: state.adventure.currentAdventure.nodes,
     showUpdate: state.node.showUpdate,
     currentNode: state.node.currentNode,
+    reRender : state.adventure.reRender
 })
 
 connect(mapStateToProps)(Graph)

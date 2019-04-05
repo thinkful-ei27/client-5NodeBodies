@@ -15,7 +15,8 @@ import {
   EDIT_ADVENTURE_REQUEST,
   EDIT_ADVENTURE_SUCCESS,
   TOGGLE_ADVENTURE_EDITING,
-  TOGGLE_ANALYTICS_DISPLAY
+  TOGGLE_ANALYTICS_DISPLAY,
+  RERENDER_GRAPH
 } from '../actions/createAdventure'
 
 const initialState = {
@@ -27,7 +28,8 @@ const initialState = {
   currentNode: null,
   isDeleting: false,
   isEditing: true,
-  showAnalytics: false
+  showAnalytics: false,
+  reRender: false
 };
 
 export default function reducer(state = initialState, action) {
@@ -47,6 +49,11 @@ export default function reducer(state = initialState, action) {
     case UPDATE_CURRENT_NODE: {
       return Object.assign({}, state, {
         currentNode: state.currentAdventure.nodes.filter(node => node.id === action.nodeId)
+      });
+    }
+    case RERENDER_GRAPH: {
+      return Object.assign({}, state, {
+        reRender: !state.reRender
       });
     }
     case CREATE_ADVENTURE_SUCCESS: {
