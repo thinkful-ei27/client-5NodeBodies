@@ -4,7 +4,7 @@ import requiresLogin from './requires-login';
 import NewNodeForm from './new-node-form';
 import CurrentNodeBrancher from './current-node-brancher';
 import { getAdventureById } from '../actions/createAdventure'
-import { setCurrentNode } from '../actions/nodes'
+import { setCurrentNode, toggleUpdateForm } from '../actions/nodes'
 import GraphContainer from './graph-container'
 import ExistingNodeSelector from './existingNodeSelector';
 import Sidebar from './sidebar';
@@ -15,7 +15,9 @@ export class AdventureBuilder extends React.Component {
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.dispatch(getAdventureById(id))
-    // clear new node form (parent int)
+    if(this.props.showUpdate === true){
+      this.props.dispatch(toggleUpdateForm())
+    }
   }
 
   changeCurrentNode(value) {
@@ -64,7 +66,8 @@ const mapStateToProps = state => {
     useExistingNode: state.node.useExistingNode,
     loading: state.adventure.loading,
     currentNode: state.node.currentNode,
-    isDeleting: state.adventure.isDeleting
+    isDeleting: state.adventure.isDeleting,
+    showUpdate: state.node.showUpdate
   };
 };
 

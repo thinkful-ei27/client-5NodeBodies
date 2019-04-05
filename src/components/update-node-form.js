@@ -7,7 +7,7 @@ import { deleteNode } from '../actions/nodes';
 import { required, nonEmpty } from "../utils/validators";
 import {
   updateNode,
-  updateNodeClicked,
+  toggleUpdateForm,
   toggleNodeDeleting,
   toggleEnding,
   setCurrentNode
@@ -15,26 +15,17 @@ import {
 import { Checkbox, Form } from 'semantic-ui-react';
 
 class UpdateNodeForm extends React.Component {
-  renderCheckBox = ({ input, label }) => {
-    return (
-      <Form.Field>
-        <Checkbox
-          label={label}
-          checked={input.value ? true : false}
-          onChange={(e, { checked }) => {
-            input.onChange(checked)
-            this.toggleIsEnding()
-          }}
-        />
-      </Form.Field>
-    );
-  };
+  
   toggleIsEnding() {
     return this.props.dispatch(toggleEnding())
   }
   toggleNodeDeleting() {
     console.log('deletingtoggle clicked')
     return this.props.dispatch(toggleNodeDeleting())
+  }
+
+  cancelUpdate() {
+    return this.props.dispatch(toggleUpdateForm())
   }
 
   onClickDelete() {
@@ -44,12 +35,9 @@ class UpdateNodeForm extends React.Component {
       .then(() => {
         let head = this.props.nodes[0]
         this.toggleNodeDeleting()
-        this.props.dispatch(updateNodeClicked())
         this.props.dispatch(setCurrentNode(head))
-
       })
   }
-
   onSubmit(values) {
     const parentInt = this.props.parentInt;
     const adventureId = this.props.adventureId;
@@ -72,9 +60,23 @@ class UpdateNodeForm extends React.Component {
       ending
     };
     this.props.dispatch(updateNode(newNode))
-    this.props.dispatch(updateNodeClicked())
-    this.props.dispatch(setCurrentNode(newNode))
   }
+
+  renderCheckBox = ({ input, label }) => {
+    return (
+      <Form.Field>
+        <Checkbox
+          label={label}
+          checked={input.value ? true : false}
+          onChange={(e, { checked }) => {
+            input.onChange(checked)
+            this.toggleIsEnding()
+          }}
+        />
+      </Form.Field>
+    );
+  };
+
   render() {
     let error;
     if (this.props.error) {
@@ -84,6 +86,8 @@ class UpdateNodeForm extends React.Component {
         </div>
       );
     }
+
+    // Used to display which parent points to this node only
     let parentAnswer;
     if (this.props.parentInt === 1) {
       parentAnswer = this.props.currentNode.answerA
@@ -98,7 +102,10 @@ class UpdateNodeForm extends React.Component {
       parentAnswer = this.props.currentNode.answerD
     }
 
+    // what questions variable is dependent upon whether current node being edited is 
+    // an ending or not
     let questions;
+
     if (this.props.isEnding) {
       questions = (
         <Field
@@ -161,7 +168,7 @@ class UpdateNodeForm extends React.Component {
       )
     }
 
-    // if ending is true... change form to only have a description section
+    // renders the delete warning and button only, with a go back button
     if (this.props.isDeleting) {
       return (
         <div className="confirm-delete-node">
@@ -182,41 +189,44 @@ class UpdateNodeForm extends React.Component {
           </div>
         </div>
       )
-    } else
+    } 
+    // render the update node form 
+    else
       return (
-        <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-          <h2>This Node: {
-            this.props.currentNode.title ?
-              this.props.currentNode.title :
-              this.props.currentNode.question}</h2>
-          <h4>answer that points to this node: {parentAnswer}</h4>
-          {error}
-          {/* radio button to pick ending  */}
-          <Field
-            className="ending"
-            name="ending"
-            label="Is this an Ending?"
-            component={this.renderCheckBox}
-            type="checkbox" />
-          <Field
-            className="title input-field"
-            label="New Title"
-            name="title"
-            component={Input}
-            type="text"
-            validate={[required, nonEmpty]} />
-          <Field
-            className="videoURL input-field"
-            label="Video URL (optional)"
-            placeholder="http://(videoURL)"
-            name="videoURL"
-            component={Input}
-            type="text" />
-          {questions}
-          <button type="submit">Update Node</button>
-          <button onClick={() => updateNodeClicked()}>Cancel</button>
+        <div className='update-form-container'>
+          <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+            <h2>This Node: {
+              this.props.currentNode.title ?
+                this.props.currentNode.title :
+                this.props.currentNode.question}</h2>
+            <h4>answer that points to this node: {parentAnswer}</h4>
+            {error}
+            <Field
+              className="ending"
+              name="ending"
+              label="Is this an Ending?"
+              component={this.renderCheckBox}
+              type="checkbox" />
+            <Field
+              className="title input-field"
+              label="New Title"
+              name="title"
+              component={Input}
+              type="text"
+              validate={[required, nonEmpty]} />
+            <Field
+              className="videoURL input-field"
+              label="Video URL (optional)"
+              placeholder="http://(videoURL)"
+              name="videoURL"
+              component={Input}
+              type="text" />
+            {questions}
+            <button type="submit">Update Node</button>
+          </form>
+          <button onClick={() => this.cancelUpdate()}>Cancel</button>
           <button className="delete-node-toggle" onClick={() => this.toggleNodeDeleting()}>Delete Node</button>
-        </form>)
+        </div>)
   }
 }
 
