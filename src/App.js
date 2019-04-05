@@ -12,6 +12,9 @@ import AdventureBuilder from './components/adventureBuilder'
 import StudentLanding from './components/studentLandingPage'
 import GraphContainer from './components/graph-container'
 import WrongTurn from './components/wrongTurn'
+import Home from './components/home'
+import CreateHeadNode from './components/create-head-node'
+
 import AdventureInfo from './components/adventureInfo'
 import './App.css';
 
@@ -46,9 +49,11 @@ class App extends Component {
       <div className="app">
         <Headerbar />
         <Switch>
+          <Route exact path="/" component={Home} />
           <Route exact path="/GraphContainer" component={GraphContainer} />
-          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/landingPage" component={LandingPage} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/adventure/headnode" component={CreateHeadNode} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/adventure" component={AdventureForm} />
           <Route exact path="/adventure/adventurebuilder/:id" component={AdventureBuilder} />
