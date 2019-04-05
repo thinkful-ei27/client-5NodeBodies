@@ -7,6 +7,8 @@ export class ExistingNodeSelector extends React.Component {
 
   componentDidMount() {
     const currentNodeRemoved = this.filterCurrentNodeFromPotentialChildren()
+    //  this dispatch blocks against staged child node being null, and if there is only one value 
+    //  to select from, you cannot select it.
     this.props.dispatch(stageChildNode(currentNodeRemoved[0]))
   }
 
