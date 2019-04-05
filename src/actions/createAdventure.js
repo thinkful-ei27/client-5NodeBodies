@@ -195,8 +195,9 @@ export const editAdventureError = error => ({
 
 export const editAdventure = adventure => (dispatch, getState) => {
   dispatch(editAdventureRequest());
+  let id = getState().adventure.currentAdventure.id;
   const authToken = getState().auth.authToken;
-  return fetch(`${API_BASE_URL}/adventure/${adventure.id}`, {
+  return fetch(`${API_BASE_URL}/adventure/${id}`, {
     method: 'PUT',
     headers: {
       Authorization: `Bearer ${authToken}`,
