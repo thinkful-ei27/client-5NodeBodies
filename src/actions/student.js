@@ -18,7 +18,6 @@ export const getStudentAdventureError = error => ({
   error
 });
 
-
 export const GET_STUDENT_CURRENTNODE_REQUEST = 'GET_STUDENT_CURRENTNODE_REQUEST';
 export const getStudentCurrentNodeRequest = () => ({
   type: GET_STUDENT_CURRENTNODE_REQUEST,
@@ -36,11 +35,38 @@ export const getStudentCurrentNodeError = error => ({
   error
 });
 
-export const getStudentAdventure = (id) => (dispatch) => {
-  console.log('getStudentAdventure Ran')
+export const RESTART_STUDENT_ADVENTURE = 'RESTART_STUDENT_ADVENTURE'
+export const restartStudentAdventure = () => ({
+  type: RESTART_STUDENT_ADVENTURE
+})
+
+export const GET_STUDENT_SEARCH_REQUEST = 'GET_STUDENT_SEARCH_REQUEST';
+export const getStudentSearchRequest = () => ({
+  type: GET_STUDENT_SEARCH_REQUEST,
+});
+
+export const GET_STUDENT_SEARCH_SUCCESS = 'GET_STUDENT_SEARCH_SUCCESS';
+export const getStudentSearchSuccess = results => ({
+  type: GET_STUDENT_SEARCH_SUCCESS,
+  results
+});
+
+export const GET_STUDENT_SEARCH_ERROR = 'GET_STUDENT_SEARCH_ERROR';
+export const getStudentSearchError = error => ({
+  type: GET_STUDENT_SEARCH_ERROR,
+  error
+});
+
+export const getStudentAdventure = (id, password) => (dispatch) => {
+  console.log('getStudentAdventure ran');
+  console.log(id);
   dispatch(getStudentAdventureRequest());
   return fetch(`${API_BASE_URL}/student/adventure/${id}`, {
-    method: 'GET'
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify({password})
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
@@ -51,17 +77,54 @@ export const getStudentAdventure = (id) => (dispatch) => {
 };
 
 export const getStudentCurrentNode = (adventureId, nodeId) => (dispatch) => {
-  console.log('getStudentCurrentNode Ran')
   dispatch(getStudentCurrentNodeRequest());
   return fetch(`${API_BASE_URL}/student/${adventureId}/${nodeId}`, {
     method: 'GET'
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .then(([res]) => {
-        console.log(res);
-        dispatch(getStudentCurrentNodeSuccess(res))})
+    .then(res => {
+      dispatch(getStudentCurrentNodeSuccess(res))
+    })
     .catch(error => {
       dispatch(getStudentCurrentNodeError(error))
     });
 };
+
+export const getStudentAll = () => (dispatch) => {
+  dispatch(getStudentSearchRequest());
+  return fetch(`${API_BASE_URL}/student/search`, {
+    method: 'GET'
+  })
+    .then(res => {
+      return normalizeResponseErrors(res)
+    })
+    .then(res => {
+      return res.json()
+    })
+    .then(res => {
+      return dispatch(getStudentSearchSuccess(res))
+    })
+    .catch(error => {
+      return dispatch(getStudentSearchError(error));
+    })
+}
+
+export const getStudentSearch = (searchTerm) => (dispatch) => {
+  dispatch(getStudentSearchRequest());
+  return fetch(`${API_BASE_URL}/student/search/${searchTerm}`, {
+    method: 'GET'
+  })
+    .then(res => {
+      return normalizeResponseErrors(res)
+    })
+    .then(res => {
+      return res.json()
+    })
+    .then(res => {
+      return dispatch(getStudentSearchSuccess(res))
+    })
+    .catch(error => {
+      return dispatch(getStudentSearchError(error));
+    })
+}

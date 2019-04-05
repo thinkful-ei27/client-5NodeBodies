@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
-import { Route, withRouter } from 'react-router-dom';
+import { Route, withRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { refreshAuthToken } from './actions/auth';
 import Headerbar from './components/headerbar.js';
 import Login from './components/login.js';
-import RegisterForm from './components/registration';
+import LandingPage from './components/landing-page';
 import AdventureForm from './components/newAdventure'
 import Dashboard from './components/dashboard'
 import AdventureBuilder from './components/adventureBuilder'
+// import CombinedAdventure from './components/combinedAdventure'
 import StudentLanding from './components/studentLandingPage'
+import GraphContainer from './components/graph-container'
+import WrongTurn from './components/wrongTurn'
+import Home from './components/home'
+import CreateHeadNode from './components/create-head-node'
+
+import AdventureInfo from './components/adventureInfo'
 import './App.css';
-import adventureBuilder from './components/adventureBuilder';
 
 class App extends Component {
   componentDidUpdate(prevProps) {
@@ -42,12 +48,19 @@ class App extends Component {
     return (
       <div className="app">
         <Headerbar />
-        <Route exact path="/" component={RegisterForm} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/adventure" component={AdventureForm} />
-        <Route exact path="/adventure/adventurebuilder/:id" component={AdventureBuilder} />
-        <Route exact path="/studentlanding" component={StudentLanding} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/GraphContainer" component={GraphContainer} />
+          <Route exact path="/registration" component={LandingPage} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/adventure/headnode" component={CreateHeadNode} />
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/adventure" component={AdventureForm} />
+          <Route exact path="/adventure/adventurebuilder/:id" component={AdventureBuilder} />
+          <Route exact path="/studentlanding" component={StudentLanding} />
+          <Route exact path="/adventure/:id" component={AdventureInfo} />
+          <Route component={WrongTurn} />
+        </Switch>
       </div>
     );
   }

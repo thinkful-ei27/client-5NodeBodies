@@ -1,19 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getStudentAdventure } from '../actions/student'
-import StudentDisplay from './student-display'
-
-let inputVal, error;
+import { getStudentAdventure, getStudentAll } from '../actions/student';
+import StudentDisplay from './student-display';
+import AdventureSearch from './adventureSearch';
+import SearchResults from './searchResults';
+let inputVal, error, passwordVal;
 
 export class StudentLanding extends React.Component {
+
+  componentDidMount(){
+      this.props.dispatch(getStudentAll());
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    let adventureId = inputVal
-    this.props.dispatch(getStudentAdventure(adventureId))
+    let adventureId = inputVal;
+    this.props.dispatch(getStudentAdventure(adventureId, passwordVal));
   }
 
   onChange(e) {
-    inputVal = e.target.value
+    inputVal = e.target.value;
+  }
+
+  onChangePassword(e) {
+    passwordVal = e.target.value;
   }
 
   render() {
@@ -37,13 +47,20 @@ export class StudentLanding extends React.Component {
           <div className="register-adventure">
             <form onSubmit={e => this.handleSubmit(e)}>
               {error}
-              <input className="adventure-input" type="text" name="adventureId" id="adventureId"
+              <input className="adventure-input input-field" type="text" name="adventureId" id="adventureId"
                 placeholder="5c9ceaeac543f706bf407cae"
                 onChange={e => this.onChange(e)}
-              ></input>
-              <button className="student-adventure-submit" type="submit">Start Adventure!</button>
+              ></input><br/>
+              <input className="adventure-password input-field" type="password" name="adventurePass"
+                id="adventurePass"
+                placeholder="Password, if it has one"
+                onChange={e => this.onChangePassword(e)}
+              ></input><br/>
+              <button className="start-adventure on-right" type="submit">Start Adventure!</button>
             </form>
           </div>
+          <AdventureSearch />
+          <SearchResults />
         </div>
       );
     }
@@ -54,7 +71,8 @@ const mapStateToProps = state => {
   return {
     adventure: state.student.adventure,
     error: state.student.error,
-    loading: state.student.loading
+    loading: state.student.loading,
+    results: state.student.results
   };
 };
 

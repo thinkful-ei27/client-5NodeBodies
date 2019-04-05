@@ -15,19 +15,40 @@ export class Headerbar extends React.Component {
     // Only render log out button if we are logged in
     let navButtons;
     if (this.props.loggedIn) {
-      navButtons = <div className="nav-buttons">
-        {/* TO-DO: REACT-ROUTER INSTEAD???????????????? */}
-        <Link to="/dashboard">
-          <button className="home-button">Home</button>
+      navButtons = <div className="nav-buttons col-6">
+        <Link to="/">
+          <button
+            className="home-button on-left"
+            type="button"
+          >Home</button>
         </Link>
-        <button type="button" onClick={() => {
-          this.logOut()
-        }}>Log Out</button>
+        <Link to="/dashboard">
+          <button
+            className="home-button on-left on-right wide-button"
+            type="button"
+          >Dashboard</button>
+        </Link>
+        <button
+          className="logout-button on-right on-left"
+          type="button"
+          onClick={() => {
+            this.logOut()
+          }}>Log Out</button>
+      </div>
+    } else {
+      navButtons = <div className="nav-buttons col-6">
+        <Link to="/">
+          <button
+            className="home-button on-left"
+            type="button"
+          >Home</button>
+        </Link>
       </div>
     }
     return (
-      <header className="headerbar">
-        <h1>This is Our App Title!</h1>
+      <header className="header-bar row">
+        <h1 className="app-title col-6"
+        >LearnVenture</h1>
         {navButtons}
       </header>
     )

@@ -1,25 +1,33 @@
 import React from 'react';
 import { Form, Field, reduxForm } from 'redux-form';
+// import { url } from 'redux-form-validators'
 import Input from "./input";
+import TextArea from "./textarea";
 import { createAdventure } from '../actions/createAdventure';
-import { required, nonEmpty } from "../utils/validators";
-import { withRouter, Redirect, Link } from 'react-router-dom';
+import { required, nonEmpty, isTrimmedPassword } from "../utils/validators";
+import { withRouter } from 'react-router-dom';
+import Sidebar from "./sidebar";
 
 class AdventureForm extends React.Component {
   onSubmit(values) {
     let { title,
       startContent,
-      question,
-      leftAnswer,
-      rightAnswer, videoURL } = values;
+      textContent,
+      startVideoURL,
+      password } = values;
+    console.log(password);
     let adventure = {
       title,
       startContent,
-      question,
-      leftAnswer,
-      rightAnswer, videoURL
+      textContent,
+      startVideoURL,
+      password
     };
-    return this.props.dispatch(createAdventure(adventure));
+    return this.props.dispatch(createAdventure(adventure))
+      .then(adventurez => {
+        console.log("adventure is", adventurez)
+        this.props.history.push(`/adventure/headnode`)
+      })
   }
   render() {
     let error;
@@ -30,63 +38,53 @@ class AdventureForm extends React.Component {
         </div>
       );
     }
-    return (<div className="form-field">
-      <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-        <div>Create a new adventure!</div>
-        {error}
-        <Field
-          className="title"
-          label="title"
-          name="title"
-          component={Input}
-          type="text"
-          validate={[required, nonEmpty]} />
-        <Field
-          className="startContent"
-          label="Intro Content"
-          name="startContent"
-          component={Input}
-          type="text" />
-        <Field
-          className="videoURL"
-          label="http://(videoURL)"
-          name="videoURL"
-          component={Input}
-          type="text" />
-        <div> You have to create your first question as well</div>
-        <Field
-          className="question"
-          label="What's your starting question? (the meaning of life)"
-          name="question"
-          component={Input}
-          type="text"
-          validate={[required, nonEmpty]} />
-        <Field
-          className="leftAnswer"
-          label="First Answer"
-          name="leftAnswer"
-          component={Input}
-          type="text"
-          validate={[required, nonEmpty]} />
-        <Field
-          className="rightAnswer"
-          label="Second Answer"
-          name="rightAnswer"
-          component={Input}
-          type="text"
-          validate={[required, nonEmpty]} />
-        <button>New Adventure!</button>
-      </Form>
-      {/*<Link to="/adventure/adventureBuilder">
-        <button className="">go to node adventure builder</button>
-    </Link>*/}
-
+    return (<div>
+      <Sidebar />
+      <div className="form-field">
+        <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+          <div>Create a new adventure!</div>
+          {error}
+          <Field
+            className="title input-field"
+            label="Adventure Title"
+            ariaLabel="adventure title"
+            placeholder="LearnVenture"
+            name="title"
+            component={Input}
+            type="text"
+            validate={[required, nonEmpty]} />
+          <Field
+            className="startContent"
+            label="Adventure Introduction"
+            ariaLabel="Adventure Introduction"
+            placeholder="This is the beginning of your learning quest. Let's have some fun!"
+            name="startContent"
+            component={TextArea}
+            type="text" />
+          <Field
+            className="videoURL input-field"
+            label="Opening video URL(optional)"
+            ariaLabel="Opening video URL(optional)"
+            placeholder="https://www.youtube.com/embed/dHSQAEam2yc"
+            name="startVideoURL"
+            component={Input}
+            // validate={url({ protocols: ['http', 'https'] })}
+            type="text" />
+            <Field className="textContent input-field"
+              label="Optional Password:"
+              ariaLabel="Temporary"
+              name="password"
+              component={Input}
+              placeholder="Not Required"
+              type="text"
+              validate={[isTrimmedPassword]} />
+          <button>New Adventure!</button>
+        </Form>
+      </div>
     </div>
     )
   }
 }
-
-
 
 export default withRouter(reduxForm({
   form: 'Adventure',

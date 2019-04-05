@@ -22,23 +22,23 @@ class LoginForm extends React.Component {
     }
     return (
       <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-        <div>This is the Login Form</div>
         {error}
         <Field
-          className="username"
+          placeholder="Username"
+          className="username input-field on-top"
           name="username"
           component={Input}
           type="text"
           validate={[required, nonEmpty]}
         />
-
         <Field
-          className="password"
+          placeholder="Password"
+          className="password input-field below"
           name="password"
           component={Input}
           type="password"
           validate={[required, nonEmpty]} />
-        <button>Login</button>
+        <button className="login-button">Login</button>
       </Form>)
   }
 }
