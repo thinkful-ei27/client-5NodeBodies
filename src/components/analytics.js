@@ -14,7 +14,7 @@ export class Analytics extends React.Component {
       }
       return (<li>
         <h4>{node.title ? node.title : node.question}</h4>
-        <p>This node's total number of visits by all users: <span>{node.count}</span></p>
+        <p>This nodes total number of visits by all users: <span>{node.count}</span></p>
       </li>)
     })
 
