@@ -46,35 +46,35 @@ export class CreateHeadNode extends React.Component {
               type="text"
               validate={[required, nonEmpty]} />
             <Field
-              className="question"
+              className="question input-field"
               label="New Question"
               name="question"
               component={Input}
               type="text"
               validate={[required, nonEmpty]} />
             <Field
-              className="answer A"
+              className="answer A input-field"
               label="Answer A"
               name="answerA"
               component={Input}
               type="text"
               validate={[required, nonEmpty]} />
             <Field
-              className="answer B"
+              className="answer B input-field"
               label="Answer B"
               name="answerB"
               component={Input}
               type="text"
             />
             <Field
-              className="answer C"
+              className="answer C input-field"
               label="Answer C"
               name='answerC'
               component={Input}
               type="text"
             />
             <Field
-              className="answer D"
+              className="answer D input-field"
               label="Answer D"
               name="answerD"
               component={Input}

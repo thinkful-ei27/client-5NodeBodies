@@ -56,7 +56,7 @@ class EditAdventureForm extends React.Component {
         <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
           {error}
           <Field
-            className="title"
+            className="title input-field"
             label="Adventure Title"
             ariaLabel="adventure title"
             placeholder="LearnVenture"
@@ -73,7 +73,7 @@ class EditAdventureForm extends React.Component {
             component={TextArea}
             type="text" />
           <Field
-            className="videoURL"
+            className="videoURL input-field"
             label="Opening video URL(optional)"
             ariaLabel="Opening video URL(optional)"
             placeholder="https://www.youtube.com/embed/dHSQAEam2yc"

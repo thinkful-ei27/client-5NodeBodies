@@ -35,33 +35,33 @@ class RegisterForm extends React.Component {
           this.onSubmit(values))}>
         {/*error*/}
         <Field
-          className="firstName"
+          className="firstName input-field"
           placeholder="First Name"
           name="firstName"
           component={Input}
           type="text" />
         <Field
-          className="lastName"
+          className="lastName input-field"
           placeholder="Last Name"
           name="lastName"
           component={Input}
           type="text" />
         <Field
-          className="username"
+          className="username input-field"
           placeholder="Username"
           name="username"
           component={Input}
           type="text"
           validate={[required, nonEmpty, isTrimmed]} />
         <Field
-          className="password"
+          className="password input-field"
           placeholder="Password"
           name="password"
           component={Input}
           type="password"
           validate={[required, nonEmpty, isTrimmed, passwordLength]} />
         <Field
-          className="confirm-password"
+          className="confirm-password input-field"
           placeholder="Confirm Password"
           name="confirm-password"
           component={Input}

@@ -32,7 +32,7 @@ export default class Input extends React.Component {
           placeholder={this.props.placeholder}
           aria-label={this.props.ariaLabel}
           ref={input => (this.input = input)}
-          className="input"
+          className="input input-field"
         />
       </div>
     );
