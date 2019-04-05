@@ -46,6 +46,12 @@ export class CreateHeadNode extends React.Component {
               type="text"
               validate={[required, nonEmpty]} />
             <Field
+              className="videoURL"
+              label="Youtube Video Url"
+              name="videoURL"
+              component={Input}
+              type="text" />
+            <Field
               className="question"
               label="New Question"
               name="question"

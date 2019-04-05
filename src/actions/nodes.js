@@ -91,6 +91,7 @@ export const toggleNodeDeleting = () => ({
 });
 
 export const createNode = node => (dispatch, getState) => {
+  let nodeId;
   dispatch(createNodeRequest())
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/adventure/newNode`, {
@@ -104,8 +105,11 @@ export const createNode = node => (dispatch, getState) => {
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then(res => {
-      dispatch(getAdventureById(res.adventureId));
-      dispatch(createNodeSuccess(res.createdNode.id))
+      nodeId = res.createdNode.id
+      return dispatch(getAdventureById(res.adventureId));
+    })
+    .then(() => {
+      dispatch(createNodeSuccess(nodeId))
     })
     .catch(err => {
       dispatch(createNodeError(err))
