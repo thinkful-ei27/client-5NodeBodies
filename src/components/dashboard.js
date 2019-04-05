@@ -9,16 +9,16 @@ export class Dashboard extends React.Component {
     this.props.dispatch(getAllAdventures());
   }
 
-  AdventureList(props) {
-    if (this.props.adventures === []) {
-      return (
-        <ul>
-          <li>Your Adventures will display here!</li>
-          <li>Try making one to with the button below!</li>
-        </ul>
-      )
+  AdventureList() {
+    let list;
+    if (this.props.adventures.length === 0) {
+      list = <ul>
+        <li>Your Adventures will display here!</li>
+        <li>Try making one to with the button below!</li>
+      </ul>
+
     } else {
-      const adventures = this.props.adventures.map((adventure, index) => (
+      list = this.props.adventures.map((adventure, index) => (
         <li key={index}>
           <Link
             className="li-adventure"
@@ -28,15 +28,15 @@ export class Dashboard extends React.Component {
           <p>{adventure.count ? `This node has been visited ${adventure.count} times` : ""} </p>
         </li>
       ))
-      return (
-        <div className="dashboard">
-          <ul className="adventures-list" id="adventures">
-            {adventures}
-          </ul>
-          <button className="create-adventure" onClick={() => this.props.history.push('/adventure')}>Create new Adventure</button>
-        </div>
-      );
     }
+    return (
+      <div className="dashboard">
+        <ul className="adventures-list" id="adventures">
+          {list}
+        </ul>
+        <button className="create-adventure" onClick={() => this.props.history.push('/adventure')}>Create new Adventure</button>
+      </div>
+    );
   }
 
   render() {
@@ -44,7 +44,7 @@ export class Dashboard extends React.Component {
       return <div className="loading">loading...</div>;
     }
     return (
-      this.AdventureList(this.props)
+      this.AdventureList()
     );
   }
 }
