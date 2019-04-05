@@ -14,8 +14,9 @@ export class CreateHeadNode extends React.Component {
     const adventureId = this.props.adventureId;
     const nodeId = this.props.currentNodeId
     const ending = false
-    let { question, answerA, answerB, answerC, answerD, videoURL, textContent } = values;
+    let { question, answerA, answerB, answerC, answerD, videoURL, textContent, title} = values;
     let newNode = {
+      title,
       answerA,
       answerB,
       answerC,
@@ -38,6 +39,13 @@ export class CreateHeadNode extends React.Component {
         <h1>Please create a head node for your adventure</h1>
         <div className="questionAndAnswers">
           <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+          <Field
+              className="title"
+              label="Title: "
+              name="title"
+              component={Input}
+              type="text"
+              validate={[required, nonEmpty]} />
             <Field
               className="textContent"
               label="Scenario Description"
