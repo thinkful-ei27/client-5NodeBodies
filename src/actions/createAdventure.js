@@ -109,7 +109,8 @@ export const createAdventure = adventure => (dispatch, getState) => {
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then(res => {
-      dispatch(setCurrentNode(headNode))
+      // let headNode = getHeadNodefromAdventure(res)
+      // dispatch(setCurrentNode(headNode))
       return dispatch(createAdventureSuccess(res))
     })
     .catch(error => {
