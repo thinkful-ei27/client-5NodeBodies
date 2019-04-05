@@ -13,14 +13,14 @@ export default class Home extends React.Component {
         <p>Are you a teacher?</p>
         <Link to="/login">
           <button
-            className="home-button on-left"
+            className="home-button on-left wide-button"
             type="button"
           >Teachers</button>
         </Link>
         <p>Are you a student?</p>
         <Link to="/studentLanding">
           <button
-            className="home-button on-left on-right"
+            className="home-button on-left on-right wide-button"
             type="button"
           >Students</button>
         </Link>

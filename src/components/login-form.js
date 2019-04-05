@@ -25,7 +25,7 @@ class LoginForm extends React.Component {
         {error}
         <Field
           placeholder="Username"
-          className="username"
+          className="username input-field on-top"
           name="username"
           component={Input}
           type="text"
@@ -33,7 +33,7 @@ class LoginForm extends React.Component {
         />
         <Field
           placeholder="Password"
-          className="password"
+          className="password input-field below"
           name="password"
           component={Input}
           type="password"

@@ -45,7 +45,7 @@ class AdventureForm extends React.Component {
           <div>Create a new adventure!</div>
           {error}
           <Field
-            className="title"
+            className="title input-field"
             label="Adventure Title"
             ariaLabel="adventure title"
             placeholder="LearnVenture"
@@ -62,7 +62,7 @@ class AdventureForm extends React.Component {
             component={TextArea}
             type="text" />
           <Field
-            className="videoURL"
+            className="videoURL input-field"
             label="Opening video URL(optional)"
             ariaLabel="Opening video URL(optional)"
             placeholder="https://www.youtube.com/embed/dHSQAEam2yc"
@@ -70,7 +70,7 @@ class AdventureForm extends React.Component {
             component={Input}
             // validate={url({ protocols: ['http', 'https'] })}
             type="text" />
-            <Field className="textContent"
+            <Field className="textContent input-field"
               label="Optional Password:"
               ariaLabel="Temporary"
               name="password"
