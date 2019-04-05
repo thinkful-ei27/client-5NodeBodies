@@ -109,8 +109,8 @@ export const createAdventure = adventure => (dispatch, getState) => {
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then(res => {
-      const headNode = getHeadNodefromAdventure(res);
-      dispatch(setCurrentNode(headNode))
+      // let headNode = getHeadNodefromAdventure(res)
+      // dispatch(setCurrentNode(headNode))
       return dispatch(createAdventureSuccess(res))
     })
     .catch(error => {
@@ -135,6 +135,10 @@ export const getAllAdventuresError = error => ({
   error
 });
 
+export const RERENDER_GRAPH = 'RERENDER_GRAPH ';
+export const reRenderGraph = () => ({
+  type: RERENDER_GRAPH,
+});
 export const getAllAdventures = () => (dispatch, getState) => {
   dispatch(createAdventureRequest());
   const authToken = getState().auth.authToken;

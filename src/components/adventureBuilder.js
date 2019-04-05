@@ -39,7 +39,7 @@ export class AdventureBuilder extends React.Component {
     }
 
     const options = this.props.currentAdventure.nodes.map((node) =>
-      <option label={node.question} value={node.id}>{node.question}</option>);
+      <option label={node.title} value={node.id}>{node.title}</option>);
 
     return (
       <div>

@@ -97,6 +97,7 @@ export const toggleEnding = () => ({
 });
 
 export const createNode = node => (dispatch, getState) => {
+  let nodeId;
   dispatch(createNodeRequest())
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/adventure/newNode`, {
@@ -110,11 +111,14 @@ export const createNode = node => (dispatch, getState) => {
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then(res => {
-      dispatch(getAdventureById(res.adventureId));
-      dispatch(createNodeSuccess(res.createdNode.id))
+      nodeId = res.createdNode.id;
+      return dispatch(getAdventureById(res.adventureId));
+    })
+    .then(() => {
+      dispatch(createNodeSuccess(nodeId));
     })
     .catch(err => {
-      dispatch(createNodeError(err))
+      dispatch(createNodeError(err));
 
     });
 };
@@ -152,10 +156,10 @@ export const linkNodesById = idObjectWithParentInt => (dispatch, getState) => {
     body: JSON.stringify(idObjectWithParentInt)
   })
     .then(() => {
-      dispatch(getAdventureById(idObjectWithParentInt.adventureId));
+      return dispatch(getAdventureById(idObjectWithParentInt.adventureId));
     })
     .then(() => {
-      // dispatch(updateNodeSuccess())
+      dispatch(updateNodeSuccess())
     })
     .catch(err => {
       dispatch(createNodeError(err))
@@ -176,11 +180,13 @@ export const updateNode = node => (dispatch, getState) => {
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then(res => {
+      // console.log("New Node From Backend is: ", res)
+      // return dispatch(getAdventureById(node.adventureId));
       dispatch(toggleUpdateForm())
       dispatch(getAdventureById(node.adventureId));
     })
     .then(() => {
-      // dispatch(updateNodeSuccess())
+      dispatch(updateNodeSuccess())
     })
     .catch(err => {
       dispatch(createNodeError(err))

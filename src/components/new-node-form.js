@@ -118,6 +118,7 @@ class NewNodeForm extends React.Component {
             validate={[required, nonEmpty]} />
           <Field
             className="answer B"
+            placeholder="Optional"
             label="Answer B"
             name="answerB"
             component={Input}
@@ -125,6 +126,7 @@ class NewNodeForm extends React.Component {
           />
           <Field
             className="answer C"
+            placeholder="Optional"
             label="Answer C"
             name='answerC'
             component={Input}
@@ -132,6 +134,7 @@ class NewNodeForm extends React.Component {
           />
           <Field
             className="answer D"
+            placeholder="Optional"
             label="Answer D"
             name="answerD"
             component={Input}
