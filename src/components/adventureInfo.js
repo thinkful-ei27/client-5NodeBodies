@@ -43,13 +43,12 @@ export class AdventureInfo extends React.Component {
     return this.props.dispatch(toggleAnalyticsDisplay())
   }
 
-  AdventureDetails(props) {
+  AdventureDetails() {
     const adventure = this.props.currentAdventure
-    let analytics;
-    if (this.props.showAnalytics){
+    let analytics, password;
+    if (this.props.showAnalytics) {
       analytics = <Analytics />
     }
-
     if (!adventure) {
       return <div>loading...</div>
     } else if (adventure && this.props.isDeleting) {
@@ -74,6 +73,10 @@ export class AdventureInfo extends React.Component {
         </div>
       )
     } else if (adventure && adventure.startVideoURL && !this.props.isEditing) {
+      if (adventure.hasPassword) {
+        console.log('has pass')
+        password = <span>This adventure is password protected</span>
+      }
       let videoPlay = adventure.startVideoURL;
       let nodeVideo = (<iframe title='node-video' width="420" height="315" src={videoPlay}></iframe>)
       return (
@@ -83,6 +86,7 @@ export class AdventureInfo extends React.Component {
           <h3 className="info-category">Opening Video</h3> <div>{nodeVideo}</div>
           <h3 className="info-category">Starting Scenario</h3> <p>{adventure.textContent}</p>
           <h3 className="info-category">Adventure Code:</h3> <p>{adventure.id}</p>
+          {password}
           <div className="buttons">
             <button onClick={() => this.props.history.push(`/adventure/adventurebuilder/${adventure.id}`)} >Build your Adventure</button>
             <button
@@ -95,16 +99,19 @@ export class AdventureInfo extends React.Component {
               onClick={() => this.displayAdventureDeleting()}
             >Delete adventure
               </button>
-              <button className="analyze-it"
-                type='button'
-                onClick={() => this.showAnalytics()}
-              >{this.props.showAnalytics ? 'Hide Analytics' : 'Show Analytics'}
-              </button>
+            <button className="analyze-it"
+              type='button'
+              onClick={() => this.showAnalytics()}
+            >{this.props.showAnalytics ? 'Hide Analytics' : 'Show Analytics'}
+            </button>
           </div>
-         {analytics}
+          {analytics}
         </div >
       );
     } else if (adventure && !adventure.startVideoURL && !this.props.isEditing) {
+      if (this.props.currentAdventure.hasPassword) {
+        password = <span>This adventure is password protected</span>
+      }
       return (
         <div className='single-adventure-home'>
           <div className='adventure-info'>
@@ -112,6 +119,7 @@ export class AdventureInfo extends React.Component {
             <h3 className="info-category">Adventure Intro</h3> <p>{adventure.startContent}</p>
             <h3 className="info-category">Starting Scenario</h3> <p>{adventure.textContent}</p>
             <h3 className="info-category">Adventure Code:</h3> <p>{adventure.id}</p>
+            {password}
             <div className="buttons">
               <button onClick={() => this.props.history.push(`/adventure/adventurebuilder/${adventure.id}`)} >Build your Adventure</button>
               <button
@@ -143,7 +151,7 @@ export class AdventureInfo extends React.Component {
 
   render() {
     return (
-      this.AdventureDetails(this.props)
+      this.AdventureDetails()
     );
   }
 }

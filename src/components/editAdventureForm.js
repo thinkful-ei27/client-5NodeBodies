@@ -4,7 +4,7 @@ import { url } from 'redux-form-validators'
 import Input from "./input";
 import TextArea from "./textarea";
 import { editAdventure, toggleAdventureEditing } from '../actions/createAdventure';
-import { required, nonEmpty } from "../utils/validators";
+import { required, nonEmpty, isTrimmedPassword } from "../utils/validators";
 import { connect } from 'react-redux';
 
 class EditAdventureForm extends React.Component {
@@ -16,27 +16,13 @@ class EditAdventureForm extends React.Component {
   onSubmit(values) {
     let { title,
       startContent,
-      textContent,
-      question,
-      answerA,
-      answerB,
-      answerC,
-      answerD,
       startVideoURL,
-      videoURL,
       password } = values;
     console.log(password);
     let adventure = {
       title,
       startContent,
-      textContent,
-      question,
-      answerA,
-      answerB,
-      answerC,
-      answerD,
       startVideoURL,
-      videoURL,
       password
     };
     return this.props.dispatch(editAdventure(adventure))
@@ -56,7 +42,7 @@ class EditAdventureForm extends React.Component {
         <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
           {error}
           <Field
-            className="title"
+            className="title input-field"
             label="Adventure Title"
             ariaLabel="adventure title"
             placeholder="LearnVenture"
@@ -73,14 +59,22 @@ class EditAdventureForm extends React.Component {
             component={TextArea}
             type="text" />
           <Field
-            className="videoURL"
+            className="videoURL input-field"
             label="Opening video URL(optional)"
             ariaLabel="Opening video URL(optional)"
             placeholder="https://www.youtube.com/embed/dHSQAEam2yc"
             name="startVideoURL"
             component={Input}
-            validate={url({ protocols: ['http', 'https'] })}
+            // validate={url({ protocols: ['http', 'https'] })}
             type="text" />
+          <Field className="textContent"
+            label="Optional Password:"
+            ariaLabel="Temporary"
+            name="password"
+            component={Input}
+            placeholder="Not Required"
+            type="text"
+            validate={[isTrimmedPassword]} />
           <button type="submit">Update Adventure</button>
           <button onClick={() => this.toggleAdventureEditForm()}>Cancel</button>
         </Form>

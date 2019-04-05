@@ -47,11 +47,11 @@ export class StudentLanding extends React.Component {
           <div className="register-adventure">
             <form onSubmit={e => this.handleSubmit(e)}>
               {error}
-              <input className="adventure-input" type="text" name="adventureId" id="adventureId"
+              <input className="adventure-input input-field" type="text" name="adventureId" id="adventureId"
                 placeholder="5c9ceaeac543f706bf407cae"
                 onChange={e => this.onChange(e)}
               ></input><br/>
-              <input className="adventure-password" type="password" name="adventurePass"
+              <input className="adventure-password input-field" type="password" name="adventurePass"
                 id="adventurePass"
                 placeholder="Password, if it has one"
                 onChange={e => this.onChangePassword(e)}
