@@ -1,13 +1,29 @@
 import React from 'react';
-import { Form, Field, reduxForm } from 'redux-form';
-import { url } from 'redux-form-validators'
+import { Field, reduxForm } from 'redux-form';
+// import { url } from 'redux-form-validators'
 import Input from "./input";
 import TextArea from "./textarea";
 import { editAdventure, toggleAdventureEditing } from '../actions/createAdventure';
 import { required, nonEmpty, isTrimmedPassword } from "../utils/validators";
 import { connect } from 'react-redux';
+import { Checkbox, Form } from 'semantic-ui-react';
 
 class EditAdventureForm extends React.Component {
+  renderCheckBox = ({ input, label }) => {
+    return (
+      <Form.Field>
+        <Checkbox
+          autoFocus={true}
+          label={label}
+          checked={input.value ? true : false}
+          onChange={(e, { checked }) => {
+            input.onChange(checked)
+          }
+          }
+        />
+      </Form.Field>
+    );
+  };
 
   toggleAdventureEditForm() {
     return this.props.dispatch(toggleAdventureEditing())
@@ -17,13 +33,15 @@ class EditAdventureForm extends React.Component {
     let { title,
       startContent,
       startVideoURL,
-      password } = values;
+      password,
+      removePassword } = values;
     console.log(password);
     let adventure = {
       title,
       startContent,
       startVideoURL,
-      password
+      password,
+      removePassword
     };
     return this.props.dispatch(editAdventure(adventure))
       .then(() => this.toggleAdventureEditForm())
@@ -39,7 +57,7 @@ class EditAdventureForm extends React.Component {
     }
     return (<div>
       <div className="form-field">
-        <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+        <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
           {error}
           <Field
             className="title input-field"
@@ -75,9 +93,15 @@ class EditAdventureForm extends React.Component {
             placeholder="Not Required"
             type="text"
             validate={[isTrimmedPassword]} />
+          <Field
+            className="removePassword"
+            name="removePassword"
+            label="Remove Password"
+            component={this.renderCheckBox}
+            type="checkbox" />
           <button type="submit">Update Adventure</button>
           <button onClick={() => this.toggleAdventureEditForm()}>Cancel</button>
-        </Form>
+        </form>
       </div>
     </div>
     )
