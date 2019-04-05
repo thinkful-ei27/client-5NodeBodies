@@ -39,8 +39,8 @@ export class StudentDisplay extends React.Component {
     let ending;
     if (this.props.currentNode) {
 
-      if (this.props.currentNode.videoURL) {
-        let videoPlay = this.validateURL(this.props.currentNode.videoURL);
+      if (this.props.currentNode.startVideoURL) {
+        let videoPlay = this.props.currentNode.startVideoURL;
         nodeVideo = (<iframe title='node-video' width="420" height="315" src={videoPlay}></iframe>)
       }
       if (this.props.currentNode.textContent) {
@@ -107,7 +107,7 @@ export class StudentDisplay extends React.Component {
           <h1>{this.props.adventure.title}</h1>
           <p>Created by: {this.props.adventure.creator}</p>
           <h2>{this.props.adventure.startContent}</h2>
-          <iframe title="starting-video" width="420" height="315" src={this.props.adventure.videoURL}></iframe>
+          <iframe title="starting-video" width="420" height="315" src={this.props.adventure.startVideoURL}></iframe>
           <button onClick={() => this.updateNode(this.props.adventure.head)}>Embark</button>
         </div>
       )

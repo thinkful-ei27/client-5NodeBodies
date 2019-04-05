@@ -63,12 +63,8 @@ export class AdventureInfo extends React.Component {
         </div>
       )
     } else if (adventure && adventure.startVideoURL && !this.props.isEditing) {
-      let videoPlay;
-      let nodeVideo;
-      if (this.props.currentNode.videoURL) {
-        videoPlay = this.validateURL(this.props.currentNode.videoURL);
-        nodeVideo = (<iframe title='node-video' width="420" height="315" src={videoPlay}></iframe>)
-      }
+      let videoPlay = adventure.startVideoURL;
+      let nodeVideo = (<iframe title='node-video' width="420" height="315" src={videoPlay}></iframe>)
       return (
         <div className='adventure-info'>
           <h2 className="adventure-title">{adventure.title}</h2>
@@ -80,7 +76,7 @@ export class AdventureInfo extends React.Component {
             <button onClick={() => this.props.history.push(`/adventure/adventurebuilder/${adventure.id}`)} >Build your Adventure</button>
             <button
               type='button'
-              onClick={() => this.toggleEditing()}
+              onClick={() => this.toggleAdventureEditForm()}
             >Edit adventure Starting Info
               </button>
             <button className="delete-it"
@@ -103,7 +99,7 @@ export class AdventureInfo extends React.Component {
               <button onClick={() => this.props.history.push(`/adventure/adventurebuilder/${adventure.id}`)} >Build your Adventure</button>
               <button
                 type='button'
-                onClick={() => this.toggleEditing()}
+                onClick={() => this.toggleAdventureEditForm()}
               >Edit adventure Starting Info
               </button>
               <button className="delete-it"
