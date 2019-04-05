@@ -2,11 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import EditAdventureForm from './editAdventureForm'
+import Analytics from './analytics'
 import {
   getAdventureById,
   toggleAdventureDeleting,
   toggleAdventureEditing,
-  deleteAdventure
+  deleteAdventure,
+  toggleAnalyticsDisplay
 } from '../actions/createAdventure'
 
 
@@ -37,8 +39,17 @@ export class AdventureInfo extends React.Component {
     return this.props.dispatch(toggleAdventureEditing())
   }
 
+  showAnalytics() {
+    return this.props.dispatch(toggleAnalyticsDisplay())
+  }
+
   AdventureDetails(props) {
     const adventure = this.props.currentAdventure
+    let analytics;
+    if (this.props.showAnalytics){
+      analytics = <Analytics />
+    }
+
     if (!adventure) {
       return <div>loading...</div>
     } else if (adventure && this.props.isDeleting) {
@@ -84,7 +95,13 @@ export class AdventureInfo extends React.Component {
               onClick={() => this.displayAdventureDeleting()}
             >Delete adventure
               </button>
+              <button className="analyze-it"
+                type='button'
+                onClick={() => this.showAnalytics()}
+              >{this.props.showAnalytics ? 'Hide Analytics' : 'Show Analytics'}
+              </button>
           </div>
+         {analytics}
         </div >
       );
     } else if (adventure && !adventure.startVideoURL && !this.props.isEditing) {
@@ -107,8 +124,14 @@ export class AdventureInfo extends React.Component {
                 onClick={() => this.displayAdventureDeleting()}
               >Delete adventure
               </button>
+              <button className="analyze-it"
+                type='button'
+                onClick={() => this.showAnalytics()}
+              >{this.props.showAnalytics ? 'Hide Analytics' : 'Show Analytics'}
+              </button>
             </div>
           </div>
+          {analytics}
         </div>
       );
     } else {
@@ -133,7 +156,8 @@ const mapStateToProps = state => {
     name: `${currentUser.firstName} ${currentUser.lastName}`,
     currentAdventure: state.adventure.currentAdventure,
     isDeleting: state.adventure.isDeleting,
-    isEditing: state.adventure.isEditing
+    isEditing: state.adventure.isEditing,
+    showAnalytics: state.adventure.showAnalytics
   };
 };
 
