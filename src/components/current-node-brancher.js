@@ -26,7 +26,7 @@ export class CurrentNodeBrancher extends React.Component {
     let answerB;
     let answerC;
     let answerD;
-    if (this.props.currentNode.answerA) {
+    if (this.props.currentNode.answerA && !this.props.currentNode.pointerA) {
       answerA = (<div>
         <p>{this.props.currentNode.answerA}</p>
         <button
@@ -38,7 +38,7 @@ export class CurrentNodeBrancher extends React.Component {
       </div>)
     }
 
-    if (this.props.currentNode.answerB) {
+    if (this.props.currentNode.answerB && !this.props.currentNode.pointerB) {
       answerB = (<div><p>{this.props.currentNode.answerB}</p>
         <button
           className="new-branch below"
@@ -48,7 +48,7 @@ export class CurrentNodeBrancher extends React.Component {
        </button>
       </div>)
     }
-    if (this.props.currentNode.answerC) {
+    if (this.props.currentNode.answerC && !this.props.currentNode.pointerC) {
       answerC = (<div>
         <p>{this.props.currentNode.answerC}</p>
         <button
@@ -61,7 +61,7 @@ export class CurrentNodeBrancher extends React.Component {
     }
     if (this.props.currentNode.answerD) {
       answerD = (<div>
-        <p>{this.props.currentNode.answerD}</p>
+        <p>{this.props.currentNode.answerD && !this.props.currentNode.pointerD}</p>
         <button
           className="new-branch below"
           value='4'
