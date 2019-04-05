@@ -22,6 +22,7 @@ export const toggleChildType = () => ({
   type: TOGGLE_CHILD_TYPE
 })
 
+// set current node will now also normalize isEnding in state to it so they are in  sync
 export const SET_CURRENT_NODE = 'SET_CURRENT_NODE';
 export const setCurrentNode = (node) => ({
   type: SET_CURRENT_NODE,
@@ -45,9 +46,9 @@ export const createNodeError = error => ({
   error
 });
 
-export const UPDATE_NODE_CLICKED = 'UPDATE_NODE_CLICKED';
-export const updateNodeClicked = (nodeId) => ({
-  type: UPDATE_NODE_CLICKED,
+export const TOGGLE_UPDATE_FORM = 'TOGGLE_UPDATE_FORM';
+export const toggleUpdateForm = (nodeId) => ({
+  type: TOGGLE_UPDATE_FORM,
   nodeId
 });
 
@@ -88,6 +89,11 @@ export const deleteNodeError = error => ({
 export const TOGGLE_NODE_DELETING = 'TOGGLE_NODE_DELETING';
 export const toggleNodeDeleting = () => ({
   type: TOGGLE_NODE_DELETING
+});
+
+export const TOGGLE_ENDING = 'TOGGLE_ENDING';
+export const toggleEnding = () => ({
+  type: TOGGLE_ENDING
 });
 
 export const createNode = node => (dispatch, getState) => {
@@ -132,6 +138,8 @@ export const deleteNode = (adventureId, nodeId) => (dispatch, getState) => {
       dispatch(deleteNodeError(err))
     });
 };
+
+
 export const linkNodesById = idObjectWithParentInt => (dispatch, getState) => {
   dispatch(updateNodeRequest())
   const authToken = getState().auth.authToken;
@@ -154,7 +162,6 @@ export const linkNodesById = idObjectWithParentInt => (dispatch, getState) => {
     });
 }
 
-
 export const updateNode = node => (dispatch, getState) => {
   dispatch(updateNodeRequest())
   const authToken = getState().auth.authToken;
@@ -169,7 +176,7 @@ export const updateNode = node => (dispatch, getState) => {
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then(res => {
-      console.log("New Node From Backend is: ", res)
+      dispatch(toggleUpdateForm())
       dispatch(getAdventureById(node.adventureId));
     })
     .then(() => {
@@ -180,7 +187,4 @@ export const updateNode = node => (dispatch, getState) => {
     });
 };
 
-export const TOGGLE_ENDING = 'TOGGLE_ENDING';
-export const toggleEnding = () => ({
-  type: TOGGLE_ENDING
-});
+

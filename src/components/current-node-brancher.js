@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
 import { nodeFormWithPointer } from '../actions/nodes';
-import { updateNodeClicked } from '../actions/nodes'
+import { toggleUpdateForm } from '../actions/nodes'
 // import { updateCurrentNode } from '../actions/createAdventure'
 import UpdateNodeForm from './update-node-form'
 
@@ -18,7 +18,7 @@ export class CurrentNodeBrancher extends React.Component {
   editClicked() {
     let nodeId = this.props.currentNode.id
     // this.props.dispatch(updateCurrentNode(nodeId))
-    this.props.dispatch(updateNodeClicked(nodeId))
+    this.props.dispatch(toggleUpdateForm(nodeId))
   }
 
   render() {
