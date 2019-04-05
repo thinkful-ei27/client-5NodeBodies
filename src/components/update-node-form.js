@@ -15,6 +15,14 @@ import {
 import { Checkbox, Form } from 'semantic-ui-react';
 
 class UpdateNodeForm extends React.Component {
+  componentDidMount() {
+    const currentNodeEndingValue = this.props.currentNode.ending;
+    const stateIsEndingValue = this.props.isEnding;
+    if(currentNodeEndingValue !== stateIsEndingValue){
+      this.toggleIsEnding()
+    }
+  }
+
   renderCheckBox = ({ input, label }) => {
     return (
       <Form.Field>
@@ -188,7 +196,6 @@ class UpdateNodeForm extends React.Component {
               this.props.currentNode.question}</h2>
           <h4>answer that points to this node: {parentAnswer}</h4>
           {error}
-          {/* radio button to pick ending  */}
           <Field
             className="ending"
             name="ending"
