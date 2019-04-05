@@ -25,8 +25,6 @@ class GraphContainer extends React.Component {
           nodes: [],
           links: []
         };
-        console.log(chartData, 'is this shit');
-        console.log(this.props);
         for (let i = 0; i < this.props.nodez.length; i++) {
             if (i === 0) {
                 chartData.nodes.push({ id: this.props.nodez[i].id, title: this.props.nodez[i].title ? this.props.nodez[i].title : this.props.nodez[i].question, color: 'red', symbolType: "triangle" })
