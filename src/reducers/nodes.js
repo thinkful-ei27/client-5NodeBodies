@@ -7,7 +7,7 @@ import {
   UPDATE_NODE_REQUEST,
   UPDATE_NODE_SUCCESS,
   UPDATE_NODE_ERROR,
-  UPDATE_NODE_CLICKED,
+  TOGGLE_UPDATE_FORM,
 
   TOGGLE_NODE_DELETING,
   DELETE_NODE_ERROR,
@@ -60,10 +60,11 @@ export default function reducer(state = initialState, action) {
         error: null
       });
     }
-    case UPDATE_NODE_CLICKED: {
+    case TOGGLE_UPDATE_FORM: {
       return Object.assign({}, state, {
         showUpdate: !state.showUpdate,
-        nodeId: action.nodeId
+        nodeId: action.nodeId,
+        parentInt: null
       });
     }
     case UPDATE_NODE_SUCCESS: {
@@ -86,10 +87,13 @@ export default function reducer(state = initialState, action) {
       });
     }
     case SET_CURRENT_NODE: {
+      // set current node will now also
+      //  normalize isEnding in state to it so they are in  sync
       return Object.assign({}, state, {
         loading: false,
         currentNode: action.node,
-        parentInt: null
+        parentInt: null,
+        isEnding: action.node.ending
       })
     }
     case TOGGLE_ENDING: {
