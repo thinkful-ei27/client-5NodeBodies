@@ -3,10 +3,7 @@ import { connect } from 'react-redux';
 import { Graph } from 'react-d3-graph';
 import { setCurrentNode } from '../actions/nodes'
 import { reRenderGraph } from '../actions/createAdventure'
-let data = {
-    nodes: [],
-    links: []
-}
+
 
 class GraphContainer extends React.Component {
 
@@ -14,7 +11,7 @@ class GraphContainer extends React.Component {
         let nodeArr = this.props.nodez.filter((node) => node.id === nodeId)
         this.props.dispatch(setCurrentNode(nodeArr[0]))
         console.log("reRender is: ", this.props.reRender)
-        this.props.dispatch(reRenderGraph())
+        // this.props.dispatch(reRenderGraph())
         }
         
 
@@ -24,40 +21,44 @@ class GraphContainer extends React.Component {
     }
 
     populateGraph() {
-        data.nodes = [];
-        data.links = [];
+        let chartData = {
+          nodes: [],
+          links: []
+        };
+        console.log(chartData, 'is this shit');
+        console.log(this.props);
         for (let i = 0; i < this.props.nodez.length; i++) {
             if (i === 0) {
-                data.nodes.push({ id: this.props.nodez[i].id, title: this.props.nodez[i].title ? this.props.nodez[i].title : this.props.nodez[i].question, color: 'red', symbolType: "triangle" })
+                chartData.nodes.push({ id: this.props.nodez[i].id, title: this.props.nodez[i].title ? this.props.nodez[i].title : this.props.nodez[i].question, color: 'red', symbolType: "triangle" })
                 if (this.props.nodez[i].pointerA) {
-                    data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerA })
+                    chartData.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerA })
                 }
                 if (this.props.nodez[i].pointerB) {
-                    data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerB })
+                    chartData.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerB })
                 }
                 if (this.props.nodez[i].pointerC) {
-                    data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerC })
+                    chartData.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerC })
                 }
                 if (this.props.nodez[i].pointerD) {
-                    data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerD })
+                    chartData.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerD })
                 }
             } else {
-                data.nodes.push({ id: this.props.nodez[i].id, title: this.props.nodez[i].title ? this.props.nodez[i].title : this.props.nodez[i].question })
+                chartData.nodes.push({ id: this.props.nodez[i].id, title: this.props.nodez[i].title ? this.props.nodez[i].title : this.props.nodez[i].question })
                 if (this.props.nodez[i].pointerA) {
-                    data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerA })
+                    chartData.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerA })
                 }
                 if (this.props.nodez[i].pointerB) {
-                    data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerB })
+                    chartData.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerB })
                 }
                 if (this.props.nodez[i].pointerC) {
-                    data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerC })
+                    chartData.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerC })
                 }
                 if (this.props.nodez[i].pointerD) {
-                    data.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerD })
+                    chartData.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerD })
                 }
-
             }
         }
+        return chartData;
     }
 
     componentWillMount() {
@@ -71,11 +72,13 @@ class GraphContainer extends React.Component {
             automaticRearrangeAfterDropNode: true,
             d3: {
                 gravity: -300,
-                linkLength: 120,
+                linkLength: 100,
                 forceManyBody: function strength() {
                     return -1000;
                 },
             },
+            minZoom: .5,
+            maxZoom: 1.5,
             node: {
                 fontSize: 18,
                 color: 'lightgreen',
@@ -102,7 +105,7 @@ class GraphContainer extends React.Component {
                         <Graph
                             props={this.props}
                             id="graph-id" // id is mandatory, if no id is defined rd3g will throw an error
-                            data={data}
+                            data={this.populateGraph()}
                             config={myConfig}
                             onClickNode={this.onClickNode}
                         // onRightClickNode={onRightClickNode}
@@ -122,7 +125,7 @@ class GraphContainer extends React.Component {
                         <Graph
                             props={this.props}
                             id="graph-id" // id is mandatory, if no id is defined rd3g will throw an error
-                            data={data}
+                            data={this.populateGraph()}
                             config={myConfig}
                             onClickNode={this.onClickNode}
                         // onRightClickNode={onRightClickNode}

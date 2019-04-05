@@ -148,10 +148,10 @@ export const linkNodesById = idObjectWithParentInt => (dispatch, getState) => {
     body: JSON.stringify(idObjectWithParentInt)
   })
     .then(() => {
-      dispatch(getAdventureById(idObjectWithParentInt.adventureId));
+      return dispatch(getAdventureById(idObjectWithParentInt.adventureId));
     })
     .then(() => {
-      // dispatch(updateNodeSuccess())
+      dispatch(updateNodeSuccess())
     })
     .catch(err => {
       dispatch(createNodeError(err))
@@ -174,10 +174,10 @@ export const updateNode = node => (dispatch, getState) => {
     .then(res => res.json())
     .then(res => {
       console.log("New Node From Backend is: ", res)
-      dispatch(getAdventureById(node.adventureId));
+      return dispatch(getAdventureById(node.adventureId));
     })
     .then(() => {
-      // dispatch(updateNodeSuccess())
+      dispatch(updateNodeSuccess())
     })
     .catch(err => {
       dispatch(createNodeError(err))
