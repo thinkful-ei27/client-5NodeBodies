@@ -43,7 +43,7 @@ class GraphContainer extends React.Component {
                     chartData.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerD })
                 }
             } else {
-                chartData.nodes.push({ id: this.props.nodez[i].id, title: this.props.nodez[i].title ? this.props.nodez[i].title : this.props.nodez[i].question })
+                chartData.nodes.push({ id: this.props.nodez[i].id, title: this.props.nodez[i].title ? this.props.nodez[i].title : this.props.nodez[i].question, color: this.props.nodez[i].ending ? 'blue' : 'lightgreen', symbolType: this.props.nodez[i].ending ? "square" : "circle"})
                 if (this.props.nodez[i].pointerA) {
                     chartData.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerA })
                 }
