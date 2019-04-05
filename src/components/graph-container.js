@@ -7,12 +7,16 @@ let data = {
     nodes: [],
     links: []
 }
-
+let reRender;
 class GraphContainer extends React.Component {
 
     onClickNode(nodeId) {
+        // if (reRender) {
+        //     reRender = false :
+        // }
         let nodeArr = this.props.nodez.filter((node) => node.id === nodeId)
         this.props.dispatch(setCurrentNode(nodeArr[0]))
+        
     }
 
     getFullNode(nodeId) { //get full node is outside of the class due to *this* being binded to the graph

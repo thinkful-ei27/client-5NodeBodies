@@ -14,8 +14,9 @@ export class CreateHeadNode extends React.Component {
     const adventureId = this.props.adventureId;
     const nodeId = this.props.currentNodeId
     const ending = false
-    let { question, answerA, answerB, answerC, answerD, videoURL, textContent } = values;
+    let { question, answerA, answerB, answerC, answerD, videoURL, textContent, title } = values;
     let newNode = {
+      title,
       answerA,
       answerB,
       answerC,
@@ -43,6 +44,20 @@ export class CreateHeadNode extends React.Component {
               label="Scenario Description"
               name="textContent"
               component={TextArea}
+              type="text"
+              validate={[required, nonEmpty]} />
+            <Field
+              className="title"
+              label="Title: "
+              name="title"
+              component={Input}
+              type="text"
+              validate={[required, nonEmpty]} />
+            <Field
+              className="videoURL"
+              label="video URL :"
+              name="videoURL"
+              component={Input}
               type="text"
               validate={[required, nonEmpty]} />
             <Field
