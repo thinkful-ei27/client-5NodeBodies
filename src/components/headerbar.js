@@ -3,12 +3,19 @@ import { connect } from 'react-redux';
 import { clearAuth } from '../actions/auth';
 import { clearAuthToken } from '../utils/local-storage';
 import { withRouter, Redirect, Link } from 'react-router-dom';
+import { endStudentAdventure } from '../actions/student'
 
 export class Headerbar extends React.Component {
   logOut() {
     this.props.dispatch(clearAuth());
     clearAuthToken()
     return <Redirect to="/login" />;
+  }
+
+  ifAdventureRemoveAdventure() {
+    if (studentAdventure) {
+      this.props.dispatch(endStudentAdventure())
+    }
   }
 
   render() {
@@ -20,6 +27,7 @@ export class Headerbar extends React.Component {
           <button
             className="home-button on-left"
             type="button"
+            onClick={(e) => this.ifAdventureRemoveAdventure()}
           >Home</button>
         </Link>
         <Link to="/dashboard">
@@ -41,6 +49,7 @@ export class Headerbar extends React.Component {
           <button
             className="home-button on-left"
             type="button"
+            onClick={(e) => this.ifAdventureRemoveAdventure()}
           >Home</button>
         </Link>
       </div>
@@ -56,7 +65,8 @@ export class Headerbar extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  loggedIn: state.auth.currentUser !== null
+  loggedIn: state.auth.currentUser !== null,
+  studentAdventure: state.student.adventure
 });
 
 export default withRouter(connect(mapStateToProps)(Headerbar));
