@@ -8,15 +8,14 @@ import {
   RESTART_STUDENT_ADVENTURE,
   GET_STUDENT_SEARCH_ERROR,
   GET_STUDENT_SEARCH_REQUEST,
-  GET_STUDENT_SEARCH_SUCCESS
+  GET_STUDENT_SEARCH_SUCCESS,
+  END_STUDENT_ADVENTURE
 } from '../actions/student'
 
 const initialState = {
   loading: false,
   error: null,
   adventure: null,
-  currentNode: null,
-  adventure: null, 
   currentNode: null,
   searchResults: null
 };
@@ -64,6 +63,11 @@ export default function reducer(state = initialState, action) {
     case RESTART_STUDENT_ADVENTURE: {
       return Object.assign({}, state, {
         currentNode: null
+      });
+    }
+    case END_STUDENT_ADVENTURE: {
+      return Object.assign({}, state, {
+        adventure: null
       });
     }
     case GET_STUDENT_SEARCH_REQUEST: {
