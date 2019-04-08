@@ -3,22 +3,36 @@ h2{
 }
 
 .tutorialBox {
+   right: 0;
+   left: 0;
    position: fixed; 
-   top: 0;
+   top: 10px;
    z-index: 1;
    background-color: #da8624;
    padding: 10px;
-   height: 100%;
-   width: 100%;
+   width: 600px;
+   height: 300px;
+   border: solid 1px #51646b;
+   border-radius: 5px;
 }
 
 .tutorialBox > * {
-   margin: 5px;
+   margin: 10px;
+}
+
+.tutorialBox > button {
+   margin-top: 10px;
+   margin-left: 5px;
+   margin-right: 5px;
+}
+
+.tutorialBox > button {
+   background-color: #51646b;
 }
 
 .tutorialBox > img {
    margin-left: auto;
    margin-right: auto;
-   width: 80%;
+   width: 100%;
    display: block;
 }

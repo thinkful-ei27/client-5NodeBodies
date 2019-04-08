@@ -24,7 +24,7 @@ class TutorialPage3 extends React.Component {
 
     render(){
         return(
-            <div>
+            <div className='tutorialBox'>
                 <p>I probably don't need to be a class! 3</p>
                 <button onClick={e => {this.handlePreviousClick()}}>Previous Tutorial Page</button>
                 <button onClick={e => {this.handleNextClick()}}>Next Tutorial Page</button>

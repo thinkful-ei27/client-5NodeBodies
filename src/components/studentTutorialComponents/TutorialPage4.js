@@ -19,7 +19,7 @@ class TutorialPage4 extends React.Component {
 
     render(){
         return(
-            <div>
+            <div className='tutorialBox'>
                 <p>I probably don't need to be a class! 4</p>
                 <button onClick={e => {this.handlePreviousClick()}}>Previous Tutorial Page</button>
                 <button onClick={e => {this.handleQuitClick()}}>Quit Tutorial</button>
