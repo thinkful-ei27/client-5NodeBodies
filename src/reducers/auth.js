@@ -3,18 +3,25 @@ import {
     CLEAR_AUTH,
     AUTH_REQUEST,
     AUTH_SUCCESS,
-    AUTH_ERROR
+    AUTH_ERROR,
+    TOGGLE_ONBOARDING
 } from '../actions/auth'
 
 const initialState = {
     authToken: null,
     currentUser: null,
     loading: false,
-    error: null
+    error: null,
+    onboarding: false,
 };
 
 export function reducer(state = initialState, action) {
     switch (action.type) {
+        case TOGGLE_ONBOARDING: {
+            return Object.assign({}, state, {
+                onboarding: !state.onboarding
+            });
+        }
         case SET_AUTH_TOKEN: {
             return Object.assign({}, state, {
                 authToken: action.authToken
@@ -44,6 +51,7 @@ export function reducer(state = initialState, action) {
                 error: action.err
             });
         }
+
         default:
             return state
     }

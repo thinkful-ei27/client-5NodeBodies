@@ -126,18 +126,24 @@ code {
   margin-bottom: 5px;
 }
 
-.login-button, .adventure-link-button {
+.login-button, .adventure-link-button, .help-button{
   display: inline-block;
   background: #da8624;
   border-color: #da8624;
 }
 
-.login-button:hover, .adventure-link-button:hover {
+.login-button:hover, .adventure-link-button:hover, .help-button:hover {
   background: #da8624;
 }
 
 .login-from-register:hover {
   transform: scale(1.2);
+}
+
+
+.help-button {
+  margin-bottom: 10px;
+  display: block;
 }
 
 .logout-button {
@@ -215,6 +221,44 @@ ul {
 .with-border {
   border: 2px solid white;
   border-collapse: collapse;
+}
+
+.footer {
+  width: 100%;
+  min-width: 100%;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 10px;
+}
+
+
+.arrowBox_Top {
+	position: relative;
+	background: #da8624;
+	border: 4px solid #da8624;
+}
+.arrowBox_Top:after, .arrowBox_Top:before {
+	bottom: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.arrowBox_Top:after {
+	border-color: rgba(218, 134, 36, 0);
+	border-bottom-color: #da8624;
+	border-width: 30px;
+	margin-left: -30px;
+}
+.arrowBox_Top:before {
+	border-color: rgba(218, 134, 36, 0);
+	border-bottom-color: #da8624;
+	border-width: 36px;
+	margin-left: -36px;
 }
 
 @media only screen and (min-width: 531px) {

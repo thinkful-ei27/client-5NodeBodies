@@ -33,6 +33,11 @@ export const authError = error => ({
   error
 });
 
+export const TOGGLE_ONBOARDING = 'TOGGLE_ONBOARDING';
+export const toggleOnboarding = () => ({
+  type: TOGGLE_ONBOARDING
+});
+
 const storeAuthInfo = (authToken, dispatch) => {
   const decodedToken = jwtDecode(authToken);
   dispatch(setAuthToken(authToken));
