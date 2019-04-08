@@ -1,24 +1,36 @@
 import React from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import './Tutorial.css';
+import {studentEndTutorial, studentPreviousTutorial} from '../../actions/student.js'
 
-export default class TutorialPage4 extends React.Component {
+class TutorialPage4 extends React.Component {
+
+
+    handlePreviousClick(){
+        console.log('page4 handlePreviousClick ran');
+        this.props.dispatch(studentPreviousTutorial(this.props.tutorialPageNumber));
+    }
+
+    handleQuitClick(){
+        console.log('page4 handleQuitClick ran');
+        this.props.dispatch(studentEndTutorial());
+    }
 
 
     render(){
         return(
             <div>
                 <p>I probably don't need to be a class! 4</p>
-                <button>Previous Tutorial Page</button>
-                <button>Quit Tutorial</button>
+                <button onClick={e => {this.handlePreviousClick()}}>Previous Tutorial Page</button>
+                <button onClick={e => {this.handleQuitClick()}}>Quit Tutorial</button>
             </div>
         )
     }
 }
 
 
-// const mapStateToProps = state => ({
-//     tutorialPageNumber : state.student.tutorialPage
-// })
+const mapStateToProps = state => ({
+    tutorialPageNumber : state.student.tutorialPage
+})
 
-// export default connect(mapStateToProps)(Tutorial);
+export default connect(mapStateToProps)(TutorialPage4);

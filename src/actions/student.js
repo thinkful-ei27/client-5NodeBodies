@@ -76,7 +76,7 @@ export const studentPreviousTutorial = tutorialPageNumber => ({
 
 export const STUDENT_END_TUTORIAL = 'STUDENT_END_TUTORIAL';
 export const studentEndTutorial = () => ({
-  type: studentEndTutorial
+  type: STUDENT_END_TUTORIAL
 });
 
 export const getStudentAdventure = (id, password) => (dispatch) => {
