@@ -70,13 +70,14 @@ class GraphContainer extends React.Component {
             automaticRearrangeAfterDropNode: true,
             d3: {
                 gravity: -300,
-                linkLength: 100,
+                linkLength: 200,
                 forceManyBody: function strength() {
                     return -1000;
                 },
             },
             minZoom: .5,
             maxZoom: 1.5,
+          
             node: {
                 fontSize: 18,
                 color: 'lightgreen',

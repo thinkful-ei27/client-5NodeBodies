@@ -14,7 +14,7 @@ import {
   DELETE_NODE_REQUEST,
   DELETE_NODE_SUCCESS,
 
-  UPDATE_CURRENT_NODE,
+  // UPDATE_CURRENT_NODE,
   TOGGLE_ENDING,
   TOGGLE_CHILD_TYPE,
   STAGE_CHILD_NODE
@@ -114,7 +114,8 @@ export default function reducer(state = initialState, action) {
     }
     case DELETE_NODE_SUCCESS: {
       return Object.assign({}, state, {
-        loading: false
+        loading: false,
+        showUpdate:false
       });
     }
     case DELETE_NODE_ERROR: {
