@@ -29,7 +29,7 @@ export class StudentLanding extends React.Component {
   render() {
     if (this.props.adventure !== null) {
       return <StudentDisplay />
-    } else { //HERE IS WHERE THE BUG COMES FROM... RESET ADVENTURE TO NULL, OR IMPLEMENT THIS DIFFERENTLY
+    } else {
       if (this.props.loading) {
         return <div className="loading">loading...</div>;
       }

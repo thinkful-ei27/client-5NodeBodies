@@ -13,7 +13,7 @@ export class Headerbar extends React.Component {
   }
 
   ifAdventureRemoveAdventure() {
-    if (studentAdventure) {
+    if (this.props.studentAdventure) {
       this.props.dispatch(endStudentAdventure())
     }
   }
