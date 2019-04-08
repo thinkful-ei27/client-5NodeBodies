@@ -57,6 +57,28 @@ export const getStudentSearchError = error => ({
   error
 });
 
+export const STUDENT_START_TUTORIAL = 'STUDENT_START_TUTORIAL';
+export const studentStartTutorial = () => ({
+  type: STUDENT_START_TUTORIAL
+});
+
+export const STUDENT_NEXT_TUTORIAL = 'STUDENT_NEXT_TUTORIAL';
+export const studentNextTutorial = tutorialPageNumber => ({
+  type: STUDENT_NEXT_TUTORIAL,
+  tutorialPageNumber
+});
+
+export const STUDENT_PREVIOUS_TUTORIAL = 'STUDENT_PREVIOUS_TUTORIAL';
+export const studentPreviousTutorial = tutorialPageNumber => ({
+  type: STUDENT_PREVIOUS_TUTORIAL,
+  tutorialPageNumber
+});
+
+export const STUDENT_END_TUTORIAL = 'STUDENT_END_TUTORIAL';
+export const studentEndTutorial = () => ({
+  type: studentEndTutorial
+});
+
 export const getStudentAdventure = (id, password) => (dispatch) => {
   console.log('getStudentAdventure ran');
   console.log(id);
