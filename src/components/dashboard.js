@@ -8,28 +8,19 @@ import { toggleOnboarding } from '../actions/auth'
 export class Dashboard extends React.Component {
   componentDidMount() {
     this.props.dispatch(getAllAdventures());
+    if (this.props.onboarding) {
+      this.props.dispatch(toggleOnboarding())
+    } else if (!(this.props.adventures && this.props.onboarding)) {
+      this.props.dispatch(toggleOnboarding())
+    }
   }
+
 
   toggleOnboardingClick() {
-    this.props.dispatch(toggleOnboarding)
+    this.props.dispatch(toggleOnboarding())
   }
 
-  dashboardOnboarding() {
-    let onboarding;
-    if (this.props.onboarding) {
-      onboarding = <div className="dashboardOnboarding arrowBox_Top">
-        <span>Welcome to LearnVenture! Let's start by creating a new LearnVenture</span>
-        <span>If you'd like help learning how to use this site, click "Create LearnVenture" above</span>
-        <span>You can use the buttons in the navigation bar at the top of the page to Log Out, get back here (the dashboard),
-        Or go to the landing page where you can switch between building and embarking on LearnVentures</span>
-        <button className="skip-onboarding" onClick={() => this.skipOnboarding()}>Close</button>
-      </div>
 
-    } else {
-      onboarding = null
-    }
-    return onboarding
-  }
 
   AdventureList() {
     let list;
@@ -51,14 +42,15 @@ export class Dashboard extends React.Component {
         </li>
       ))
     }
+
     let onboarding;
     if (this.props.onboarding) {
-      onboarding = <div className="dashboardOnboarding arrowBox_Top">
-        <span>Welcome to LearnVenture! Let's start by creating a new LearnVenture</span>
-        <span>If you'd like help learning how to use this site, click "Create LearnVenture" above</span>
-        <span>You can use the buttons in the navigation bar at the top of the page to Log Out, get back here (the dashboard),
-        Or go to the landing page where you can switch between building and embarking on LearnVentures</span>
-        <button className="skip-onboarding" onClick={() => this.skipOnboarding()}>Close</button>
+      onboarding = <div className="dashboardOnboarding arrowBox_Top onboarding">
+        <span>Welcome to LearnVenture! You can use the buttons in the navigation bar at the top of the page to <strong>Log Out</strong>,
+        get back here (the <strong>Dashboard</strong>), Or go to the <strong>Home page</strong>, where you can switch between building and embarking on
+                      LearnVentures. If you'd like help learning how to use this site, click "Create LearnVenture" above. Or close me
+      using the button below. You can turn help on and off on every page of the site to use when you need it!</span>
+        <button className="close-onboarding" onClick={() => this.toggleOnboardingClick()}>Close</button>
       </div>
     } else {
       onboarding = null

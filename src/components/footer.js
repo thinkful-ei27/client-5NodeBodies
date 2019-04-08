@@ -5,7 +5,7 @@ import { toggleOnboarding } from '../actions/auth'
 export class Footer extends React.Component {
 
   toggleOnboardingClick() {
-    this.props.dispatch(toggleOnboarding)
+    this.props.dispatch(toggleOnboarding())
   }
 
   render() {

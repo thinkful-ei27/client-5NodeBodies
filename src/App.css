@@ -151,6 +151,10 @@ code {
   width: 70px;
 }
 
+.close-onboarding {
+  display: block;
+}
+
 .mobile-only {
   margin-left: auto;
   margin-right: auto;
@@ -231,13 +235,20 @@ ul {
   margin-bottom: 10px;
 }
 
+.dashboardOnboarding {
+  width: 40%;
+  padding: 10px;
+  border-radius: 18px;
+  margin-top: 30px;
+}
 
 .arrowBox_Top {
-	position: relative;
+  position: relative;
 	background: #da8624;
 	border: 4px solid #da8624;
 }
-.arrowBox_Top:after, .arrowBox_Top:before {
+
+.arrowBox_Top:after {
 	bottom: 100%;
 	left: 50%;
 	border: solid transparent;
@@ -246,20 +257,12 @@ ul {
 	width: 0;
 	position: absolute;
 	pointer-events: none;
-}
-
-.arrowBox_Top:after {
-	border-color: rgba(218, 134, 36, 0);
+	border-color: rgba(136, 183, 213, 0);
 	border-bottom-color: #da8624;
 	border-width: 30px;
 	margin-left: -30px;
 }
-.arrowBox_Top:before {
-	border-color: rgba(218, 134, 36, 0);
-	border-bottom-color: #da8624;
-	border-width: 36px;
-	margin-left: -36px;
-}
+
 
 @media only screen and (min-width: 531px) {
 
