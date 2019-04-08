@@ -1,7 +1,7 @@
 
 import { API_BASE_URL } from '../config';
 import { normalizeResponseErrors } from '../utils';
-import { getAdventureById } from './createAdventure';
+import { updateAdventureById } from './createAdventure';
 
 export const NODE_FORM_WITH_POINTER = 'NODE_FORM_WITH_POINTER';
 export const nodeFormWithPointer = (parentInt) => {
@@ -96,7 +96,7 @@ export const toggleEnding = () => ({
   type: TOGGLE_ENDING
 });
 
-export const createNode = node => (dispatch, getState) => {
+export const createNode = nodeData => (dispatch, getState) => {
   let nodeId;
   dispatch(createNodeRequest())
   const authToken = getState().auth.authToken;
@@ -106,16 +106,21 @@ export const createNode = node => (dispatch, getState) => {
       Authorization: `Bearer ${authToken}`,
       'content-type': 'application/json'
     },
-    body: JSON.stringify(node)
+    body: JSON.stringify(nodeData)
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then(res => {
-      nodeId = res.createdNode.id;
-      return dispatch(getAdventureById(res.adventureId));
+      if (nodeData.parentId) {
+        nodeId = nodeData.parentId;
+      }
+      else nodeId = res.createdNode.id;
+      return dispatch(updateAdventureById(res.adventureId));
     })
-    .then(() => {
-      dispatch(createNodeSuccess(nodeId));
+    .then((adventure) => {
+      const updatedNode = getNodeFromCurrentAdventure(nodeId, adventure);
+      dispatch(setCurrentNode(updatedNode))
+      return dispatch(createNodeSuccess(nodeId));
     })
     .catch(err => {
       dispatch(createNodeError(err));
@@ -134,9 +139,13 @@ export const deleteNode = (adventureId, nodeId) => (dispatch, getState) => {
     }
   })
     .then(res => normalizeResponseErrors(res))
-    .then(res => res.json())
-    .then(res => {
-      dispatch(deleteNodeSuccess())
+    .then(() => {
+      return dispatch(updateAdventureById(adventureId))
+    })
+    .then((adventure) => {
+      dispatch(setCurrentNode(adventure.head))
+      return dispatch(deleteNodeSuccess())
+      // sets showUpdate to false in reducer
     })
     .catch(err => {
       dispatch(deleteNodeError(err))
@@ -145,6 +154,8 @@ export const deleteNode = (adventureId, nodeId) => (dispatch, getState) => {
 
 
 export const linkNodesById = idObjectWithParentInt => (dispatch, getState) => {
+  let adventureId = idObjectWithParentInt.adventureId
+  let nodeId = idObjectWithParentInt.parentId
   dispatch(updateNodeRequest())
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/adventure/linkNodes`, {
@@ -156,41 +167,61 @@ export const linkNodesById = idObjectWithParentInt => (dispatch, getState) => {
     body: JSON.stringify(idObjectWithParentInt)
   })
     .then(() => {
-      return dispatch(getAdventureById(idObjectWithParentInt.adventureId));
+      return dispatch(updateAdventureById(adventureId));
     })
-    .then(() => {
-      dispatch(updateNodeSuccess())
+    .then((adventure) => {
+      const updatedNode = getNodeFromCurrentAdventure(nodeId, adventure);
+      dispatch(setCurrentNode(updatedNode))
+      return dispatch(updateNodeSuccess())
     })
     .catch(err => {
       dispatch(createNodeError(err))
     });
 }
 
-export const updateNode = node => (dispatch, getState) => {
+
+export const updateNode = nodeData => (dispatch, getState) => {
+  let nodeId = nodeData.nodeId
   dispatch(updateNodeRequest())
   const authToken = getState().auth.authToken;
-  return fetch(`${API_BASE_URL}/adventure/${node.adventureId}/${node.nodeId}`, {
+  return fetch(`${API_BASE_URL}/adventure/${nodeData.adventureId}/${nodeData.nodeId}`, {
     method: 'PUT',
     headers: {
       Authorization: `Bearer ${authToken}`,
       'content-type': 'application/json'
     },
-    body: JSON.stringify(node)
+    body: JSON.stringify(nodeData)
   })
     .then(res => normalizeResponseErrors(res))
-    .then(res => res.json())
-    .then(res => {
+    .then( () => {
       // console.log("New Node From Backend is: ", res)
       // return dispatch(getAdventureById(node.adventureId));
       dispatch(toggleUpdateForm())
-      dispatch(getAdventureById(node.adventureId));
+      return dispatch(updateAdventureById(nodeData.adventureId));
     })
-    .then(() => {
-      dispatch(updateNodeSuccess())
+    .then((adventure) => {
+      const updatedNode = getNodeFromCurrentAdventure(nodeId, adventure);
+      dispatch(setCurrentNode(updatedNode))
+      return dispatch(updateNodeSuccess())
     })
     .catch(err => {
       dispatch(createNodeError(err))
     });
 };
 
+// helper fn to find node in adventure
+function getNodeFromCurrentAdventure(nodeId, adventure) {
+  console.log(nodeId, adventure)
+  let nodeToReturn = adventure.nodes.find(node => node.id === nodeId);
+  console.log(nodeToReturn)
+  return nodeToReturn
 
+}
+
+
+// export const UPDATE_CURRENT_NODE = 'UPDATE_CURRENT_NODE';
+// export const updateCurrentNode = (nodeId, nodeArr) => ({
+//   type: UPDATE_CURRENT_NODE,
+//   nodeId,
+//   nodeArr
+// });
