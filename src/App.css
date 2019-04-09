@@ -137,7 +137,11 @@ code {
   .input-field{
     max-width:250px;
   }
+}
 
+.search-input{
+  width: 205px;
+  /* display:block; */
 }
 .node-select {
   display: block;
@@ -202,6 +206,10 @@ margin: 15px;
   margin-bottom: 5px;
 }
 
+.above{
+  margin-top: 5px;
+}
+
 .nav-buttons {
   margin-left: auto;
   margin-right: auto;
@@ -233,6 +241,10 @@ ul {
   list-style-type: none;
 }
 
+::placeholder {
+  color: #51646b;
+}
+
 
 /* BASIC CURRENT-NODE-BRANCHER STYLING */
 .brancher-answer, .brancher-pointer{
@@ -257,7 +269,7 @@ ul {
 .footer {
   width: 100%;
   min-width: 100%;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   margin-bottom: 10px;
 }
