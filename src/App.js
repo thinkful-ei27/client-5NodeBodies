@@ -62,7 +62,7 @@ class App extends Component {
           <Route exact path="/adventure/:id" component={AdventureInfo} />
           <Route component={WrongTurn} />
         </Switch>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     );
   }
