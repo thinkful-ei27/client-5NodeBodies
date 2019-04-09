@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Graph } from 'react-d3-graph';
 import { setCurrentNode } from '../actions/nodes'
 import { reRenderGraph } from '../actions/createAdventure'
-
+import { toggleOnboarding } from '../actions/auth'
 
 class GraphContainer extends React.Component {
 
@@ -12,18 +12,22 @@ class GraphContainer extends React.Component {
         this.props.dispatch(setCurrentNode(nodeArr[0]))
         console.log("reRender is: ", this.props.reRender)
         // this.props.dispatch(reRenderGraph())
-        }
-        
+    }
+
 
     getFullNode(nodeId) { //get full node is outside of the class due to *this* being binded to the graph
         const nodeArr = this.props.nodez.filter((node) => node.id === nodeId)
         return nodeArr[0]
     }
 
+    toggleOnboardingClick() {
+        this.props.dispatch(toggleOnboarding())
+    }
+
     populateGraph() {
         let chartData = {
-          nodes: [],
-          links: []
+            nodes: [],
+            links: []
         };
         for (let i = 0; i < this.props.nodez.length; i++) {
             if (i === 0) {
@@ -41,7 +45,7 @@ class GraphContainer extends React.Component {
                     chartData.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerD })
                 }
             } else {
-                chartData.nodes.push({ id: this.props.nodez[i].id, title: this.props.nodez[i].title ? this.props.nodez[i].title : this.props.nodez[i].question, color: this.props.nodez[i].ending ? 'blue' : 'lightgreen', symbolType: this.props.nodez[i].ending ? "square" : "circle"})
+                chartData.nodes.push({ id: this.props.nodez[i].id, title: this.props.nodez[i].title ? this.props.nodez[i].title : this.props.nodez[i].question, color: this.props.nodez[i].ending ? 'blue' : 'lightgreen', symbolType: this.props.nodez[i].ending ? "square" : "circle" })
                 if (this.props.nodez[i].pointerA) {
                     chartData.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerA })
                 }
@@ -60,10 +64,23 @@ class GraphContainer extends React.Component {
     }
 
     componentWillMount() {
-       this.populateGraph()
+        this.populateGraph()
     }
 
     render() {
+        let onboarding;
+        if (this.props.onboarding) {
+            onboarding = <div className="wideOnboarding arrowBox_Top onboarding">
+                <span>This is a graph of all the checkpoints and pathways of your LearnVenture. Clicking on a checkpoint
+                will set it to the current Checkpoint for the tools below which you can use to build new pathways, connect
+                checkpoints and expand your LearnVenture. You can also change the Current Checkpoint with the dropdown menu above.
+                The Orange Triangle is the start of your Learnventure and the Blue Squares are endpoints. Feel free to drag
+                checkpoints around so you can better see how things connect.</span>
+                <button className="close-onboarding" onClick={() => this.toggleOnboardingClick()}>Close</button>
+            </div>
+        } else {
+            onboarding = null
+        }
         const myConfig = {
             nodeHighlightBehavior: true,
             directed: true,
@@ -77,7 +94,7 @@ class GraphContainer extends React.Component {
             },
             minZoom: .5,
             maxZoom: 1.5,
-          
+
             node: {
                 fontSize: 18,
                 color: 'lightgreen',
@@ -116,6 +133,7 @@ class GraphContainer extends React.Component {
                         // onMouseOverLink={onMouseOverLink}
                         // onMouseOutLink={onMouseOutLink}
                         />
+                        {onboarding}
                     </div>
                 );
             } else {
@@ -136,6 +154,7 @@ class GraphContainer extends React.Component {
                         // onMouseOverLink={onMouseOverLink}
                         // onMouseOutLink={onMouseOutLink}
                         />
+                        {onboarding}
                     </div>
                 );
             }
@@ -148,7 +167,8 @@ const mapStateToProps = state => ({
     nodez: state.adventure.currentAdventure.nodes,
     showUpdate: state.node.showUpdate,
     currentNode: state.node.currentNode,
-    reRender : state.adventure.reRender
+    reRender: state.adventure.reRender,
+    onboarding: state.auth.onboarding
 })
 
 // connect(mapStateToProps)(Graph)

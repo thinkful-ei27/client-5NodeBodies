@@ -230,13 +230,26 @@ ul {
 .footer {
   width: 100%;
   min-width: 100%;
-  position: absolute;
+  flex-shrink: 0;
+  position: fixed;
+  overflow: auto;
   bottom: 0;
-  margin-bottom: 10px;
+  padding-bottom: 10px;
+  background: #f0f8fa;
 }
 
-.dashboardOnboarding {
+.bottom-margin{
+  margin-bottom: 80px; 
+}
+
+.wideOnboarding {
   width: 40%;
+  padding: 10px;
+  border-radius: 18px;
+  margin-top: 30px;
+}
+.narrowOnboarding {
+  width: 100%;
   padding: 10px;
   border-radius: 18px;
   margin-top: 30px;
@@ -262,7 +275,6 @@ ul {
 	border-width: 30px;
 	margin-left: -30px;
 }
-
 
 @media only screen and (min-width: 531px) {
 

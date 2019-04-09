@@ -3,12 +3,15 @@ import { Form, Field, reduxForm } from 'redux-form';
 // import { url } from 'redux-form-validators'
 import Input from "./input";
 import TextArea from "./textarea";
+import { connect } from 'react-redux';
 import { createAdventure } from '../actions/createAdventure';
 import { required, nonEmpty, isTrimmedPassword } from "../utils/validators";
 import { withRouter } from 'react-router-dom';
-import Sidebar from "./sidebar";
+import { toggleOnboarding } from '../actions/auth'
+// import Sidebar from "./sidebar";
 
 class AdventureForm extends React.Component {
+
   onSubmit(values) {
     let { title,
       startContent,
@@ -29,6 +32,11 @@ class AdventureForm extends React.Component {
         this.props.history.push(`/adventure/headnode`)
       })
   }
+
+  toggleOnboardingClick() {
+    this.props.dispatch(toggleOnboarding())
+  }
+
   render() {
     let error;
     if (this.props.error) {
@@ -38,8 +46,21 @@ class AdventureForm extends React.Component {
         </div>
       );
     }
+    let onboarding;
+    if (this.props.onboarding) {
+      onboarding = <div className="narrowOnboarding arrowBox_Top onboarding">
+        <span>This page will help you create the start of your LearnVenture. Use the form above to add a
+        <strong> Title</strong>, an<strong> Introduction</strong> setting the stage, an <em>optional</em>
+          <strong> YouTube URL</strong> with relevant content, and an <em>optional</em>
+          <strong> Password</strong> for potential learners to access your LearnVenture. Next we'll build
+          the first checkpoint where learners will have to make a decision on how they want to continue.</span>
+        <button className="close-onboarding" onClick={() => this.toggleOnboardingClick()}>Close</button>
+      </div>
+    } else {
+      onboarding = null
+    }
     return (<div>
-      <Sidebar />
+      {/*<Sidebar />*/}
       <div className="form-field">
         <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
           <div>Create a new adventure!</div>
@@ -70,15 +91,16 @@ class AdventureForm extends React.Component {
             component={Input}
             // validate={url({ protocols: ['http', 'https'] })}
             type="text" />
-            <Field className="textContent input-field"
-              label="Optional Password:"
-              ariaLabel="Temporary"
-              name="password"
-              component={Input}
-              placeholder="Not Required"
-              type="text"
-              validate={[isTrimmedPassword]} />
+          <Field className="textContent input-field"
+            label="Optional Password:"
+            ariaLabel="Temporary"
+            name="password"
+            component={Input}
+            placeholder="Not Required"
+            type="text"
+            validate={[isTrimmedPassword]} />
           <button>New Adventure!</button>
+          {onboarding}
         </Form>
       </div>
     </div>
@@ -86,10 +108,15 @@ class AdventureForm extends React.Component {
   }
 }
 
-export default withRouter(reduxForm({
-  form: 'Adventure',
+const mapStateToProps = state => {
+  return {
+    onboarding: state.auth.onboarding
+  };
+};
 
+export default withRouter(connect(mapStateToProps)(reduxForm({
+  form: 'Adventure',
   // onSubmitFail: (errors, dispatch) =>
   //   dispatch(focus('Adventure'/*, Object.keys(errors)[0]*/
   //   ))
-})(AdventureForm));
+})(AdventureForm)));

@@ -6,9 +6,7 @@ import TextArea from "./textarea";
 import { createNode, toggleEnding, setCurrentNode, toggleChildType } from '../actions/nodes';
 import { required, nonEmpty } from "../utils/validators";
 import { Checkbox, Form } from 'semantic-ui-react';
-
-
-
+import { toggleOnboarding } from '../actions/auth'
 
 class NewNodeForm extends React.Component {
   renderCheckBox = ({ input, label }) => {
@@ -33,12 +31,15 @@ class NewNodeForm extends React.Component {
   toggleNewOrExistingNodeForm() {
     this.props.dispatch(toggleChildType())
   }
+  toggleOnboardingClick() {
+    this.props.dispatch(toggleOnboarding())
+  }
 
   onSubmit(values) {
     const parentInt = this.props.parentInt;
     const adventureId = this.props.adventureId;
     const parentId = this.props.parentId;
-    let {title, question, answerA, answerB, answerC, answerD, videoURL, textContent, ending } = values;
+    let { title, question, answerA, answerB, answerC, answerD, videoURL, textContent, ending } = values;
     let newNode = {
       answerA,
       answerB,
@@ -66,6 +67,21 @@ class NewNodeForm extends React.Component {
           {this.props.error}
         </div>
       );
+    }
+    let onboarding;
+    if (this.props.onboarding) {
+      onboarding = <div className="wideOnboarding arrowBox_Top onboarding">
+        <span>This form is for creating the information of the new checkpoint which will stem from the answer you selected above.
+        If you'd like you can connect the selected answer to an existing checkpoint by clicking <strong>Use Existing Checkpoint</strong>.
+        Make this a standard checkpoint with a<strong> Title</strong>, <strong> Scenario Description</strong>, <em>optional</em>
+          <strong> YouTube URL</strong>, a<strong> Question</strong>, and <strong>answers</strong>. Or you can set it as an ending.
+          Endings only have an <em>optional</em> <strong> YouTube URL</strong> and an<strong> Ending Description</strong>. If a learner
+          gets to an ending, their LearnVenture will be over and they will be prompted to start over if they'd like. Once create, you will
+          see your new checkpoint in the graph above.</span>
+        <button className="close-onboarding" onClick={() => this.toggleOnboardingClick()}>Close</button>
+      </div>
+    } else {
+      onboarding = null
     }
     let parentAnswer;
     if (this.props.parentInt === 1) {
@@ -159,13 +175,13 @@ class NewNodeForm extends React.Component {
           label="Is this an Ending?"
           component={this.renderCheckBox}
           type="checkbox" />
-          <Field
-            className="title"
-            label="New Title"
-            name="title"
-            component={Input}
-            type="text"
-            validate={[required, nonEmpty]} />
+        <Field
+          className="title"
+          label="New Title"
+          name="title"
+          component={Input}
+          type="text"
+          validate={[required, nonEmpty]} />
         <Field
           className="videoURL"
           label="Video URL (optional)"
@@ -174,8 +190,8 @@ class NewNodeForm extends React.Component {
           component={Input}
           type="text" />
         {questions}
-
         <button>Add node to adventure</button>
+        {onboarding}
       </form>)
   }
 }
@@ -187,7 +203,8 @@ const mapStateToProps = state => {
     parentInt: state.node.parentInt,
     adventureId: state.adventure.currentAdventure.id,
     parentId: state.node.currentNode.id,
-    isEnding: state.node.isEnding
+    isEnding: state.node.isEnding,
+    onboarding: state.auth.onboarding
   };
 };
 
