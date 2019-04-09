@@ -194,6 +194,6 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps)(reduxForm({
   form: 'NewNode',
   onSubmitFail: (errors, dispatch) =>
-    dispatch(focus('Adventure'/*, Object.keys(errors)[0]*/
+    dispatch(focus('NewNode'/*, Object.keys(errors)[0]*/
     ))
 })(NewNodeForm));
