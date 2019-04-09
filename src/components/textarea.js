@@ -21,7 +21,7 @@ export default class Textarea extends React.Component {
     }
 
     return (
-      <div className="form-textarea">
+      <div className="">
         <label htmlFor={this.props.input.name}>
           {this.props.label}
           {error}
@@ -30,7 +30,7 @@ export default class Textarea extends React.Component {
         <textarea
           {...this.props.input}
           id={this.props.input.name}
-          className="textarea input-field"
+          className="input-field text-area"
           type={this.props.type}
           maxLength={this.props.maxlength}
           placeholder={this.props.placeholder}
