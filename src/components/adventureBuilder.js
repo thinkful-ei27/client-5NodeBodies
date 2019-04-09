@@ -15,7 +15,7 @@ export class AdventureBuilder extends React.Component {
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.dispatch(getAdventureById(id))
-    if(this.props.showUpdate === true){
+    if (this.props.showUpdate === true) {
       this.props.dispatch(toggleUpdateForm())
     }
   }
@@ -37,7 +37,7 @@ export class AdventureBuilder extends React.Component {
     if (!adventure) {
       return <div className="loading">loading...</div>;
     }
-// needs 'key' prop below
+    // needs 'key' prop below
     const options = this.props.currentAdventure.nodes.map((node) =>
       <option label={node.title} value={node.id}>{node.title}</option>);
 

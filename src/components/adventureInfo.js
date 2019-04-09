@@ -10,6 +10,8 @@ import {
   deleteAdventure,
   toggleAnalyticsDisplay
 } from '../actions/createAdventure'
+import { toggleOnboarding } from '../actions/auth'
+
 
 
 export class AdventureInfo extends React.Component {
@@ -43,11 +45,28 @@ export class AdventureInfo extends React.Component {
     return this.props.dispatch(toggleAnalyticsDisplay())
   }
 
+  toggleOnboardingClick() {
+    this.props.dispatch(toggleOnboarding())
+  }
+
   AdventureDetails() {
     const adventure = this.props.currentAdventure
     let analytics, password;
     if (this.props.showAnalytics) {
       analytics = <Analytics />
+    }
+    let onboarding;
+    if (this.props.onboarding) {
+      onboarding = <div className="wideOnboarding arrowBox_Top onboarding">
+        <span>This page contains the basic info for you LearnVenture. You can use the buttons at the bottom of the info
+        section to go to the <strong>LearnVenture Builder</strong> to begin or continue building the checkpoints and pathways,
+        <strong>Edit LearnVenture Starting Info</strong> to change the information you see here, <strong>Delete Adventure</strong>
+          to permanently delete this LearnVenture, or <strong>Show Analytics</strong> to view info about how learners have used this
+        LearnVenture.</span>
+        <button className="close-onboarding" onClick={() => this.toggleOnboardingClick()}>Close</button>
+      </div>
+    } else {
+      onboarding = null
     }
     if (!adventure) {
       return <div>loading...</div>
@@ -106,6 +125,7 @@ export class AdventureInfo extends React.Component {
             </button>
           </div>
           {analytics}
+          {onboarding}
         </div >
       );
     } else if (adventure && !adventure.startVideoURL && !this.props.isEditing) {
@@ -142,6 +162,7 @@ export class AdventureInfo extends React.Component {
             </div>
           </div>
           {analytics}
+          {onboarding}
         </div>
       );
     } else {
@@ -167,7 +188,8 @@ const mapStateToProps = state => {
     currentAdventure: state.adventure.currentAdventure,
     isDeleting: state.adventure.isDeleting,
     isEditing: state.adventure.isEditing,
-    showAnalytics: state.adventure.showAnalytics
+    showAnalytics: state.adventure.showAnalytics,
+    onboarding: state.auth.onboarding
   };
 };
 
