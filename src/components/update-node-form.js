@@ -202,7 +202,7 @@ class UpdateNodeForm extends React.Component {
             <h4>answer that points to this node: {parentAnswer}</h4>
             {error}
             <Field
-              className="ending"
+              className="end-checkbox"
               name="ending"
               label="Is this an Ending?"
               component={this.renderCheckBox}
