@@ -154,7 +154,7 @@ class NewNodeForm extends React.Component {
          </button>
         {error}
         <Field
-          className="ending"
+          className="end-checkbox"
           name="ending"
           label="Is this an Ending?"
           component={this.renderCheckBox}
