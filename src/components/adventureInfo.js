@@ -117,7 +117,7 @@ export class AdventureInfo extends React.Component {
           <div className='adventure-info'>
             <h2 className="adventure-title">{adventure.title}</h2>
             <h3 className="info-category">Adventure Intro</h3> <p>{adventure.startContent}</p>
-            <h3 className="info-category">Starting Scenario</h3> <p>{adventure.textContent}</p>
+            {/* <h3 className="info-category">Starting Scenario</h3> <p>{adventure.textContent}</p> */}
             <h3 className="info-category">Adventure Code:</h3> <p>{adventure.id}</p>
             {password}
             <div className="buttons">
@@ -125,8 +125,10 @@ export class AdventureInfo extends React.Component {
               <button
                 type='button'
                 onClick={() => this.toggleAdventureEditForm()}
-              >Edit adventure Starting Info
+              >Edit adventure  Info
               </button>
+              {/* </div>
+              <div className='buttons'> */}
               <button className="delete-it"
                 type='button'
                 onClick={() => this.displayAdventureDeleting()}
