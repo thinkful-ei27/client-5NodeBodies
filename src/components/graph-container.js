@@ -6,11 +6,11 @@ import { reRenderGraph } from '../actions/createAdventure'
 import { toggleOnboarding } from '../actions/auth'
 
 class GraphContainer extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-          windowHeight: window.innerHeight,
-          windowWidth: window.innerWidth
+            windowHeight: window.innerHeight,
+            windowWidth: window.innerWidth
         };
     }
     onClickNode(nodeId) {
@@ -51,11 +51,7 @@ class GraphContainer extends React.Component {
                     chartData.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerD })
                 }
             } else {
-<<<<<<< HEAD
-                chartData.nodes.push({ id: this.props.nodez[i].id, title: this.props.nodez[i].title ? this.props.nodez[i].title : this.props.nodez[i].question, color: this.props.nodez[i].ending ? 'blue' : 'lightgreen', symbolType: this.props.nodez[i].ending ? "square" : "circle" })
-=======
-                chartData.nodes.push({ id: this.props.nodez[i].id, title: this.props.nodez[i].title ? this.props.nodez[i].title : this.props.nodez[i].question, color: this.props.nodez[i].ending ? '#51646b' : '#b4cedd', symbolType: this.props.nodez[i].ending ? "square" : "circle"})
->>>>>>> develop
+                chartData.nodes.push({ id: this.props.nodez[i].id, title: this.props.nodez[i].title ? this.props.nodez[i].title : this.props.nodez[i].question, color: this.props.nodez[i].ending ? '#51646b' : '#b4cedd', symbolType: this.props.nodez[i].ending ? "square" : "circle" })
                 if (this.props.nodez[i].pointerA) {
                     chartData.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerA })
                 }
@@ -75,7 +71,7 @@ class GraphContainer extends React.Component {
         return chartData;
     }
 
-    resizeGraph(){
+    resizeGraph() {
         let cyStyle = {
             margin: 'auto',
             border: '1px solid lightgreen'
@@ -95,21 +91,17 @@ class GraphContainer extends React.Component {
         })
     }
 
-    componentDidMount(){
-      window.addEventListener("resize", this.handleResize);
+    componentDidMount() {
+        window.addEventListener("resize", this.handleResize);
     }
 
     componentWillMount() {
-<<<<<<< HEAD
-        this.populateGraph()
-=======
-       this.populateGraph();
-       this.resizeGraph();
+        this.populateGraph();
+        this.resizeGraph();
     }
 
-    componentWillUnmount(){
+    componentWillUnmount() {
         window.removeEventListener("resize", this.handleResize);
->>>>>>> develop
     }
 
     render() {
@@ -139,13 +131,9 @@ class GraphContainer extends React.Component {
             },
             minZoom: .5,
             maxZoom: 1.5,
-<<<<<<< HEAD
-
-=======
             height: Math.max(this.state.windowHeight * .5, 500),
             width: Math.max(this.state.windowWidth * .8, 300),
             //There are height and widths available here, but they're for the graph itself, not the container of the graph
->>>>>>> develop
             node: {
                 fontSize: 18,
                 color: 'lightgreen',
@@ -164,9 +152,9 @@ class GraphContainer extends React.Component {
         } else {
             if (this.props.reRender) {
                 return (
-                <div style={this.resizeGraph()}> {/*Make the cyStyle into a method like populateGraph for CSS RESPONSIVENESS*/}
+                    <div style={this.resizeGraph()}> {/*Make the cyStyle into a method like populateGraph for CSS RESPONSIVENESS*/}
                         <Graph
-                            props={this.props} 
+                            props={this.props}
                             id="graph-id" // id is mandatory, if no id is defined rd3g will throw an error
                             data={this.populateGraph()}
                             config={myConfig}
