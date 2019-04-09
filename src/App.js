@@ -14,6 +14,7 @@ import GraphContainer from './components/graph-container'
 import WrongTurn from './components/wrongTurn'
 import Home from './components/home'
 import CreateHeadNode from './components/create-head-node'
+import Footer from './components/footer'
 
 import AdventureInfo from './components/adventureInfo'
 import './App.css';
@@ -61,6 +62,7 @@ class App extends Component {
           <Route exact path="/adventure/:id" component={AdventureInfo} />
           <Route component={WrongTurn} />
         </Switch>
+        <Footer />
       </div>
     );
   }

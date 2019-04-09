@@ -12,7 +12,8 @@ import {
   STUDENT_END_TUTORIAL,
   STUDENT_NEXT_TUTORIAL,
   STUDENT_PREVIOUS_TUTORIAL,
-  STUDENT_START_TUTORIAL
+  STUDENT_START_TUTORIAL,
+  END_STUDENT_ADVENTURE
 } from '../actions/student'
 
 const initialState = {
@@ -70,6 +71,11 @@ export default function reducer(state = initialState, action) {
     case RESTART_STUDENT_ADVENTURE: {
       return Object.assign({}, state, {
         currentNode: null
+      });
+    }
+    case END_STUDENT_ADVENTURE: {
+      return Object.assign({}, state, {
+        adventure: null
       });
     }
     case GET_STUDENT_SEARCH_REQUEST: {
