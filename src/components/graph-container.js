@@ -66,21 +66,17 @@ class GraphContainer extends React.Component {
     }
 
     resizeGraph(){
-        console.log('resizeGraph ran!');
         let cyStyle = {
             margin: 'auto',
             border: '1px solid lightgreen'
-        }
+        };
         cyStyle.maxHeight = Math.max(this.state.windowHeight * .5, 500);
         cyStyle.maxWidth = Math.max(this.state.windowWidth * .8, 300);
-
-        console.log(cyStyle.maxHeight = Math.max(this.state.windowHeight * .5, 500));
-        console.log(cyStyle.maxWidth = Math.max(this.state.windowWidth * .8, 300));
         return cyStyle;
     }
 
-    handleResize = e => {
-        console.log('handleResize ran!');
+    //if you change this from an arrow function, this.setState fails
+    handleResize = () => {
         let windowHeight = window.innerHeight;
         let windowWidth = window.innerWidth;
         this.setState({
@@ -116,6 +112,8 @@ class GraphContainer extends React.Component {
             },
             minZoom: .5,
             maxZoom: 1.5,
+            height: Math.max(this.state.windowHeight * .5, 500),
+            width: Math.max(this.state.windowWidth * .8, 300),
             //There are height and widths available here, but they're for the graph itself, not the container of the graph
             node: {
                 fontSize: 18,
