@@ -13,9 +13,11 @@ import {
   setCurrentNode
 } from '../actions/nodes'
 import { Checkbox, Form } from 'semantic-ui-react';
+import { toggleOnboarding } from '../actions/auth'
+
 
 class UpdateNodeForm extends React.Component {
-  
+
   toggleIsEnding() {
     return this.props.dispatch(toggleEnding())
   }
@@ -38,6 +40,11 @@ class UpdateNodeForm extends React.Component {
         this.props.dispatch(setCurrentNode(head))
       })
   }
+
+  toggleOnboardingClick() {
+    this.props.dispatch(toggleOnboarding())
+  }
+
   onSubmit(values) {
     const parentInt = this.props.parentInt;
     const adventureId = this.props.adventureId;
@@ -86,7 +93,18 @@ class UpdateNodeForm extends React.Component {
         </div>
       );
     }
-
+    let onboarding;
+    if (this.props.onboarding) {
+      onboarding = <div className="wideOnboarding arrowBox_Top onboarding">
+        <span>This form is for changing the information of your current checkpoint. You can use it to change or add
+        the <strong> Title</strong>, <strong> Scenario Description</strong>, <em>optional</em>
+          <strong> YouTube URL</strong>,<strong> Question</strong>, and <strong>answers</strong>. You can also change
+          a checkpoint to and ending or delete it. Click cancel to undo any changes and go back to the LearnVenture builder.</span>
+        <button className="close-onboarding" onClick={() => this.toggleOnboardingClick()}>Close</button>
+      </div>
+    } else {
+      onboarding = null
+    }
     // Used to display which parent points to this node only
     let parentAnswer;
     if (this.props.parentInt === 1) {
@@ -189,7 +207,7 @@ class UpdateNodeForm extends React.Component {
           </div>
         </div>
       )
-    } 
+    }
     // render the update node form 
     else
       return (
@@ -226,6 +244,7 @@ class UpdateNodeForm extends React.Component {
           </form>
           <button onClick={() => this.cancelUpdate()}>Cancel</button>
           <button className="delete-node-toggle" onClick={() => this.toggleNodeDeleting()}>Delete Node</button>
+          {onboarding}
         </div>)
   }
 }
@@ -241,7 +260,9 @@ const mapStateToProps = state => {
     parentId: state.node.currentNode.id,
     initialValues: Object.assign({}, state.node.currentNode),
     isEnding: state.node.isEnding,
-    isDeleting: state.node.isDeleting
+    isDeleting: state.node.isDeleting,
+    onboarding: state.auth.onboarding
+
   };
 };
 

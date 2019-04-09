@@ -5,9 +5,9 @@ import { Field, reduxForm, focus } from 'redux-form';
 import TextArea from "./textarea";
 import Input from "./input";
 import { required, nonEmpty } from "../utils/validators";
+import { toggleOnboarding } from '../actions/auth'
 
 export class CreateHeadNode extends React.Component {
-
 
   onSubmit(values) {
     const adventureId = this.props.adventureId;
@@ -32,7 +32,26 @@ export class CreateHeadNode extends React.Component {
         return this.props.history.push(`/adventure/adventurebuilder/${adventureId}`)
       })
   }
+
+  toggleOnboardingClick() {
+    this.props.dispatch(toggleOnboarding())
+  }
+
   render() {
+    let onboarding;
+    if (this.props.onboarding) {
+      onboarding = <div className="wideOnboarding arrowBox_Top onboarding">
+        <span>Here, we'll make the beginning checkpoint that learners will branch off from onto the various
+        pathways of your LearnVenture Use the form above to add a <strong> Title</strong>, a<strong> Scenario Description </strong>
+          describing a choice to make, an <em>optional</em><strong> YouTube URL</strong>, a<strong> Question </strong>
+          that will force learners to make a choice, and <em>at least one</em><strong> answer</strong>. You can include more answers
+        which will lead learners down different pathways of your LearnVenture.</span>
+        <button className="close-onboarding" onClick={() => this.toggleOnboardingClick()}>Close</button>
+      </div>
+    } else {
+      onboarding = null
+    }
+
     return (
       <div>
         <h1>Please create a head node for your adventure</h1>
@@ -97,6 +116,7 @@ export class CreateHeadNode extends React.Component {
               type="text"
             />
             <button>New Node!</button>
+            {onboarding}
           </form>
         </div>
       </div>
@@ -106,6 +126,7 @@ export class CreateHeadNode extends React.Component {
 
 const mapStateToProps = (state, props) => ({
   adventureId: state.adventure.currentAdventure.id,
+  onboarding: state.auth.onboarding
 });
 
 export default connect(mapStateToProps)(reduxForm({
