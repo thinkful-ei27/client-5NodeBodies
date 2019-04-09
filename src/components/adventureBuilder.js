@@ -48,6 +48,7 @@ export class AdventureBuilder extends React.Component {
           label="Current Question"
           name="nodeSelect"
           options={options}
+          value={this.props.currentNode.id}
           onChange={e => this.changeCurrentNode(e.target.value)}>{options}</select>
         <CurrentNodeBrancher />
         {nodeForm}
