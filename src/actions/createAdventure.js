@@ -126,7 +126,6 @@ export const createAdventure = adventure => (dispatch, getState) => {
     .then(res => {
       // let headNode = getHeadNodefromAdventure(res)
       // dispatch(setCurrentNode(headNode))
-      this.props.history.push(`/adventure/headnode`)
       return dispatch(createAdventureSuccess(res))
       
     })

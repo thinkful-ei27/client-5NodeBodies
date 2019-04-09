@@ -175,7 +175,7 @@ export const linkNodesById = idObjectWithParentInt => (dispatch, getState) => {
       return dispatch(updateNodeSuccess())
     })
     .catch(err => {
-      dispatch(createNodeError(err))
+      dispatch(updateNodeError(err))
     });
 }
 
@@ -205,7 +205,7 @@ export const updateNode = nodeData => (dispatch, getState) => {
       return dispatch(updateNodeSuccess())
     })
     .catch(err => {
-      dispatch(createNodeError(err))
+      dispatch(updateNodeError(err))
     });
 };
 

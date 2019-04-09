@@ -1,7 +1,6 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
-import { createNode, setCurrentNode } from '../actions/nodes'
+import { createNode } from '../actions/nodes'
 import { Field, reduxForm, focus } from 'redux-form';
 import TextArea from "./textarea";
 import Input from "./input";

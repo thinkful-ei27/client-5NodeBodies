@@ -7,8 +7,7 @@ import { connect } from 'react-redux';
 import TextArea from "./textarea";
 import { createAdventure } from '../actions/createAdventure';
 import { required, nonEmpty, isTrimmedPassword } from "../utils/validators";
-import { withRouter } from 'react-router-dom';
-import Sidebar from "./sidebar";
+
 
 class AdventureForm extends React.Component {
   onSubmit(values) {

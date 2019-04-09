@@ -7,8 +7,7 @@ import { getAdventureById } from '../actions/createAdventure'
 import { setCurrentNode, toggleUpdateForm } from '../actions/nodes'
 import GraphContainer from './graph-container'
 import ExistingNodeSelector from './existingNodeSelector';
-import Sidebar from './sidebar';
-import { toggleAdventureDeleting, deleteAdventure } from '../actions/createAdventure';
+
 
 export class AdventureBuilder extends React.Component {
 
