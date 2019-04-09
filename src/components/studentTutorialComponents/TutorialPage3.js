@@ -23,9 +23,13 @@ class TutorialPage3 extends React.Component {
 
 
     render(){
+        const imgSrc3 = require('../../images/tutorialImage3.png');
         return(
-            <div className='tutorialBox'>
-                <p>I probably don't need to be a class! 3</p>
+            <div className="tutorialBox">
+                <img className="notBigPicture" src={imgSrc3} alt="The returned LearnVentures from a search, one with password protection" />
+                <p>LearnVentures are displayed below the search bar</p>
+                <p>Input the password if you see a white input box</p>
+                <p>Press "Click to Start" to do just that!</p>
                 <button onClick={e => {this.handlePreviousClick()}}>Previous Tutorial Page</button>
                 <button onClick={e => {this.handleNextClick()}}>Next Tutorial Page</button>
                 <button onClick={e => {this.handleQuitClick()}}>Quit Tutorial</button>

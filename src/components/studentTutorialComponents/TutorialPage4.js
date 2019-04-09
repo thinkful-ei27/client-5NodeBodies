@@ -18,9 +18,11 @@ class TutorialPage4 extends React.Component {
 
 
     render(){
+        const imgSrc4 = require('../../images/tutorialImage4.png');
         return(
-            <div className='tutorialBox'>
-                <p>I probably don't need to be a class! 4</p>
+            <div className="tutorialBox">
+                <img className="bigPicture" src={imgSrc4} alt="The beginning of a LearnVenture!"/>
+                <p>Click Embark to start your LearnVenture! Have fun!</p>
                 <button onClick={e => {this.handlePreviousClick()}}>Previous Tutorial Page</button>
                 <button onClick={e => {this.handleQuitClick()}}>Quit Tutorial</button>
             </div>

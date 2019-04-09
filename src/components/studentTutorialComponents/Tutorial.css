@@ -36,3 +36,11 @@ h2{
    width: 100%;
    display: block;
 }
+
+.notBigPicture{
+   height: 50%;
+}
+
+.bigPicture {
+   height: 70%;
+}
