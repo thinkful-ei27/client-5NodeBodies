@@ -60,13 +60,13 @@ class AdventureForm extends React.Component {
       onboarding = null
     }
     return (<div>
-      {/*<Sidebar />*/}
+      {/* <Sidebar /> */}
       <div className="form-field">
         <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-          <div>Create a new adventure!</div>
+          <h2>Create a new adventure!</h2>
           {error}
           <Field
-            className="title input-field"
+            className="input-field"
             label="Adventure Title"
             ariaLabel="adventure title"
             placeholder="LearnVenture"
@@ -75,7 +75,7 @@ class AdventureForm extends React.Component {
             type="text"
             validate={[required, nonEmpty]} />
           <Field
-            className="startContent"
+            className="text-area"
             label="Adventure Introduction"
             ariaLabel="Adventure Introduction"
             placeholder="This is the beginning of your learning quest. Let's have some fun!"
@@ -83,7 +83,7 @@ class AdventureForm extends React.Component {
             component={TextArea}
             type="text" />
           <Field
-            className="videoURL input-field"
+            className="input-field"
             label="Opening video URL(optional)"
             ariaLabel="Opening video URL(optional)"
             placeholder="https://www.youtube.com/embed/dHSQAEam2yc"
@@ -91,7 +91,7 @@ class AdventureForm extends React.Component {
             component={Input}
             // validate={url({ protocols: ['http', 'https'] })}
             type="text" />
-          <Field className="textContent input-field"
+          <Field className="input-field"
             label="Optional Password:"
             ariaLabel="Temporary"
             name="password"

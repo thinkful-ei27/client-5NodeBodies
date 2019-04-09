@@ -84,7 +84,7 @@ export class ExistingNodeSelector extends React.Component {
         <button onClick={() => this.toggleNewOrExistingNodeForm()}>Create New Node Instead</button>
         {/* TODO : VVV bad */}
         <p></p>
-        <select className="nodeSelect"
+        <select className="node-select"
           label="Select an existing node as a child"
           name="nodeSelect"
           options={options}
