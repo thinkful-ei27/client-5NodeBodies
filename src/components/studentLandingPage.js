@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getStudentAdventure, getStudentAll } from '../actions/student';
+import { getStudentAdventure, getStudentAll, studentStartTutorial } from '../actions/student';
 import StudentDisplay from './student-display';
 import AdventureSearch from './adventureSearch';
 import SearchResults from './searchResults';
+import Tutorial from './studentTutorialComponents/Tutorial.js'
 let inputVal, error, passwordVal;
 
 export class StudentLanding extends React.Component {
@@ -26,6 +27,19 @@ export class StudentLanding extends React.Component {
     passwordVal = e.target.value;
   }
 
+  handleTutorialClick(){
+    console.log('handleTutorialClick ran. tutorial value is...', this.props.tutorial);
+    this.props.dispatch(studentStartTutorial());
+  }
+
+  tutorialDisplay(tutorialValue){
+    if(tutorialValue){
+      return <Tutorial />
+    } else {
+      return <button onClick={e => {this.handleTutorialClick()}}>Start Tutorial</button>
+    }
+  }
+
   render() {
     if (this.props.adventure !== null) {
       return <StudentDisplay />
@@ -41,7 +55,11 @@ export class StudentLanding extends React.Component {
           <div className="student-instructions">
             <p>
               Hello and welcome to Education Exploration!
-              Please input your Exploration code below to begin your quest for learning.
+            </p>
+            <p>If you need help, please click the button below for a tutorial</p>
+            {this.tutorialDisplay(this.props.tutorial)}
+            <p>
+              Otherwise, please input your Exploration code below to begin your quest for learning.
             </p>
           </div>
           <div className="register-adventure">
@@ -72,7 +90,8 @@ const mapStateToProps = state => {
     adventure: state.student.adventure,
     error: state.student.error,
     loading: state.student.loading,
-    results: state.student.results
+    results: state.student.results,
+    tutorial: state.student.tutorial
   };
 };
 
