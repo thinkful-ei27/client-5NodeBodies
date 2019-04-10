@@ -3,7 +3,6 @@ import { Form, Field, reduxForm } from 'redux-form';
 // import { url } from 'redux-form-validators'
 import Input from "./input";
 import { connect } from 'react-redux';
-
 import TextArea from "./textarea";
 import { createAdventure } from '../actions/createAdventure';
 import { required, nonEmpty, isTrimmedPassword } from "../utils/validators";
@@ -115,9 +114,9 @@ const mapStateToProps = state => {
 }
 
 
-export default withRouter(connect(mapStateToProps)(reduxForm({
+export default withRouter(requiresLogin()(connect(mapStateToProps)(reduxForm({
   form: 'Adventure',
   // onSubmitFail: (errors, dispatch) =>
   //   dispatch(focus('Adventure'/*, Object.keys(errors)[0]*/
   //   ))
-})(AdventureForm)));
+})(AdventureForm))));

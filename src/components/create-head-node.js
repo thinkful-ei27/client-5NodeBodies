@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { createNode } from '../actions/nodes'
+import requiresLogin from './requires-login';
+import { createNode, setCurrentNode } from '../actions/nodes'
 import { Field, reduxForm, focus } from 'redux-form';
 import TextArea from "./textarea";
 import Input from "./input";
@@ -142,10 +143,10 @@ const mapStateToProps = (state, props) => ({
 
 });
 
-export default connect(mapStateToProps)(reduxForm({
+export default requiresLogin() (connect(mapStateToProps)(reduxForm({
   form: 'CreateHeadNode',
 
   // onSubmitFail: (errors, dispatch) =>
   //   dispatch(focus('Adventure'/*, Object.keys(errors)[0]*/
   //   ))
-})(CreateHeadNode));
+})(CreateHeadNode)));

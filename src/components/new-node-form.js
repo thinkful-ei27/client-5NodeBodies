@@ -7,6 +7,7 @@ import { createNode, toggleEnding, setCurrentNode, toggleChildType } from '../ac
 import { required, nonEmpty } from "../utils/validators";
 import { Checkbox, Form } from 'semantic-ui-react';
 import { toggleOnboarding } from '../actions/auth'
+import requiresLogin from './requires-login';
 
 class NewNodeForm extends React.Component {
   renderCheckBox = ({ input, label }) => {
@@ -211,9 +212,9 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(reduxForm({
+export default requiresLogin(connect(mapStateToProps)(reduxForm({
   form: 'NewNode',
   onSubmitFail: (errors, dispatch) =>
     dispatch(focus('NewNode'/*, Object.keys(errors)[0]*/
     ))
-})(NewNodeForm));
+})(NewNodeForm)));
