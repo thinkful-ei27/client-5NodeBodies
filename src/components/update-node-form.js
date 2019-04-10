@@ -190,7 +190,7 @@ class UpdateNodeForm extends React.Component {
     if (this.props.isDeleting) {
       return (
         <div className="confirm-delete-node">
-          <h3>Are you sure you want to delete this Node?</h3>
+          <h3>Are you sure you want to delete this Checkpoint?</h3>
           <div className="buttons">
             <button
               className="delete-it"
@@ -213,11 +213,11 @@ class UpdateNodeForm extends React.Component {
       return (
         <div className='update-form-container'>
           <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-            <h2>This Node: {
+            <h2>This Checkpoint: {
               this.props.currentNode.title ?
                 this.props.currentNode.title :
                 this.props.currentNode.question}</h2>
-            <h4>answer that points to this node: {parentAnswer}</h4>
+            <h4>Answer that points to this Checkpoint: {parentAnswer}</h4>
             {error}
             <Field
               className="end-checkbox"
@@ -243,7 +243,7 @@ class UpdateNodeForm extends React.Component {
             <button type="submit">Update Node</button>
           </form>
           <button onClick={() => this.cancelUpdate()}>Cancel</button>
-          <button className="delete-node-toggle" onClick={() => this.toggleNodeDeleting()}>Delete Node</button>
+          <button className="delete-node-toggle" onClick={() => this.toggleNodeDeleting()}>Delete Checkpoint</button>
           {onboarding}
         </div>)
   }

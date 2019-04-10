@@ -14,7 +14,7 @@ export class Analytics extends React.Component {
       }
       return (<li>
         <h4>{node.title ? node.title : node.question}</h4>
-        <p>This nodes total number of visits by all users: <span>{node.count}</span></p>
+        <p>This Checkpoint has been visite total <span>{node.count}</span> times by all users.</p>
       </li>)
     })
 
@@ -26,7 +26,7 @@ export class Analytics extends React.Component {
         <p>LearnVentures Completion Count:
          {finishCount}
         </p>
-        <h3> Number of visits per Node</h3>
+        <h3> Number of visits per Checkpoint</h3>
         <ul>
           {dataArray}
         </ul>

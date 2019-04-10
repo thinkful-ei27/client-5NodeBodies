@@ -35,7 +35,7 @@ export class Dashboard extends React.Component {
             to={{
               pathname: `/adventure/${adventure.id}`,
             }}>{adventure.title}</Link>
-          <p>{adventure.count ? `This node has been visited ${adventure.count} times` : ""} </p>
+          <p>{adventure.count ? `This Checkpoint has been visited ${adventure.count} times` : ""} </p>
         </li>
       ))
     }
@@ -45,7 +45,7 @@ export class Dashboard extends React.Component {
       onboarding = <div className="wideOnboarding arrowBox_Top onboarding">
         <span>Welcome to LearnVenture! You can use the buttons in the navigation bar at the top of the page to <strong>Log Out</strong>,
         get back here (the <strong>Dashboard</strong>), Or go to the <strong>Home page</strong>, where you can switch between building and embarking on
-                                LearnVentures. If you'd like help learning how to use this site, click "Create LearnVenture" above. Or close me
+                                  LearnVentures. If you'd like help learning how to use this site, click "Create LearnVenture" above. Or close me
       using the button below. You can turn help on and off on every page of the site to use when you need it!</span>
         <button className="close-onboarding" onClick={() => this.toggleOnboardingClick()}>Close</button>
       </div>

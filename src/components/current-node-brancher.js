@@ -82,7 +82,7 @@ export class CurrentNodeBrancher extends React.Component {
               className="new-branch brancher-button"
               value='4'
               onClick={() => this.defineParentPointerForNewNode(4)}>
-              NewBranch
+              New Pathway
          </button>
           }
         </div>
@@ -91,7 +91,7 @@ export class CurrentNodeBrancher extends React.Component {
 
     let nodeTitle;
     if (this.props.currentNode.title) {
-      nodeTitle = <h2>Current Node: {this.props.currentNode.title}</h2>
+      nodeTitle = <h2>Current Checkpoint: {this.props.currentNode.title}</h2>
     }
 
     let onboarding;
@@ -99,7 +99,7 @@ export class CurrentNodeBrancher extends React.Component {
       onboarding = <div className="wideOnboarding arrowBox_Top arrowBox_Bottom onboarding">
         <span>This is the LearnVenture Builder. It is used to add new pathways to your LearnVenture for each
         answer of the current Checkpoint. You can click on any of the <strong>New Pathway</strong> buttons to
-            open a from below which you will use to create a new checkpoint that stems from the choice you clicked on OR connect that choice
+                open a from below which you will use to create a new checkpoint that stems from the choice you clicked on OR connect that choice
         to an existing checkpoint. If a choice already has a pathway, you will not be able to select <strong>New Pathway </strong>
           and the button will disappear. However, you can edit any checkpoint by setting it to the current Checkpoint. Lastly, if
         you delete the pathway that stems from any given choice, the option to connect it will appear once more.</span>
@@ -123,8 +123,8 @@ export class CurrentNodeBrancher extends React.Component {
           <div className='brancher-analytics'>
             {/* TODO: add the parents that point to this node here? */}
             <button className="edit-current-node"
-              onClick={() => this.editClicked()}>Edit This Node</button>
-            <p>{this.props.currentNode.count ? `This node has been visited ${this.props.currentNode.count} times` : ""}</p>
+              onClick={() => this.editClicked()}>Edit This Checkpoint</button>
+            <p>{this.props.currentNode.count ? `This Checkpoint has been visited ${this.props.currentNode.count} times` : ""}</p>
           </div>
           {onboarding}
 

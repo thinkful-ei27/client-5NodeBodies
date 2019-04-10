@@ -162,22 +162,22 @@ class NewNodeForm extends React.Component {
 
     return (
       <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-        <h3>Add A New Child Node</h3>
-        <h4>answer that points to this node: {parentAnswer}</h4>
+        <h3>Add A New Checkpoint Node</h3>
+        <h4>Answer that points to this Checkpoint: {parentAnswer}</h4>
         <button
           onClick={() => this.toggleNewOrExistingNodeForm()}>
-          Use existing node
+          Use existing Checkpoint
          </button>
         {error}
         <Field
           className="end-checkbox"
           name="ending"
-          label="Is this an Ending?"
+          label="Checkpoint is an Ending"
           component={this.renderCheckBox}
           type="checkbox" />
         <Field
           className="title"
-          label="New Title"
+          label="Title"
           name="title"
           component={Input}
           type="text"
@@ -190,7 +190,7 @@ class NewNodeForm extends React.Component {
           component={Input}
           type="text" />
         {questions}
-        <button>Add node to LearnVenture</button>
+        <button>Add Checkpoint to LearnVenture</button>
         {onboarding}
       </form>)
   }
