@@ -67,7 +67,7 @@ export class CreateHeadNode extends React.Component {
               validate={[required, nonEmpty]} />
             <Field
               className="title input-field"
-              label="Title: "
+              label="Checkpoint Title: "
               name="title"
               component={Input}
               type="text"

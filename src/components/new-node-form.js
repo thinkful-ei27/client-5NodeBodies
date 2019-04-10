@@ -177,7 +177,7 @@ class NewNodeForm extends React.Component {
           type="checkbox" />
         <Field
           className="title"
-          label="Title"
+          label="Checkpoint Title"
           name="title"
           component={Input}
           type="text"
