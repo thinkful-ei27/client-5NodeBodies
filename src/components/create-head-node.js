@@ -45,7 +45,7 @@ export class CreateHeadNode extends React.Component {
         <span>Here, we'll make the beginning checkpoint that learners will branch off from onto the various
         pathways of your LearnVenture Use the form above to add a <strong> Title</strong>, a<strong> Scenario Description </strong>
           describing a choice to make, an <em>optional</em><strong> YouTube URL</strong>, a<strong> Question </strong>
-          that will force learners to make a choice, and <em>at least one</em><strong> answer</strong>. You can include more answers
+          that will force learners to make a choice, and <em>at least one</em><strong> Choices</strong>. You can include more Choices
         which will lead learners down different pathways of your LearnVenture.</span>
         <button className="close-onboarding" onClick={() => this.toggleOnboardingClick()}>Close</button>
       </div>
@@ -87,7 +87,7 @@ export class CreateHeadNode extends React.Component {
               validate={[required, nonEmpty]} />
             <Field
               className="answer A input-field"
-              label="Answer A"
+              label="Choice A"
               name="answerA"
               component={Input}
               type="text"
@@ -95,7 +95,7 @@ export class CreateHeadNode extends React.Component {
             <Field
               className="answer B input-field"
               placeholder="Optional"
-              label="Answer B"
+              label="Choice B"
               name="answerB"
               component={Input}
               type="text"
@@ -103,7 +103,7 @@ export class CreateHeadNode extends React.Component {
             <Field
               className="answer C input-field"
               placeholder="Optional"
-              label="Answer C"
+              label="Choice C"
               name='answerC'
               component={Input}
               type="text"
@@ -111,12 +111,12 @@ export class CreateHeadNode extends React.Component {
             <Field
               className="answer D input-field"
               placeholder="Optional"
-              label="Answer D"
+              label="Choice D"
               name="answerD"
               component={Input}
               type="text"
             />
-            <button>New Node!</button>
+            <button>New Checkpoint!</button>
             {onboarding}
           </form>
         </div>

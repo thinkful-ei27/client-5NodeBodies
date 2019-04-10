@@ -98,96 +98,96 @@ class UpdateNodeForm extends React.Component {
       onboarding = <div className="wideOnboarding arrowBox_Top onboarding">
         <span>This form is for changing the information of your current checkpoint. You can use it to change or add
         the <strong> Title</strong>, <strong> Scenario Description</strong>, <em>optional</em>
-          <strong> YouTube URL</strong>,<strong> Question</strong>, and <strong>answers</strong>. You can also change
+          <strong> YouTube URL</strong>,<strong> Question</strong>, and <strong>Choices/strong>. You can also change
           a checkpoint to and ending or delete it. Click cancel to undo any changes and go back to the LearnVenture builder.</span>
-        <button className="close-onboarding" onClick={() => this.toggleOnboardingClick()}>Close</button>
+          <button className="close-onboarding" onClick={() => this.toggleOnboardingClick()}>Close</button>
       </div>
-    } else {
-      onboarding = null
-    }
-    // Used to display which parent points to this node only
-    let parentAnswer;
+        } else {
+          onboarding = null
+        }
+        // Used to display which parent points to this node only
+        let parentAnswer;
     if (this.props.parentInt === 1) {
-      parentAnswer = this.props.currentNode.answerA
-    }
-    if (this.props.parentInt === 2) {
-      parentAnswer = this.props.currentNode.answerB
-    }
-    if (this.props.parentInt === 3) {
-      parentAnswer = this.props.currentNode.answerC
-    }
-    if (this.props.parentInt === 4) {
-      parentAnswer = this.props.currentNode.answerD
-    }
+          parentAnswer = this.props.currentNode.answerA
+        }
+        if (this.props.parentInt === 2) {
+          parentAnswer = this.props.currentNode.answerB
+        }
+        if (this.props.parentInt === 3) {
+          parentAnswer = this.props.currentNode.answerC
+        }
+        if (this.props.parentInt === 4) {
+          parentAnswer = this.props.currentNode.answerD
+        }
 
-    // what questions variable is dependent upon whether current node being edited is 
-    // an ending or not
-    let questions;
-
+        // what questions variable is dependent upon whether current node being edited is 
+        // an ending or not
+        let questions;
+    
     if (this.props.isEnding) {
-      questions = (
-        <Field
-          className="textContent"
-          label="Ending Description"
-          name="textContent"
-          component={TextArea}
-          type="text"
-          validate={[required, nonEmpty]} />
-      )
-    } else {
-      questions = (
-        <div className="questionAndAnswers">
-          <Field
-            className="textContent input-field"
-            label="Scenario Description"
-            name="textContent"
-            component={TextArea}
-            type="text"
-            validate={[required, nonEmpty]} />
-          <Field
-            className="question input-field"
-            label="Question"
-            name="question"
-            component={Input}
-            type="text"
-            validate={[required, nonEmpty]} />
-          <Field
-            className="answer A input-field"
-            label="Answer A"
-            name="answerA"
-            component={Input}
-            type="text"
-            validate={[required, nonEmpty]} />
-          <Field
-            className="answer B input-field"
-            placeholder="Optional"
-            label="Answer B"
-            name="answerB"
-            component={Input}
-            type="text"
-          />
-          <Field
-            className="answer C input-field"
-            placeholder="Optional"
-            label="Answer C"
-            name='answerC'
-            component={Input}
-            type="text"
-          />
-          <Field
-            className="answer D input-field"
-            placeholder="Optional"
-            label="Answer D"
-            name="answerD"
-            component={Input}
-            type="text"
-          />
-        </div>
-      )
-    }
+          questions = (
+            <Field
+              className="textContent"
+              label="Ending Description"
+              name="textContent"
+              component={TextArea}
+              type="text"
+              validate={[required, nonEmpty]} />
+          )
+        } else {
+          questions = (
+            <div className="questionAndAnswers">
+              <Field
+                className="textContent input-field"
+                label="Scenario Description"
+                name="textContent"
+                component={TextArea}
+                type="text"
+                validate={[required, nonEmpty]} />
+              <Field
+                className="question input-field"
+                label="Question"
+                name="question"
+                component={Input}
+                type="text"
+                validate={[required, nonEmpty]} />
+              <Field
+                className="answer A input-field"
+                label="Choice A"
+                name="answerA"
+                component={Input}
+                type="text"
+                validate={[required, nonEmpty]} />
+              <Field
+                className="answer B input-field"
+                placeholder="Optional"
+                label="Choice B"
+                name="answerB"
+                component={Input}
+                type="text"
+              />
+              <Field
+                className="answer C input-field"
+                placeholder="Optional"
+                label="Choice C"
+                name='answerC'
+                component={Input}
+                type="text"
+              />
+              <Field
+                className="answer D input-field"
+                placeholder="Optional"
+                label="Choice D"
+                name="answerD"
+                component={Input}
+                type="text"
+              />
+            </div>
+          )
+        }
 
-    // renders the delete warning and button only, with a go back button
-    if (this.props.isDeleting) {
+        // renders the delete warning and button only, with a go back button
+        if (this.props.isDeleting) {
       return (
         <div className="confirm-delete-node">
           <h3>Are you sure you want to delete this Checkpoint?</h3>
@@ -206,18 +206,18 @@ class UpdateNodeForm extends React.Component {
             </button>
           </div>
         </div>
-      )
-    }
-    // render the update node form 
-    else
-      return (
+        )
+      }
+      // render the update node form
+      else
+        return (
         <div className='update-form-container'>
           <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
             <h2>This Checkpoint: {
               this.props.currentNode.title ?
                 this.props.currentNode.title :
                 this.props.currentNode.question}</h2>
-            <h4>Answer that points to this Checkpoint: {parentAnswer}</h4>
+            <h4>Choice that points to this Checkpoint: {parentAnswer}</h4>
             {error}
             <Field
               className="end-checkbox"
@@ -252,24 +252,24 @@ class UpdateNodeForm extends React.Component {
 const mapStateToProps = state => {
 
   return {
-    currentNode: state.node.currentNode,
-    nodes: state.adventure.currentAdventure.nodes,
-    currentNodeId: state.node.currentNode.id,
-    parentInt: state.node.parentInt,
-    adventureId: state.adventure.currentAdventure.id,
-    parentId: state.node.currentNode.id,
+          currentNode: state.node.currentNode,
+        nodes: state.adventure.currentAdventure.nodes,
+        currentNodeId: state.node.currentNode.id,
+        parentInt: state.node.parentInt,
+        adventureId: state.adventure.currentAdventure.id,
+        parentId: state.node.currentNode.id,
     initialValues: Object.assign({}, state.node.currentNode),
-    isEnding: state.node.isEnding,
-    isDeleting: state.node.isDeleting,
-    onboarding: state.auth.onboarding
-
-  };
-};
-
+        isEnding: state.node.isEnding,
+        isDeleting: state.node.isDeleting,
+        onboarding: state.auth.onboarding
+    
+      };
+    };
+    
 export default connect(mapStateToProps)(reduxForm({
-  form: 'NewNode',
-  enableReinitialize: true
-  // onSubmitFail: (errors, dispatch) =>
-  //   dispatch(focus('Adventure'/*, Object.keys(errors)[0]*/
-  //   ))
+          form: 'NewNode',
+        enableReinitialize: true
+        // onSubmitFail: (errors, dispatch) =>
+        //   dispatch(focus('Adventure'/*, Object.keys(errors)[0]*/
+        //   ))
 })(UpdateNodeForm));

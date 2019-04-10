@@ -80,7 +80,7 @@ export class ExistingNodeSelector extends React.Component {
     return (
       <div>
         <h3>Use Existing Checkpoint as Pathway</h3>
-        <h4>Answer that points to this Checkpoint: {parentAnswer}</h4>
+        <h4>Choice that points to this Checkpoint: {parentAnswer}</h4>
         <button onClick={() => this.toggleNewOrExistingNodeForm()}>Create New Checkpoint Instead</button>
         {/* TODO : VVV bad */}
         <p></p>
