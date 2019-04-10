@@ -46,7 +46,7 @@ export class StudentDisplay extends React.Component {
         nodeText = <p>{this.props.currentNode.textContent}</p>
       }
       if (this.props.currentNode.question) {
-        nodeQuestion = <p>{this.props.currentNode.question}</p>
+        nodeQuestion = <strong><p id="student-question">{this.props.currentNode.question}</p></strong>
       }
       if (this.props.currentNode.answerA) {
         answerA = <p>{this.props.currentNode.answerA}</p>

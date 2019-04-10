@@ -167,6 +167,10 @@ top: -20px;
   width: 80%;
   /* display:block; */
 }
+
+#student-question {
+  font-size: 26px;
+}
 .node-select {
   display: block;
   margin: 10px ;
