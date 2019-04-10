@@ -20,6 +20,12 @@ export class AdventureBuilder extends React.Component {
     }
   }
 
+  componentWillMount() {
+    if (!this.props.currentAdventure.head) {
+        this.props.history.push('adventure/headnode')
+    }
+  }
+
   changeCurrentNode(value) {
     let node = this.props.currentAdventure.nodes.find(node => node.id === value);
     this.props.dispatch(setCurrentNode(node))
