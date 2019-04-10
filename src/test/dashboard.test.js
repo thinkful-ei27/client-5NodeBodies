@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Dashboard from '../components/dashboard';
+import sinon from 'sinon'
 
 describe('<Dashboard />', () => {
   it('renders without crashing', () => {
@@ -13,6 +14,6 @@ describe('<Dashboard />', () => {
       <Dashboard onButtonClick={onButtonClick} />
     ));
     wrapper.find('.create-adventure').simulate('click');
-    console.log(onButtonClicks.calledOnce)
+    console.log(onButtonClick.calledOnce)
   });
 });
