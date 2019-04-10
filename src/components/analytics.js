@@ -31,7 +31,7 @@ export class Analytics extends React.Component {
           {dataArray}
         </ul>
         <p>
-          Way to build an awesome LearnVentures, <span>{this.props.name}</span>!
+          Way to build an awesome LearnVenture, <span>{this.props.name}</span>!
         </p>
       </div>
     );
