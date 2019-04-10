@@ -71,10 +71,10 @@ class NewNodeForm extends React.Component {
     let onboarding;
     if (this.props.onboarding) {
       onboarding = <div className="wideOnboarding arrowBox_Top onboarding">
-        <span>This form is for creating the information of the new checkpoint which will stem from the answer you selected above.
-        If you'd like you can connect the selected answer to an existing checkpoint by clicking <strong>Use Existing Checkpoint</strong>.
+        <span>This form is for creating the information of the new checkpoint which will stem from the Choice you selected above.
+        If you'd like you can connect the selected Choice to an existing checkpoint by clicking <strong>Use Existing Checkpoint</strong>.
         Make this a standard checkpoint with a<strong> Title</strong>, <strong> Scenario Description</strong>, <em>optional</em>
-          <strong> YouTube URL</strong>, a<strong> Question</strong>, and <strong>answers</strong>. Or you can set it as an ending.
+          <strong> YouTube URL</strong>, a<strong> Question</strong>, and <strong>Choices</strong>. Or you can set it as an ending.
           Endings only have an <em>optional</em> <strong> YouTube URL</strong> and an<strong> Ending Description</strong>. If a learner
           gets to an ending, their LearnVenture will be over and they will be prompted to start over if they'd like. Once create, you will
           see your new checkpoint in the graph above.</span>
@@ -127,7 +127,7 @@ class NewNodeForm extends React.Component {
             validate={[required, nonEmpty]} />
           <Field
             className="answer A"
-            label="Answer A"
+            label="Choice A"
             name="answerA"
             component={Input}
             type="text"
@@ -135,7 +135,7 @@ class NewNodeForm extends React.Component {
           <Field
             className="answer B"
             placeholder="Optional"
-            label="Answer B"
+            label="Choice B"
             name="answerB"
             component={Input}
             type="text"
@@ -143,7 +143,7 @@ class NewNodeForm extends React.Component {
           <Field
             className="answer C"
             placeholder="Optional"
-            label="Answer C"
+            label="Choice C"
             name='answerC'
             component={Input}
             type="text"
@@ -151,7 +151,7 @@ class NewNodeForm extends React.Component {
           <Field
             className="answer D"
             placeholder="Optional"
-            label="Answer D"
+            label="Choice D"
             name="answerD"
             component={Input}
             type="text"
@@ -162,22 +162,22 @@ class NewNodeForm extends React.Component {
 
     return (
       <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-        <h3>Add A New Child Node</h3>
-        <h4>answer that points to this node: {parentAnswer}</h4>
+        <h3>Add A New Checkpoint Node</h3>
+        <h4>Choice that points to this Checkpoint: {parentAnswer}</h4>
         <button
           onClick={() => this.toggleNewOrExistingNodeForm()}>
-          Use existing node
+          Use existing Checkpoint
          </button>
         {error}
         <Field
           className="end-checkbox"
           name="ending"
-          label="Is this an Ending?"
+          label="Checkpoint is an Ending"
           component={this.renderCheckBox}
           type="checkbox" />
         <Field
           className="title"
-          label="New Title"
+          label="Checkpoint Title"
           name="title"
           component={Input}
           type="text"
@@ -190,7 +190,7 @@ class NewNodeForm extends React.Component {
           component={Input}
           type="text" />
         {questions}
-        <button>Add node to adventure</button>
+        <button>Add Checkpoint to LearnVenture</button>
         {onboarding}
       </form>)
   }

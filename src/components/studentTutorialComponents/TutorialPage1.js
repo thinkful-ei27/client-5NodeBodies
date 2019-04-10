@@ -1,30 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './Tutorial.css';
-import {studentEndTutorial, studentNextTutorial} from '../../actions/student.js'
+import { studentEndTutorial, studentNextTutorial } from '../../actions/student.js'
 
 class TutorialPage1 extends React.Component {
 
-    handleNextClick(){
+    handleNextClick() {
         console.log('page1 handleNextClick ran');
         this.props.dispatch(studentNextTutorial(this.props.tutorialPageNumber));
     }
 
-    handleQuitClick(){
+    handleQuitClick() {
         console.log('page1 handleQuitClick ran');
         this.props.dispatch(studentEndTutorial());
     }
 
-    render(){
+    render() {
         const imgSrc1 = require('../../images/tutorialImage1.png');
-        return(
+        return (
             <div className="tutorialBox">
                 <img src={imgSrc1} alt="Student Landing Page containing an LearnVenture ID input and password"></img>
                 <p>If a teacher gave you a LearnVenture ID, please put it in the first white input box (with the numbers and letters)</p>
                 <p>If a teacher gave you a password, you may put it in the second white input box below the first one</p>
-                <p>Then click "Start Adventure!" to do just that</p>
-                <button onClick={e => {this.handleNextClick()}}>Next Tutorial Page</button>
-                <button onClick={e => {this.handleQuitClick()}}>Quit Tutorial</button>
+                <p>Then click "Start LearnVenture!" to do just that</p>
+                <button onClick={e => { this.handleNextClick() }}>Next Tutorial Page</button>
+                <button onClick={e => { this.handleQuitClick() }}>Quit Tutorial</button>
             </div>
         )
     }
@@ -32,7 +32,7 @@ class TutorialPage1 extends React.Component {
 
 
 const mapStateToProps = state => ({
-    tutorialPageNumber : state.student.tutorialPage,
+    tutorialPageNumber: state.student.tutorialPage,
     tutorial: state.student.tutorial
 })
 

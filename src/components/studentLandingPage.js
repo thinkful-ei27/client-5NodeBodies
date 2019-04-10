@@ -9,8 +9,8 @@ let inputVal, error, passwordVal;
 
 export class StudentLanding extends React.Component {
 
-  componentDidMount(){
-      this.props.dispatch(getStudentAll());
+  componentDidMount() {
+    this.props.dispatch(getStudentAll());
   }
 
   handleSubmit(e) {
@@ -27,16 +27,16 @@ export class StudentLanding extends React.Component {
     passwordVal = e.target.value;
   }
 
-  handleTutorialClick(){
+  handleTutorialClick() {
     console.log('handleTutorialClick ran. tutorial value is...', this.props.tutorial);
     this.props.dispatch(studentStartTutorial());
   }
 
-  tutorialDisplay(tutorialValue){
-    if(tutorialValue){
+  tutorialDisplay(tutorialValue) {
+    if (tutorialValue) {
       return <Tutorial />
     } else {
-      return <button onClick={e => {this.handleTutorialClick()}}>Start Tutorial</button>
+      return <button onClick={e => { this.handleTutorialClick() }}>Start Tutorial</button>
     }
   }
 
@@ -68,13 +68,13 @@ export class StudentLanding extends React.Component {
               <input className="adventure-input input-field" type="text" name="adventureId" id="adventureId"
                 placeholder="5c9ceaeac543f706bf407cae"
                 onChange={e => this.onChange(e)}
-              ></input><br/>
+              ></input><br />
               <input className="adventure-password input-field" type="password" name="adventurePass"
                 id="adventurePass"
                 placeholder="Password, if it has one"
                 onChange={e => this.onChangePassword(e)}
-              ></input><br/>
-              <button className="start-adventure on-right" type="submit">Start Adventure!</button>
+              ></input><br />
+              <button className="start-adventure on-right" type="submit">Start LearnVenture!</button>
             </form>
           </div>
           <AdventureSearch />

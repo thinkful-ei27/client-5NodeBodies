@@ -79,13 +79,13 @@ export class ExistingNodeSelector extends React.Component {
 
     return (
       <div>
-        <h3>Use Existing Node as Child</h3>
-        <h4>answer that points to this node: {parentAnswer}</h4>
-        <button onClick={() => this.toggleNewOrExistingNodeForm()}>Create New Node Instead</button>
+        <h3>Use Existing Checkpoint as Pathway</h3>
+        <h4>Choice that points to this Checkpoint: {parentAnswer}</h4>
+        <button onClick={() => this.toggleNewOrExistingNodeForm()}>Create New Checkpoint Instead</button>
         {/* TODO : VVV bad */}
         <p></p>
         <select className="node-select"
-          label="Select an existing node as a child"
+          label="Select an existing Checkpoint as the pathway"
           name="nodeSelect"
           options={options}
           onChange={e => this.stageSelectedChildNode(e.target.value)}>{options}</select>
