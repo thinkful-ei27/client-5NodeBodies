@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { createNode } from '../actions/nodes'
+
+import RequiresLogin from './requires-login';
+import { createNode, setCurrentNode } from '../actions/nodes'
 import { Field, reduxForm, focus } from 'redux-form';
 import TextArea from "./textarea";
 import Input from "./input";
@@ -63,8 +65,8 @@ export class CreateHeadNode extends React.Component {
     return (
       <div>
         <h1>Please create a starting Checkpoint for your LearnVenture</h1>
-        <div className="questionAndAnswers">
-          <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+        <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+          <div className="form-questions">
 
             <Field
               className="title input-field"
@@ -125,11 +127,11 @@ export class CreateHeadNode extends React.Component {
               component={Input}
               type="text"
             />
+          </div>
             {error}
             <button>New Checkpoint!</button>
             {onboarding}
-          </form>
-        </div>
+        </form>
       </div>
     )
   }
@@ -142,10 +144,10 @@ const mapStateToProps = (state, props) => ({
 
 });
 
-export default connect(mapStateToProps)(reduxForm({
+export default RequiresLogin() (connect(mapStateToProps)(reduxForm({
   form: 'CreateHeadNode',
 
   // onSubmitFail: (errors, dispatch) =>
   //   dispatch(focus('Adventure'/*, Object.keys(errors)[0]*/
   //   ))
-})(CreateHeadNode));
+})(CreateHeadNode)));

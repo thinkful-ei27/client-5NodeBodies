@@ -3,6 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 // import { url } from 'redux-form-validators'
 import Input from "./input";
 import TextArea from "./textarea";
+import RequiresLogin from './requires-login';
 import { editAdventure, toggleAdventureEditing } from '../actions/createAdventure';
 import { required, nonEmpty, isTrimmedPassword } from "../utils/validators";
 import { connect } from 'react-redux';
@@ -77,6 +78,8 @@ class EditAdventureForm extends React.Component {
           <h2>Edit LearnVenture Information</h2>
 
           {error}
+          <div className="form-questions">
+
           <Field
             className="title input-field"
             label="Adventure Title"
@@ -117,6 +120,7 @@ class EditAdventureForm extends React.Component {
             label="Remove Password"
             component={this.renderCheckBox}
             type="checkbox" />
+            </div>
           <button type="submit">Update Adventure</button>
           <button onClick={() => this.toggleAdventureEditForm()}>Cancel</button>
           {onboarding}
@@ -140,10 +144,10 @@ const mapStateToProps = state => {
 
 
 
-export default connect(mapStateToProps)(reduxForm({
+export default RequiresLogin()(connect(mapStateToProps)(reduxForm({
   form: 'Adventure',
   enableReinitialize: true
   // onSubmitFail: (errors, dispatch) =>
   //   dispatch(focus('Adventure'/*, Object.keys(errors)[0]*/
   //   ))
-})(EditAdventureForm));
+})(EditAdventureForm)));

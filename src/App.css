@@ -34,8 +34,8 @@ body {
 
 button {
   color: white;
-  border:#b4cedd 1px solid;
-  background: #b4cedd;
+  border:#51646b 1px solid;
+  background: #51646b;
   border-radius: 5px;
   font-weight: 900;
   padding: 7px 10px;
@@ -44,7 +44,8 @@ button {
 
 
 button:hover {
-  background: #51646b;
+  background: #b4cedd;
+  color: #51646b;
   border: none;
   padding: 9px 12px;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
@@ -110,6 +111,9 @@ code {
   max-width: 80%;
   margin: 20px auto;
 }
+.adventure-builder{
+  margin-top: 10px;
+}
 
 .home-button {
   display: inline-block;
@@ -121,29 +125,49 @@ code {
 .home-button:hover {
   background: #da8624;
   widows: 67px;
+  color: white;
 }
 
 .input-field {
   display: block;
-  border: none;
+  border: 2px solid #b4cedd;
   border-radius: 5px;
   height: 40px;
   width:400px;
-  margin-top: 5px;
+  margin-top: 25px;
   margin-bottom: 10px;
   font-size: 18px;
 }
 .text-area{
   min-height:150px;
 }
+
+.form-input{
+  position: relative;
+  width: 400px;
+}
+
+.input-label{
+position:absolute;
+left : 0;
+top: -20px;
+
+}
+
+
 @media(max-width:600px) {
   .input-field{
-    max-width:250px;
+    width:250px;
+  }
+  .form-input{
+    position: relative;
+    width: 250px;
   }
 }
 
+
 .search-input{
-  width: 205px;
+  width: 80%;
   /* display:block; */
 }
 .node-select {
@@ -230,7 +254,7 @@ margin: 15px;
   max-width: 1000px;
   padding-left: 20px;
   padding-right: 20px;
-  margin: 0 auto;
+  margin: 0 auto ;
 }
 
 /* Clearfix */

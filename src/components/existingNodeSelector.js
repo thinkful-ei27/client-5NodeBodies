@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import requiresLogin from './requires-login';
+import RequiresLogin from './requires-login';
 import { toggleChildType, stageChildNode, linkNodesById } from '../actions/nodes'
 
 export class ExistingNodeSelector extends React.Component {
@@ -113,4 +113,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default requiresLogin()(connect(mapStateToProps)(ExistingNodeSelector));
+export default RequiresLogin()(connect(mapStateToProps)(ExistingNodeSelector));
