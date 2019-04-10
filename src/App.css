@@ -143,6 +143,10 @@ code {
   width: 205px;
   /* display:block; */
 }
+
+#student-question {
+  font-size: 26px;
+}
 .node-select {
   display: block;
   margin: 10px ;
