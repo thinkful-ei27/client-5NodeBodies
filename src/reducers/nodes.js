@@ -51,7 +51,7 @@ export default function reducer(state = initialState, action) {
     case CREATE_NODE_ERROR: {
       return Object.assign({}, state, {
         loading: false,
-        error: action.err
+        error: action.error
       });
     }
     case UPDATE_NODE_REQUEST: {
@@ -75,7 +75,7 @@ export default function reducer(state = initialState, action) {
     case UPDATE_NODE_ERROR: {
       return Object.assign({}, state, {
         loading: false,
-        error: action.err
+        error: action.error
       });
     }
     case NODE_FORM_WITH_POINTER: {
@@ -115,13 +115,13 @@ export default function reducer(state = initialState, action) {
     case DELETE_NODE_SUCCESS: {
       return Object.assign({}, state, {
         loading: false,
-        showUpdate:false
+        showUpdate: false
       });
     }
     case DELETE_NODE_ERROR: {
       return Object.assign({}, state, {
         loading: false,
-        error: action.err
+        error: action.error
       });
     }
     case TOGGLE_CHILD_TYPE: {
