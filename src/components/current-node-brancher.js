@@ -100,7 +100,7 @@ export class CurrentNodeBrancher extends React.Component {
       onboarding = <div className="wideOnboarding arrowBox_Top arrowBox_Bottom onboarding">
         <span>This is the LearnVenture Builder. It is used to add new pathways to your LearnVenture for each
         Choice of the current Checkpoint. You can click on any of the <strong>New Pathway</strong> buttons to
-                    open a from below which you will use to create a new checkpoint that stems from the choice you clicked on OR connect that choice
+                      open a from below which you will use to create a new checkpoint that stems from the choice you clicked on OR connect that choice
         to an existing checkpoint. If a choice already has a pathway, you will not be able to select <strong>New Pathway </strong>
           and the button will disappear. However, you can edit any checkpoint by setting it to the current Checkpoint. Lastly, if
         you delete the pathway that stems from any given choice, the option to connect it will appear once more.</span>
@@ -148,4 +148,4 @@ const mapStateToProps = (state, props) => ({
   onboarding: state.auth.onboarding
 });
 
-export default withRouter(RequiresLogin(connect(mapStateToProps)(CurrentNodeBrancher)));
+export default withRouter(RequiresLogin()(connect(mapStateToProps)(CurrentNodeBrancher)));
