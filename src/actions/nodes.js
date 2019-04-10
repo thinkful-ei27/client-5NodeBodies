@@ -143,6 +143,7 @@ export const deleteNode = (adventureId, nodeId) => (dispatch, getState) => {
       return dispatch(updateAdventureById(adventureId))
     })
     .then((adventure) => {
+      dispatch(toggleNodeDeleting())
       dispatch(setCurrentNode(adventure.head))
       return dispatch(deleteNodeSuccess())
       // sets showUpdate to false in reducer
@@ -175,7 +176,7 @@ export const linkNodesById = idObjectWithParentInt => (dispatch, getState) => {
       return dispatch(updateNodeSuccess())
     })
     .catch(err => {
-      dispatch(createNodeError(err))
+      dispatch(updateNodeError(err))
     });
 }
 
@@ -205,7 +206,7 @@ export const updateNode = nodeData => (dispatch, getState) => {
       return dispatch(updateNodeSuccess())
     })
     .catch(err => {
-      dispatch(createNodeError(err))
+      dispatch(updateNodeError(err))
     });
 };
 
