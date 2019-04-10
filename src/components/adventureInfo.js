@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import requiresLogin from './requires-login';
+import RequiresLogin from './requires-login';
 import EditAdventureForm from './editAdventureForm'
 import Analytics from './analytics'
 import {
@@ -193,4 +193,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default requiresLogin()(connect(mapStateToProps)(AdventureInfo));
+export default RequiresLogin()(connect(mapStateToProps)(AdventureInfo));

@@ -5,7 +5,7 @@ import { nodeFormWithPointer } from '../actions/nodes';
 import { toggleUpdateForm } from '../actions/nodes'
 import UpdateNodeForm from './update-node-form'
 import { toggleOnboarding } from '../actions/auth'
-import requiresLogin from './requires-login';
+import RequiresLogin from './requires-login';
 
 export class CurrentNodeBrancher extends React.Component {
   // if (!props.loggedIn) {
@@ -148,4 +148,4 @@ const mapStateToProps = (state, props) => ({
   onboarding: state.auth.onboarding
 });
 
-export default withRouter(requiresLogin(connect(mapStateToProps)(CurrentNodeBrancher)));
+export default withRouter(RequiresLogin(connect(mapStateToProps)(CurrentNodeBrancher)));

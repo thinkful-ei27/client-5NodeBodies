@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm, focus } from 'redux-form';
 import Input from "./input";
-import requiresLogin from './requires-login';
+import RequiresLogin from './requires-login';
 import TextArea from "./textarea";
 import { deleteNode } from '../actions/nodes';
 import { required, nonEmpty } from "../utils/validators";
@@ -268,7 +268,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default requiresLogin()(connect(mapStateToProps)(reduxForm({
+export default RequiresLogin()(connect(mapStateToProps)(reduxForm({
   form: 'NewNode',
   enableReinitialize: true
   // onSubmitFail: (errors, dispatch) =>

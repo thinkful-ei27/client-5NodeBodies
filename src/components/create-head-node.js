@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import requiresLogin from './requires-login';
+import RequiresLogin from './requires-login';
 import { createNode, setCurrentNode } from '../actions/nodes'
 import { Field, reduxForm, focus } from 'redux-form';
 import TextArea from "./textarea";
@@ -143,7 +143,7 @@ const mapStateToProps = (state, props) => ({
 
 });
 
-export default requiresLogin() (connect(mapStateToProps)(reduxForm({
+export default RequiresLogin() (connect(mapStateToProps)(reduxForm({
   form: 'CreateHeadNode',
 
   // onSubmitFail: (errors, dispatch) =>
