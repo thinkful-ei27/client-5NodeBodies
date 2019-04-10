@@ -8,7 +8,12 @@ import {
   RESTART_STUDENT_ADVENTURE,
   GET_STUDENT_SEARCH_ERROR,
   GET_STUDENT_SEARCH_REQUEST,
-  GET_STUDENT_SEARCH_SUCCESS
+  GET_STUDENT_SEARCH_SUCCESS,
+  STUDENT_END_TUTORIAL,
+  STUDENT_NEXT_TUTORIAL,
+  STUDENT_PREVIOUS_TUTORIAL,
+  STUDENT_START_TUTORIAL,
+  END_STUDENT_ADVENTURE
 } from '../actions/student'
 
 const initialState = {
@@ -18,7 +23,9 @@ const initialState = {
   currentNode: null,
   adventure: null, 
   currentNode: null,
-  searchResults: null
+  searchResults: null,
+  tutorial: false,
+  tutorialPage: 0
 };
 
 export default function reducer(state = initialState, action) {
@@ -66,6 +73,11 @@ export default function reducer(state = initialState, action) {
         currentNode: null
       });
     }
+    case END_STUDENT_ADVENTURE: {
+      return Object.assign({}, state, {
+        adventure: null
+      });
+    }
     case GET_STUDENT_SEARCH_REQUEST: {
       return Object.assign({}, state, {
         loading: true,
@@ -83,6 +95,27 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         loading: false,
         error: action.error
+      });
+    }
+    case STUDENT_START_TUTORIAL: {
+      return Object.assign({}, state, {
+        tutorial: true
+      });
+    }
+    case STUDENT_END_TUTORIAL: {
+      return Object.assign({}, state, {
+        tutorial: false,
+        tutorialPage: 0
+      });
+    }
+    case STUDENT_NEXT_TUTORIAL: {
+      return Object.assign({}, state, {
+        tutorialPage: action.tutorialPageNumber + 1
+      });
+    }
+    case STUDENT_PREVIOUS_TUTORIAL: {
+      return Object.assign({}, state, {
+        tutorialPage: action.tutorialPageNumber - 1
       });
     }
     default:

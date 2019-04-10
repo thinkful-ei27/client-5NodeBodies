@@ -82,12 +82,27 @@ export const getAdventureById = adventureId => (dispatch, getState) => {
       return dispatch(createAdventureError(error))
     });
 }
-export const UPDATE_CURRENT_NODE = 'UPDATE_CURRENT_NODE';
-export const updateCurrentNode = (nodeId, nodeArr) => ({
-  type: UPDATE_CURRENT_NODE,
-  nodeId,
-  nodeArr
-});
+
+export const UPDATE_ADVENTURE_BY_ID = 'UPDATE_ADVENTURE_BY_ID';
+export const updateAdventureById = adventureId => (dispatch, getState) => {
+  dispatch(createAdventureRequest());
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/adventure/${adventureId}`, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${authToken}`
+    },
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(adventure => {
+      dispatch(getAdventureSuccess(adventure))
+      return adventure;
+    })
+    .catch(error => {
+      return dispatch(createAdventureError(error))
+    });
+}
 
 // helper function that gets the head node from newadventure object
 function getHeadNodefromAdventure(adventure) {
@@ -216,3 +231,4 @@ export const editAdventure = adventure => (dispatch, getState) => {
       return dispatch(editAdventureError(error))
     });
 };
+

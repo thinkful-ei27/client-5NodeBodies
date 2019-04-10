@@ -10,6 +10,8 @@ import {
   deleteAdventure,
   toggleAnalyticsDisplay
 } from '../actions/createAdventure'
+import { toggleOnboarding } from '../actions/auth'
+
 
 
 export class AdventureInfo extends React.Component {
@@ -43,18 +45,35 @@ export class AdventureInfo extends React.Component {
     return this.props.dispatch(toggleAnalyticsDisplay())
   }
 
+  toggleOnboardingClick() {
+    this.props.dispatch(toggleOnboarding())
+  }
+
   AdventureDetails() {
     const adventure = this.props.currentAdventure
     let analytics, password;
     if (this.props.showAnalytics) {
       analytics = <Analytics />
     }
+    let onboarding;
+    if (this.props.onboarding) {
+      onboarding = <div className="wideOnboarding arrowBox_Top onboarding">
+        <span>This page contains the basic info for you LearnVenture. You can use the buttons at the bottom of the info
+        section to go to the <strong>LearnVenture Builder</strong> to begin or continue building the checkpoints and pathways,
+        <strong>Edit LearnVenture Starting Info</strong> to change the information you see here, <strong>Delete LearnVenture</strong>
+          to permanently delete this LearnVenture, or <strong>Show Analytics</strong> to view info about how learners have used this
+        LearnVenture.</span>
+        <button className="close-onboarding" onClick={() => this.toggleOnboardingClick()}>Close</button>
+      </div>
+    } else {
+      onboarding = null
+    }
     if (!adventure) {
       return <div>loading...</div>
     } else if (adventure && this.props.isDeleting) {
       return (
         <div className="confirm-delete-adventure">
-          <h3>Are you sure you want to delete this Entire Adventure?</h3>
+          <h3>Are you sure you want to delete this Entire LearnVenture?</h3>
           <h2>All data will be lost. This cannot be undone</h2>
           <div className="buttons">
             <button
@@ -82,10 +101,10 @@ export class AdventureInfo extends React.Component {
       return (
         <div className='adventure-info'>
           <h2 className="adventure-title">{adventure.title}</h2>
-          <h3 className="info-category">Adventure Intro</h3> <p>{adventure.startContent}</p>
+          <h3 className="info-category">LearnVenture Intro</h3> <p>{adventure.startContent}</p>
           <h3 className="info-category">Opening Video</h3> <div>{nodeVideo}</div>
           <h3 className="info-category">Starting Scenario</h3> <p>{adventure.textContent}</p>
-          <h3 className="info-category">Adventure Code:</h3> <p>{adventure.id}</p>
+          <h3 className="info-category">LearnVenture Code:</h3> <p>{adventure.id}</p>
           {password}
           <div className="buttons">
             <button onClick={() => this.props.history.push(`/adventure/adventurebuilder/${adventure.id}`)} >Build your Adventure</button>
@@ -106,18 +125,19 @@ export class AdventureInfo extends React.Component {
             </button>
           </div>
           {analytics}
+          {onboarding}
         </div >
       );
     } else if (adventure && !adventure.startVideoURL && !this.props.isEditing) {
       if (this.props.currentAdventure.hasPassword) {
-        password = <span>This adventure is password protected</span>
+        password = <span>This LearnVenture is password protected</span>
       }
       return (
         <div className='single-adventure-home'>
           <div className='adventure-info'>
             <h2 className="adventure-title">{adventure.title}</h2>
             <h3 className="info-category">Adventure Intro</h3> <p>{adventure.startContent}</p>
-            <h3 className="info-category">Starting Scenario</h3> <p>{adventure.textContent}</p>
+            {/* <h3 className="info-category">Starting Scenario</h3> <p>{adventure.textContent}</p> */}
             <h3 className="info-category">Adventure Code:</h3> <p>{adventure.id}</p>
             {password}
             <div className="buttons">
@@ -125,8 +145,10 @@ export class AdventureInfo extends React.Component {
               <button
                 type='button'
                 onClick={() => this.toggleAdventureEditForm()}
-              >Edit adventure Starting Info
+              >Edit adventure  Info
               </button>
+              {/* </div>
+              <div className='buttons'> */}
               <button className="delete-it"
                 type='button'
                 onClick={() => this.displayAdventureDeleting()}
@@ -140,6 +162,7 @@ export class AdventureInfo extends React.Component {
             </div>
           </div>
           {analytics}
+          {onboarding}
         </div>
       );
     } else {
@@ -165,7 +188,8 @@ const mapStateToProps = state => {
     currentAdventure: state.adventure.currentAdventure,
     isDeleting: state.adventure.isDeleting,
     isEditing: state.adventure.isEditing,
-    showAnalytics: state.adventure.showAnalytics
+    showAnalytics: state.adventure.showAnalytics,
+    onboarding: state.auth.onboarding
   };
 };
 

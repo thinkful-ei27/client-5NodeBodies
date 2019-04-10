@@ -1,15 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getStudentAdventure, getStudentAll } from '../actions/student';
+import { getStudentAdventure, getStudentAll, studentStartTutorial } from '../actions/student';
 import StudentDisplay from './student-display';
 import AdventureSearch from './adventureSearch';
 import SearchResults from './searchResults';
+import Tutorial from './studentTutorialComponents/Tutorial.js'
 let inputVal, error, passwordVal;
 
 export class StudentLanding extends React.Component {
 
-  componentDidMount(){
-      this.props.dispatch(getStudentAll());
+  componentDidMount() {
+    this.props.dispatch(getStudentAll());
   }
 
   handleSubmit(e) {
@@ -24,6 +25,19 @@ export class StudentLanding extends React.Component {
 
   onChangePassword(e) {
     passwordVal = e.target.value;
+  }
+
+  handleTutorialClick() {
+    console.log('handleTutorialClick ran. tutorial value is...', this.props.tutorial);
+    this.props.dispatch(studentStartTutorial());
+  }
+
+  tutorialDisplay(tutorialValue) {
+    if (tutorialValue) {
+      return <Tutorial />
+    } else {
+      return <button onClick={e => { this.handleTutorialClick() }}>Start Tutorial</button>
+    }
   }
 
   render() {
@@ -41,7 +55,11 @@ export class StudentLanding extends React.Component {
           <div className="student-instructions">
             <p>
               Hello and welcome to Education Exploration!
-              Please input your Exploration code below to begin your quest for learning.
+            </p>
+            <p>If you need help, please click the button below for a tutorial</p>
+            {this.tutorialDisplay(this.props.tutorial)}
+            <p>
+              Otherwise, please input your Exploration code below to begin your quest for learning.
             </p>
           </div>
           <div className="register-adventure">
@@ -50,13 +68,13 @@ export class StudentLanding extends React.Component {
               <input className="adventure-input input-field" type="text" name="adventureId" id="adventureId"
                 placeholder="5c9ceaeac543f706bf407cae"
                 onChange={e => this.onChange(e)}
-              ></input><br/>
+              ></input><br />
               <input className="adventure-password input-field" type="password" name="adventurePass"
                 id="adventurePass"
                 placeholder="Password, if it has one"
                 onChange={e => this.onChangePassword(e)}
-              ></input><br/>
-              <button className="start-adventure on-right" type="submit">Start Adventure!</button>
+              ></input><br />
+              <button className="start-adventure on-right" type="submit">Start LearnVenture!</button>
             </form>
           </div>
           <AdventureSearch />
@@ -72,7 +90,8 @@ const mapStateToProps = state => {
     adventure: state.student.adventure,
     error: state.student.error,
     loading: state.student.loading,
-    results: state.student.results
+    results: state.student.results,
+    tutorial: state.student.tutorial
   };
 };
 

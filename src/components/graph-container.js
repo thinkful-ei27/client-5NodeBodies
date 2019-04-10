@@ -3,31 +3,41 @@ import { connect } from 'react-redux';
 import { Graph } from 'react-d3-graph';
 import { setCurrentNode } from '../actions/nodes'
 import { reRenderGraph } from '../actions/createAdventure'
-
+import { toggleOnboarding } from '../actions/auth'
 
 class GraphContainer extends React.Component {
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            windowHeight: window.innerHeight,
+            windowWidth: window.innerWidth
+        };
+    }
     onClickNode(nodeId) {
         let nodeArr = this.props.nodez.filter((node) => node.id === nodeId)
         this.props.dispatch(setCurrentNode(nodeArr[0]))
         console.log("reRender is: ", this.props.reRender)
         // this.props.dispatch(reRenderGraph())
-        }
-        
+    }
+
 
     getFullNode(nodeId) { //get full node is outside of the class due to *this* being binded to the graph
         const nodeArr = this.props.nodez.filter((node) => node.id === nodeId)
         return nodeArr[0]
     }
 
+    toggleOnboardingClick() {
+        this.props.dispatch(toggleOnboarding())
+    }
+
     populateGraph() {
         let chartData = {
-          nodes: [],
-          links: []
+            nodes: [],
+            links: []
         };
         for (let i = 0; i < this.props.nodez.length; i++) {
             if (i === 0) {
-                chartData.nodes.push({ id: this.props.nodez[i].id, title: this.props.nodez[i].title ? this.props.nodez[i].title : this.props.nodez[i].question, color: 'red', symbolType: "triangle" })
+                chartData.nodes.push({ id: this.props.nodez[i].id, title: this.props.nodez[i].title ? this.props.nodez[i].title : this.props.nodez[i].question, color: '#da8624', symbolType: "triangle" })
                 if (this.props.nodez[i].pointerA) {
                     chartData.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerA })
                 }
@@ -41,7 +51,7 @@ class GraphContainer extends React.Component {
                     chartData.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerD })
                 }
             } else {
-                chartData.nodes.push({ id: this.props.nodez[i].id, title: this.props.nodez[i].title ? this.props.nodez[i].title : this.props.nodez[i].question, color: this.props.nodez[i].ending ? 'blue' : 'lightgreen', symbolType: this.props.nodez[i].ending ? "square" : "circle"})
+                chartData.nodes.push({ id: this.props.nodez[i].id, title: this.props.nodez[i].title ? this.props.nodez[i].title : this.props.nodez[i].question, color: this.props.nodez[i].ending ? '#51646b' : '#b4cedd', symbolType: this.props.nodez[i].ending ? "square" : "circle" })
                 if (this.props.nodez[i].pointerA) {
                     chartData.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerA })
                 }
@@ -56,27 +66,74 @@ class GraphContainer extends React.Component {
                 }
             }
         }
+        chartData.nodes[0].x = this.state.windowWidth;
+        chartData.nodes[0].y = this.state.windowHeight;
         return chartData;
     }
 
+    resizeGraph() {
+        let cyStyle = {
+            margin: 'auto',
+            border: '1px solid lightgreen'
+        };
+        cyStyle.maxHeight = Math.max(this.state.windowHeight * .5, 500);
+        cyStyle.maxWidth = Math.max(this.state.windowWidth * .8, 300);
+        return cyStyle;
+    }
+
+    //if you change this from an arrow function, this.setState fails
+    handleResize = () => {
+        let windowHeight = window.innerHeight;
+        let windowWidth = window.innerWidth;
+        this.setState({
+            windowHeight,
+            windowWidth
+        })
+    }
+
+    componentDidMount() {
+        window.addEventListener("resize", this.handleResize);
+    }
+
     componentWillMount() {
-       this.populateGraph()
+        this.populateGraph();
+        this.resizeGraph();
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.handleResize);
     }
 
     render() {
+        let onboarding;
+        if (this.props.onboarding) {
+            onboarding = <div className="wideOnboarding arrowBox_Top onboarding">
+                <span>This is a graph of all the checkpoints and pathways of your LearnVenture. Clicking on a checkpoint
+                will set it to the current Checkpoint for the tools below which you can use to build new pathways, connect
+                checkpoints and expand your LearnVenture. You can also change the Current Checkpoint with the dropdown menu above.
+                The Orange Triangle is the start of your Learnventure and the Blue Squares are endpoints. Feel free to drag
+                checkpoints around so you can better see how things connect.</span>
+                <button className="close-onboarding" onClick={() => this.toggleOnboardingClick()}>Close</button>
+            </div>
+        } else {
+            onboarding = null
+        }
         const myConfig = {
             nodeHighlightBehavior: true,
             directed: true,
             automaticRearrangeAfterDropNode: true,
             d3: {
                 gravity: -300,
-                linkLength: 100,
+                linkLength: 120,
                 forceManyBody: function strength() {
                     return -1000;
                 },
             },
             minZoom: .5,
             maxZoom: 1.5,
+            height: Math.max(this.state.windowHeight * .5, 500),
+            width: Math.max(this.state.windowWidth * .8, 300),
+            //There are height and widths available here, but they're for the graph itself, not the container of the graph
             node: {
                 fontSize: 18,
                 color: 'lightgreen',
@@ -90,16 +147,12 @@ class GraphContainer extends React.Component {
                 strokeWidth: 4
             }
         };
-        const cyStyle = {
-            margin: 'auto',
-            border: '1px solid lightgreen'
-        };
         if (!this.props.nodez) {
             return <div>Loading....</div>
         } else {
             if (this.props.reRender) {
                 return (
-                    <div style={cyStyle}>
+                    <div style={this.resizeGraph()}> {/*Make the cyStyle into a method like populateGraph for CSS RESPONSIVENESS*/}
                         <Graph
                             props={this.props}
                             id="graph-id" // id is mandatory, if no id is defined rd3g will throw an error
@@ -115,11 +168,12 @@ class GraphContainer extends React.Component {
                         // onMouseOverLink={onMouseOverLink}
                         // onMouseOutLink={onMouseOutLink}
                         />
+                        {onboarding}
                     </div>
                 );
             } else {
                 return (
-                    <div style={cyStyle}>
+                    <div style={this.resizeGraph()}>
                         <Graph
                             props={this.props}
                             id="graph-id" // id is mandatory, if no id is defined rd3g will throw an error
@@ -135,6 +189,7 @@ class GraphContainer extends React.Component {
                         // onMouseOverLink={onMouseOverLink}
                         // onMouseOutLink={onMouseOutLink}
                         />
+                        {onboarding}
                     </div>
                 );
             }
@@ -147,7 +202,8 @@ const mapStateToProps = state => ({
     nodez: state.adventure.currentAdventure.nodes,
     showUpdate: state.node.showUpdate,
     currentNode: state.node.currentNode,
-    reRender : state.adventure.reRender
+    reRender: state.adventure.reRender,
+    onboarding: state.auth.onboarding
 })
 
 // connect(mapStateToProps)(Graph)

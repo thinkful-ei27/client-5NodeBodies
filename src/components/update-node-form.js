@@ -13,9 +13,11 @@ import {
   setCurrentNode
 } from '../actions/nodes'
 import { Checkbox, Form } from 'semantic-ui-react';
+import { toggleOnboarding } from '../actions/auth'
+
 
 class UpdateNodeForm extends React.Component {
-  
+
   toggleIsEnding() {
     return this.props.dispatch(toggleEnding())
   }
@@ -38,6 +40,11 @@ class UpdateNodeForm extends React.Component {
         this.props.dispatch(setCurrentNode(head))
       })
   }
+
+  toggleOnboardingClick() {
+    this.props.dispatch(toggleOnboarding())
+  }
+
   onSubmit(values) {
     const parentInt = this.props.parentInt;
     const adventureId = this.props.adventureId;
@@ -86,7 +93,18 @@ class UpdateNodeForm extends React.Component {
         </div>
       );
     }
-
+    let onboarding;
+    if (this.props.onboarding) {
+      onboarding = <div className="wideOnboarding arrowBox_Top onboarding">
+        <span>This form is for changing the information of your current checkpoint. You can use it to change or add
+        the <strong> Title</strong>, <strong> Scenario Description</strong>, <em>optional</em>
+          <strong> YouTube URL</strong>,<strong> Question</strong>, and <strong>Choices</strong>. You can also change
+          a checkpoint to and ending or delete it. Click cancel to undo any changes and go back to the LearnVenture builder.</span>
+        <button className="close-onboarding" onClick={() => this.toggleOnboardingClick()}>Close</button>
+      </div>
+    } else {
+      onboarding = null
+    }
     // Used to display which parent points to this node only
     let parentAnswer;
     if (this.props.parentInt === 1) {
@@ -128,14 +146,14 @@ class UpdateNodeForm extends React.Component {
             validate={[required, nonEmpty]} />
           <Field
             className="question input-field"
-            label="New Question"
+            label="Question"
             name="question"
             component={Input}
             type="text"
             validate={[required, nonEmpty]} />
           <Field
             className="answer A input-field"
-            label="Answer A"
+            label="Choice A"
             name="answerA"
             component={Input}
             type="text"
@@ -143,7 +161,7 @@ class UpdateNodeForm extends React.Component {
           <Field
             className="answer B input-field"
             placeholder="Optional"
-            label="Answer B"
+            label="Choice B"
             name="answerB"
             component={Input}
             type="text"
@@ -151,7 +169,7 @@ class UpdateNodeForm extends React.Component {
           <Field
             className="answer C input-field"
             placeholder="Optional"
-            label="Answer C"
+            label="Choice C"
             name='answerC'
             component={Input}
             type="text"
@@ -159,7 +177,7 @@ class UpdateNodeForm extends React.Component {
           <Field
             className="answer D input-field"
             placeholder="Optional"
-            label="Answer D"
+            label="Choice D"
             name="answerD"
             component={Input}
             type="text"
@@ -172,7 +190,7 @@ class UpdateNodeForm extends React.Component {
     if (this.props.isDeleting) {
       return (
         <div className="confirm-delete-node">
-          <h3>Are you sure you want to delete this Node?</h3>
+          <h3>Are you sure you want to delete this Checkpoint?</h3>
           <div className="buttons">
             <button
               className="delete-it"
@@ -189,20 +207,20 @@ class UpdateNodeForm extends React.Component {
           </div>
         </div>
       )
-    } 
-    // render the update node form 
+    }
+    // render the update node form
     else
       return (
         <div className='update-form-container'>
           <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-            <h2>This Node: {
+            <h2>This Checkpoint: {
               this.props.currentNode.title ?
                 this.props.currentNode.title :
                 this.props.currentNode.question}</h2>
-            <h4>answer that points to this node: {parentAnswer}</h4>
+            <h4>Choice that points to this Checkpoint: {parentAnswer}</h4>
             {error}
             <Field
-              className="ending"
+              className="end-checkbox"
               name="ending"
               label="Is this an Ending?"
               component={this.renderCheckBox}
@@ -225,7 +243,8 @@ class UpdateNodeForm extends React.Component {
             <button type="submit">Update Node</button>
           </form>
           <button onClick={() => this.cancelUpdate()}>Cancel</button>
-          <button className="delete-node-toggle" onClick={() => this.toggleNodeDeleting()}>Delete Node</button>
+          <button className="delete-node-toggle" onClick={() => this.toggleNodeDeleting()}>Delete Checkpoint</button>
+          {onboarding}
         </div>)
   }
 }
@@ -241,7 +260,9 @@ const mapStateToProps = state => {
     parentId: state.node.currentNode.id,
     initialValues: Object.assign({}, state.node.currentNode),
     isEnding: state.node.isEnding,
-    isDeleting: state.node.isDeleting
+    isDeleting: state.node.isDeleting,
+    onboarding: state.auth.onboarding
+
   };
 };
 

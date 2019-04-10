@@ -18,6 +18,11 @@ export const getStudentAdventureError = error => ({
   error
 });
 
+export const END_STUDENT_ADVENTURE = 'END_STUDENT_ADVENTURE';
+export const endStudentAdventure = () => ({
+  type: END_STUDENT_ADVENTURE
+})
+
 export const GET_STUDENT_CURRENTNODE_REQUEST = 'GET_STUDENT_CURRENTNODE_REQUEST';
 export const getStudentCurrentNodeRequest = () => ({
   type: GET_STUDENT_CURRENTNODE_REQUEST,
@@ -55,6 +60,28 @@ export const GET_STUDENT_SEARCH_ERROR = 'GET_STUDENT_SEARCH_ERROR';
 export const getStudentSearchError = error => ({
   type: GET_STUDENT_SEARCH_ERROR,
   error
+});
+
+export const STUDENT_START_TUTORIAL = 'STUDENT_START_TUTORIAL';
+export const studentStartTutorial = () => ({
+  type: STUDENT_START_TUTORIAL
+});
+
+export const STUDENT_NEXT_TUTORIAL = 'STUDENT_NEXT_TUTORIAL';
+export const studentNextTutorial = tutorialPageNumber => ({
+  type: STUDENT_NEXT_TUTORIAL,
+  tutorialPageNumber
+});
+
+export const STUDENT_PREVIOUS_TUTORIAL = 'STUDENT_PREVIOUS_TUTORIAL';
+export const studentPreviousTutorial = tutorialPageNumber => ({
+  type: STUDENT_PREVIOUS_TUTORIAL,
+  tutorialPageNumber
+});
+
+export const STUDENT_END_TUTORIAL = 'STUDENT_END_TUTORIAL';
+export const studentEndTutorial = () => ({
+  type: STUDENT_END_TUTORIAL
 });
 
 export const getStudentAdventure = (id, password) => (dispatch) => {

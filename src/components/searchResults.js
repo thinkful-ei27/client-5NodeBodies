@@ -25,7 +25,7 @@ class SearchResults extends React.Component{
             let pass;
             if(adventure.hasPassword){
                 pass = <input 
-                    className="on-left input-field on-top"
+                    className="on-left input-field on-top search-input"
                     onChange={e => this.handleChange(e)} type='password' placeholder='Password Required'></input>
             }
             return (<li

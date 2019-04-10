@@ -4,27 +4,28 @@ import { getStudentSearch } from '../actions/student';
 
 
 let inputVal;
-class AdventureSearch extends React.Component{
+class AdventureSearch extends React.Component {
 
-  handleSubmit(e){
+  handleSubmit(e) {
     e.preventDefault();
     let searchTerm = inputVal;
     this.props.dispatch(getStudentSearch(searchTerm));
   }
 
-  onChange(e){
+  onChange(e) {
     inputVal = e.target.value;
   }
 
-  render(){
+  render() {
     return (
       <form onSubmit={e => this.handleSubmit(e)}>
-        <input 
+        <label className='above' for='input-field'>Search a LearnVenture</label>
+        <input
           className="input-field"
           onChange={e => this.onChange(e)} type="text"></input>
-        <button 
-        className="search-adventures on-right"
-        type="submit">Search Adventures!</button>
+        <button
+          className="search-adventures on-right"
+          type="submit">Search LearnVentures!</button>
       </form>
     )
   }

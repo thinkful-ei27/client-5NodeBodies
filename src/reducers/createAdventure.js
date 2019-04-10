@@ -6,7 +6,7 @@ import {
   GET_ALL_ADVENTURES_REQUEST,
   GET_ALL_ADVENTURES_SUCCESS,
   GET_ADVENTURE_SUCCESS,
-  UPDATE_CURRENT_NODE,
+  // UPDATE_CURRENT_NODE,
   DELETE_ADVENTURE_ERROR,
   DELETE_ADVENTURE_REQUEST,
   DELETE_ADVENTURE_SUCCESS,
@@ -46,11 +46,8 @@ export default function reducer(state = initialState, action) {
         error: null
       });
     }
-    case UPDATE_CURRENT_NODE: {
-      return Object.assign({}, state, {
-        currentNode: state.currentAdventure.nodes.filter(node => node.id === action.nodeId)
-      });
-    }
+   
+    
     case RERENDER_GRAPH: {
       return Object.assign({}, state, {
         reRender: !state.reRender
@@ -143,3 +140,10 @@ export default function reducer(state = initialState, action) {
       return state
   }
 }
+
+
+// case UPDATE_CURRENT_NODE: {
+//   return Object.assign({}, state, {
+//     currentNode: state.currentAdventure.nodes.filter(node => node.id === action.nodeId)
+//   });
+// }
