@@ -51,7 +51,7 @@ export default function reducer(state = initialState, action) {
     case CREATE_NODE_ERROR: {
       return Object.assign({}, state, {
         loading: false,
-        error: action.err
+        error: action.error.message
       });
     }
     case UPDATE_NODE_REQUEST: {
@@ -64,7 +64,8 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         showUpdate: !state.showUpdate,
         nodeId: action.nodeId,
-        parentInt: null
+        parentInt: null,
+        error: null
       });
     }
     case UPDATE_NODE_SUCCESS: {
@@ -75,7 +76,7 @@ export default function reducer(state = initialState, action) {
     case UPDATE_NODE_ERROR: {
       return Object.assign({}, state, {
         loading: false,
-        error: action.err
+        error: action.error.message
       });
     }
     case NODE_FORM_WITH_POINTER: {
@@ -84,6 +85,7 @@ export default function reducer(state = initialState, action) {
         useExistingNode: false,
         stagedChildNode: null,
         parentInt: action.parentInt,
+        error: null
       });
     }
     case SET_CURRENT_NODE: {
@@ -93,17 +95,20 @@ export default function reducer(state = initialState, action) {
         loading: false,
         currentNode: action.node,
         parentInt: null,
-        isEnding: action.node.ending
+        isEnding: action.node.ending,
+        error: null
       })
     }
     case TOGGLE_ENDING: {
       return Object.assign({}, state, {
-        isEnding: !state.isEnding
+        isEnding: !state.isEnding,
+        error: null
       })
     }
     case TOGGLE_NODE_DELETING: {
       return Object.assign({}, state, {
-        isDeleting: !state.isDeleting
+        isDeleting: !state.isDeleting,
+        error: null,
       })
     }
     case DELETE_NODE_REQUEST: {
@@ -115,24 +120,26 @@ export default function reducer(state = initialState, action) {
     case DELETE_NODE_SUCCESS: {
       return Object.assign({}, state, {
         loading: false,
-        showUpdate:false
+        showUpdate: false
       });
     }
     case DELETE_NODE_ERROR: {
+      debugger;
       return Object.assign({}, state, {
         loading: false,
-        error: action.err
+        error: action.error.message
       });
     }
     case TOGGLE_CHILD_TYPE: {
       return Object.assign({}, state, {
         useExistingNode: !state.useExistingNode,
-        // stagedChildNode: null
+        error: null,
       })
     }
     case STAGE_CHILD_NODE: {
       return Object.assign({}, state, {
-        stagedChildNode: action.node
+        stagedChildNode: action.node,
+        error: null,
       })
     }
     default:

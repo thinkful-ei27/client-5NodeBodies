@@ -45,7 +45,6 @@ class EditAdventureForm extends React.Component {
       removePassword
     };
     return this.props.dispatch(editAdventure(adventure))
-      .then(() => this.toggleAdventureEditForm())
   }
 
 
