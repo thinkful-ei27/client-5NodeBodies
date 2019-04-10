@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
+import requiresLogin from './requires-login';
 import { createNode, setCurrentNode } from '../actions/nodes'
 import { Field, reduxForm, focus } from 'redux-form';
 import TextArea from "./textarea";
@@ -130,10 +131,10 @@ const mapStateToProps = (state, props) => ({
   onboarding: state.auth.onboarding
 });
 
-export default connect(mapStateToProps)(reduxForm({
+export default requiresLogin() (connect(mapStateToProps)(reduxForm({
   form: 'CreateHeadNode',
 
   // onSubmitFail: (errors, dispatch) =>
   //   dispatch(focus('Adventure'/*, Object.keys(errors)[0]*/
   //   ))
-})(CreateHeadNode));
+})(CreateHeadNode)));
