@@ -51,7 +51,7 @@ export default function reducer(state = initialState, action) {
     case CREATE_NODE_ERROR: {
       return Object.assign({}, state, {
         loading: false,
-        error: action.err
+        error: action.error
       });
     }
     case UPDATE_NODE_REQUEST: {
@@ -121,7 +121,7 @@ export default function reducer(state = initialState, action) {
     case DELETE_NODE_ERROR: {
       return Object.assign({}, state, {
         loading: false,
-        error: action.err
+        error: action.error
       });
     }
     case TOGGLE_CHILD_TYPE: {
