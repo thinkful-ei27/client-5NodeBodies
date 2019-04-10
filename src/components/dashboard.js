@@ -23,7 +23,7 @@ export class Dashboard extends React.Component {
     let list;
     if (this.props.adventures.length === 0) {
       list = <ul>
-        <li>Your Adventures will display here!</li>
+        <li>Your LearnVentures will display here!</li>
         <li>Try making one with the button below!</li>
       </ul>
 
@@ -45,7 +45,7 @@ export class Dashboard extends React.Component {
       onboarding = <div className="wideOnboarding arrowBox_Top onboarding">
         <span>Welcome to LearnVenture! You can use the buttons in the navigation bar at the top of the page to <strong>Log Out</strong>,
         get back here (the <strong>Dashboard</strong>), Or go to the <strong>Home page</strong>, where you can switch between building and embarking on
-                              LearnVentures. If you'd like help learning how to use this site, click "Create LearnVenture" above. Or close me
+                                LearnVentures. If you'd like help learning how to use this site, click "Create LearnVenture" above. Or close me
       using the button below. You can turn help on and off on every page of the site to use when you need it!</span>
         <button className="close-onboarding" onClick={() => this.toggleOnboardingClick()}>Close</button>
       </div>
@@ -57,7 +57,7 @@ export class Dashboard extends React.Component {
         <ul className="adventures-list" id="adventures">
           {list}
         </ul>
-        <button className="create-adventure" onClick={() => this.props.history.push('/adventure')}>Create new Adventure</button>
+        <button className="create-adventure" onClick={() => this.props.history.push('/adventure')}>Create New LearnVenture</button>
         {onboarding}
       </div>
     );

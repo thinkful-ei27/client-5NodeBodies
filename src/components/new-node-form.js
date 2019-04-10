@@ -190,7 +190,7 @@ class NewNodeForm extends React.Component {
           component={Input}
           type="text" />
         {questions}
-        <button>Add node to adventure</button>
+        <button>Add node to LearnVenture</button>
         {onboarding}
       </form>)
   }

@@ -55,7 +55,7 @@ export class CreateHeadNode extends React.Component {
 
     return (
       <div>
-        <h1>Please create a head node for your adventure</h1>
+        <h1>Please create a head node for your LearnVenture</h1>
         <div className="questionAndAnswers">
           <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
             <Field
