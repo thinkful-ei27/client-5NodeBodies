@@ -232,11 +232,17 @@ left : 0;
 top: -20px;
 }
 
+
 .login-button {
   display: inline-block;
   background: #da8624;
   border-color: #da8624;
   width: 75px;
+}
+
+
+#student-question {
+  font-size: 26px;
 }
 
 .help-button{
