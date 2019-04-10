@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm, focus } from 'redux-form';
 import Input from "./input";
 import TextArea from "./textarea";
-import { createNode, toggleEnding, setCurrentNode, toggleChildType } from '../actions/nodes';
+import { createNode, toggleEnding, toggleChildType } from '../actions/nodes';
 import { required, nonEmpty } from "../utils/validators";
 import { Checkbox, Form } from 'semantic-ui-react';
 import { toggleOnboarding } from '../actions/auth'
@@ -182,6 +182,8 @@ class NewNodeForm extends React.Component {
           name="title"
           component={Input}
           type="text"
+          placeholder='optional'
+
           // validate={[required, nonEmpty]} 
           />
         <Field
