@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Field, reduxForm, focus } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import Input from "./input";
+import RequiresLogin from './requires-login';
 import TextArea from "./textarea";
 import { deleteNode } from '../actions/nodes';
 import { required, nonEmpty } from "../utils/validators";
@@ -10,7 +11,6 @@ import {
   toggleUpdateForm,
   toggleNodeDeleting,
   toggleEnding,
-  setCurrentNode
 } from '../actions/nodes'
 import { Checkbox, Form } from 'semantic-ui-react';
 import { toggleOnboarding } from '../actions/auth'
@@ -230,6 +230,7 @@ class UpdateNodeForm extends React.Component {
               name="title"
               component={Input}
               type="text"
+              placeholder='optional'
             // validate={[required, nonEmpty]}
             />
             <Field
@@ -267,10 +268,10 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(reduxForm({
+export default RequiresLogin()(connect(mapStateToProps)(reduxForm({
   form: 'NewNode',
   enableReinitialize: true
   // onSubmitFail: (errors, dispatch) =>
   //   dispatch(focus('Adventure'/*, Object.keys(errors)[0]*/
   //   ))
-})(UpdateNodeForm));
+})(UpdateNodeForm)));
