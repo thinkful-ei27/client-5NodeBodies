@@ -37,7 +37,7 @@ export class CurrentNodeBrancher extends React.Component {
               className="new-branch brancher-button"
               value='1'
               onClick={() => this.defineParentPointerForNewNode(1)}>
-              New Branch
+              New Pathway
          </button>
           }
         </div>
@@ -53,7 +53,7 @@ export class CurrentNodeBrancher extends React.Component {
               className="new-branch brancher-button"
               value='2'
               onClick={() => this.defineParentPointerForNewNode(2)}>
-              New Branch
+              New Pathway
          </button>
           }
         </div>
@@ -68,7 +68,7 @@ export class CurrentNodeBrancher extends React.Component {
               className="new-branch brancher-button"
               value='3'
               onClick={() => this.defineParentPointerForNewNode(3)}>
-              NewBranch
+              New Pathway
     </button>}
         </div>
       </div>)
@@ -99,7 +99,7 @@ export class CurrentNodeBrancher extends React.Component {
       onboarding = <div className="wideOnboarding arrowBox_Top arrowBox_Bottom onboarding">
         <span>This is the LearnVenture Builder. It is used to add new pathways to your LearnVenture for each
         Choice of the current Checkpoint. You can click on any of the <strong>New Pathway</strong> buttons to
-                  open a from below which you will use to create a new checkpoint that stems from the choice you clicked on OR connect that choice
+                    open a from below which you will use to create a new checkpoint that stems from the choice you clicked on OR connect that choice
         to an existing checkpoint. If a choice already has a pathway, you will not be able to select <strong>New Pathway </strong>
           and the button will disappear. However, you can edit any checkpoint by setting it to the current Checkpoint. Lastly, if
         you delete the pathway that stems from any given choice, the option to connect it will appear once more.</span>
