@@ -10,19 +10,19 @@ export default class Textarea extends React.Component {
   render() {
     let error;
     if (this.props.meta.touched && this.props.meta.error) {
-      error = <div className="form-error">{this.props.meta.error}</div>;
+      error = <span className="form-error">   {this.props.meta.error}</span>;
     }
 
     let warning;
     if (this.props.meta.touched && this.props.meta.warning) {
       warning = (
-        <div className="form-warning">{this.props.meta.warning}</div>
+        <span className="form-warning">   {this.props.meta.warning}</span>
       );
     }
 
     return (
-      <div className="">
-        <label htmlFor={this.props.input.name}>
+      <div className="form-input">
+        <label className='input-label' htmlFor={this.props.input.name}>
           {this.props.label}
           {error}
           {warning}

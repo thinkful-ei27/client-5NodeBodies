@@ -46,10 +46,10 @@ export class AdventureBuilder extends React.Component {
     }
     // needs 'key' prop below
     const options = this.props.currentAdventure.nodes.map((node) =>
-      <option label={node.title} value={node.id}>{node.title}</option>);
+      <option label={node.title} value={node.id}>{node.title? node.title: node.question}</option>);
 
     return (
-      <div>
+      <div className='adventure-builder'>
         <GraphContainer />
         <select className="node-select"
           label="Current Question"

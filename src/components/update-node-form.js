@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Field, reduxForm, focus } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import Input from "./input";
 import TextArea from "./textarea";
 import { deleteNode } from '../actions/nodes';
@@ -10,7 +10,6 @@ import {
   toggleUpdateForm,
   toggleNodeDeleting,
   toggleEnding,
-  setCurrentNode
 } from '../actions/nodes'
 import { Checkbox, Form } from 'semantic-ui-react';
 import { toggleOnboarding } from '../actions/auth'
@@ -230,6 +229,7 @@ class UpdateNodeForm extends React.Component {
               name="title"
               component={Input}
               type="text"
+              placeholder='optional'
             // validate={[required, nonEmpty]}
             />
             <Field
