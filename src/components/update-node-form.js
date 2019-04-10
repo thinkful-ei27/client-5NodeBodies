@@ -35,11 +35,6 @@ class UpdateNodeForm extends React.Component {
     let nodeId = this.props.currentNodeId;
     let adId = this.props.adventureId;
     return this.props.dispatch(deleteNode(adId, nodeId))
-      .then(() => {
-        let head = this.props.nodes[0]
-        this.toggleNodeDeleting()
-        this.props.dispatch(setCurrentNode(head))
-      })
   }
 
   toggleOnboardingClick() {
@@ -87,13 +82,16 @@ class UpdateNodeForm extends React.Component {
 
   render() {
     let error;
-    if (this.props.error) {
+    if (this.props.nodeError) {
       error = (
         <div className="form-error" aria-live="polite">
-          {this.props.error}
+          <p>
+            {this.props.nodeError}
+          </p>
         </div>
       );
     }
+
     let onboarding;
     if (this.props.onboarding) {
       onboarding = <div className="wideOnboarding arrowBox_Top onboarding">
@@ -192,6 +190,7 @@ class UpdateNodeForm extends React.Component {
       return (
         <div className="confirm-delete-node">
           <h3>Are you sure you want to delete this Checkpoint?</h3>
+          {error}
           <div className="buttons">
             <button
               className="delete-it"
@@ -219,7 +218,7 @@ class UpdateNodeForm extends React.Component {
                 this.props.currentNode.title :
                 this.props.currentNode.question}</h2>
             <h4>Choice that points to this Checkpoint: {parentAnswer}</h4>
-            {error}
+
             <Field
               className="end-checkbox"
               name="ending"
@@ -228,11 +227,12 @@ class UpdateNodeForm extends React.Component {
               type="checkbox" />
             <Field
               className="title input-field"
-              label="New Title"
+              label="Checkpoint Title"
               name="title"
               component={Input}
               type="text"
-              validate={[required, nonEmpty]} />
+            // validate={[required, nonEmpty]}
+            />
             <Field
               className="videoURL input-field"
               label="Video URL (optional)"
@@ -241,6 +241,7 @@ class UpdateNodeForm extends React.Component {
               component={Input}
               type="text" />
             {questions}
+            {error}
             <button type="submit">Update Node</button>
           </form>
           <button onClick={() => this.cancelUpdate()}>Cancel</button>
@@ -262,8 +263,8 @@ const mapStateToProps = state => {
     initialValues: Object.assign({}, state.node.currentNode),
     isEnding: state.node.isEnding,
     isDeleting: state.node.isDeleting,
-    onboarding: state.auth.onboarding
-
+    onboarding: state.auth.onboarding,
+    nodeError: state.node.error
   };
 };
 

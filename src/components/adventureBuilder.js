@@ -7,16 +7,23 @@ import { getAdventureById } from '../actions/createAdventure'
 import { setCurrentNode, toggleUpdateForm } from '../actions/nodes'
 import GraphContainer from './graph-container'
 import ExistingNodeSelector from './existingNodeSelector';
-import Sidebar from './sidebar';
-import { toggleAdventureDeleting, deleteAdventure } from '../actions/createAdventure';
+
 
 export class AdventureBuilder extends React.Component {
 
   componentDidMount() {
+    console.log('DID')
     const { id } = this.props.match.params;
     this.props.dispatch(getAdventureById(id))
     if(this.props.showUpdate === true){
       this.props.dispatch(toggleUpdateForm())
+    }
+  }
+
+  componentWillMount() {
+    if (!this.props.currentAdventure.head) {
+      console.log('if caught')
+      this.props.history.push('/adventure/headnode')
     }
   }
 
@@ -34,7 +41,7 @@ export class AdventureBuilder extends React.Component {
     if (this.props.parentInt && this.props.useExistingNode) {
       nodeForm = <ExistingNodeSelector />;
     }
-    if (!adventure) {
+    if (!adventure || !this.props.currentAdventure.head) {
       return <div className="loading">loading...</div>;
     }
 // needs 'key' prop below

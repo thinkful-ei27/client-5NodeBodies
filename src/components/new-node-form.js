@@ -62,10 +62,10 @@ class NewNodeForm extends React.Component {
   }
   render() {
     let error;
-    if (this.props.error) {
+    if (this.props.nodeError) {
       error = (
         <div className="form-error" aria-live="polite">
-          {this.props.error}
+          {this.props.nodeError}
         </div>
       );
     }
@@ -182,7 +182,8 @@ class NewNodeForm extends React.Component {
           name="title"
           component={Input}
           type="text"
-          validate={[required, nonEmpty]} />
+          // validate={[required, nonEmpty]} 
+          />
         <Field
           className="videoURL"
           label="Video URL (optional)"
@@ -191,6 +192,7 @@ class NewNodeForm extends React.Component {
           component={Input}
           type="text" />
         {questions}
+        {error}
         <button>Add Checkpoint to LearnVenture</button>
         {onboarding}
       </form>)
@@ -205,13 +207,14 @@ const mapStateToProps = state => {
     adventureId: state.adventure.currentAdventure.id,
     parentId: state.node.currentNode.id,
     isEnding: state.node.isEnding,
-    onboarding: state.auth.onboarding
+    onboarding: state.auth.onboarding,
+    error:state.node.nodeError
   };
 };
 
 export default requiresLogin(connect(mapStateToProps)(reduxForm({
   form: 'NewNode',
   onSubmitFail: (errors, dispatch) =>
-    dispatch(focus('Adventure'/*, Object.keys(errors)[0]*/
+    dispatch(focus('NewNode'/*, Object.keys(errors)[0]*/
     ))
 })(NewNodeForm)));
