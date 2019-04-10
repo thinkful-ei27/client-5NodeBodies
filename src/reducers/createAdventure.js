@@ -48,8 +48,12 @@ export default function reducer(state = initialState, action) {
         error: null
       });
     }
+<<<<<<< HEAD
 
 
+=======
+  
+>>>>>>> develop
     case RERENDER_GRAPH: {
       return Object.assign({}, state, {
         reRender: !state.reRender

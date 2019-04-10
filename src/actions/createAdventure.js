@@ -140,6 +140,7 @@ export const createAdventure = adventure => (dispatch, getState) => {
       // let headNode = getHeadNodefromAdventure(res)
       // dispatch(setCurrentNode(headNode))
       return dispatch(createAdventureSuccess(res))
+
     })
     .catch(error => {
       return dispatch(createAdventureError(error))
@@ -238,6 +239,7 @@ export const editAdventure = adventure => (dispatch, getState) => {
     .then(res => {
       const headNode = getHeadNodefromAdventure(res);
       dispatch(setCurrentNode(headNode))
+      dispatch(toggleAdventureEditing())
       return dispatch(editAdventureSuccess(res))
     })
     .catch(error => {

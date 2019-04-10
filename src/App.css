@@ -158,6 +158,11 @@ height: 20px;
 margin: 15px;
 }
 
+.form-error, .form-warning{
+  color: red;
+  font-weight: bold;
+}
+
 
 .login-button, .adventure-link-button, .help-button{
   display: inline-block;

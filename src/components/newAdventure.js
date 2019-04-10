@@ -2,8 +2,9 @@ import React from 'react';
 import { Form, Field, reduxForm } from 'redux-form';
 // import { url } from 'redux-form-validators'
 import Input from "./input";
-import TextArea from "./textarea";
 import { connect } from 'react-redux';
+
+import TextArea from "./textarea";
 import { createAdventure } from '../actions/createAdventure';
 import { required, nonEmpty, isTrimmedPassword } from "../utils/validators";
 import { withRouter } from 'react-router-dom';
@@ -27,9 +28,8 @@ class AdventureForm extends React.Component {
       password
     };
     return this.props.dispatch(createAdventure(adventure))
-      .then(adventurez => {
-        console.log("adventure is", adventurez)
-        this.props.history.push(`/adventure/headnode`)
+      .then(() => {
+          this.props.history.push(`/adventure/headnode`)
       })
   }
 
@@ -107,12 +107,13 @@ class AdventureForm extends React.Component {
     )
   }
 }
-
 const mapStateToProps = state => {
   return {
+    error: state.adventure.error,
     onboarding: state.auth.onboarding
-  };
-};
+  }
+}
+
 
 export default withRouter(connect(mapStateToProps)(reduxForm({
   form: 'Adventure',
