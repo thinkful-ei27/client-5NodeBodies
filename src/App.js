@@ -18,7 +18,6 @@ import Footer from './components/footer'
 
 import AdventureInfo from './components/adventureInfo'
 import './App.css';
-import headerbar from './components/headerbar.js';
 
 class App extends Component {
   componentDidUpdate(prevProps) {
