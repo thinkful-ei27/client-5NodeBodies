@@ -47,7 +47,7 @@ class EditAdventureForm extends React.Component {
     return this.props.dispatch(editAdventure(adventure))
   }
 
-  
+
 
   render() {
     let error;
@@ -74,13 +74,13 @@ class EditAdventureForm extends React.Component {
     return (<div>
       <div className="form-field">
         <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-        <h2>Edit Adventure Information</h2>
+          <h2>Edit LearnVenture Information</h2>
 
           {error}
           <Field
             className="title input-field"
             label="Adventure Title"
-            ariaLabel="adventure title"
+            ariaLabel="LearnVenture title"
             placeholder="LearnVenture"
             name="title"
             component={Input}
@@ -89,7 +89,7 @@ class EditAdventureForm extends React.Component {
           <Field
             className="startContent"
             label="Adventure Introduction"
-            ariaLabel="Adventure Introduction"
+            ariaLabel="LearnVenture Introduction"
             placeholder="This is the beginning of your learning quest. Let's have some fun!"
             name="startContent"
             component={TextArea}

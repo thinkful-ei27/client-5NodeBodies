@@ -63,12 +63,12 @@ class AdventureForm extends React.Component {
       {/* <Sidebar /> */}
       <div className="form-field">
         <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-          <h2>Create a new adventure!</h2>
+          <h2>Create a new LearnVenture!</h2>
           {error}
           <Field
             className="input-field"
             label="Adventure Title"
-            ariaLabel="adventure title"
+            ariaLabel="LearnVenture title"
             placeholder="LearnVenture"
             name="title"
             component={Input}
@@ -77,7 +77,7 @@ class AdventureForm extends React.Component {
           <Field
             className="text-area"
             label="Adventure Introduction"
-            ariaLabel="Adventure Introduction"
+            ariaLabel="LearnVenture Introduction"
             placeholder="This is the beginning of your learning quest. Let's have some fun!"
             name="startContent"
             component={TextArea}
@@ -99,7 +99,7 @@ class AdventureForm extends React.Component {
             placeholder="Not Required"
             type="text"
             validate={[isTrimmedPassword]} />
-          <button>New Adventure!</button>
+          <button>New LearnVenture!</button>
           {onboarding}
         </Form>
       </div>
