@@ -146,7 +146,7 @@ class UpdateNodeForm extends React.Component {
             validate={[required, nonEmpty]} />
           <Field
             className="question input-field"
-            label="New Question"
+            label="Question"
             name="question"
             component={Input}
             type="text"
