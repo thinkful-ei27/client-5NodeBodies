@@ -14,7 +14,7 @@ export class Analytics extends React.Component {
       }
       return (<li>
         <h4>{node.title ? node.title : node.question}</h4>
-        <p>This Checkpoint has been visite total <span>{node.count}</span> times by all users.</p>
+        <p>This Checkpoint has been visited a total <span>{node.count}</span> times by all users.</p>
       </li>)
     })
 
