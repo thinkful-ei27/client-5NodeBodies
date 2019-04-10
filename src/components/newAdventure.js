@@ -4,7 +4,7 @@ import { Form, Field, reduxForm } from 'redux-form';
 import Input from "./input";
 import TextArea from "./textarea";
 import { connect } from 'react-redux';
-import requiresLogin from './requires-login';
+import RequiresLogin from './requires-login';
 import { createAdventure } from '../actions/createAdventure';
 import { required, nonEmpty, isTrimmedPassword } from "../utils/validators";
 import { withRouter } from 'react-router-dom';
@@ -115,7 +115,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default withRouter(requiresLogin()(connect(mapStateToProps)(reduxForm({
+export default withRouter(RequiresLogin()(connect(mapStateToProps)(reduxForm({
   form: 'Adventure',
   // onSubmitFail: (errors, dispatch) =>
   //   dispatch(focus('Adventure'/*, Object.keys(errors)[0]*/

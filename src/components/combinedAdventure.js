@@ -4,7 +4,7 @@ import AdventureBuilder from "./adventureBuilder";
 import GraphContainer from "./graph-container";
 import UpdateNodeForm from "./update-node-form";
 import { getAdventureById } from '../actions/createAdventure';
-import requiresLogin from './requires-login';
+import RequiresLogin from './requires-login';
 
 export class CombinedAdventure extends React.Component {
   componentDidMount() {
@@ -31,4 +31,4 @@ const mapStateToProps = state => ({
   currentAdventure: state.adventure.currentAdventure,
 });
 
-export default requiresLogin()(connect(mapStateToProps)(CombinedAdventure));
+export default RequiresLogin()(connect(mapStateToProps)(CombinedAdventure));
