@@ -143,6 +143,7 @@ export const deleteNode = (adventureId, nodeId) => (dispatch, getState) => {
       return dispatch(updateAdventureById(adventureId))
     })
     .then((adventure) => {
+      dispatch(toggleNodeDeleting())
       dispatch(setCurrentNode(adventure.head))
       return dispatch(deleteNodeSuccess())
       // sets showUpdate to false in reducer

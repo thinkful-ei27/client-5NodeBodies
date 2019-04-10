@@ -124,6 +124,7 @@ export default function reducer(state = initialState, action) {
       });
     }
     case DELETE_NODE_ERROR: {
+      debugger;
       return Object.assign({}, state, {
         loading: false,
         error: action.error.message

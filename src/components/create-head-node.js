@@ -38,6 +38,14 @@ export class CreateHeadNode extends React.Component {
   }
 
   render() {
+    let error;
+    if (this.props.nodeError) {
+      error = (
+        <div className="form-error" aria-live="polite">
+          {this.props.nodeError}
+        </div>
+      );
+    }
     let onboarding;
     if (this.props.onboarding) {
       onboarding = <div className="wideOnboarding arrowBox_Top onboarding">
@@ -57,18 +65,20 @@ export class CreateHeadNode extends React.Component {
         <h1>Please create a starting Checkpoint for your LearnVenture</h1>
         <div className="questionAndAnswers">
           <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-            <Field
-              className="textContent"
-              label="Scenario Description"
-              name="textContent"
-              component={TextArea}
-              type="text"
-              validate={[required, nonEmpty]} />
+
             <Field
               className="title input-field"
               label="Checkpoint Title: "
               name="title"
               component={Input}
+              type="text"
+            // validate={[required, nonEmpty]} 
+            />
+            <Field
+              className="textContent"
+              label="Scenario Description"
+              name="textContent"
+              component={TextArea}
               type="text"
               validate={[required, nonEmpty]} />
             <Field
@@ -115,6 +125,7 @@ export class CreateHeadNode extends React.Component {
               component={Input}
               type="text"
             />
+            {error}
             <button>New Checkpoint!</button>
             {onboarding}
           </form>
@@ -126,7 +137,9 @@ export class CreateHeadNode extends React.Component {
 
 const mapStateToProps = (state, props) => ({
   adventureId: state.adventure.currentAdventure.id,
-  onboarding: state.auth.onboarding
+  onboarding: state.auth.onboarding,
+  error: state.node.nodeError
+
 });
 
 export default connect(mapStateToProps)(reduxForm({

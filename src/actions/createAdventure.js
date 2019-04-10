@@ -127,7 +127,7 @@ export const createAdventure = adventure => (dispatch, getState) => {
       // let headNode = getHeadNodefromAdventure(res)
       // dispatch(setCurrentNode(headNode))
       return dispatch(createAdventureSuccess(res))
-      
+
     })
     .catch(error => {
       return dispatch(createAdventureError(error))
