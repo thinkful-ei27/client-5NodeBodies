@@ -66,8 +66,8 @@ class GraphContainer extends React.Component {
                 }
             }
         }
-        chartData.nodes[0].x = this.state.windowWidth;
-        chartData.nodes[0].y = this.state.windowHeight;
+        chartData.nodes[0].x = this.state.windowWidth / 2;
+        chartData.nodes[0].y = this.state.windowHeight / 2;
         return chartData;
     }
 
