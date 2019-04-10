@@ -1,0 +1,69 @@
+cefc3c7d1762d5e0b4a6f201a6e52cf6
+"use strict";
+
+var _interopRequireDefault = require("/home/flightlessbird/Thinkful/projects/CYOA/client-5NodeBodies/node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _objectWithoutProperties2 = _interopRequireDefault(require("/home/flightlessbird/Thinkful/projects/CYOA/client-5NodeBodies/node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/objectWithoutProperties"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactRedux = require("react-redux");
+
+var _reactRouterDom = require("react-router-dom");
+
+var _jsxFileName = "/home/flightlessbird/Thinkful/projects/CYOA/client-5NodeBodies/src/components/requires-login.js";
+
+var _default = () => Component => {
+  function RequiresLogin(props) {
+    const authenticating = props.authenticating,
+          loggedIn = props.loggedIn,
+          error = props.error,
+          passThroughProps = (0, _objectWithoutProperties2.default)(props, ["authenticating", "loggedIn", "error"]);
+
+    if (authenticating) {
+      return _react.default.createElement("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 9
+        },
+        __self: this
+      }, "Logging in...");
+    } else if (!loggedIn || error) {
+      return _react.default.createElement(_reactRouterDom.Redirect, {
+        to: "/",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 11
+        },
+        __self: this
+      });
+    }
+
+    return _react.default.createElement(Component, Object.assign({}, passThroughProps, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 14
+      },
+      __self: this
+    }));
+  }
+
+  const displayName = Component.displayName || Component.name || 'Component';
+  RequiresLogin.displayName = `RequiresLogin(${displayName})`;
+
+  const mapStateToProps = (state, props) => ({
+    authenticating: state.auth.loading,
+    loggedIn: state.auth.currentUser !== null,
+    error: state.auth.error
+  });
+
+  return (0, _reactRedux.connect)(mapStateToProps)(RequiresLogin);
+};
+
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlcXVpcmVzLWxvZ2luLmpzIl0sIm5hbWVzIjpbIkNvbXBvbmVudCIsIlJlcXVpcmVzTG9naW4iLCJwcm9wcyIsImF1dGhlbnRpY2F0aW5nIiwibG9nZ2VkSW4iLCJlcnJvciIsInBhc3NUaHJvdWdoUHJvcHMiLCJkaXNwbGF5TmFtZSIsIm5hbWUiLCJtYXBTdGF0ZVRvUHJvcHMiLCJzdGF0ZSIsImF1dGgiLCJsb2FkaW5nIiwiY3VycmVudFVzZXIiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7O0FBQUE7O0FBQ0E7O0FBQ0E7Ozs7ZUFFZSxNQUFNQSxTQUFTLElBQUk7QUFDaEMsV0FBU0MsYUFBVCxDQUF1QkMsS0FBdkIsRUFBOEI7QUFBQSxVQUNwQkMsY0FEb0IsR0FDcUNELEtBRHJDLENBQ3BCQyxjQURvQjtBQUFBLFVBQ0pDLFFBREksR0FDcUNGLEtBRHJDLENBQ0pFLFFBREk7QUFBQSxVQUNNQyxLQUROLEdBQ3FDSCxLQURyQyxDQUNNRyxLQUROO0FBQUEsVUFDZ0JDLGdCQURoQiwwQ0FDcUNKLEtBRHJDOztBQUU1QixRQUFJQyxjQUFKLEVBQW9CO0FBQ2xCLGFBQU87QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEseUJBQVA7QUFDRCxLQUZELE1BRU8sSUFBSSxDQUFDQyxRQUFELElBQWFDLEtBQWpCLEVBQXdCO0FBQzdCLGFBQU8sNkJBQUMsd0JBQUQ7QUFBVSxRQUFBLEVBQUUsRUFBQyxHQUFiO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLFFBQVA7QUFDRDs7QUFFRCxXQUFPLDZCQUFDLFNBQUQsb0JBQWVDLGdCQUFmO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLE9BQVA7QUFDRDs7QUFFRCxRQUFNQyxXQUFXLEdBQUdQLFNBQVMsQ0FBQ08sV0FBVixJQUF5QlAsU0FBUyxDQUFDUSxJQUFuQyxJQUEyQyxXQUEvRDtBQUNBUCxFQUFBQSxhQUFhLENBQUNNLFdBQWQsR0FBNkIsaUJBQWdCQSxXQUFZLEdBQXpEOztBQUVBLFFBQU1FLGVBQWUsR0FBRyxDQUFDQyxLQUFELEVBQVFSLEtBQVIsTUFBbUI7QUFDekNDLElBQUFBLGNBQWMsRUFBRU8sS0FBSyxDQUFDQyxJQUFOLENBQVdDLE9BRGM7QUFFekNSLElBQUFBLFFBQVEsRUFBRU0sS0FBSyxDQUFDQyxJQUFOLENBQVdFLFdBQVgsS0FBMkIsSUFGSTtBQUd6Q1IsSUFBQUEsS0FBSyxFQUFFSyxLQUFLLENBQUNDLElBQU4sQ0FBV047QUFIdUIsR0FBbkIsQ0FBeEI7O0FBTUEsU0FBTyx5QkFBUUksZUFBUixFQUF5QlIsYUFBekIsQ0FBUDtBQUNELEMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnO1xuaW1wb3J0IHsgY29ubmVjdCB9IGZyb20gJ3JlYWN0LXJlZHV4JztcbmltcG9ydCB7IFJlZGlyZWN0IH0gZnJvbSAncmVhY3Qtcm91dGVyLWRvbSc7XG5cbmV4cG9ydCBkZWZhdWx0ICgpID0+IENvbXBvbmVudCA9PiB7XG4gIGZ1bmN0aW9uIFJlcXVpcmVzTG9naW4ocHJvcHMpIHtcbiAgICBjb25zdCB7IGF1dGhlbnRpY2F0aW5nLCBsb2dnZWRJbiwgZXJyb3IsIC4uLnBhc3NUaHJvdWdoUHJvcHMgfSA9IHByb3BzO1xuICAgIGlmIChhdXRoZW50aWNhdGluZykge1xuICAgICAgcmV0dXJuIDxkaXY+TG9nZ2luZyBpbi4uLjwvZGl2PjtcbiAgICB9IGVsc2UgaWYgKCFsb2dnZWRJbiB8fCBlcnJvcikge1xuICAgICAgcmV0dXJuIDxSZWRpcmVjdCB0bz1cIi9cIiAvPjtcbiAgICB9XG5cbiAgICByZXR1cm4gPENvbXBvbmVudCB7Li4ucGFzc1Rocm91Z2hQcm9wc30gLz47XG4gIH1cblxuICBjb25zdCBkaXNwbGF5TmFtZSA9IENvbXBvbmVudC5kaXNwbGF5TmFtZSB8fCBDb21wb25lbnQubmFtZSB8fCAnQ29tcG9uZW50JztcbiAgUmVxdWlyZXNMb2dpbi5kaXNwbGF5TmFtZSA9IGBSZXF1aXJlc0xvZ2luKCR7ZGlzcGxheU5hbWV9KWA7XG5cbiAgY29uc3QgbWFwU3RhdGVUb1Byb3BzID0gKHN0YXRlLCBwcm9wcykgPT4gKHtcbiAgICBhdXRoZW50aWNhdGluZzogc3RhdGUuYXV0aC5sb2FkaW5nLFxuICAgIGxvZ2dlZEluOiBzdGF0ZS5hdXRoLmN1cnJlbnRVc2VyICE9PSBudWxsLFxuICAgIGVycm9yOiBzdGF0ZS5hdXRoLmVycm9yXG4gIH0pO1xuXG4gIHJldHVybiBjb25uZWN0KG1hcFN0YXRlVG9Qcm9wcykoUmVxdWlyZXNMb2dpbik7XG59O1xuIl19

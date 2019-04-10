@@ -1,0 +1,34 @@
+4ee62a15d4ba2bb5c583b8a7bee88fbd
+"use strict";
+
+var _interopRequireDefault = require("/home/flightlessbird/Thinkful/projects/CYOA/client-5NodeBodies/node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+var _react = _interopRequireDefault(require("react"));
+
+var _enzyme = require("enzyme");
+
+var _registration = _interopRequireDefault(require("../components/registration"));
+
+var _jsxFileName = "/home/flightlessbird/Thinkful/projects/CYOA/client-5NodeBodies/src/test/registration.test.js";
+describe('<RegisterForm />', () => {
+  it('renders without crashing', () => {
+    (0, _enzyme.shallow)(_react.default.createElement(_registration.default, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 7
+      },
+      __self: void 0
+    }));
+  });
+  it('should have one form, five fields, and a button', () => {
+    const wrapper = (0, _enzyme.shallow)(_react.default.createElement(_registration.default, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 10
+      },
+      __self: void 0
+    }));
+    expect(wrapper.find('.registration-form')).to.have.lengthOf(1);
+  });
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlZ2lzdHJhdGlvbi50ZXN0LmpzIl0sIm5hbWVzIjpbImRlc2NyaWJlIiwiaXQiLCJ3cmFwcGVyIiwiZXhwZWN0IiwiZmluZCIsInRvIiwiaGF2ZSIsImxlbmd0aE9mIl0sIm1hcHBpbmdzIjoiOzs7O0FBQUE7O0FBQ0E7O0FBQ0E7OztBQUVBQSxRQUFRLENBQUMsa0JBQUQsRUFBcUIsTUFBTTtBQUNqQ0MsRUFBQUEsRUFBRSxDQUFDLDBCQUFELEVBQTZCLE1BQU07QUFDbkMseUJBQVEsNkJBQUMscUJBQUQ7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsTUFBUjtBQUNELEdBRkMsQ0FBRjtBQUdBQSxFQUFBQSxFQUFFLENBQUMsaURBQUQsRUFBb0QsTUFBTTtBQUMxRCxVQUFNQyxPQUFPLEdBQUcscUJBQVEsNkJBQUMscUJBQUQ7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsTUFBUixDQUFoQjtBQUNBQyxJQUFBQSxNQUFNLENBQUNELE9BQU8sQ0FBQ0UsSUFBUixDQUFhLG9CQUFiLENBQUQsQ0FBTixDQUEyQ0MsRUFBM0MsQ0FBOENDLElBQTlDLENBQW1EQyxRQUFuRCxDQUE0RCxDQUE1RDtBQUNELEdBSEMsQ0FBRjtBQUlELENBUk8sQ0FBUiIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCc7XG5pbXBvcnQgeyBzaGFsbG93IH0gZnJvbSAnZW56eW1lJztcbmltcG9ydCBSZWdpc3RlckZvcm0gZnJvbSAnLi4vY29tcG9uZW50cy9yZWdpc3RyYXRpb24nO1xuXG5kZXNjcmliZSgnPFJlZ2lzdGVyRm9ybSAvPicsICgpID0+IHtcbiAgaXQoJ3JlbmRlcnMgd2l0aG91dCBjcmFzaGluZycsICgpID0+IHtcbiAgICBzaGFsbG93KDxSZWdpc3RlckZvcm0gLz4pO1xuICB9KTtcbiAgaXQoJ3Nob3VsZCBoYXZlIG9uZSBmb3JtLCBmaXZlIGZpZWxkcywgYW5kIGEgYnV0dG9uJywgKCkgPT4ge1xuICAgIGNvbnN0IHdyYXBwZXIgPSBzaGFsbG93KDxSZWdpc3RlckZvcm0gLz4pO1xuICAgIGV4cGVjdCh3cmFwcGVyLmZpbmQoJy5yZWdpc3RyYXRpb24tZm9ybScpKS50by5oYXZlLmxlbmd0aE9mKDEpO1xuICB9KVxufSk7Il19

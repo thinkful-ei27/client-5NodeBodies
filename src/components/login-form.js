@@ -4,7 +4,7 @@ import Input from "./input";
 import { loginUser } from '../actions/auth';
 import { required, nonEmpty } from "../utils/validators";
 
-class LoginForm extends React.Component {
+export class LoginForm extends React.Component {
 
   onSubmit(values) {
     let { password, username } = values;
