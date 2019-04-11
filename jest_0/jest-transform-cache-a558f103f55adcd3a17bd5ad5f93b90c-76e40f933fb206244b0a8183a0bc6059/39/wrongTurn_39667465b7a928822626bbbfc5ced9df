@@ -1,0 +1,46 @@
+47fd494212e500ce89edf6325b8c46e1
+"use strict";
+
+var _interopRequireDefault = require("/home/flightlessbird/Thinkful/projects/CYOA/client-5NodeBodies/node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _jsxFileName = "/home/flightlessbird/Thinkful/projects/CYOA/client-5NodeBodies/src/components/wrongTurn.js";
+
+class WrongTurn extends _react.default.Component {
+  render() {
+    return _react.default.createElement("div", {
+      className: "wrong-turn",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 9
+      },
+      __self: this
+    }, _react.default.createElement("h2", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 10
+      },
+      __self: this
+    }, "Oops! Looks like you took a wrong turn."), _react.default.createElement("button", {
+      className: "go-home",
+      onClick: () => this.props.history.push('/dashboard'),
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 11
+      },
+      __self: this
+    }, "Go Home"));
+  }
+
+}
+
+exports.default = WrongTurn;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndyb25nVHVybi5qcyJdLCJuYW1lcyI6WyJXcm9uZ1R1cm4iLCJSZWFjdCIsIkNvbXBvbmVudCIsInJlbmRlciIsInByb3BzIiwiaGlzdG9yeSIsInB1c2giXSwibWFwcGluZ3MiOiI7Ozs7Ozs7OztBQUFBOztBQUNBOzs7O0FBRWUsTUFBTUEsU0FBTixTQUF3QkMsZUFBTUMsU0FBOUIsQ0FBd0M7QUFFckRDLEVBQUFBLE1BQU0sR0FBRztBQUVQLFdBQ0U7QUFBSyxNQUFBLFNBQVMsRUFBQyxZQUFmO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLE9BQ0U7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsaURBREYsRUFFRTtBQUFRLE1BQUEsU0FBUyxFQUFDLFNBQWxCO0FBQTRCLE1BQUEsT0FBTyxFQUFFLE1BQU0sS0FBS0MsS0FBTCxDQUFXQyxPQUFYLENBQW1CQyxJQUFuQixDQUF3QixZQUF4QixDQUEzQztBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxpQkFGRixDQURGO0FBTUQ7O0FBVm9EIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JztcbmltcG9ydCB7IExpbmsgfSBmcm9tICdyZWFjdC1yb3V0ZXItZG9tJztcblxuZXhwb3J0IGRlZmF1bHQgY2xhc3MgV3JvbmdUdXJuIGV4dGVuZHMgUmVhY3QuQ29tcG9uZW50IHtcblxuICByZW5kZXIoKSB7XG5cbiAgICByZXR1cm4gKFxuICAgICAgPGRpdiBjbGFzc05hbWU9XCJ3cm9uZy10dXJuXCI+XG4gICAgICAgIDxoMj5Pb3BzISBMb29rcyBsaWtlIHlvdSB0b29rIGEgd3JvbmcgdHVybi48L2gyPlxuICAgICAgICA8YnV0dG9uIGNsYXNzTmFtZT1cImdvLWhvbWVcIiBvbkNsaWNrPXsoKSA9PiB0aGlzLnByb3BzLmhpc3RvcnkucHVzaCgnL2Rhc2hib2FyZCcpfT5HbyBIb21lPC9idXR0b24+XG4gICAgICA8L2Rpdj5cbiAgICApO1xuICB9XG59XG5cbiJdfQ==

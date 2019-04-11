@@ -1,0 +1,82 @@
+699668e73a2aac092d7fa03b3a4c6249
+"use strict";
+
+var _interopRequireDefault = require("/home/flightlessbird/Thinkful/projects/CYOA/client-5NodeBodies/node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _jsxFileName = "/home/flightlessbird/Thinkful/projects/CYOA/client-5NodeBodies/src/components/input.js";
+
+class Input extends _react.default.Component {
+  componentDidUpdate(prevProps) {
+    if (!prevProps.meta.active && this.props.meta.active) {
+      this.input.focus();
+    }
+  }
+
+  render() {
+    let error;
+
+    if (this.props.meta.touched && this.props.meta.error) {
+      error = _react.default.createElement("div", {
+        className: "form-error",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 13
+        },
+        __self: this
+      }, this.props.meta.error);
+    }
+
+    let warning;
+
+    if (this.props.meta.touched && this.props.meta.warning) {
+      warning = _react.default.createElement("div", {
+        className: "form-warning",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 18
+        },
+        __self: this
+      }, this.props.meta.warning);
+    }
+
+    return _react.default.createElement("div", {
+      className: "form-input",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 22
+      },
+      __self: this
+    }, _react.default.createElement("label", {
+      className: "font-bold",
+      htmlFor: this.props.input.name,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 23
+      },
+      __self: this
+    }, this.props.label, error, warning), _react.default.createElement("input", Object.assign({}, this.props.input, {
+      id: this.props.input.name,
+      type: this.props.type,
+      placeholder: this.props.placeholder,
+      "aria-label": this.props.ariaLabel,
+      ref: input => this.input = input,
+      className: "input input-field",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 28
+      },
+      __self: this
+    })));
+  }
+
+}
+
+exports.default = Input;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImlucHV0LmpzIl0sIm5hbWVzIjpbIklucHV0IiwiUmVhY3QiLCJDb21wb25lbnQiLCJjb21wb25lbnREaWRVcGRhdGUiLCJwcmV2UHJvcHMiLCJtZXRhIiwiYWN0aXZlIiwicHJvcHMiLCJpbnB1dCIsImZvY3VzIiwicmVuZGVyIiwiZXJyb3IiLCJ0b3VjaGVkIiwid2FybmluZyIsIm5hbWUiLCJsYWJlbCIsInR5cGUiLCJwbGFjZWhvbGRlciIsImFyaWFMYWJlbCJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7O0FBQUE7Ozs7QUFFZSxNQUFNQSxLQUFOLFNBQW9CQyxlQUFNQyxTQUExQixDQUFvQztBQUNqREMsRUFBQUEsa0JBQWtCLENBQUNDLFNBQUQsRUFBWTtBQUM1QixRQUFJLENBQUNBLFNBQVMsQ0FBQ0MsSUFBVixDQUFlQyxNQUFoQixJQUEwQixLQUFLQyxLQUFMLENBQVdGLElBQVgsQ0FBZ0JDLE1BQTlDLEVBQXNEO0FBQ3BELFdBQUtFLEtBQUwsQ0FBV0MsS0FBWDtBQUNEO0FBQ0Y7O0FBRURDLEVBQUFBLE1BQU0sR0FBRztBQUNQLFFBQUlDLEtBQUo7O0FBQ0EsUUFBSSxLQUFLSixLQUFMLENBQVdGLElBQVgsQ0FBZ0JPLE9BQWhCLElBQTJCLEtBQUtMLEtBQUwsQ0FBV0YsSUFBWCxDQUFnQk0sS0FBL0MsRUFBc0Q7QUFDcERBLE1BQUFBLEtBQUssR0FBRztBQUFLLFFBQUEsU0FBUyxFQUFDLFlBQWY7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsU0FBNkIsS0FBS0osS0FBTCxDQUFXRixJQUFYLENBQWdCTSxLQUE3QyxDQUFSO0FBQ0Q7O0FBRUQsUUFBSUUsT0FBSjs7QUFDQSxRQUFJLEtBQUtOLEtBQUwsQ0FBV0YsSUFBWCxDQUFnQk8sT0FBaEIsSUFBMkIsS0FBS0wsS0FBTCxDQUFXRixJQUFYLENBQWdCUSxPQUEvQyxFQUF3RDtBQUN0REEsTUFBQUEsT0FBTyxHQUFHO0FBQUssUUFBQSxTQUFTLEVBQUMsY0FBZjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxTQUErQixLQUFLTixLQUFMLENBQVdGLElBQVgsQ0FBZ0JRLE9BQS9DLENBQVY7QUFDRDs7QUFFRCxXQUNFO0FBQUssTUFBQSxTQUFTLEVBQUMsWUFBZjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxPQUNFO0FBQU8sTUFBQSxTQUFTLEVBQUMsV0FBakI7QUFBNkIsTUFBQSxPQUFPLEVBQUUsS0FBS04sS0FBTCxDQUFXQyxLQUFYLENBQWlCTSxJQUF2RDtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxPQUNHLEtBQUtQLEtBQUwsQ0FBV1EsS0FEZCxFQUVHSixLQUZILEVBR0dFLE9BSEgsQ0FERixFQU1FLHdEQUNNLEtBQUtOLEtBQUwsQ0FBV0MsS0FEakI7QUFFRSxNQUFBLEVBQUUsRUFBRSxLQUFLRCxLQUFMLENBQVdDLEtBQVgsQ0FBaUJNLElBRnZCO0FBR0UsTUFBQSxJQUFJLEVBQUUsS0FBS1AsS0FBTCxDQUFXUyxJQUhuQjtBQUlFLE1BQUEsV0FBVyxFQUFFLEtBQUtULEtBQUwsQ0FBV1UsV0FKMUI7QUFLRSxvQkFBWSxLQUFLVixLQUFMLENBQVdXLFNBTHpCO0FBTUUsTUFBQSxHQUFHLEVBQUVWLEtBQUssSUFBSyxLQUFLQSxLQUFMLEdBQWFBLEtBTjlCO0FBT0UsTUFBQSxTQUFTLEVBQUMsbUJBUFo7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsT0FORixDQURGO0FBa0JEOztBQXBDZ0QiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSBcInJlYWN0XCI7XG5cbmV4cG9ydCBkZWZhdWx0IGNsYXNzIElucHV0IGV4dGVuZHMgUmVhY3QuQ29tcG9uZW50IHtcbiAgY29tcG9uZW50RGlkVXBkYXRlKHByZXZQcm9wcykge1xuICAgIGlmICghcHJldlByb3BzLm1ldGEuYWN0aXZlICYmIHRoaXMucHJvcHMubWV0YS5hY3RpdmUpIHtcbiAgICAgIHRoaXMuaW5wdXQuZm9jdXMoKTtcbiAgICB9XG4gIH1cblxuICByZW5kZXIoKSB7XG4gICAgbGV0IGVycm9yO1xuICAgIGlmICh0aGlzLnByb3BzLm1ldGEudG91Y2hlZCAmJiB0aGlzLnByb3BzLm1ldGEuZXJyb3IpIHtcbiAgICAgIGVycm9yID0gPGRpdiBjbGFzc05hbWU9XCJmb3JtLWVycm9yXCI+e3RoaXMucHJvcHMubWV0YS5lcnJvcn08L2Rpdj47XG4gICAgfVxuXG4gICAgbGV0IHdhcm5pbmc7XG4gICAgaWYgKHRoaXMucHJvcHMubWV0YS50b3VjaGVkICYmIHRoaXMucHJvcHMubWV0YS53YXJuaW5nKSB7XG4gICAgICB3YXJuaW5nID0gPGRpdiBjbGFzc05hbWU9XCJmb3JtLXdhcm5pbmdcIj57dGhpcy5wcm9wcy5tZXRhLndhcm5pbmd9PC9kaXY+O1xuICAgIH1cblxuICAgIHJldHVybiAoXG4gICAgICA8ZGl2IGNsYXNzTmFtZT1cImZvcm0taW5wdXRcIj5cbiAgICAgICAgPGxhYmVsIGNsYXNzTmFtZT1cImZvbnQtYm9sZFwiIGh0bWxGb3I9e3RoaXMucHJvcHMuaW5wdXQubmFtZX0+XG4gICAgICAgICAge3RoaXMucHJvcHMubGFiZWx9XG4gICAgICAgICAge2Vycm9yfVxuICAgICAgICAgIHt3YXJuaW5nfVxuICAgICAgICA8L2xhYmVsPlxuICAgICAgICA8aW5wdXRcbiAgICAgICAgICB7Li4udGhpcy5wcm9wcy5pbnB1dH1cbiAgICAgICAgICBpZD17dGhpcy5wcm9wcy5pbnB1dC5uYW1lfVxuICAgICAgICAgIHR5cGU9e3RoaXMucHJvcHMudHlwZX1cbiAgICAgICAgICBwbGFjZWhvbGRlcj17dGhpcy5wcm9wcy5wbGFjZWhvbGRlcn1cbiAgICAgICAgICBhcmlhLWxhYmVsPXt0aGlzLnByb3BzLmFyaWFMYWJlbH1cbiAgICAgICAgICByZWY9e2lucHV0ID0+ICh0aGlzLmlucHV0ID0gaW5wdXQpfVxuICAgICAgICAgIGNsYXNzTmFtZT1cImlucHV0IGlucHV0LWZpZWxkXCJcbiAgICAgICAgLz5cbiAgICAgIDwvZGl2PlxuICAgICk7XG4gIH1cbn1cbiJdfQ==

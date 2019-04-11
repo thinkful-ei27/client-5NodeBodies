@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './Tutorial.css';
 import { studentEndTutorial, studentNextTutorial, studentPreviousTutorial } from '../../actions/student.js'
 
-class TutorialPage2 extends React.Component {
+export class TutorialPage2 extends React.Component {
 
     handlePreviousClick() {
         console.log('page2 handlePreviousClick ran');

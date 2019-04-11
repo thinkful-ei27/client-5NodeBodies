@@ -4,7 +4,7 @@ import { getStudentAdventure } from '../actions/student.js'
 
 
 let passwordVal;
-class SearchResults extends React.Component{
+export class SearchResults extends React.Component{
 
 
     handleClick(id){
