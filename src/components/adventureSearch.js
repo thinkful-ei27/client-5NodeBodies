@@ -19,9 +19,10 @@ class AdventureSearch extends React.Component {
   render() {
     return (
       <form onSubmit={e => this.handleSubmit(e)}>
-        <label className='above' for='input-field'>Search a LearnVenture</label>
+        <label className='input-field-label' for='input-field'><strong>Search a LearnVenture</strong></label>
         <input
-          className="input-field"
+          className="search-input-field"
+          placeholder="Example: Making Breakfast"
           onChange={e => this.onChange(e)} type="text"></input>
         <button
           className="search-adventures on-right"
