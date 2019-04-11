@@ -84,15 +84,15 @@ export class AdventureForm extends React.Component {
             type="text" />
           <Field
             className="input-field"
-            label="Opening YouTube URL(optional)"
-            ariaLabel="Opening YouTube URL(optional)"
+            label="Opening YouTube URL (optional)"
+            ariaLabel="Opening YouTube URL (optional)"
             placeholder="https://www.youtube.com/embed/dHSQAEam2yc"
             name="startVideoURL"
             component={Input}
             // validate={url({ protocols: ['http', 'https'] })}
             type="text" />
           <Field className="input-field"
-            label="Optional Password:"
+            label="Optional Password"
             ariaLabel="Temporary"
             name="password"
             component={Input}
