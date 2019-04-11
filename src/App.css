@@ -21,7 +21,8 @@
 }
 
 .adventure-list-item {
-  padding-top: 10px;
+  padding-top: 10px 0;
+  height: auto
 }
 
 .adventure-password, .adventure-input, .search-input {
@@ -34,7 +35,7 @@
   font-size: 18px;
 }
 .answer-button {
-  width: 470px;
+  width: 300px;
 }
 
 .app-title {
@@ -260,8 +261,7 @@ h2 {
   border: 2px solid #b4cedd;
   border-radius: 5px;
   height: 40px;
-  min-width: 60px;
-  max-width:400px;
+  width:80%;
   margin-bottom: 5px;
   font-size: 18px;
 }
@@ -408,19 +408,22 @@ margin: 15px;
   /* background-color:#da8624; */
   margin:auto;
   max-width: 70vw; /*vw is veiwport width, this box will be semi repsonsive.*/
-  min-width: 470px;
+  min-width: 300px;
   border: 2px solid #b4cedd;
   border-radius: 5px;
 }
 #student-content {
   /* color: white; */
   font-size: 22px;
-  min-width: 470px; 
+  min-width: 300px; 
+  padding:5px;
+
 }
 #student-question {
   /* color: white; */
   font-size: 29px;
-  min-width: 470px;
+  min-width: 300px;
+  padding:5px;
 }
 
 .teacher-button {
@@ -475,7 +478,7 @@ ul {
   .col-3 {
     float: left;
     width: 50%;
-    height: 150px;
+    height: 180px;
     align-content: center;
   }
 
@@ -488,6 +491,9 @@ ul {
     display: inline-block;
     margin-left: 5px;
   }
+  .answer-button {
+    width: 470px;
+  }
 }
 
 .not-mobile {
@@ -499,7 +505,7 @@ ul {
   .col-3 {
     float: left;
     width: 30%;
-    height: 150px;
+    height: 180px;
     align-content: center;
   }
 
@@ -507,15 +513,15 @@ ul {
   .col-4 {
     align-content: center;
   }
-
-  /* 6 columns */
+/* 
+  6 columns
   .col-6 {
 
   }
 
-  /* 12 columns */
+  12 columns
   .col-12 {
-  }
+  } */
 
   .form-input{
     position: relative;
@@ -545,15 +551,15 @@ ul {
     width: 50%;
     max-width: 400px;
   }
-
-  /* 6 columns */
+/* 
+  6 columns
   .col-6 {
     
   }
 
-  /* 12 columns */
+  12 columns
   .col-12 {
-  }
+  } */
 
   .full-screen-only {
     display: inline-block;

@@ -182,6 +182,7 @@ export const linkNodesById = idObjectWithParentInt => (dispatch, getState) => {
 
 
 export const updateNode = nodeData => (dispatch, getState) => {
+  debugger;
   let nodeId = nodeData.nodeId
   dispatch(updateNodeRequest())
   const authToken = getState().auth.authToken;
@@ -219,10 +220,3 @@ function getNodeFromCurrentAdventure(nodeId, adventure) {
 
 }
 
-
-// export const UPDATE_CURRENT_NODE = 'UPDATE_CURRENT_NODE';
-// export const updateCurrentNode = (nodeId, nodeArr) => ({
-//   type: UPDATE_CURRENT_NODE,
-//   nodeId,
-//   nodeArr
-// });
