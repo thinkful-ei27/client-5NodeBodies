@@ -217,13 +217,6 @@ class UpdateNodeForm extends React.Component {
                 this.props.currentNode.title :
                 this.props.currentNode.question}</h2>
             <h4>Choice that points to this Checkpoint: {parentAnswer}</h4>
-
-            <Field
-              className="end-checkbox"
-              name="ending"
-              label="Is this an Ending?"
-              component={this.renderCheckBox}
-              type="checkbox" />
             <Field
               className="title input-field"
               label="Checkpoint Title"
