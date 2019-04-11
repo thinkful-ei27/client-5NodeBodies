@@ -204,15 +204,6 @@ class UpdateNodeForm extends React.Component {
             <h4>Choice that points to this Checkpoint: {parentAnswer}</h4>
 
             <Field
-              className="title input-field"
-              label="Checkpoint Title"
-              name="title"
-              component={Input}
-              type="text"
-              placeholder='optional'
-            // validate={[required, nonEmpty]}
-            />
-            <Field
               className="videoURL input-field"
               label="Video URL (optional)"
               placeholder="http://(videoURL)"
