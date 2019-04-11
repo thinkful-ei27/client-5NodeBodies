@@ -1,0 +1,72 @@
+653978f59e37b9381bf9563baad14ba3
+"use strict";
+
+var _interopRequireDefault = require("/home/flightlessbird/Thinkful/projects/CYOA/client-5NodeBodies/node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.LandingPage = LandingPage;
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactRedux = require("react-redux");
+
+var _reactRouterDom = require("react-router-dom");
+
+var _registration = _interopRequireDefault(require("./registration"));
+
+var _jsxFileName = "/home/flightlessbird/Thinkful/projects/CYOA/client-5NodeBodies/src/components/landing-page.js";
+
+function LandingPage(props) {
+  // If we are logged in (which happens automatically when registration
+  // is successful) redirect to the main browse area
+  if (props.loggedIn) {
+    props.history.push('/dashboard');
+  }
+
+  return _react.default.createElement("div", {
+    className: "landing-page",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13
+    },
+    __self: this
+  }, _react.default.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14
+    },
+    __self: this
+  }, "New User? Register Below"), _react.default.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15
+    },
+    __self: this
+  }, "Or click here to ", _react.default.createElement(_reactRouterDom.Link, {
+    className: "login-from-register",
+    to: "/login",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15
+    },
+    __self: this
+  }, "Login")), _react.default.createElement(_registration.default, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 16
+    },
+    __self: this
+  }));
+}
+
+const mapStateToProps = state => ({
+  loggedIn: state.auth.currentUser !== null
+});
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)(LandingPage);
+
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxhbmRpbmctcGFnZS5qcyJdLCJuYW1lcyI6WyJMYW5kaW5nUGFnZSIsInByb3BzIiwibG9nZ2VkSW4iLCJoaXN0b3J5IiwicHVzaCIsIm1hcFN0YXRlVG9Qcm9wcyIsInN0YXRlIiwiYXV0aCIsImN1cnJlbnRVc2VyIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O0FBQUE7O0FBQ0E7O0FBQ0E7O0FBQ0E7Ozs7QUFFTyxTQUFTQSxXQUFULENBQXFCQyxLQUFyQixFQUE0QjtBQUNqQztBQUNBO0FBQ0EsTUFBSUEsS0FBSyxDQUFDQyxRQUFWLEVBQW9CO0FBQ2xCRCxJQUFBQSxLQUFLLENBQUNFLE9BQU4sQ0FBY0MsSUFBZCxDQUFtQixZQUFuQjtBQUNEOztBQUNELFNBQ0U7QUFBSyxJQUFBLFNBQVMsRUFBQyxjQUFmO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLEtBQ0U7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsZ0NBREYsRUFFRTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSwwQkFBb0IsNkJBQUMsb0JBQUQ7QUFBTSxJQUFBLFNBQVMsRUFBQyxxQkFBaEI7QUFBc0MsSUFBQSxFQUFFLEVBQUMsUUFBekM7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUFBcEIsQ0FGRixFQUdFLDZCQUFDLHFCQUFEO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLElBSEYsQ0FERjtBQU9EOztBQUVELE1BQU1DLGVBQWUsR0FBR0MsS0FBSyxLQUFLO0FBQ2hDSixFQUFBQSxRQUFRLEVBQUVJLEtBQUssQ0FBQ0MsSUFBTixDQUFXQyxXQUFYLEtBQTJCO0FBREwsQ0FBTCxDQUE3Qjs7ZUFJZSx5QkFBUUgsZUFBUixFQUF5QkwsV0FBekIsQyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCBmcm9tIFwicmVhY3RcIjtcbmltcG9ydCB7IGNvbm5lY3QgfSBmcm9tIFwicmVhY3QtcmVkdXhcIjtcbmltcG9ydCB7IExpbmsgfSBmcm9tICdyZWFjdC1yb3V0ZXItZG9tJ1xuaW1wb3J0IFJlZ2lzdGVyRm9ybSBmcm9tIFwiLi9yZWdpc3RyYXRpb25cIjtcblxuZXhwb3J0IGZ1bmN0aW9uIExhbmRpbmdQYWdlKHByb3BzKSB7XG4gIC8vIElmIHdlIGFyZSBsb2dnZWQgaW4gKHdoaWNoIGhhcHBlbnMgYXV0b21hdGljYWxseSB3aGVuIHJlZ2lzdHJhdGlvblxuICAvLyBpcyBzdWNjZXNzZnVsKSByZWRpcmVjdCB0byB0aGUgbWFpbiBicm93c2UgYXJlYVxuICBpZiAocHJvcHMubG9nZ2VkSW4pIHtcbiAgICBwcm9wcy5oaXN0b3J5LnB1c2goJy9kYXNoYm9hcmQnKVxuICB9XG4gIHJldHVybiAoXG4gICAgPGRpdiBjbGFzc05hbWU9XCJsYW5kaW5nLXBhZ2VcIj5cbiAgICAgIDxwPk5ldyBVc2VyPyBSZWdpc3RlciBCZWxvdzwvcD5cbiAgICAgIDxwPk9yIGNsaWNrIGhlcmUgdG8gPExpbmsgY2xhc3NOYW1lPVwibG9naW4tZnJvbS1yZWdpc3RlclwiIHRvPVwiL2xvZ2luXCI+TG9naW48L0xpbms+PC9wPlxuICAgICAgPFJlZ2lzdGVyRm9ybSAvPlxuICAgIDwvZGl2PlxuICApO1xufVxuXG5jb25zdCBtYXBTdGF0ZVRvUHJvcHMgPSBzdGF0ZSA9PiAoe1xuICBsb2dnZWRJbjogc3RhdGUuYXV0aC5jdXJyZW50VXNlciAhPT0gbnVsbCxcbn0pO1xuXG5leHBvcnQgZGVmYXVsdCBjb25uZWN0KG1hcFN0YXRlVG9Qcm9wcykoTGFuZGluZ1BhZ2UpO1xuIl19

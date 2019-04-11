@@ -1,0 +1,12 @@
+af531da28c666a050779a960dd8c9227
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.API_BASE_URL = void 0;
+// export const API_BASE_URL =
+//   process.env.REACT_APP_API_BASE_URL || 'http://localhost:8080/api';
+const API_BASE_URL = 'http://localhost:8080/api';
+exports.API_BASE_URL = API_BASE_URL;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbmZpZy5qcyJdLCJuYW1lcyI6WyJBUElfQkFTRV9VUkwiXSwibWFwcGluZ3MiOiI7Ozs7OztBQUFBO0FBQ0E7QUFFUyxNQUFNQSxZQUFZLEdBQUUsMkJBQXBCIiwic291cmNlc0NvbnRlbnQiOlsiLy8gZXhwb3J0IGNvbnN0IEFQSV9CQVNFX1VSTCA9XG4vLyAgIHByb2Nlc3MuZW52LlJFQUNUX0FQUF9BUElfQkFTRV9VUkwgfHwgJ2h0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9hcGknO1xuXG4gIGV4cG9ydCBjb25zdCBBUElfQkFTRV9VUkwgPSdodHRwOi8vbG9jYWxob3N0OjgwODAvYXBpJztcbiJdfQ==

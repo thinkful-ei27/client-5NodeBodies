@@ -9,7 +9,7 @@ import { Checkbox, Form } from 'semantic-ui-react';
 import { toggleOnboarding } from '../actions/auth'
 import RequiresLogin from './requires-login';
 
-class NewNodeForm extends React.Component {
+export class NewNodeForm extends React.Component {
   renderCheckBox = ({ input, label }) => {
     return (
       <Form.Field>

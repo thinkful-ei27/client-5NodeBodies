@@ -11,7 +11,7 @@ import { withRouter } from 'react-router-dom';
 import { toggleOnboarding } from '../actions/auth'
 // import Sidebar from "./sidebar";
 
-class AdventureForm extends React.Component {
+export class AdventureForm extends React.Component {
 
   onSubmit(values) {
     let { title,

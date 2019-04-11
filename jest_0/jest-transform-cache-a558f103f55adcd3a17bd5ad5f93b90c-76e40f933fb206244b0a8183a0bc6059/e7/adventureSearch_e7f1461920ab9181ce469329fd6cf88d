@@ -1,0 +1,76 @@
+1731e32ff772292fd25385690391d73b
+"use strict";
+
+var _interopRequireDefault = require("/home/flightlessbird/Thinkful/projects/CYOA/client-5NodeBodies/node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactRedux = require("react-redux");
+
+var _student = require("../actions/student");
+
+var _jsxFileName = "/home/flightlessbird/Thinkful/projects/CYOA/client-5NodeBodies/src/components/adventureSearch.js";
+let inputVal;
+
+class AdventureSearch extends _react.default.Component {
+  handleSubmit(e) {
+    e.preventDefault();
+    let searchTerm = inputVal;
+    this.props.dispatch((0, _student.getStudentSearch)(searchTerm));
+  }
+
+  onChange(e) {
+    inputVal = e.target.value;
+  }
+
+  render() {
+    return _react.default.createElement("form", {
+      onSubmit: e => this.handleSubmit(e),
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 21
+      },
+      __self: this
+    }, _react.default.createElement("label", {
+      className: "above",
+      for: "input-field",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 22
+      },
+      __self: this
+    }, "Search an adventure"), _react.default.createElement("input", {
+      className: "input-field",
+      onChange: e => this.onChange(e),
+      type: "text",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 23
+      },
+      __self: this
+    }), _react.default.createElement("button", {
+      className: "search-adventures on-right",
+      type: "submit",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 26
+      },
+      __self: this
+    }, "Search Adventures!"));
+  }
+
+}
+
+const mapStateToProps = state => {
+  return {};
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)(AdventureSearch);
+
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFkdmVudHVyZVNlYXJjaC5qcyJdLCJuYW1lcyI6WyJpbnB1dFZhbCIsIkFkdmVudHVyZVNlYXJjaCIsIlJlYWN0IiwiQ29tcG9uZW50IiwiaGFuZGxlU3VibWl0IiwiZSIsInByZXZlbnREZWZhdWx0Iiwic2VhcmNoVGVybSIsInByb3BzIiwiZGlzcGF0Y2giLCJvbkNoYW5nZSIsInRhcmdldCIsInZhbHVlIiwicmVuZGVyIiwibWFwU3RhdGVUb1Byb3BzIiwic3RhdGUiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7OztBQUFBOztBQUNBOztBQUNBOzs7QUFHQSxJQUFJQSxRQUFKOztBQUNBLE1BQU1DLGVBQU4sU0FBOEJDLGVBQU1DLFNBQXBDLENBQTZDO0FBRTNDQyxFQUFBQSxZQUFZLENBQUNDLENBQUQsRUFBRztBQUNiQSxJQUFBQSxDQUFDLENBQUNDLGNBQUY7QUFDQSxRQUFJQyxVQUFVLEdBQUdQLFFBQWpCO0FBQ0EsU0FBS1EsS0FBTCxDQUFXQyxRQUFYLENBQW9CLCtCQUFpQkYsVUFBakIsQ0FBcEI7QUFDRDs7QUFFREcsRUFBQUEsUUFBUSxDQUFDTCxDQUFELEVBQUc7QUFDVEwsSUFBQUEsUUFBUSxHQUFHSyxDQUFDLENBQUNNLE1BQUYsQ0FBU0MsS0FBcEI7QUFDRDs7QUFFREMsRUFBQUEsTUFBTSxHQUFFO0FBQ04sV0FDRTtBQUFNLE1BQUEsUUFBUSxFQUFFUixDQUFDLElBQUksS0FBS0QsWUFBTCxDQUFrQkMsQ0FBbEIsQ0FBckI7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsT0FDQTtBQUFPLE1BQUEsU0FBUyxFQUFDLE9BQWpCO0FBQXdCLE1BQUEsR0FBRyxFQUFDLGFBQTVCO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLDZCQURBLEVBRUU7QUFDRSxNQUFBLFNBQVMsRUFBQyxhQURaO0FBRUUsTUFBQSxRQUFRLEVBQUVBLENBQUMsSUFBSSxLQUFLSyxRQUFMLENBQWNMLENBQWQsQ0FGakI7QUFFbUMsTUFBQSxJQUFJLEVBQUMsTUFGeEM7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsTUFGRixFQUtFO0FBQ0EsTUFBQSxTQUFTLEVBQUMsNEJBRFY7QUFFQSxNQUFBLElBQUksRUFBQyxRQUZMO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLDRCQUxGLENBREY7QUFXRDs7QUF4QjBDOztBQTJCN0MsTUFBTVMsZUFBZSxHQUFHQyxLQUFLLElBQUk7QUFDL0IsU0FBTyxFQUFQO0FBRUQsQ0FIRDs7ZUFLZ0IseUJBQVFELGVBQVIsRUFBeUJiLGVBQXpCLEMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnO1xuaW1wb3J0IHsgY29ubmVjdCB9IGZyb20gJ3JlYWN0LXJlZHV4JztcbmltcG9ydCB7IGdldFN0dWRlbnRTZWFyY2ggfSBmcm9tICcuLi9hY3Rpb25zL3N0dWRlbnQnO1xuXG5cbmxldCBpbnB1dFZhbDtcbmNsYXNzIEFkdmVudHVyZVNlYXJjaCBleHRlbmRzIFJlYWN0LkNvbXBvbmVudHtcblxuICBoYW5kbGVTdWJtaXQoZSl7XG4gICAgZS5wcmV2ZW50RGVmYXVsdCgpO1xuICAgIGxldCBzZWFyY2hUZXJtID0gaW5wdXRWYWw7XG4gICAgdGhpcy5wcm9wcy5kaXNwYXRjaChnZXRTdHVkZW50U2VhcmNoKHNlYXJjaFRlcm0pKTtcbiAgfVxuXG4gIG9uQ2hhbmdlKGUpe1xuICAgIGlucHV0VmFsID0gZS50YXJnZXQudmFsdWU7XG4gIH1cblxuICByZW5kZXIoKXtcbiAgICByZXR1cm4gKFxuICAgICAgPGZvcm0gb25TdWJtaXQ9e2UgPT4gdGhpcy5oYW5kbGVTdWJtaXQoZSl9PlxuICAgICAgPGxhYmVsIGNsYXNzTmFtZT0nYWJvdmUnZm9yPSdpbnB1dC1maWVsZCc+U2VhcmNoIGFuIGFkdmVudHVyZTwvbGFiZWw+XG4gICAgICAgIDxpbnB1dCBcbiAgICAgICAgICBjbGFzc05hbWU9XCJpbnB1dC1maWVsZFwiXG4gICAgICAgICAgb25DaGFuZ2U9e2UgPT4gdGhpcy5vbkNoYW5nZShlKX0gdHlwZT1cInRleHRcIj48L2lucHV0PlxuICAgICAgICA8YnV0dG9uIFxuICAgICAgICBjbGFzc05hbWU9XCJzZWFyY2gtYWR2ZW50dXJlcyBvbi1yaWdodFwiXG4gICAgICAgIHR5cGU9XCJzdWJtaXRcIj5TZWFyY2ggQWR2ZW50dXJlcyE8L2J1dHRvbj5cbiAgICAgIDwvZm9ybT5cbiAgICApXG4gIH1cbn1cblxuY29uc3QgbWFwU3RhdGVUb1Byb3BzID0gc3RhdGUgPT4ge1xuICByZXR1cm4ge1xuICB9O1xufTtcblxuZXhwb3J0IGRlZmF1bHQgKGNvbm5lY3QobWFwU3RhdGVUb1Byb3BzKShBZHZlbnR1cmVTZWFyY2gpKTtcbiJdfQ==

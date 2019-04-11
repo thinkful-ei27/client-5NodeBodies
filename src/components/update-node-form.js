@@ -16,7 +16,7 @@ import { Checkbox, Form } from 'semantic-ui-react';
 import { toggleOnboarding } from '../actions/auth'
 
 
-class UpdateNodeForm extends React.Component {
+export class UpdateNodeForm extends React.Component {
 
   toggleIsEnding() {
     return this.props.dispatch(toggleEnding())

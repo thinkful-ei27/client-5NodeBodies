@@ -1,0 +1,1 @@
+{"version":3,"sources":["setupTests.js"],"names":["Enzyme","configure","adapter","Adapter"],"mappings":";;;;AACA;;AACA;;AAFA;AAIAA,gBAAOC,SAAP,CAAiB;AAAEC,EAAAA,OAAO,EAAE,IAAIC,2BAAJ;AAAX,CAAjB","sourcesContent":["/** Used in jest.config.js */\nimport Enzyme from 'enzyme';\nimport Adapter from 'enzyme-adapter-react-16';\n\nEnzyme.configure({ adapter: new Adapter() });"]}

@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { Checkbox, Form } from 'semantic-ui-react';
 import { toggleOnboarding } from '../actions/auth'
 
-class EditAdventureForm extends React.Component {
+export class EditAdventureForm extends React.Component {
   renderCheckBox = ({ input, label }) => {
     return (
       <Form.Field>
