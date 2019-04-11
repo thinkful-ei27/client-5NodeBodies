@@ -15,6 +15,8 @@ Anyone can use this site to help teach any topic. Educators can put students in 
 In the professional landscape, employers can use it to create informational material on how to use new products and services. If you have knowledge to impart, LearnVenture is a
 fun tool to help share that information.
 
+Build a LearnVenture: ![Alt text](/relative/path/to/img.jpg?raw=true "Optional Title")
+
 ### Future Features
 - [ ] More detailed analytics
 - [ ] Personalized results
