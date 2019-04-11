@@ -4,7 +4,7 @@ import './Tutorial.css';
 import {studentNextTutorial, studentPreviousTutorial, studentEndTutorial} from '../../actions/student.js'
 
 
-class TutorialPage3 extends React.Component {
+export class TutorialPage3 extends React.Component {
 
     handlePreviousClick(){
         console.log('page3 handlePreviousClick ran');

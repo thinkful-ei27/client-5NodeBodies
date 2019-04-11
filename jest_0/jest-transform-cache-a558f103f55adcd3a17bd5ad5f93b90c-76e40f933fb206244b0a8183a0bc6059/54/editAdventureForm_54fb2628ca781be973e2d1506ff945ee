@@ -1,0 +1,226 @@
+07dceec71151184590d2ead47ddd6a5c
+"use strict";
+
+var _interopRequireDefault = require("/home/flightlessbird/Thinkful/projects/CYOA/client-5NodeBodies/node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reduxForm = require("redux-form");
+
+var _input = _interopRequireDefault(require("./input"));
+
+var _textarea = _interopRequireDefault(require("./textarea"));
+
+var _createAdventure = require("../actions/createAdventure");
+
+var _validators = require("../utils/validators");
+
+var _reactRedux = require("react-redux");
+
+var _semanticUiReact = require("semantic-ui-react");
+
+var _jsxFileName = "/home/flightlessbird/Thinkful/projects/CYOA/client-5NodeBodies/src/components/editAdventureForm.js";
+
+class EditAdventureForm extends _react.default.Component {
+  constructor(...args) {
+    super(...args);
+
+    this.renderCheckBox = ({
+      input,
+      label
+    }) => {
+      return _react.default.createElement(_semanticUiReact.Form.Field, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 14
+        },
+        __self: this
+      }, _react.default.createElement(_semanticUiReact.Checkbox, {
+        autoFocus: true,
+        label: label,
+        checked: input.value ? true : false,
+        onChange: (e, {
+          checked
+        }) => {
+          input.onChange(checked);
+        },
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 15
+        },
+        __self: this
+      }));
+    };
+  }
+
+  toggleAdventureEditForm() {
+    return this.props.dispatch((0, _createAdventure.toggleAdventureEditing)());
+  }
+
+  onSubmit(values) {
+    let title = values.title,
+        startContent = values.startContent,
+        startVideoURL = values.startVideoURL,
+        password = values.password,
+        removePassword = values.removePassword;
+    console.log(password);
+    let adventure = {
+      title,
+      startContent,
+      startVideoURL,
+      password,
+      removePassword
+    };
+    return this.props.dispatch((0, _createAdventure.editAdventure)(adventure)).then(() => this.toggleAdventureEditForm());
+  }
+
+  render() {
+    let error;
+
+    if (this.props.error) {
+      error = _react.default.createElement("div", {
+        className: "form-error",
+        "aria-live": "polite",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 53
+        },
+        __self: this
+      }, this.props.error);
+    }
+
+    return _react.default.createElement("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 58
+      },
+      __self: this
+    }, _react.default.createElement("div", {
+      className: "form-field",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 59
+      },
+      __self: this
+    }, _react.default.createElement("form", {
+      onSubmit: this.props.handleSubmit(values => this.onSubmit(values)),
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 60
+      },
+      __self: this
+    }, _react.default.createElement("h2", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 61
+      },
+      __self: this
+    }, "Edit Adventure Information"), error, _react.default.createElement(_reduxForm.Field, {
+      className: "title input-field",
+      label: "Adventure Title",
+      ariaLabel: "adventure title",
+      placeholder: "LearnVenture",
+      name: "title",
+      component: _input.default,
+      type: "text",
+      validate: [_validators.required, _validators.nonEmpty],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 64
+      },
+      __self: this
+    }), _react.default.createElement(_reduxForm.Field, {
+      className: "startContent",
+      label: "Adventure Introduction",
+      ariaLabel: "Adventure Introduction",
+      placeholder: "This is the beginning of your learning quest. Let's have some fun!",
+      name: "startContent",
+      component: _textarea.default,
+      type: "text",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 73
+      },
+      __self: this
+    }), _react.default.createElement(_reduxForm.Field, {
+      className: "videoURL input-field",
+      label: "Opening video URL(optional)",
+      ariaLabel: "Opening video URL(optional)",
+      placeholder: "https://www.youtube.com/embed/dHSQAEam2yc",
+      name: "startVideoURL",
+      component: _input.default // validate={url({ protocols: ['http', 'https'] })}
+      ,
+      type: "text",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 81
+      },
+      __self: this
+    }), _react.default.createElement(_reduxForm.Field, {
+      className: "textContent",
+      label: "Optional Password:",
+      ariaLabel: "Temporary",
+      name: "password",
+      component: _input.default,
+      placeholder: "Not Required",
+      type: "text",
+      validate: [_validators.isTrimmedPassword],
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 90
+      },
+      __self: this
+    }), _react.default.createElement(_reduxForm.Field, {
+      className: "removePassword",
+      name: "removePassword",
+      label: "Remove Password",
+      component: this.renderCheckBox,
+      type: "checkbox",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 98
+      },
+      __self: this
+    }), _react.default.createElement("button", {
+      type: "submit",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 104
+      },
+      __self: this
+    }, "Update Adventure"), _react.default.createElement("button", {
+      onClick: () => this.toggleAdventureEditForm(),
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 105
+      },
+      __self: this
+    }, "Cancel"))));
+  }
+
+}
+
+const mapStateToProps = state => {
+  return {
+    adventureId: state.adventure.currentAdventure.id,
+    initialValues: Object.assign({}, state.adventure.currentAdventure),
+    isEditing: state.node.isEditing,
+    isDeleting: state.node.isDeleting
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)((0, _reduxForm.reduxForm)({
+  form: 'Adventure',
+  enableReinitialize: true // onSubmitFail: (errors, dispatch) =>
+  //   dispatch(focus('Adventure'/*, Object.keys(errors)[0]*/
+  //   ))
+
+})(EditAdventureForm));
+
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImVkaXRBZHZlbnR1cmVGb3JtLmpzIl0sIm5hbWVzIjpbIkVkaXRBZHZlbnR1cmVGb3JtIiwiUmVhY3QiLCJDb21wb25lbnQiLCJyZW5kZXJDaGVja0JveCIsImlucHV0IiwibGFiZWwiLCJ2YWx1ZSIsImUiLCJjaGVja2VkIiwib25DaGFuZ2UiLCJ0b2dnbGVBZHZlbnR1cmVFZGl0Rm9ybSIsInByb3BzIiwiZGlzcGF0Y2giLCJvblN1Ym1pdCIsInZhbHVlcyIsInRpdGxlIiwic3RhcnRDb250ZW50Iiwic3RhcnRWaWRlb1VSTCIsInBhc3N3b3JkIiwicmVtb3ZlUGFzc3dvcmQiLCJjb25zb2xlIiwibG9nIiwiYWR2ZW50dXJlIiwidGhlbiIsInJlbmRlciIsImVycm9yIiwiaGFuZGxlU3VibWl0IiwiSW5wdXQiLCJyZXF1aXJlZCIsIm5vbkVtcHR5IiwiVGV4dEFyZWEiLCJpc1RyaW1tZWRQYXNzd29yZCIsIm1hcFN0YXRlVG9Qcm9wcyIsInN0YXRlIiwiYWR2ZW50dXJlSWQiLCJjdXJyZW50QWR2ZW50dXJlIiwiaWQiLCJpbml0aWFsVmFsdWVzIiwiT2JqZWN0IiwiYXNzaWduIiwiaXNFZGl0aW5nIiwibm9kZSIsImlzRGVsZXRpbmciLCJmb3JtIiwiZW5hYmxlUmVpbml0aWFsaXplIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7QUFBQTs7QUFDQTs7QUFFQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFDQTs7OztBQUVBLE1BQU1BLGlCQUFOLFNBQWdDQyxlQUFNQyxTQUF0QyxDQUFnRDtBQUFBO0FBQUE7O0FBQUEsU0FDOUNDLGNBRDhDLEdBQzdCLENBQUM7QUFBRUMsTUFBQUEsS0FBRjtBQUFTQyxNQUFBQTtBQUFULEtBQUQsS0FBc0I7QUFDckMsYUFDRSw2QkFBQyxxQkFBRCxDQUFNLEtBQU47QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsU0FDRSw2QkFBQyx5QkFBRDtBQUNFLFFBQUEsU0FBUyxFQUFFLElBRGI7QUFFRSxRQUFBLEtBQUss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TUFBTXNCLGVBQWUsR0FBR0MsS0FBSyxJQUFJO0FBRS9CLFNBQU87QUFDTEMsSUFBQUEsV0FBVyxFQUFFRCxLQUFLLENBQUNYLFNBQU4sQ0FBZ0JhLGdCQUFoQixDQUFpQ0MsRUFEekM7QUFFTEMsSUFBQUEsYUFBYSxFQUFFQyxNQUFNLENBQUNDLE1BQVAsQ0FBYyxFQUFkLEVBQWtCTixLQUFLLENBQUNYLFNBQU4sQ0FBZ0JhLGdCQUFsQyxDQUZWO0FBR0xLLElBQUFBLFNBQVMsRUFBRVAsS0FBSyxDQUFDUSxJQUFOLENBQVdELFNBSGpCO0FBSUxFLElBQUFBLFVBQVUsRUFBRVQsS0FBSyxDQUFDUSxJQUFOLENBQVdDO0FBSmxCLEdBQVA7QUFNRCxDQVJEOztlQVllLHlCQUFRVixlQUFSLEVBQXlCLDBCQUFVO0FBQ2hEVyxFQUFBQSxJQUFJLEVBQUUsV0FEMEM7QUFFaERDLEVBQUFBLGtCQUFrQixFQUFFLElBRjRCLENBR2hEO0FBQ0E7QUFDQTs7QUFMZ0QsQ0FBVixFQU1yQzVDLGlCQU5xQyxDQUF6QixDIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JztcbmltcG9ydCB7IEZpZWxkLCByZWR1eEZvcm0gfSBmcm9tICdyZWR1eC1mb3JtJztcbi8vIGltcG9ydCB7IHVybCB9IGZyb20gJ3JlZHV4LWZvcm0tdmFsaWRhdG9ycydcbmltcG9ydCBJbnB1dCBmcm9tIFwiLi9pbnB1dFwiO1xuaW1wb3J0IFRleHRBcmVhIGZyb20gXCIuL3RleHRhcmVhXCI7XG5pbXBvcnQgeyBlZGl0QWR2ZW50dXJlLCB0b2dnbGVBZHZlbnR1cmVFZGl0aW5nIH0gZnJvbSAnLi4vYWN0aW9ucy9jcmVhdGVBZHZlbnR1cmUnO1xuaW1wb3J0IHsgcmVxdWlyZWQsIG5vbkVtcHR5LCBpc1RyaW1tZWRQYXNzd29yZCB9IGZyb20gXCIuLi91dGlscy92YWxpZGF0b3JzXCI7XG5pbXBvcnQgeyBjb25uZWN0IH0gZnJvbSAncmVhY3QtcmVkdXgnO1xuaW1wb3J0IHsgQ2hlY2tib3gsIEZvcm0gfSBmcm9tICdzZW1hbnRpYy11aS1yZWFjdCc7XG5cbmNsYXNzIEVkaXRBZHZlbnR1cmVGb3JtIGV4dGVuZHMgUmVhY3QuQ29tcG9uZW50IHtcbiAgcmVuZGVyQ2hlY2tCb3ggPSAoeyBpbnB1dCwgbGFiZWwgfSkgPT4ge1xuICAgIHJldHVybiAoXG4gICAgICA8Rm9ybS5GaWVsZD5cbiAgICAgICAgPENoZWNrYm94XG4gICAgICAgICAgYXV0b0ZvY3VzPXt0cnVlfVxuICAgICAgICAgIGxhYmVsPXtsYWJlbH1cbiAgICAgICAgICBjaGVja2VkPXtpbnB1dC52YWx1ZSA/IHRydWUgOiBmYWxzZX1cbiAgICAgICAgICBvbkNoYW5nZT17KGUsIHsgY2hlY2tlZCB9KSA9PiB7XG4gICAgICAgICAgICBpbnB1dC5vbkNoYW5nZShjaGVja2VkKVxuICAgICAgICAgIH1cbiAgICAgICAgICB9XG4gICAgICAgIC8+XG4gICAgICA8L0Zvcm0uRmllbGQ+XG4gICAgKTtcbiAgfTtcblxuICB0b2dnbGVBZHZlbnR1cmVFZGl0Rm9ybSgpIHtcbiAgICByZXR1cm4gdGhpcy5wcm9wcy5kaXNwYXRjaCh0b2dnbGVBZHZlbnR1cmVFZGl0aW5nKCkpXG4gIH1cblxuICBvblN1Ym1pdCh2YWx1ZXMpIHtcbiAgICBsZXQgeyB0aXRsZSxcbiAgICAgIHN0YXJ0Q29udGVudCxcbiAgICAgIHN0YXJ0VmlkZW9VUkwsXG4gICAgICBwYXNzd29yZCxcbiAgICAgIHJlbW92ZVBhc3N3b3JkIH0gPSB2YWx1ZXM7XG4gICAgY29uc29sZS5sb2cocGFzc3dvcmQpO1xuICAgIGxldCBhZHZlbnR1cmUgPSB7XG4gICAgICB0aXRsZSxcbiAgICAgIHN0YXJ0Q29udGVudCxcbiAgICAgIHN0YXJ0VmlkZW9VUkwsXG4gICAgICBwYXNzd29yZCxcbiAgICAgIHJlbW92ZVBhc3N3b3JkXG4gICAgfTtcbiAgICByZXR1cm4gdGhpcy5wcm9wcy5kaXNwYXRjaChlZGl0QWR2ZW50dXJlKGFkdmVudHVyZSkpXG4gICAgICAudGhlbigoKSA9PiB0aGlzLnRvZ2dsZUFkdmVudHVyZUVkaXRGb3JtKCkpXG4gIH1cbiAgcmVuZGVyKCkge1xuICAgIGxldCBlcnJvcjtcbiAgICBpZiAodGhpcy5wcm9wcy5lcnJvcikge1xuICAgICAgZXJyb3IgPSAoXG4gICAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZm9ybS1lcnJvclwiIGFyaWEtbGl2ZT1cInBvbGl0ZVwiPlxuICAgICAgICAgIHt0aGlzLnByb3BzLmVycm9yfVxuICAgICAgICA8L2Rpdj5cbiAgICAgICk7XG4gICAgfVxuICAgIHJldHVybiAoPGRpdj5cbiAgICAgIDxkaXYgY2xhc3NOYW1lPVwiZm9ybS1maWVsZFwiPlxuICAgICAgICA8Zm9ybSBvblN1Ym1pdD17dGhpcy5wcm9wcy5oYW5kbGVTdWJtaXQodmFsdWVzID0+IHRoaXMub25TdWJtaXQodmFsdWVzKSl9PlxuICAgICAgICA8aDI+RWRpdCBBZHZlbnR1cmUgSW5mb3JtYXRpb248L2gyPlxuXG4gICAgICAgICAge2Vycm9yfVxuICAgICAgICAgIDxGaWVsZFxuICAgICAgICAgICAgY2xhc3NOYW1lPVwidGl0bGUgaW5wdXQtZmllbGRcIlxuICAgICAgICAgICAgbGFiZWw9XCJBZHZlbnR1cmUgVGl0bGVcIlxuICAgICAgICAgICAgYXJpYUxhYmVsPVwiYWR2ZW50dXJlIHRpdGxlXCJcbiAgICAgICAgICAgIHBsYWNlaG9sZGVyPVwiTGVhcm5WZW50dXJlXCJcbiAgICAgICAgICAgIG5hbWU9XCJ0aXRsZVwiXG4gICAgICAgICAgICBjb21wb25lbnQ9e0lucHV0fVxuICAgICAgICAgICAgdHlwZT1cInRleHRcIlxuICAgICAgICAgICAgdmFsaWRhdGU9e1tyZXF1aXJlZCwgbm9uRW1wdHldfSAvPlxuICAgICAgICAgIDxGaWVsZFxuICAgICAgICAgICAgY2xhc3NOYW1lPVwic3RhcnRDb250ZW50XCJcbiAgICAgICAgICAgIGxhYmVsPVwiQWR2ZW50dXJlIEludHJvZHVjdGlvblwiXG4gICAgICAgICAgICBhcmlhTGFiZWw9XCJBZHZlbnR1cmUgSW50cm9kdWN0aW9uXCJcbiAgICAgICAgICAgIHBsYWNlaG9sZGVyPVwiVGhpcyBpcyB0aGUgYmVnaW5uaW5nIG9mIHlvdXIgbGVhcm5pbmcgcXVlc3QuIExldCdzIGhhdmUgc29tZSBmdW4hXCJcbiAgICAgICAgICAgIG5hbWU9XCJzdGFydENvbnRlbnRcIlxuICAgICAgICAgICAgY29tcG9uZW50PXtUZXh0QXJlYX1cbiAgICAgICAgICAgIHR5cGU9XCJ0ZXh0XCIgLz5cbiAgICAgICAgICA8RmllbGRcbiAgICAgICAgICAgIGNsYXNzTmFtZT1cInZpZGVvVVJMIGlucHV0LWZpZWxkXCJcbiAgICAgICAgICAgIGxhYmVsPVwiT3BlbmluZyB2aWRlbyBVUkwob3B0aW9uYWwpXCJcbiAgICAgICAgICAgIGFyaWFMYWJlbD1cIk9wZW5pbmcgdmlkZW8gVVJMKG9wdGlvbmFsKVwiXG4gICAgICAgICAgICBwbGFjZWhvbGRlcj1cImh0dHBzOi8vd3d3LnlvdXR1YmUuY29tL2VtYmVkL2RIU1FBRWFtMnljXCJcbiAgICAgICAgICAgIG5hbWU9XCJzdGFydFZpZGVvVVJMXCJcbiAgICAgICAgICAgIGNvbXBvbmVudD17SW5wdXR9XG4gICAgICAgICAgICAvLyB2YWxpZGF0ZT17dXJsKHsgcHJvdG9jb2xzOiBbJ2h0dHAnLCAnaHR0cHMnXSB9KX1cbiAgICAgICAgICAgIHR5cGU9XCJ0ZXh0XCIgLz5cbiAgICAgICAgICA8RmllbGQgY2xhc3NOYW1lPVwidGV4dENvbnRlbnRcIlxuICAgICAgICAgICAgbGFiZWw9XCJPcHRpb25hbCBQYXNzd29yZDpcIlxuICAgICAgICAgICAgYXJpYUxhYmVsPVwiVGVtcG9yYXJ5XCJcbiAgICAgICAgICAgIG5hbWU9XCJwYXNzd29yZFwiXG4gICAgICAgICAgICBjb21wb25lbnQ9e0lucHV0fVxuICAgICAgICAgICAgcGxhY2Vob2xkZXI9XCJOb3QgUmVxdWlyZWRcIlxuICAgICAgICAgICAgdHlwZT1cInRleHRcIlxuICAgICAgICAgICAgdmFsaWRhdGU9e1tpc1RyaW1tZWRQYXNzd29yZF19IC8+XG4gICAgICAgICAgPEZpZWxkXG4gICAgICAgICAgICBjbGFzc05hbWU9XCJyZW1vdmVQYXNzd29yZFwiXG4gICAgICAgICAgICBuYW1lPVwicmVtb3ZlUGFzc3dvcmRcIlxuICAgICAgICAgICAgbGFiZWw9XCJSZW1vdmUgUGFzc3dvcmRcIlxuICAgICAgICAgICAgY29tcG9uZW50PXt0aGlzLnJlbmRlckNoZWNrQm94fVxuICAgICAgICAgICAgdHlwZT1cImNoZWNrYm94XCIgLz5cbiAgICAgICAgICA8YnV0dG9uIHR5cGU9XCJzdWJtaXRcIj5VcGRhdGUgQWR2ZW50dXJlPC9idXR0b24+XG4gICAgICAgICAgPGJ1dHRvbiBvbkNsaWNrPXsoKSA9PiB0aGlzLnRvZ2dsZUFkdmVudHVyZUVkaXRGb3JtKCl9PkNhbmNlbDwvYnV0dG9uPlxuICAgICAgICA8L2Zvcm0+XG4gICAgICA8L2Rpdj5cbiAgICA8L2Rpdj5cbiAgICApXG4gIH1cbn1cblxuY29uc3QgbWFwU3RhdGVUb1Byb3BzID0gc3RhdGUgPT4ge1xuXG4gIHJldHVybiB7XG4gICAgYWR2ZW50dXJlSWQ6IHN0YXRlLmFkdmVudHVyZS5jdXJyZW50QWR2ZW50dXJlLmlkLFxuICAgIGluaXRpYWxWYWx1ZXM6IE9iamVjdC5hc3NpZ24oe30sIHN0YXRlLmFkdmVudHVyZS5jdXJyZW50QWR2ZW50dXJlKSxcbiAgICBpc0VkaXRpbmc6IHN0YXRlLm5vZGUuaXNFZGl0aW5nLFxuICAgIGlzRGVsZXRpbmc6IHN0YXRlLm5vZGUuaXNEZWxldGluZ1xuICB9O1xufTtcblxuXG5cbmV4cG9ydCBkZWZhdWx0IGNvbm5lY3QobWFwU3RhdGVUb1Byb3BzKShyZWR1eEZvcm0oe1xuICBmb3JtOiAnQWR2ZW50dXJlJyxcbiAgZW5hYmxlUmVpbml0aWFsaXplOiB0cnVlXG4gIC8vIG9uU3VibWl0RmFpbDogKGVycm9ycywgZGlzcGF0Y2gpID0+XG4gIC8vICAgZGlzcGF0Y2goZm9jdXMoJ0FkdmVudHVyZScvKiwgT2JqZWN0LmtleXMoZXJyb3JzKVswXSovXG4gIC8vICAgKSlcbn0pKEVkaXRBZHZlbnR1cmVGb3JtKSk7Il19

@@ -1,0 +1,92 @@
+e51c50aeecf8a12b4f82240a7fe10d8f
+"use strict";
+
+var _interopRequireDefault = require("/home/flightlessbird/Thinkful/projects/CYOA/client-5NodeBodies/node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.Footer = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactRedux = require("react-redux");
+
+var _auth = require("../actions/auth");
+
+var _jsxFileName = "/home/flightlessbird/Thinkful/projects/CYOA/client-5NodeBodies/src/components/footer.js";
+
+class Footer extends _react.default.Component {
+  toggleOnboardingClick() {
+    this.props.dispatch((0, _auth.toggleOnboarding)());
+  }
+
+  render() {
+    if (this.props.loggedIn) {
+      return _react.default.createElement("footer", {
+        className: "footer",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 14
+        },
+        __self: this
+      }, _react.default.createElement("button", {
+        className: "help-button",
+        onClick: () => this.toggleOnboardingClick(),
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 15
+        },
+        __self: this
+      }, "Need Help?"), _react.default.createElement("span", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 16
+        },
+        __self: this
+      }, "Created by 5NodeBodies \xA9 2019. ", _react.default.createElement("a", {
+        href: "https://github.com/thinkful-ei27/client-5NodeBodies",
+        target: "_blank",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 16
+        },
+        __self: this
+      }, "Click here"), " for more information."));
+    } else return _react.default.createElement("footer", {
+      className: "footer",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 20
+      },
+      __self: this
+    }, _react.default.createElement("span", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 21
+      },
+      __self: this
+    }, "Created by 5NodeBodies \xA9 2019. ", _react.default.createElement("a", {
+      href: "https://github.com/thinkful-ei27/client-5NodeBodies",
+      target: "_blank",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 21
+      },
+      __self: this
+    }, "Click here"), " for more information."));
+  }
+
+}
+
+exports.Footer = Footer;
+
+const mapStateToProps = state => ({
+  onboarding: state.auth.onboarding,
+  loggedIn: state.auth.currentUser !== null
+});
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)(Footer);
+
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZvb3Rlci5qcyJdLCJuYW1lcyI6WyJGb290ZXIiLCJSZWFjdCIsIkNvbXBvbmVudCIsInRvZ2dsZU9uYm9hcmRpbmdDbGljayIsInByb3BzIiwiZGlzcGF0Y2giLCJyZW5kZXIiLCJsb2dnZWRJbiIsIm1hcFN0YXRlVG9Qcm9wcyIsInN0YXRlIiwib25ib2FyZGluZyIsImF1dGgiLCJjdXJyZW50VXNlciJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7O0FBQUE7O0FBQ0E7O0FBQ0E7Ozs7QUFFTyxNQUFNQSxNQUFOLFNBQXFCQyxlQUFNQyxTQUEzQixDQUFxQztBQUUxQ0MsRUFBQUEscUJBQXFCLEdBQUc7QUFDdEIsU0FBS0MsS0FBTCxDQUFXQyxRQUFYLENBQW9CLDZCQUFwQjtBQUNEOztBQUVEQyxFQUFBQSxNQUFNLEdBQUc7QUFDUCxRQUFJLEtBQUtGLEtBQUwsQ0FBV0csUUFBZixFQUF5QjtBQUN2QixhQUNFO0FBQVEsUUFBQSxTQUFTLEVBQUMsUUFBbEI7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsU0FDRTtBQUFRLFFBQUEsU0FBUyxFQUFDLGFBQWxCO0FBQWdDLFFBQUEsT0FBTyxFQUFFLE1BQU0sS0FBS0oscUJBQUwsRUFBL0M7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsc0JBREYsRUFFRTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSwrQ0FBcUM7QUFBRyxRQUFBLElBQUksRUFBQyxxREFBUjtBQUE4RCxRQUFBLE1BQU0sRUFBQyxRQUFyRTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxzQkFBckMsMkJBRkYsQ0FERjtBQU1ELEtBUEQsTUFPTyxPQUNMO0FBQVEsTUFBQSxTQUFTLEVBQUMsUUFBbEI7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsT0FDRTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSw2Q0FBcUM7QUFBRyxNQUFBLElBQUksRUFBQyxxREFBUjtBQUE4RCxNQUFBLE1BQU0sRUFBQyxRQUFyRTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxvQkFBckMsMkJBREYsQ0FESztBQUtSOztBQW5CeUM7Ozs7QUFzQjVDLE1BQU1LLGVBQWUsR0FBR0MsS0FBSyxLQUFLO0FBQ2hDQyxFQUFBQSxVQUFVLEVBQUVELEtBQUssQ0FBQ0UsSUFBTixDQUFXRCxVQURTO0FBRWhDSCxFQUFBQSxRQUFRLEVBQUVFLEtBQUssQ0FBQ0UsSUFBTixDQUFXQyxXQUFYLEtBQTJCO0FBRkwsQ0FBTCxDQUE3Qjs7ZUFLZSx5QkFBUUosZUFBUixFQUF5QlIsTUFBekIsQyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCc7XG5pbXBvcnQgeyBjb25uZWN0IH0gZnJvbSAncmVhY3QtcmVkdXgnO1xuaW1wb3J0IHsgdG9nZ2xlT25ib2FyZGluZyB9IGZyb20gJy4uL2FjdGlvbnMvYXV0aCdcblxuZXhwb3J0IGNsYXNzIEZvb3RlciBleHRlbmRzIFJlYWN0LkNvbXBvbmVudCB7XG5cbiAgdG9nZ2xlT25ib2FyZGluZ0NsaWNrKCkge1xuICAgIHRoaXMucHJvcHMuZGlzcGF0Y2godG9nZ2xlT25ib2FyZGluZygpKVxuICB9XG5cbiAgcmVuZGVyKCkge1xuICAgIGlmICh0aGlzLnByb3BzLmxvZ2dlZEluKSB7XG4gICAgICByZXR1cm4gKFxuICAgICAgICA8Zm9vdGVyIGNsYXNzTmFtZT1cImZvb3RlclwiPlxuICAgICAgICAgIDxidXR0b24gY2xhc3NOYW1lPVwiaGVscC1idXR0b25cIiBvbkNsaWNrPXsoKSA9PiB0aGlzLnRvZ2dsZU9uYm9hcmRpbmdDbGljaygpfT5OZWVkIEhlbHA/PC9idXR0b24+XG4gICAgICAgICAgPHNwYW4+Q3JlYXRlZCBieSA1Tm9kZUJvZGllcyDCqSAyMDE5LiA8YSBocmVmPVwiaHR0cHM6Ly9naXRodWIuY29tL3RoaW5rZnVsLWVpMjcvY2xpZW50LTVOb2RlQm9kaWVzXCIgdGFyZ2V0PVwiX2JsYW5rXCI+Q2xpY2sgaGVyZTwvYT4gZm9yIG1vcmUgaW5mb3JtYXRpb24uPC9zcGFuPlxuICAgICAgICA8L2Zvb3Rlcj5cbiAgICAgIClcbiAgICB9IGVsc2UgcmV0dXJuIChcbiAgICAgIDxmb290ZXIgY2xhc3NOYW1lPVwiZm9vdGVyXCI+XG4gICAgICAgIDxzcGFuPkNyZWF0ZWQgYnkgNU5vZGVCb2RpZXMgwqkgMjAxOS4gPGEgaHJlZj1cImh0dHBzOi8vZ2l0aHViLmNvbS90aGlua2Z1bC1laTI3L2NsaWVudC01Tm9kZUJvZGllc1wiIHRhcmdldD1cIl9ibGFua1wiPkNsaWNrIGhlcmU8L2E+IGZvciBtb3JlIGluZm9ybWF0aW9uLjwvc3Bhbj5cbiAgICAgIDwvZm9vdGVyPlxuICAgIClcbiAgfVxufVxuXG5jb25zdCBtYXBTdGF0ZVRvUHJvcHMgPSBzdGF0ZSA9PiAoe1xuICBvbmJvYXJkaW5nOiBzdGF0ZS5hdXRoLm9uYm9hcmRpbmcsXG4gIGxvZ2dlZEluOiBzdGF0ZS5hdXRoLmN1cnJlbnRVc2VyICE9PSBudWxsXG59KTtcblxuZXhwb3J0IGRlZmF1bHQgY29ubmVjdChtYXBTdGF0ZVRvUHJvcHMpKEZvb3Rlcik7XG4iXX0=

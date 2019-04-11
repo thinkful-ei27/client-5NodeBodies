@@ -16,7 +16,7 @@ import { Checkbox, Form } from 'semantic-ui-react';
 import { toggleOnboarding } from '../actions/auth'
 
 
-class UpdateNodeForm extends React.Component {
+export class UpdateNodeForm extends React.Component {
 
   toggleIsEnding() {
     return this.props.dispatch(toggleEnding())
@@ -192,13 +192,13 @@ class UpdateNodeForm extends React.Component {
           {error}
           <div className="buttons">
             <button
-              className="delete-it"
+              className=" on-left delete-button"
               type='button'
               onClick={id => this.onClickDelete(id)}
             >Delete It
             </button>
             <button
-              className="keep-it"
+              className="keep-it on-right"
               type='button'
               onClick={() => this.toggleNodeDeleting()}
             >Keep It
@@ -217,13 +217,6 @@ class UpdateNodeForm extends React.Component {
                 this.props.currentNode.title :
                 this.props.currentNode.question}</h2>
             <h4>Choice that points to this Checkpoint: {parentAnswer}</h4>
-
-            <Field
-              className="end-checkbox"
-              name="ending"
-              label="Is this an Ending?"
-              component={this.renderCheckBox}
-              type="checkbox" />
             <Field
               className="title input-field"
               label="Checkpoint Title"
@@ -242,7 +235,7 @@ class UpdateNodeForm extends React.Component {
               type="text" />
             {questions}
             {error}
-            <button type="submit">Update Node</button>
+            <button className='update-button' type="submit">Update Node</button>
           </form>
           <button onClick={() => this.cancelUpdate()}>Cancel</button>
           <button className="delete-node-toggle" onClick={() => this.toggleNodeDeleting()}>Delete Checkpoint</button>

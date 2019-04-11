@@ -139,6 +139,16 @@ code {
   width: 160px;
 }
 
+.delete-button{
+  background-color: red;
+  border-color:  red;
+}
+.delete-button:hover{
+  color:red;
+  box-shadow: 0 12px 16px 0 rgba(255, 0, 0, 0.604), 0 17px 50px 0 rgba(255, 0, 0, 0.481);
+
+}
+
 .footer {
   border-top: 2px solid #da8624;
   font-size: 80%;
@@ -170,7 +180,7 @@ code {
 
 .form-input{
   position: relative;
-  width: 400px;
+  width: 250px;
 }
 
 .full-screen-only {
@@ -220,7 +230,7 @@ h2 {
   border: 2px solid #b4cedd;
   border-radius: 5px;
   height: 40px;
-  width:400px;
+  width:250px;
   margin-top: 25px;
   margin-bottom: 10px;
   font-size: 18px;
@@ -357,6 +367,11 @@ ul {
   list-style-type: none;
 }
 
+.update-button{
+  background-color: #da8624;
+  border: 1px solid #da8624
+}
+
 .wide-button {
   width: 110px;
 }
@@ -425,11 +440,11 @@ ul {
 
   .form-input{
     position: relative;
-    width: 250px;
+    width: 400px;
   }
 
   .input-field{
-    width:250px;
+    width:400px;
   }
 
   .not-mobile {

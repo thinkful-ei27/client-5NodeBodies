@@ -1,0 +1,79 @@
+2ad74d6ce55cdc61e77227411b7de043
+"use strict";
+
+var _interopRequireDefault = require("/home/flightlessbird/Thinkful/projects/CYOA/client-5NodeBodies/node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _jsxFileName = "/home/flightlessbird/Thinkful/projects/CYOA/client-5NodeBodies/src/components/home.js";
+
+class Home extends _react.default.Component {
+  render() {
+    return _react.default.createElement("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 10
+      },
+      __self: this
+    }, _react.default.createElement("p", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 11
+      },
+      __self: this
+    }, " This is the home page!"), _react.default.createElement("p", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 13
+      },
+      __self: this
+    }, "Are you a teacher?"), _react.default.createElement(_reactRouterDom.Link, {
+      to: "/login",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 14
+      },
+      __self: this
+    }, _react.default.createElement("button", {
+      className: "home-button on-left wide-button",
+      type: "button",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 15
+      },
+      __self: this
+    }, "Teachers")), _react.default.createElement("p", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 20
+      },
+      __self: this
+    }, "Are you a student?"), _react.default.createElement(_reactRouterDom.Link, {
+      to: "/studentLanding",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 21
+      },
+      __self: this
+    }, _react.default.createElement("button", {
+      className: "home-button on-left on-right wide-button",
+      type: "button",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 22
+      },
+      __self: this
+    }, "Students")));
+  }
+
+}
+
+exports.default = Home;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImhvbWUuanMiXSwibmFtZXMiOlsiSG9tZSIsIlJlYWN0IiwiQ29tcG9uZW50IiwicmVuZGVyIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7QUFBQTs7QUFFQTs7OztBQUdlLE1BQU1BLElBQU4sU0FBbUJDLGVBQU1DLFNBQXpCLENBQW1DO0FBQ2hEQyxFQUFBQSxNQUFNLEdBQUc7QUFDUCxXQUVFO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLE9BQ0U7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsaUNBREYsRUFHRTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSw0QkFIRixFQUlFLDZCQUFDLG9CQUFEO0FBQU0sTUFBQSxFQUFFLEVBQUMsUUFBVDtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxPQUNFO0FBQ0UsTUFBQSxTQUFTLEVBQUMsaUNBRFo7QUFFRSxNQUFBLElBQUksRUFBQyxRQUZQO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLGtCQURGLENBSkYsRUFVRTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSw0QkFWRixFQVdFLDZCQUFDLG9CQUFEO0FBQU0sTUFBQSxFQUFFLEVBQUMsaUJBQVQ7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsT0FDRTtBQUNFLE1BQUEsU0FBUyxFQUFDLDBDQURaO0FBRUUsTUFBQSxJQUFJLEVBQUMsUUFGUDtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxrQkFERixDQVhGLENBRkY7QUFzQkQ7O0FBeEIrQyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCc7XG5cbmltcG9ydCB7IExpbmsgfSBmcm9tICdyZWFjdC1yb3V0ZXItZG9tJztcblxuXG5leHBvcnQgZGVmYXVsdCBjbGFzcyBIb21lIGV4dGVuZHMgUmVhY3QuQ29tcG9uZW50IHtcbiAgcmVuZGVyKCkge1xuICAgIHJldHVybiAoXG5cbiAgICAgIDxkaXY+XG4gICAgICAgIDxwPiBUaGlzIGlzIHRoZSBob21lIHBhZ2UhPC9wPlxuXG4gICAgICAgIDxwPkFyZSB5b3UgYSB0ZWFjaGVyPzwvcD5cbiAgICAgICAgPExpbmsgdG89XCIvbG9naW5cIj5cbiAgICAgICAgICA8YnV0dG9uXG4gICAgICAgICAgICBjbGFzc05hbWU9XCJob21lLWJ1dHRvbiBvbi1sZWZ0IHdpZGUtYnV0dG9uXCJcbiAgICAgICAgICAgIHR5cGU9XCJidXR0b25cIlxuICAgICAgICAgID5UZWFjaGVyczwvYnV0dG9uPlxuICAgICAgICA8L0xpbms+XG4gICAgICAgIDxwPkFyZSB5b3UgYSBzdHVkZW50PzwvcD5cbiAgICAgICAgPExpbmsgdG89XCIvc3R1ZGVudExhbmRpbmdcIj5cbiAgICAgICAgICA8YnV0dG9uXG4gICAgICAgICAgICBjbGFzc05hbWU9XCJob21lLWJ1dHRvbiBvbi1sZWZ0IG9uLXJpZ2h0IHdpZGUtYnV0dG9uXCJcbiAgICAgICAgICAgIHR5cGU9XCJidXR0b25cIlxuICAgICAgICAgID5TdHVkZW50czwvYnV0dG9uPlxuICAgICAgICA8L0xpbms+XG4gICAgICA8L2Rpdj5cblxuICAgIClcbiAgfVxufSJdfQ==
