@@ -24,9 +24,14 @@ export class SearchResults extends React.Component{
             adventures = this.props.results.map((adventure) => {
             let pass;
             if(adventure.hasPassword){
-                pass = <input 
+                pass =
+                <div>
+                    <label for="search-input">Password: </label>
+                <input 
                     className=" input-field on-top search-input"
-                    onChange={e => this.handleChange(e)} type='password' placeholder='Password Required'></input>
+                    onChange={e => this.handleChange(e)} type='password' placeholder='
+                    Required'></input>
+                    </div>
             }
             return (<li
                 className="adventure-list-item col-3 with-border" 
@@ -40,8 +45,8 @@ export class SearchResults extends React.Component{
 
         }
         return(
-            <div className="searchResults row">
-                <ul>{adventures}</ul>
+            <div className="search-results row">
+                <ul className="search-results">{adventures}</ul>
             </div>
         )
     }

@@ -51,19 +51,21 @@ class App extends Component {
         <div className="bottom-margin">
           <Router >
             <Route path="/" component={Headerbar} />
-            <Switch >
-              <Route exact path="/" component={Home} />
-              <Route exact path="/GraphContainer" component={GraphContainer} />
-              <Route exact path="/registration" component={LandingPage} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/adventure/headnode" component={CreateHeadNode} />
-              <Route exact path="/dashboard" component={Dashboard} />
-              <Route exact path="/adventure" component={AdventureForm} />
-              <Route exact path="/adventure/adventurebuilder/:id" component={AdventureBuilder} />
-              <Route exact path="/studentlanding" component={StudentLanding} />
-              <Route exact path="/adventure/:id" component={AdventureInfo} />
-              <Route component={WrongTurn} />
-            </Switch>
+            <main role="main">
+              <Switch >
+                <Route exact path="/" component={Home} />
+                <Route exact path="/GraphContainer" component={GraphContainer} />
+                <Route exact path="/registration" component={LandingPage} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/adventure/headnode" component={CreateHeadNode} />
+                <Route exact path="/dashboard" component={Dashboard} />
+                <Route exact path="/adventure" component={AdventureForm} />
+                <Route exact path="/adventure/adventurebuilder/:id" component={AdventureBuilder} />
+                <Route exact path="/studentlanding" component={StudentLanding} />
+                <Route exact path="/adventure/:id" component={AdventureInfo} />
+                <Route component={WrongTurn} />
+              </Switch>
+            </main>
             <Footer />
           </Router>   
         </div>

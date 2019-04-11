@@ -24,7 +24,7 @@ export class LoginForm extends React.Component {
       <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
         {error}
         <Field
-          placeholder="Username"
+        label="Username"
           className="username input-field on-top"
           name="username"
           component={Input}
@@ -32,7 +32,7 @@ export class LoginForm extends React.Component {
           validate={[required, nonEmpty]}
         />
         <Field
-          placeholder="Password"
+          label="Password"
           className="password input-field below"
           name="password"
           component={Input}
