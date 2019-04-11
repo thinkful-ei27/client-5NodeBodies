@@ -52,17 +52,17 @@ export class StudentLanding extends React.Component {
       return (
         <div className="student-landing">
           <div className="student-instructions">
-            <p>
+            <h3>
               Hello and welcome to Education Exploration!
-            </p>
+            </h3>
             {this.tutorialDisplay(this.props.tutorial)}
             <p>
               Otherwise, please input your Exploration code below to begin your quest for learning.
             </p>
           </div>
           <div className="register-adventure">
-            <form 
-            className="below extra-below" onSubmit={e => this.handleSubmit(e)}>
+            <form
+              className="below extra-below" onSubmit={e => this.handleSubmit(e)}>
               {error}
               <label for="adventureId" > Search by LearnVenture Code</label>
               <input className="adventure-input" type="text" name="adventureId" id="adventureId"

@@ -163,43 +163,43 @@ export class NewNodeForm extends React.Component {
       <div className='form-field'>
         <h2>Add A New Checkpoint Node</h2>
         <h4>Choice that points to this Checkpoint: {parentAnswer}</h4>
-      <form 
-      onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-        <button
-          onClick={() => this.toggleNewOrExistingNodeForm()}>
-          Use existing Checkpoint
+        <form
+          onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+          <button
+            onClick={() => this.toggleNewOrExistingNodeForm()}>
+            Use existing Checkpoint
          </button>
-        {error}
-        <Field
-          className="end-checkbox"
-          name="ending"
-          label="Checkpoint is an Ending"
-          component={this.renderCheckBox}
-          type="checkbox" />
-        <Field
-          className="title"
-          label="Checkpoint Title"
-          name="title"
-          component={Input}
-          type="text"
-          placeholder='optional'
+          {error}
+          <Field
+            className="end-checkbox"
+            name="ending"
+            label="Checkpoint is an Ending"
+            component={this.renderCheckBox}
+            type="checkbox" />
+          <Field
+            className="title"
+            label="Checkpoint Title"
+            name="title"
+            component={Input}
+            type="text"
+            placeholder='optional'
 
-        // validate={[required, nonEmpty]} 
-        />
-        <Field
-          className="videoURL"
-          label="YouTube URL (optional)"
-          placeholder="http://(videoURL)"
-          name="videoURL"
-          component={Input}
-          type="text" />
-        {questions}
-        {error}
-        <button>Add Checkpoint to LearnVenture</button>
-        {onboarding}
+          // validate={[required, nonEmpty]} 
+          />
+          <Field
+            className="videoURL"
+            label="YouTube URL (optional)"
+            placeholder="http://(videoURL)"
+            name="videoURL"
+            component={Input}
+            type="text" />
+          {questions}
+          {error}
+          <button>Add Checkpoint to LearnVenture</button>
+          {onboarding}
         </form>
-        </div>
-        )
+      </div>
+    )
   }
 }
 

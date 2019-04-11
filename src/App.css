@@ -266,10 +266,6 @@ h2 {
   font-size: 18px;
 }
 
-.hidden {
-  visibility: hidden;
-}
-
 .search-input-field {
   display: block;
   border: 2px solid #b4cedd;
