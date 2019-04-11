@@ -366,6 +366,10 @@ margin: 15px;
   margin-bottom: 5px;
 }
 
+.onboarding {
+  color: white;
+}
+
 ::placeholder {
   color: #51646b;
 }
