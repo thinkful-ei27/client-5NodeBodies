@@ -163,9 +163,11 @@ export class NewNodeForm extends React.Component {
     }
 
     return (
-      <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-        <h3>Add A New Checkpoint Node</h3>
+      <div className='form-field'>
+        <h2>Add A New Checkpoint Node</h2>
         <h4>Choice that points to this Checkpoint: {parentAnswer}</h4>
+      <form 
+      onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
         <button
           onClick={() => this.toggleNewOrExistingNodeForm()}>
           Use existing Checkpoint
@@ -198,7 +200,9 @@ export class NewNodeForm extends React.Component {
         {error}
         <button>Add Checkpoint to LearnVenture</button>
         {onboarding}
-      </form>)
+        </form>
+        </div>
+        )
   }
 }
 
