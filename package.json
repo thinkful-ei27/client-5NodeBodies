@@ -53,7 +53,6 @@
     "babel-core": "^7.0.0-bridge.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
-    "jest": "^24.7.1",
     "redux-devtools-extension": "^2.13.8"
   }
 }
