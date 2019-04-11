@@ -37,7 +37,6 @@ export class EditAdventureForm extends React.Component {
       startVideoURL,
       password,
       removePassword } = values;
-    console.log(password);
     let adventure = {
       title,
       startContent,

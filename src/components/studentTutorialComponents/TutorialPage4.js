@@ -7,12 +7,10 @@ export class TutorialPage4 extends React.Component {
 
 
     handlePreviousClick(){
-        console.log('page4 handlePreviousClick ran');
         this.props.dispatch(studentPreviousTutorial(this.props.tutorialPageNumber));
     }
 
     handleQuitClick(){
-        console.log('page4 handleQuitClick ran');
         this.props.dispatch(studentEndTutorial());
     }
 

@@ -6,17 +6,14 @@ import { studentEndTutorial, studentNextTutorial, studentPreviousTutorial } from
 export class TutorialPage2 extends React.Component {
 
     handlePreviousClick() {
-        console.log('page2 handlePreviousClick ran');
         this.props.dispatch(studentPreviousTutorial(this.props.tutorialPageNumber));
     }
 
     handleNextClick() {
-        console.log('page2 handleNextClick ran');
         this.props.dispatch(studentNextTutorial(this.props.tutorialPageNumber));
     }
 
     handleQuitClick() {
-        console.log('page2 handleQuitClick ran');
         this.props.dispatch(studentEndTutorial());
     }
 

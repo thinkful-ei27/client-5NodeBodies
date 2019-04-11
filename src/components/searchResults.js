@@ -8,13 +8,9 @@ export class SearchResults extends React.Component{
 
 
     handleClick(id){
-        console.log(id.target.value);
-        console.log(id);
-        console.log(passwordVal);
         this.props.dispatch(getStudentAdventure(id.target.value, passwordVal));
     }
     handleChange(e){
-        console.log(e.target.value);
         passwordVal = e.target.value;
     }
 

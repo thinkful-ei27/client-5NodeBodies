@@ -94,7 +94,6 @@ export class AdventureInfo extends React.Component {
       )
     } else if (adventure && adventure.startVideoURL && !this.props.isEditing) {
       if (adventure.hasPassword) {
-        console.log('has pass')
         password = <span>This LearnVenture is password protected</span>
       }
       let videoPlay = adventure.startVideoURL;
