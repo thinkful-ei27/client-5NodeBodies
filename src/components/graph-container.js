@@ -5,7 +5,7 @@ import { setCurrentNode } from '../actions/nodes'
 import { reRenderGraph } from '../actions/createAdventure'
 import { toggleOnboarding } from '../actions/auth'
 
-class GraphContainer extends React.Component {
+export class GraphContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
