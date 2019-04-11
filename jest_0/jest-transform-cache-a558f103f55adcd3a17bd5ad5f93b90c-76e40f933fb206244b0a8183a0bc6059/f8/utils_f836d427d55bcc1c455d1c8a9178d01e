@@ -1,0 +1,32 @@
+55478b6e52dd39178d84e38d1690f774
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.normalizeResponseErrors = void 0;
+
+// Boilerplate code for handling errors from the API.  If the error response
+// contains JSON then we return a rejected promise containing the decoded
+// JSON.  If the error doesn't contain JSON then we return a rejected promise
+// containing the status text.  If there is no error then we continue with
+// the promise chain.
+const normalizeResponseErrors = res => {
+  if (!res.ok) {
+    if (res.headers.has('content-type') && res.headers.get('content-type').startsWith('application/json')) {
+      // It's a nice JSON error returned by us, so decode it
+      return res.json().then(err => Promise.reject(err));
+    } // It's a less informative error returned by express
+
+
+    return Promise.reject({
+      code: res.status,
+      message: res.statusText
+    });
+  }
+
+  return res;
+};
+
+exports.normalizeResponseErrors = normalizeResponseErrors;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInV0aWxzLmpzIl0sIm5hbWVzIjpbIm5vcm1hbGl6ZVJlc3BvbnNlRXJyb3JzIiwicmVzIiwib2siLCJoZWFkZXJzIiwiaGFzIiwiZ2V0Iiwic3RhcnRzV2l0aCIsImpzb24iLCJ0aGVuIiwiZXJyIiwiUHJvbWlzZSIsInJlamVjdCIsImNvZGUiLCJzdGF0dXMiLCJtZXNzYWdlIiwic3RhdHVzVGV4dCJdLCJtYXBwaW5ncyI6Ijs7Ozs7OztBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDTyxNQUFNQSx1QkFBdUIsR0FBR0MsR0FBRyxJQUFJO0FBQzFDLE1BQUksQ0FBQ0EsR0FBRyxDQUFDQyxFQUFULEVBQWE7QUFDVCxRQUNJRCxHQUFHLENBQUNFLE9BQUosQ0FBWUMsR0FBWixDQUFnQixjQUFoQixLQUNBSCxHQUFHLENBQUNFLE9BQUosQ0FBWUUsR0FBWixDQUFnQixjQUFoQixFQUFnQ0MsVUFBaEMsQ0FBMkMsa0JBQTNDLENBRkosRUFHRTtBQUNFO0FBQ0EsYUFBT0wsR0FBRyxDQUFDTSxJQUFKLEdBQVdDLElBQVgsQ0FBZ0JDLEdBQUcsSUFBSUMsT0FBTyxDQUFDQyxNQUFSLENBQWVGLEdBQWYsQ0FBdkIsQ0FBUDtBQUNILEtBUFEsQ0FRVDs7O0FBQ0EsV0FBT0MsT0FBTyxDQUFDQyxNQUFSLENBQWU7QUFDbEJDLE1BQUFBLElBQUksRUFBRVgsR0FBRyxDQUFDWSxNQURRO0FBRWxCQyxNQUFBQSxPQUFPLEVBQUViLEdBQUcsQ0FBQ2M7QUFGSyxLQUFmLENBQVA7QUFJSDs7QUFDRCxTQUFPZCxHQUFQO0FBQ0gsQ0FoQk0iLCJzb3VyY2VzQ29udGVudCI6WyIvLyBCb2lsZXJwbGF0ZSBjb2RlIGZvciBoYW5kbGluZyBlcnJvcnMgZnJvbSB0aGUgQVBJLiAgSWYgdGhlIGVycm9yIHJlc3BvbnNlXG4vLyBjb250YWlucyBKU09OIHRoZW4gd2UgcmV0dXJuIGEgcmVqZWN0ZWQgcHJvbWlzZSBjb250YWluaW5nIHRoZSBkZWNvZGVkXG4vLyBKU09OLiAgSWYgdGhlIGVycm9yIGRvZXNuJ3QgY29udGFpbiBKU09OIHRoZW4gd2UgcmV0dXJuIGEgcmVqZWN0ZWQgcHJvbWlzZVxuLy8gY29udGFpbmluZyB0aGUgc3RhdHVzIHRleHQuICBJZiB0aGVyZSBpcyBubyBlcnJvciB0aGVuIHdlIGNvbnRpbnVlIHdpdGhcbi8vIHRoZSBwcm9taXNlIGNoYWluLlxuZXhwb3J0IGNvbnN0IG5vcm1hbGl6ZVJlc3BvbnNlRXJyb3JzID0gcmVzID0+IHtcbiAgICBpZiAoIXJlcy5vaykge1xuICAgICAgICBpZiAoXG4gICAgICAgICAgICByZXMuaGVhZGVycy5oYXMoJ2NvbnRlbnQtdHlwZScpICYmXG4gICAgICAgICAgICByZXMuaGVhZGVycy5nZXQoJ2NvbnRlbnQtdHlwZScpLnN0YXJ0c1dpdGgoJ2FwcGxpY2F0aW9uL2pzb24nKVxuICAgICAgICApIHtcbiAgICAgICAgICAgIC8vIEl0J3MgYSBuaWNlIEpTT04gZXJyb3IgcmV0dXJuZWQgYnkgdXMsIHNvIGRlY29kZSBpdFxuICAgICAgICAgICAgcmV0dXJuIHJlcy5qc29uKCkudGhlbihlcnIgPT4gUHJvbWlzZS5yZWplY3QoZXJyKSk7XG4gICAgICAgIH1cbiAgICAgICAgLy8gSXQncyBhIGxlc3MgaW5mb3JtYXRpdmUgZXJyb3IgcmV0dXJuZWQgYnkgZXhwcmVzc1xuICAgICAgICByZXR1cm4gUHJvbWlzZS5yZWplY3Qoe1xuICAgICAgICAgICAgY29kZTogcmVzLnN0YXR1cyxcbiAgICAgICAgICAgIG1lc3NhZ2U6IHJlcy5zdGF0dXNUZXh0XG4gICAgICAgIH0pO1xuICAgIH1cbiAgICByZXR1cm4gcmVzO1xufTtcbiJdfQ==

@@ -180,7 +180,7 @@ code {
 
 .form-input{
   position: relative;
-  width: 400px;
+  width: 250px;
 }
 
 .full-screen-only {
@@ -230,7 +230,7 @@ h2 {
   border: 2px solid #b4cedd;
   border-radius: 5px;
   height: 40px;
-  width: 400px;
+  width:250px;
   margin-top: 25px;
   margin-bottom: 10px;
   font-size: 18px;
@@ -456,11 +456,11 @@ ul {
 
   .form-input{
     position: relative;
-    width: 250px;
+    width: 400px;
   }
 
   .input-field{
-    width:250px;
+    width:400px;
   }
 
 }

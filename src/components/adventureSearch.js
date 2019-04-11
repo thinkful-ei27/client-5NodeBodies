@@ -4,7 +4,7 @@ import { getStudentSearch } from '../actions/student';
 
 
 let inputVal;
-class AdventureSearch extends React.Component {
+export class AdventureSearch extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
