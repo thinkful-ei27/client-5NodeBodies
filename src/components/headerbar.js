@@ -34,12 +34,12 @@ export class Headerbar extends React.Component {
           <Link to="/dashboard">
             {!pathCheck && homeButton}
             <button
-              className="home-button on-left on-right wide-button"
+              className="dashboard-button on-left on-right extra-wide-button"
               type="button"
             >Dashboard</button>
           </Link>
           <button
-            className="logout-button on-right on-left"
+            className="logout-button on-right on-left wide-button"
             type="button"
             onClick={() => {
               this.logOut()

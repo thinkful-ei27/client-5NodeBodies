@@ -141,20 +141,25 @@ export class AdventureInfo extends React.Component {
             <h3 className="info-category">Adventure Code:</h3> <p>{adventure.id}</p>
             {password}
             <div className="buttons">
-              <button onClick={() => this.props.history.push(`/adventure/adventurebuilder/${adventure.id}`)} >Build your Adventure</button>
               <button
+                className='on-left'
+                onClick={() => this.props.history.push(`/adventure/adventurebuilder/${adventure.id}`)} >Build your Adventure</button>
+              <button
+                className='on-left on-right'
+
                 type='button'
                 onClick={() => this.toggleAdventureEditForm()}
               >Edit adventure  Info
               </button>
-              {/* </div>
-              <div className='buttons'> */}
-              <button className="delete-it"
+
+              <button 
+                className='on-left on-right'
                 type='button'
                 onClick={() => this.displayAdventureDeleting()}
               >Delete adventure
               </button>
-              <button className="analyze-it"
+              <button
+                className='on-right'
                 type='button'
                 onClick={() => this.showAnalytics()}
               >{this.props.showAnalytics ? 'Hide Analytics' : 'Show Analytics'}

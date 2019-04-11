@@ -78,6 +78,8 @@ class EditAdventureForm extends React.Component {
           <h2>Edit LearnVenture Information</h2>
 
           {error}
+          <div className="form-questions">
+
           <Field
             className="title input-field"
             label="Adventure Title"
@@ -118,6 +120,7 @@ class EditAdventureForm extends React.Component {
             label="Remove Password"
             component={this.renderCheckBox}
             type="checkbox" />
+            </div>
           <button type="submit">Update Adventure</button>
           <button onClick={() => this.toggleAdventureEditForm()}>Cancel</button>
           {onboarding}
