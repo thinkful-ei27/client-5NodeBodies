@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Field, reduxForm, focus } from 'redux-form';
+import { Redirect } from 'react-router-dom';
 import { connect } from "react-redux";
 import { registerUser } from '../actions/register';
 import { loginUser } from '../actions/auth';
@@ -21,7 +22,7 @@ class RegisterForm extends React.Component {
   }
   render() {
     if (this.props.loggedIn) {
-      this.props.history.push('/dashboard')
+      return <Redirect to="/dashboard" />;
     }
     // let error;
     // if (this.props.error) {
@@ -88,4 +89,4 @@ export default connect(mapStateToProps)(reduxForm({
   form: 'registration-form',
   onSubmitFail: (errors, dispatch) =>
     dispatch(focus('registration-form', Object.keys(errors)[0]))
-})(RegisterForm));
+})(RegisterForm));  
