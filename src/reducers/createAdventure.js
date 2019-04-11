@@ -5,6 +5,8 @@ import {
   GET_ALL_ADVENTURES_ERROR,
   GET_ALL_ADVENTURES_REQUEST,
   GET_ALL_ADVENTURES_SUCCESS,
+  GET_ADVENTURE_ERROR,
+  GET_ADVENTURE_REQUEST,
   GET_ADVENTURE_SUCCESS,
   // UPDATE_CURRENT_NODE,
   DELETE_ADVENTURE_ERROR,
@@ -46,8 +48,7 @@ export default function reducer(state = initialState, action) {
         error: null
       });
     }
-   
-    
+
     case RERENDER_GRAPH: {
       return Object.assign({}, state, {
         reRender: !state.reRender
@@ -66,10 +67,21 @@ export default function reducer(state = initialState, action) {
         error: action.error
       });
     }
+    case GET_ADVENTURE_REQUEST: {
+      return Object.assign({}, state, {
+        loading: true
+      })
+    }
     case GET_ADVENTURE_SUCCESS: {
       return Object.assign({}, state, {
         loading: false,
         currentAdventure: action.currentAdventure
+      })
+    }
+    case GET_ADVENTURE_ERROR: {
+      return Object.assign({}, state, {
+        loading: false,
+        error: action.error
       })
     }
     case GET_ALL_ADVENTURES_REQUEST: {

@@ -19,8 +19,6 @@ import {
 const initialState = {
   loading: false,
   error: null,
-  adventure: null,
-  currentNode: null,
   adventure: null, 
   currentNode: null,
   searchResults: null,

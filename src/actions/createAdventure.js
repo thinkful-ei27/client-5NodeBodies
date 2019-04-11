@@ -29,6 +29,11 @@ export const createAdventureSuccess = (currentAdventure) => ({
   currentAdventure
 });
 
+export const GET_ADVENTURE_REQUEST = 'GET_ADVENTURE_REQUEST';
+export const getAdventureRequest = () => ({
+  type: GET_ADVENTURE_REQUEST,
+});
+
 export const GET_ADVENTURE_SUCCESS = 'GET_ADVENTURE_SUCCESS';
 export const getAdventureSuccess = (currentAdventure) => {
 
@@ -41,6 +46,12 @@ export const getAdventureSuccess = (currentAdventure) => {
 export const CREATE_ADVENTURE_ERROR = 'CREATE_ADVENTURE_ERROR';
 export const createAdventureError = error => ({
   type: CREATE_ADVENTURE_ERROR,
+  error
+});
+
+export const GET_ADVENTURE_ERROR = 'GET_ADVENTURE_ERROR';
+export const getAdventureError = error => ({
+  type: GET_ADVENTURE_ERROR,
   error
 });
 
@@ -63,7 +74,7 @@ export const deleteAdventureError = error => ({
 
 export const GET_ADVENTURE_BY_ID = 'GET_ADVENTURE_BY_ID';
 export const getAdventureById = adventureId => (dispatch, getState) => {
-  dispatch(createAdventureRequest());
+  dispatch(getAdventureRequest());
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/adventure/${adventureId}`, {
     method: 'GET',
@@ -75,11 +86,13 @@ export const getAdventureById = adventureId => (dispatch, getState) => {
     .then(res => res.json())
     .then(res => {
       const headNode = getHeadNodefromAdventure(res);
-      dispatch(setCurrentNode(headNode))
+      if (headNode) {
+        dispatch(setCurrentNode(headNode))
+      }
       dispatch(getAdventureSuccess(res))
     })
     .catch(error => {
-      return dispatch(createAdventureError(error))
+      return dispatch(getAdventureError(error))
     });
 }
 
@@ -127,6 +140,7 @@ export const createAdventure = adventure => (dispatch, getState) => {
       // let headNode = getHeadNodefromAdventure(res)
       // dispatch(setCurrentNode(headNode))
       return dispatch(createAdventureSuccess(res))
+
     })
     .catch(error => {
       return dispatch(createAdventureError(error))
@@ -225,6 +239,7 @@ export const editAdventure = adventure => (dispatch, getState) => {
     .then(res => {
       const headNode = getHeadNodefromAdventure(res);
       dispatch(setCurrentNode(headNode))
+      dispatch(toggleAdventureEditing())
       return dispatch(editAdventureSuccess(res))
     })
     .catch(error => {

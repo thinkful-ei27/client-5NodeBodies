@@ -1,22 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import requiresLogin from './requires-login';
+import RequiresLogin from './requires-login';
 import NewNodeForm from './new-node-form';
 import CurrentNodeBrancher from './current-node-brancher';
 import { getAdventureById } from '../actions/createAdventure'
 import { setCurrentNode, toggleUpdateForm } from '../actions/nodes'
 import GraphContainer from './graph-container'
 import ExistingNodeSelector from './existingNodeSelector';
-import Sidebar from './sidebar';
-import { toggleAdventureDeleting, deleteAdventure } from '../actions/createAdventure';
+
 
 export class AdventureBuilder extends React.Component {
 
   componentDidMount() {
+    console.log('DID')
     const { id } = this.props.match.params;
     this.props.dispatch(getAdventureById(id))
     if (this.props.showUpdate === true) {
       this.props.dispatch(toggleUpdateForm())
+    }
+  }
+
+  componentWillMount() {
+    if (!this.props.currentAdventure.head) {
+      console.log('if caught')
+      this.props.history.push('/adventure/headnode')
     }
   }
 
@@ -34,22 +41,23 @@ export class AdventureBuilder extends React.Component {
     if (this.props.parentInt && this.props.useExistingNode) {
       nodeForm = <ExistingNodeSelector />;
     }
-    if (!adventure) {
+    if (!adventure || !this.props.currentAdventure.head) {
       return <div className="loading">loading...</div>;
     }
     // needs 'key' prop below
     const options = this.props.currentAdventure.nodes.map((node) =>
-      <option label={node.title} value={node.id}>{node.title}</option>);
+      <option label={node.title} value={node.id}>{node.title ? node.title : node.question}</option>);
 
     return (
-      <div>
+      <div className='adventure-builder'>
         <GraphContainer />
+
         <select className="node-select"
           label="Current Question"
           name="nodeSelect"
           options={options}
-          value={this.props.currentNode.id}
-          onChange={e => this.changeCurrentNode(e.target.value)}>{options}</select>
+          onChange={e => this.changeCurrentNode(e.target.value)}>{options}
+        </select>
         <CurrentNodeBrancher />
         {nodeForm}
       </div>
@@ -72,4 +80,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default requiresLogin()(connect(mapStateToProps)(AdventureBuilder));
+export default RequiresLogin()(connect(mapStateToProps)(AdventureBuilder));

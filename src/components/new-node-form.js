@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import { Field, reduxForm, focus } from 'redux-form';
 import Input from "./input";
 import TextArea from "./textarea";
-import { createNode, toggleEnding, setCurrentNode, toggleChildType } from '../actions/nodes';
+import { createNode, toggleEnding, toggleChildType } from '../actions/nodes';
 import { required, nonEmpty } from "../utils/validators";
 import { Checkbox, Form } from 'semantic-ui-react';
 import { toggleOnboarding } from '../actions/auth'
+import RequiresLogin from './requires-login';
 
 class NewNodeForm extends React.Component {
   renderCheckBox = ({ input, label }) => {
@@ -61,10 +62,10 @@ class NewNodeForm extends React.Component {
   }
   render() {
     let error;
-    if (this.props.error) {
+    if (this.props.nodeError) {
       error = (
         <div className="form-error" aria-live="polite">
-          {this.props.error}
+          {this.props.nodeError}
         </div>
       );
     }
@@ -181,7 +182,10 @@ class NewNodeForm extends React.Component {
           name="title"
           component={Input}
           type="text"
-          validate={[required, nonEmpty]} />
+          placeholder='optional'
+
+          // validate={[required, nonEmpty]} 
+          />
         <Field
           className="videoURL"
           label="Video URL (optional)"
@@ -190,6 +194,7 @@ class NewNodeForm extends React.Component {
           component={Input}
           type="text" />
         {questions}
+        {error}
         <button>Add Checkpoint to LearnVenture</button>
         {onboarding}
       </form>)
@@ -204,13 +209,14 @@ const mapStateToProps = state => {
     adventureId: state.adventure.currentAdventure.id,
     parentId: state.node.currentNode.id,
     isEnding: state.node.isEnding,
-    onboarding: state.auth.onboarding
+    onboarding: state.auth.onboarding,
+    error:state.node.nodeError
   };
 };
 
-export default connect(mapStateToProps)(reduxForm({
+export default RequiresLogin(connect(mapStateToProps)(reduxForm({
   form: 'NewNode',
   onSubmitFail: (errors, dispatch) =>
-    dispatch(focus('Adventure'/*, Object.keys(errors)[0]*/
+    dispatch(focus('NewNode'/*, Object.keys(errors)[0]*/
     ))
-})(NewNodeForm));
+})(NewNodeForm)));
