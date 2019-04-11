@@ -144,7 +144,7 @@ const mapStateToProps = (state, props) => ({
 
 });
 
-export default RequiresLogin() (connect(mapStateToProps)(reduxForm({
+export default RequiresLogin()(connect(mapStateToProps)(reduxForm({
   form: 'CreateHeadNode',
 
   // onSubmitFail: (errors, dispatch) =>

@@ -77,13 +77,13 @@ export class AdventureInfo extends React.Component {
           <h2>All data will be lost. This cannot be undone</h2>
           <div className="buttons">
             <button
-              className="delete-it"
+              className="delete-button on-left delete-it"
               type='button'
               onClick={() => this.onClickDelete()}
             >Delete It
             </button>
             <button
-              className="keep-it"
+              className="on-right keep-it"
               type='button'
               onClick={() => this.displayAdventureDeleting()}
             >Keep It

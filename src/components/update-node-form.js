@@ -192,13 +192,13 @@ class UpdateNodeForm extends React.Component {
           {error}
           <div className="buttons">
             <button
-              className="delete-it"
+              className=" on-left delete-button"
               type='button'
               onClick={id => this.onClickDelete(id)}
             >Delete It
             </button>
             <button
-              className="keep-it"
+              className="keep-it on-right"
               type='button'
               onClick={() => this.toggleNodeDeleting()}
             >Keep It
@@ -242,7 +242,7 @@ class UpdateNodeForm extends React.Component {
               type="text" />
             {questions}
             {error}
-            <button type="submit">Update Node</button>
+            <button className='update-button' type="submit">Update Node</button>
           </form>
           <button onClick={() => this.cancelUpdate()}>Cancel</button>
           <button className="delete-node-toggle" onClick={() => this.toggleNodeDeleting()}>Delete Checkpoint</button>

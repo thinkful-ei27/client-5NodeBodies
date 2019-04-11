@@ -121,10 +121,10 @@ class EditAdventureForm extends React.Component {
             component={this.renderCheckBox}
             type="checkbox" />
             </div>
-          <button type="submit">Update Adventure</button>
-          <button onClick={() => this.toggleAdventureEditForm()}>Cancel</button>
+          <button className='update-button' type="submit">Update Adventure</button>
           {onboarding}
         </form>
+          <button onClick={() => this.toggleAdventureEditForm()}>Cancel</button>
       </div>
     </div>
     )

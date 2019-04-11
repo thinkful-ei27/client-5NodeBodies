@@ -214,7 +214,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default RequiresLogin(connect(mapStateToProps)(reduxForm({
+export default RequiresLogin()(connect(mapStateToProps)(reduxForm({
   form: 'NewNode',
   onSubmitFail: (errors, dispatch) =>
     dispatch(focus('NewNode'/*, Object.keys(errors)[0]*/
