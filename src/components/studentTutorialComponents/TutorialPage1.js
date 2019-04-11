@@ -17,7 +17,7 @@ export class TutorialPage1 extends React.Component {
         const imgSrc1 = require('../../images/tutorialImage1.png');
         return (
             <div className="tutorialBox">
-                <img src={imgSrc1} alt="Student Landing Page containing an LearnVenture ID input and password"></img>
+                <img src={imgSrc1} alt="Student Landing Page containing a LearnVenture ID input and password"></img>
                 <p>If a teacher gave you a LearnVenture ID, please put it in the first white input box (with the numbers and letters)</p>
                 <p>If a teacher gave you a password, you may put it in the second white input box below the first one</p>
                 <p>Then click "Start LearnVenture!" to do just that</p>

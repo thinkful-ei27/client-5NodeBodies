@@ -24,7 +24,7 @@ export default class Home extends React.Component {
           </Link>
         </div>
         <div className="home-div col-4">
-          <p className="home-div-text">Are you a student?<br />If so, or if you'd like to explore public LearnVentures, click the link below to embark.</p>
+          <p className="home-div-text">Are you a student?<br />If so, or if you'd like to explore public LearnVentures, click the link below to embark on a LearnVenture.</p>
           <Link to="/studentLanding">
             <button
               className="home-button on-left on-right wide-button"
@@ -35,12 +35,12 @@ export default class Home extends React.Component {
         <div className="home-image-box not-mobile">
           <div className="home-image col-4">
             <figure>
-              <figcaption>Teacher View</figcaption><img className="example-image" src={teaImg} alt="wow"></img>
+              <figcaption>Teacher View</figcaption><img className="example-image" src={teaImg} alt="example of the screen when building a LearnVenture"></img>
             </figure>
           </div>
             <div className="home-image col-4">
             <figure>
-              <figcaption>Student View</figcaption><img className="example-image"  src={stuImg} alt="wow"></img>
+              <figcaption>Student View</figcaption><img className="example-image"  src={stuImg} alt="example of screen when embarking on a LearnVenture"></img>
             </figure>
           </div>
         </div>
