@@ -39,7 +39,7 @@ export class Headerbar extends React.Component {
           >Dashboard</button>
         </Link>
         <button
-          className="logout-button on-right on-left"
+          className="logout-button on-right on-left wide-button"
           type="button"
           onClick={() => {
             this.logOut()
@@ -51,7 +51,7 @@ export class Headerbar extends React.Component {
       </div>
     }
     return (
-      <header className="header-bar row">
+      <header className="header-bar">
         <h1 className="app-title col-6"
         >LearnVenture</h1>
         {navButtons}
