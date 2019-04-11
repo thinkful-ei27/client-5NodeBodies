@@ -49,20 +49,20 @@ export class StudentDisplay extends React.Component {
         nodeQuestion = <strong><p id="student-question">{this.props.currentNode.question}</p></strong>
       }
       if (this.props.currentNode.answerA) {
-        answerA = <p>{this.props.currentNode.answerA}</p>
-        buttonA = <button onClick={() => this.updateNode(this.props.currentNode.pointerA)}>Submit</button>
+        // answerA = <p>{this.props.currentNode.answerA}</p>
+        buttonA = <button onClick={() => this.updateNode(this.props.currentNode.pointerA)}>{this.props.currentNode.answerA}</button>
       }
       if (this.props.currentNode.answerB) {
-        answerB = <p>{this.props.currentNode.answerB}</p>
-        buttonB = <button onClick={() => this.updateNode(this.props.currentNode.pointerB)}>Submit</button>
+        // answerB = <p>{this.props.currentNode.answerB}</p>
+        buttonB = <button onClick={() => this.updateNode(this.props.currentNode.pointerB)}>{this.props.currentNode.answerB}</button>
       }
       if (this.props.currentNode.answerC) {
-        answerC = <p>{this.props.currentNode.answerC}</p>
-        buttonC = <button onClick={() => this.updateNode(this.props.currentNode.pointerC)}>Submit</button>
+        // answerC = <p>{this.props.currentNode.answerC}</p>
+        buttonC = <button onClick={() => this.updateNode(this.props.currentNode.pointerC)}>{this.props.currentNode.answerC}</button>
       }
       if (this.props.currentNode.answerD) {
-        answerD = <p>{this.props.currentNode.answerD}</p>
-        buttonD = <button onClick={() => this.updateNode(this.props.currentNode.pointerD)}>Submit</button>
+        // answerD = <p>{this.props.currentNode.answerD}</p>
+        buttonD = <button onClick={() => this.updateNode(this.props.currentNode.pointerD)}>{this.props.currentNode.answerD}</button>
       }
       if (!this.props.currentNode.ending) {
         display = (
@@ -70,14 +70,18 @@ export class StudentDisplay extends React.Component {
             {nodeVideo}
             {nodeText}
             {nodeQuestion}
-            {answerA}
+            {/*answerA*/}
             {buttonA}
-            {answerB}
+            <br />
+            {/*answerB*/}
             {buttonB}
-            {answerC}
+            <br />
+            {/*answerC*/}
             {buttonC}
-            {answerD}
+            <br />
+            {/*answerD*/}
             {buttonD}
+            <br />
           </div>
         )
       } else {

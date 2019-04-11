@@ -233,6 +233,12 @@ top: -20px;
 }
 
 
+.ui.checkbox {
+height: 20px;
+margin: 15px;
+
+}
+
 .login-button {
   display: inline-block;
   background: #da8624;
