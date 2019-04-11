@@ -36,7 +36,7 @@ export class StudentLanding extends React.Component {
     if (tutorialValue) {
       return <Tutorial />
     } else {
-      return <button className='tutorial-button' onClick={e => { this.handleTutorialClick() }}>If you need help:<br />Click here to start the Tutorial</button>
+      return <button className='tutorial-button' onClick={e => { this.handleTutorialClick() }}>If you need help:<br />Click here to start a Tutorial</button>
     }
   }
 
