@@ -34,7 +34,7 @@
   font-size: 18px;
 }
 .answer-button {
-  width: 470px;
+  width: 300px;
 }
 
 .app-title {
@@ -412,19 +412,22 @@ margin: 15px;
   /* background-color:#da8624; */
   margin:auto;
   max-width: 70vw; /*vw is veiwport width, this box will be semi repsonsive.*/
-  min-width: 470px;
+  min-width: 300px;
   border: 2px solid #b4cedd;
   border-radius: 5px;
 }
 #student-content {
   /* color: white; */
   font-size: 22px;
-  min-width: 470px; 
+  min-width: 300px; 
+  padding:5px;
+
 }
 #student-question {
   /* color: white; */
   font-size: 29px;
-  min-width: 470px;
+  min-width: 300px;
+  padding:5px;
 }
 
 .teacher-button {
@@ -491,6 +494,9 @@ ul {
   .mobile-only {
     display: inline-block;
     margin-left: 5px;
+  }
+  .answer-button {
+    width: 470px;
   }
 }
 

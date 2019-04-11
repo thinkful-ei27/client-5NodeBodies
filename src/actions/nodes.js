@@ -182,6 +182,7 @@ export const linkNodesById = idObjectWithParentInt => (dispatch, getState) => {
 
 
 export const updateNode = nodeData => (dispatch, getState) => {
+  debugger;
   let nodeId = nodeData.nodeId
   dispatch(updateNodeRequest())
   const authToken = getState().auth.authToken;
