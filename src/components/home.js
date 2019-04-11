@@ -24,7 +24,7 @@ export default class Home extends React.Component {
           </Link>
         </div>
         <div className="home-div col-4">
-          <p className="home-div-text">Are you a student?<br />If so, or if you'd like to explore public LearnVentures, click the link below to embark.</p>
+          <p className="home-div-text">Are you a student?<br />If so, or if you'd like to explore public LearnVentures, click the link below to embark on a LearnVenture.</p>
           <Link to="/studentLanding">
             <button
               className="home-button on-left on-right wide-button"
