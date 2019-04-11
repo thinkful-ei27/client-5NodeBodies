@@ -16,7 +16,6 @@ export class GraphContainer extends React.Component {
     onClickNode(nodeId) {
         let nodeArr = this.props.nodez.filter((node) => node.id === nodeId)
         this.props.dispatch(setCurrentNode(nodeArr[0]))
-        console.log("reRender is: ", this.props.reRender)
         // this.props.dispatch(reRenderGraph())
     }
 

@@ -22,7 +22,6 @@ export class UpdateNodeForm extends React.Component {
     return this.props.dispatch(toggleEnding())
   }
   toggleNodeDeleting() {
-    console.log('deletingtoggle clicked')
     return this.props.dispatch(toggleNodeDeleting())
   }
 

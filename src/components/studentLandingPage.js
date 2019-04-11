@@ -28,7 +28,6 @@ export class StudentLanding extends React.Component {
   }
 
   handleTutorialClick() {
-    console.log('handleTutorialClick ran. tutorial value is...', this.props.tutorial);
     this.props.dispatch(studentStartTutorial());
   }
 

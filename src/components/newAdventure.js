@@ -19,7 +19,6 @@ export class AdventureForm extends React.Component {
       textContent,
       startVideoURL,
       password } = values;
-    console.log(password);
     let adventure = {
       title,
       startContent,
