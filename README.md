@@ -20,7 +20,7 @@ fun tool to help share that information.
 ![screenshot of LearnVenture Builder](/src/images/teacherside.PNG)
 
 #### Embark on a LearnVenture: 
-[screenshot of LearnVenture Builder](/src/images/studentside.PNG)
+![screenshot of LearnVenture Builder](/src/images/studentside.PNG)
 
 ### Future Features
 - [ ] More detailed analytics
