@@ -93,7 +93,7 @@ export class AdventureInfo extends React.Component {
       )
     } else if (adventure && adventure.startVideoURL && !this.props.isEditing) {
       if (adventure.hasPassword) {
-        password = <span>This adventure is password protected</span>
+        password = <span>This LearnVenture is password protected</span>
       }
       let videoPlay = adventure.startVideoURL;
       let nodeVideo = (<iframe title='node-video' width="420" height="315" src={videoPlay}></iframe>)
@@ -110,12 +110,12 @@ export class AdventureInfo extends React.Component {
             <button
               type='button'
               onClick={() => this.toggleAdventureEditForm()}
-            >Edit adventure Starting Info
+            >Edit LearnVenture Starting Info
               </button>
             <button className="delete-it"
               type='button'
               onClick={() => this.displayAdventureDeleting()}
-            >Delete adventure
+            >Delete this LearnVenture
               </button>
             <button className="analyze-it"
               type='button'
@@ -148,14 +148,14 @@ export class AdventureInfo extends React.Component {
 
                 type='button'
                 onClick={() => this.toggleAdventureEditForm()}
-              >Edit adventure  Info
+              >Edit LearnVenture Info
               </button>
 
               <button 
                 className='on-left on-right'
                 type='button'
                 onClick={() => this.displayAdventureDeleting()}
-              >Delete adventure
+              >Delete LearnVenture
               </button>
               <button
                 className='on-right'
