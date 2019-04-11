@@ -84,6 +84,7 @@ export class EditAdventureForm extends React.Component {
               label="Adventure Title"
               ariaLabel="LearnVenture title"
               placeholder="LearnVenture"
+              autoFocus
               name="title"
               component={Input}
               type="text"
