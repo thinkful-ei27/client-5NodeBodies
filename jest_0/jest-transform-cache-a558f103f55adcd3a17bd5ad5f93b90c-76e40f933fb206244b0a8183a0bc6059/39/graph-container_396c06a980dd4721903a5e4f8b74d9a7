@@ -62,7 +62,7 @@ class GraphContainer extends _react.default.Component {
         chartData.nodes.push({
           id: this.props.nodez[i].id,
           title: this.props.nodez[i].title ? this.props.nodez[i].title : this.props.nodez[i].question,
-          color: '#da8624',
+          color: '#9D601B',
           symbolType: "triangle"
         });
 

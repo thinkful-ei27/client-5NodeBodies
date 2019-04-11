@@ -37,7 +37,7 @@ export class GraphContainer extends React.Component {
         };
         for (let i = 0; i < this.props.nodez.length; i++) {
             if (i === 0) {
-                chartData.nodes.push({ id: this.props.nodez[i].id, title: this.props.nodez[i].title ? this.props.nodez[i].title : this.props.nodez[i].question, color: '#da8624', symbolType: "triangle" })
+                chartData.nodes.push({ id: this.props.nodez[i].id, title: this.props.nodez[i].title ? this.props.nodez[i].title : this.props.nodez[i].question, color: '#9D601B', symbolType: "triangle" })
                 if (this.props.nodez[i].pointerA) {
                     chartData.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerA })
                 }
@@ -74,7 +74,7 @@ export class GraphContainer extends React.Component {
     resizeGraph() {
         let cyStyle = {
             margin: 'auto',
-            border: '2.5px solid #da8624',
+            border: '2.5px solid #9D601B',
             "box-shadow": "5px 5px 8px 10px #51646b"
         };
         cyStyle.maxHeight = Math.max(this.state.windowHeight * .5, 500);

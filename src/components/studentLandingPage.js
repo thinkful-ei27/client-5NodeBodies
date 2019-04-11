@@ -62,20 +62,20 @@ export class StudentLanding extends React.Component {
             </p>
           </div>
           <div className="register-adventure">
-            <form onSubmit={e => this.handleSubmit(e)}>
+            <form 
+            className="below extra-below" onSubmit={e => this.handleSubmit(e)}>
               {error}
               <label for="adventureId" > Search by AdventureId</label>
-              <input className="adventure-input input-field" type="text" name="adventureId" id="adventureId"
+              <input className="adventure-input" type="text" name="adventureId" id="adventureId"
                 placeholder="5c9ceaeac543f706bf407cae"
                 onChange={e => this.onChange(e)}
               ></input><br />
               <label for="adventurePass"> Please enter a password if the adventure has one</label>
-              <input className="adventure-password input-field" type="password" name="adventurePass"
+              <input className="adventure-password" type="password" name="adventurePass"
                 id="adventurePass"
-                placeholder="Password, if it has one"
                 onChange={e => this.onChangePassword(e)}
               ></input><br />
-              <button className="start-adventure on-right" type="submit">Start LearnVenture!</button>
+              <button className="start-adventure on-right below" type="submit">Start LearnVenture!</button>
             </form>
           </div>
           <AdventureSearch />
