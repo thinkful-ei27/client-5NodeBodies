@@ -3,7 +3,7 @@
 
 ###### This is the frontend code for [LearnVenture.org](www.learnventure.org). 
 
-###### Server Side code: https://github.com/thinkful-ei27/server-5NodeBodies
+###### Server Side code can be found at https://github.com/thinkful-ei27/server-5NodeBodies
 
 Client Testing Status: [![Build Status](https://travis-ci.org/thinkful-ei27/client-5NodeBodies.svg?branch=master)](https://travis-ci.org/thinkful-ei27/client-5NodeBodies)
 Server Testing Status: [![Build Status](https://travis-ci.org/thinkful-ei27/server-5NodeBodies.svg?branch=master)](https://travis-ci.org/thinkful-ei27/server-5NodeBodies)
@@ -15,8 +15,9 @@ Anyone can use this site to help teach any topic. Educators can put students in 
 In the professional landscape, employers can use it to create informational material on how to use new products and services. If you have knowledge to impart, LearnVenture is a
 fun tool to help share that information.
 
-Build a LearnVenture: ![screenshot of LearnVenture Builder](./images/teacherside.PNG?raw=true)
-Embark on a LearnVenture: ![screenshot of LearnVenture Builder](./images/studentside.PNG?raw=true)
+Build a LearnVenture: ![screenshot of LearnVenture Builder](/images/teacherside.PNG?raw=true)
+
+Embark on a LearnVenture: ![screenshot of LearnVenture Builder](/images/studentside.PNG?raw=true)
 
 ### Future Features
 - [ ] More detailed analytics
