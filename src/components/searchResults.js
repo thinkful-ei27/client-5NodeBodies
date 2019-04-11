@@ -22,11 +22,10 @@ export class SearchResults extends React.Component{
             if(adventure.hasPassword){
                 pass =
                 <div>
-                    <label for="search-input">Password: </label>
                 <input 
                     className=" password-input-field"
-                    onChange={e => this.handleChange(e)} type='password' placeholder='
-                    Required'></input>
+                    onChange={e => this.handleChange(e)} type='password' aria-label='password required' placeholder='
+                    password'></input>
                     </div>
             }
             return (<li

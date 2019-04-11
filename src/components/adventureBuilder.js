@@ -34,7 +34,7 @@ export class AdventureBuilder extends React.Component {
     const adventure = this.props.currentAdventure
     let nodeForm;
     if (this.props.parentInt) {
-      nodeForm = <NewNodeForm />
+      nodeForm = <NewNodeForm autoFocus />
     }
     if (this.props.parentInt && this.props.useExistingNode) {
       nodeForm = <ExistingNodeSelector />;
@@ -49,15 +49,14 @@ export class AdventureBuilder extends React.Component {
     return (
       <div className='adventure-builder'>
         <GraphContainer />
-
         <select className="node-select"
           label="Current Question"
           name="nodeSelect"
           options={options}
           onChange={e => this.changeCurrentNode(e.target.value)}>{options}
         </select>
-        <CurrentNodeBrancher />
         {nodeForm}
+        <CurrentNodeBrancher />
       </div>
     );
   }
