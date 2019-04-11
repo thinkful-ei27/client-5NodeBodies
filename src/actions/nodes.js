@@ -220,10 +220,3 @@ function getNodeFromCurrentAdventure(nodeId, adventure) {
 
 }
 
-
-// export const UPDATE_CURRENT_NODE = 'UPDATE_CURRENT_NODE';
-// export const updateCurrentNode = (nodeId, nodeArr) => ({
-//   type: UPDATE_CURRENT_NODE,
-//   nodeId,
-//   nodeArr
-// });

@@ -21,7 +21,8 @@
 }
 
 .adventure-list-item {
-  padding-top: 10px;
+  padding-top: 10px 0;
+  height: auto
 }
 
 .adventure-password, .adventure-input, .search-input {
@@ -260,8 +261,7 @@ h2 {
   border: 2px solid #b4cedd;
   border-radius: 5px;
   height: 40px;
-  min-width: 60px;
-  max-width:400px;
+  width:80%;
   margin-bottom: 5px;
   font-size: 18px;
 }
@@ -482,7 +482,7 @@ ul {
   .col-3 {
     float: left;
     width: 50%;
-    height: 150px;
+    height: 180px;
     align-content: center;
   }
 
@@ -509,7 +509,7 @@ ul {
   .col-3 {
     float: left;
     width: 30%;
-    height: 150px;
+    height: 180px;
     align-content: center;
   }
 
