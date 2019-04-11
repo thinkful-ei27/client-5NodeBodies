@@ -8,7 +8,7 @@ export const nonEmpty = value =>
 
     export const length = length => value => {
     if (length.min && value.length < length.min) {
-        return `Must be at least ${length.min} characters long`;
+        return `Must be at least ${length.min} characters`;
     }
     if (length.max && value.length > length.max) {
         return `Must be at most ${length.max} characters long`;
