@@ -66,15 +66,16 @@ class GraphContainer extends React.Component {
                 }
             }
         }
-        chartData.nodes[0].x = this.state.windowWidth / 2;
-        chartData.nodes[0].y = this.state.windowHeight / 2;
+        chartData.nodes[0].x = this.state.windowWidth / 2.55;
+        chartData.nodes[0].y = this.state.windowHeight / 3;
         return chartData;
     }
 
     resizeGraph() {
         let cyStyle = {
             margin: 'auto',
-            border: '1px solid lightgreen'
+            border: '2.5px solid darkGrey',
+            "box-shadow": "5px 10px 8px 10px #888888"
         };
         cyStyle.maxHeight = Math.max(this.state.windowHeight * .5, 500);
         cyStyle.maxWidth = Math.max(this.state.windowWidth * .8, 300);

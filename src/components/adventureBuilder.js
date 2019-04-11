@@ -57,7 +57,6 @@ export class AdventureBuilder extends React.Component {
           name="nodeSelect"
           options={options}
           onChange={e => this.changeCurrentNode(e.target.value)}>{options}</select>
-        <GraphContainer />
         <CurrentNodeBrancher />
         {nodeForm}
       </div>
