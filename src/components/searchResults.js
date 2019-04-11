@@ -28,7 +28,7 @@ export class SearchResults extends React.Component{
                 <div>
                     <label for="search-input">Password: </label>
                 <input 
-                    className=" input-field on-top search-input"
+                    className=" password-input-field"
                     onChange={e => this.handleChange(e)} type='password' placeholder='
                     Required'></input>
                     </div>
