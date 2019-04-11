@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import { LoginPage } from '../components/login';
 import { Link } from 'react-router-dom';
 import Login from "../components/login-form";
