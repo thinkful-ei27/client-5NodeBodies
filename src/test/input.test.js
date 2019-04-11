@@ -22,4 +22,14 @@ describe('<Input />', () => {
     }
       shallow(<Input meta = {metaProps} input={inputProps}/>)
   })
+  it('it renders without crashing if metaprops are all false', () => {
+    const metaProps = {
+      touched: true,
+      warning: "You don' goofed!",
+    };
+    const inputProps = {
+      name: 'Jordan is a Prince among Men'
+    };
+    shallow(<Input meta={metaProps} input={inputProps}/>)
+  });
 });

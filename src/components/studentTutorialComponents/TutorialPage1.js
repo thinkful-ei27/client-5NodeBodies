@@ -3,15 +3,13 @@ import { connect } from 'react-redux';
 import './Tutorial.css';
 import { studentEndTutorial, studentNextTutorial } from '../../actions/student.js'
 
-class TutorialPage1 extends React.Component {
+export class TutorialPage1 extends React.Component {
 
     handleNextClick() {
-        console.log('page1 handleNextClick ran');
         this.props.dispatch(studentNextTutorial(this.props.tutorialPageNumber));
     }
 
     handleQuitClick() {
-        console.log('page1 handleQuitClick ran');
         this.props.dispatch(studentEndTutorial());
     }
 
