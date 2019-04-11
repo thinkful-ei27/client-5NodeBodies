@@ -29,7 +29,7 @@ class AdventureForm extends React.Component {
     };
     return this.props.dispatch(createAdventure(adventure))
       .then(() => {
-          this.props.history.push(`/adventure/headnode`)
+        this.props.history.push(`/adventure/headnode`)
       })
   }
 
@@ -51,7 +51,8 @@ class AdventureForm extends React.Component {
       onboarding = <div className="narrowOnboarding arrowBox_Top onboarding">
         <span>This page will help you create the start of your LearnVenture. Use the form above to add a
         <strong> Title</strong>, an<strong> Introduction</strong> setting the stage, an <em>optional</em>
-          <strong> YouTube URL</strong> with relevant content, and an <em>optional</em>
+          <strong> YouTube URL</strong> with relevant content (<em>Only YouTube links work. Videos hosted
+            on other sites are not supported at this time</em>), and an <em>optional</em>
           <strong> Password</strong> for potential learners to access your LearnVenture. Next we'll build
           the first checkpoint where learners will have to make a decision on how they want to continue.</span>
         <button className="close-onboarding" onClick={() => this.toggleOnboardingClick()}>Close</button>
@@ -84,8 +85,8 @@ class AdventureForm extends React.Component {
             type="text" />
           <Field
             className="input-field"
-            label="Opening video URL(optional)"
-            ariaLabel="Opening video URL(optional)"
+            label="Opening YouTube URL(optional)"
+            ariaLabel="Opening YouTube URL(optional)"
             placeholder="https://www.youtube.com/embed/dHSQAEam2yc"
             name="startVideoURL"
             component={Input}

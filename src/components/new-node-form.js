@@ -75,7 +75,8 @@ class NewNodeForm extends React.Component {
         <span>This form is for creating the information of the new checkpoint which will stem from the Choice you selected above.
         If you'd like you can connect the selected Choice to an existing checkpoint by clicking <strong>Use Existing Checkpoint</strong>.
         Make this a standard checkpoint with a<strong> Title</strong>, <strong> Scenario Description</strong>, <em>optional</em>
-          <strong> YouTube URL</strong>, a<strong> Question</strong>, and <strong>Choices</strong>. Or you can set it as an ending.
+          <strong> YouTube URL</strong> (<em>Only YouTube links work. Videos hosted
+            on other sites are not supported at this time</em>), a<strong> Question</strong>, and <strong>Choices</strong>. Or you can set it as an ending.
           Endings only have an <em>optional</em> <strong> YouTube URL</strong> and an<strong> Ending Description</strong>. If a learner
           gets to an ending, their LearnVenture will be over and they will be prompted to start over if they'd like. Once create, you will
           see your new checkpoint in the graph above.</span>
@@ -184,11 +185,11 @@ class NewNodeForm extends React.Component {
           type="text"
           placeholder='optional'
 
-          // validate={[required, nonEmpty]} 
-          />
+        // validate={[required, nonEmpty]} 
+        />
         <Field
           className="videoURL"
-          label="Video URL (optional)"
+          label="YouTube URL (optional)"
           placeholder="http://(videoURL)"
           name="videoURL"
           component={Input}
@@ -210,7 +211,7 @@ const mapStateToProps = state => {
     parentId: state.node.currentNode.id,
     isEnding: state.node.isEnding,
     onboarding: state.auth.onboarding,
-    error:state.node.nodeError
+    error: state.node.nodeError
   };
 };
 
