@@ -237,12 +237,40 @@ h2 {
   font-size: 18px;
 }
 
+.password-input-field {
+  display: block;
+  border: 2px solid #b4cedd;
+  border-radius: 5px;
+  height: 40px;
+  min-width: 60px;
+  max-width:400px;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+.hidden {
+  visibility: hidden;
+}
+.search-input-field {
+  display: block;
+  border: 2px solid #b4cedd;
+  border-radius: 5px;
+  height: 40px;
+  width: 300px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
 .input-label{
 position:absolute;
 left : 0;
 top: -20px;
 }
 
+.input-field-label {
+  position: relative;
+  top: 28px;
+}
 
 .ui.checkbox {
 height: 20px;

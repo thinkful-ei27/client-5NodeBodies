@@ -25,12 +25,12 @@ export class SearchResults extends React.Component{
             let pass;
             if(adventure.hasPassword){
                 pass = <input 
-                    className=" input-field on-top search-input"
+                    className="password-input-field search-input"
                     onChange={e => this.handleChange(e)} type='password' placeholder='Password Required'></input>
             }
             return (<li
                 className="adventure-list-item col-3 with-border" 
-                key={adventure.id}><p>title: {adventure.title}</p>
+                key={adventure.id}><p>Title: <strong>{adventure.title}</strong></p>
                 {pass}
                 <button 
                     className="adventure-link-button below" 
