@@ -74,9 +74,8 @@ class EditAdventureForm extends React.Component {
     }
     return (<div>
       <div className="form-field">
-        <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
           <h2>Edit LearnVenture Information</h2>
-
+        <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
           {error}
           <div className="form-questions">
 

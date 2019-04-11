@@ -64,8 +64,10 @@ export class CreateHeadNode extends React.Component {
 
     return (
       <div>
-        <h1>Please create a starting Checkpoint for your LearnVenture</h1>
-        <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+        <div className='form-field'>
+        <h2>Please create a LearnVenture Starting Checkpoint</h2>
+        <form
+          onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
           <div className="form-questions">
 
             <Field
@@ -128,10 +130,11 @@ export class CreateHeadNode extends React.Component {
               type="text"
             />
           </div>
-            {error}
-            <button>New Checkpoint!</button>
-            {onboarding}
+          {error}
+          <button>New Checkpoint!</button>
+          {onboarding}
         </form>
+      </div>
       </div>
     )
   }

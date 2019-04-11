@@ -62,8 +62,8 @@ class AdventureForm extends React.Component {
     return (<div>
       {/* <Sidebar /> */}
       <div className="form-field">
-        <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
           <h2>Create a new LearnVenture!</h2>
+        <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
           {error}
           <Field
             className="input-field"

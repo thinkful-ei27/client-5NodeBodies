@@ -210,13 +210,14 @@ class UpdateNodeForm extends React.Component {
     // render the update node form
     else
       return (
-        <div className='update-form-container'>
-          <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+        <div className='form-field'>
             <h2>This Checkpoint: {
               this.props.currentNode.title ?
                 this.props.currentNode.title :
                 this.props.currentNode.question}</h2>
             <h4>Choice that points to this Checkpoint: {parentAnswer}</h4>
+          <form 
+          onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
             <Field
               className="title input-field"
               label="Checkpoint Title"
