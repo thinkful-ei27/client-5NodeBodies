@@ -110,7 +110,7 @@ export class GraphContainer extends React.Component {
                 <span>This is a graph of all the checkpoints and pathways of your LearnVenture. Clicking on a checkpoint
                 will set it to the current Checkpoint for the tools below which you can use to build new pathways, connect
                 checkpoints and expand your LearnVenture. You can also change the Current Checkpoint with the dropdown menu above.
-                The Orange Triangle is the start of your Learnventure and the Blue Squares are endpoints. Feel free to drag
+                The Orange Triangle is the start of your LearnVenture and the Blue Squares are endpoints. Feel free to drag
                 checkpoints around so you can better see how things connect.</span>
                 <button className="close-onboarding" onClick={() => this.toggleOnboardingClick()}>Close</button>
             </div>
