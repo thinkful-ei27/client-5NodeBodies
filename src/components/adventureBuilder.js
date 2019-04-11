@@ -43,8 +43,8 @@ export class AdventureBuilder extends React.Component {
       return <div className="loading">loading...</div>;
     }
     // needs 'key' prop below
-    const options = this.props.currentAdventure.nodes.map((node) =>
-      <option label={node.title} value={node.id}>{node.title ? node.title : node.question}</option>);
+    const options = this.props.currentAdventure.nodes.map((node, index) =>
+      <option key={index} label={node.title} value={node.id}>{node.title ? node.title : node.question}</option>);
 
     return (
       <div className='adventure-builder'>
