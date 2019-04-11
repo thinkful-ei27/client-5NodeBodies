@@ -33,6 +33,10 @@
   margin-bottom: 10px;
   font-size: 18px;
 }
+.answer-button {
+  width: 470px;
+}
+
 .app-title {
   color: #51646b;
   display: block;
@@ -305,10 +309,6 @@ margin: 15px;
 }
 
 
-#student-question {
-  font-size: 26px;
-}
-
 .help-button{
   display: inline-block;
   background: #9D601B;
@@ -404,6 +404,25 @@ margin: 15px;
 .search-results {
   justify-content: center;
   margin: 0 auto;
+}
+
+#description-question-box {
+  /* background-color:#da8624; */
+  margin:auto;
+  max-width: 70vw; /*vw is veiwport width, this box will be semi repsonsive.*/
+  min-width: 470px;
+  border: 2px solid #b4cedd;
+  border-radius: 5px;
+}
+#student-content {
+  /* color: white; */
+  font-size: 22px;
+  min-width: 470px; 
+}
+#student-question {
+  /* color: white; */
+  font-size: 29px;
+  min-width: 470px;
 }
 
 .teacher-button {
