@@ -35,7 +35,7 @@ export class Dashboard extends React.Component {
             to={{
               pathname: `/adventure/${adventure.id}`,
             }}>{adventure.title}</Link>
-          <p>{adventure.count ? `This Checkpoint has been visited ${adventure.count} times` : ""} </p>
+          <p>{adventure.count ? `This LearnVenture has been visited ${adventure.count} times` : ""} </p>
         </li>
       ))
     }
