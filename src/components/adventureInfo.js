@@ -58,7 +58,8 @@ export class AdventureInfo extends React.Component {
     let onboarding;
     if (this.props.onboarding) {
       onboarding = <div className="wideOnboarding arrowBox_Top onboarding">
-        <span>This page contains the basic info for you LearnVenture. You can use the buttons at the bottom of the info
+        <span>This page contains the basic info for you LearnVenture. Use the <strong>Adventure Code</strong> to share this LearnVenture.
+        Potential Learners can use it to find this LearnVenture in the Student Portal. You can use the buttons at the bottom of the info
         section to go to the <strong>LearnVenture Builder</strong> to begin or continue building the checkpoints and pathways,
         <strong>Edit LearnVenture Starting Info</strong> to change the information you see here, <strong>Delete LearnVenture</strong>
           to permanently delete this LearnVenture, or <strong>Show Analytics</strong> to view info about how learners have used this
@@ -151,7 +152,7 @@ export class AdventureInfo extends React.Component {
               >Edit LearnVenture Info
               </button>
 
-              <button 
+              <button
                 className='on-left on-right'
                 type='button'
                 onClick={() => this.displayAdventureDeleting()}
