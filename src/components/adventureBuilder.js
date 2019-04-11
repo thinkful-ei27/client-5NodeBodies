@@ -12,7 +12,6 @@ import ExistingNodeSelector from './existingNodeSelector';
 export class AdventureBuilder extends React.Component {
 
   componentDidMount() {
-    console.log('DID')
     const { id } = this.props.match.params;
     this.props.dispatch(getAdventureById(id))
     if (this.props.showUpdate === true) {
@@ -22,7 +21,6 @@ export class AdventureBuilder extends React.Component {
 
   componentWillMount() {
     if (!this.props.currentAdventure.head) {
-      console.log('if caught')
       this.props.history.push('/adventure/headnode')
     }
   }

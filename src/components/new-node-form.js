@@ -56,9 +56,6 @@ export class NewNodeForm extends React.Component {
       title,
     };
     return this.props.dispatch(createNode(newNode))
-      .then(_res => {
-        console.log(_res)
-      })
   }
   render() {
     let error;
