@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import requiresLogin from './requires-login';
+import RequiresLogin from './requires-login';
 import { Link } from 'react-router-dom';
 import { getAllAdventures } from '../actions/createAdventure'
 import { toggleOnboarding } from '../actions/auth'
@@ -84,4 +84,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default requiresLogin()(connect(mapStateToProps)(Dashboard));
+export default RequiresLogin()(connect(mapStateToProps)(Dashboard));

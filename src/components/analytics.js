@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import requiresLogin from './requires-login';
+import RequiresLogin from './requires-login';
 
 export class Analytics extends React.Component {
 
@@ -48,4 +48,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default requiresLogin()(connect(mapStateToProps)(Analytics));
+export default RequiresLogin()(connect(mapStateToProps)(Analytics));

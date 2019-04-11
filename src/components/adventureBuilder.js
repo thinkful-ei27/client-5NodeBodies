@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import requiresLogin from './requires-login';
+import RequiresLogin from './requires-login';
 import NewNodeForm from './new-node-form';
 import CurrentNodeBrancher from './current-node-brancher';
 import { getAdventureById } from '../actions/createAdventure'
@@ -46,10 +46,12 @@ export class AdventureBuilder extends React.Component {
     }
 // needs 'key' prop below
     const options = this.props.currentAdventure.nodes.map((node) =>
-      <option label={node.title} value={node.id}>{node.title}</option>);
+      <option label={node.title} value={node.id}>{node.title? node.title: node.question}</option>);
 
     return (
-      <div>
+      <div className='adventure-builder'>
+        <GraphContainer />
+
         <select className="node-select"
           label="Current Question"
           name="nodeSelect"
@@ -78,4 +80,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default requiresLogin()(connect(mapStateToProps)(AdventureBuilder));
+export default RequiresLogin()(connect(mapStateToProps)(AdventureBuilder));
