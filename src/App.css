@@ -384,6 +384,11 @@ margin: 15px;
   min-height:150px;
 }
 
+.tutorial-button {
+  background: #da8624;
+  border: #da8624;
+}
+
 .ui.checkbox{
 height: 20px;
 margin: 15px;
