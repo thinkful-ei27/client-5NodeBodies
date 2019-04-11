@@ -136,7 +136,7 @@ code {
 .dashboard-button {
   background-color: #da8624;
   border-color: #da8624;
-  width: 150px;
+  width: 160px;
 }
 
 .delete-button{
@@ -278,7 +278,7 @@ margin: 15px;
 
 .logout-button {
   display: inline-block;
-  width: 75px;
+  width: 80px;
 }
 
 .mobile-only {
@@ -373,7 +373,7 @@ ul {
 }
 
 .wide-button {
-  width: 105px;
+  width: 110px;
 }
 
 .wideOnboarding {
@@ -400,10 +400,19 @@ ul {
     align-content: center;
   }
 
+  .col-4 {
+    align-content: center;
+    width: 80%;
+  }
+
   .mobile-only {
     display: inline-block;
     margin-left: 5px;
   }
+}
+
+.not-mobile {
+  display: none;
 }
 
 @media only screen and (min-width: 640px) {
@@ -417,6 +426,7 @@ ul {
 
   /* 4 columns */
   .col-4 {
+    align-content: center;
   }
 
   /* 6 columns */
@@ -437,6 +447,9 @@ ul {
     width:400px;
   }
 
+  .not-mobile {
+    display: block;
+  }
 }
   
 @media only screen and (min-width: 960px) {
@@ -449,11 +462,14 @@ ul {
 
   /* 4 columns */
   .col-4 {
+    display: inline-block;
+    width: 50%;
+    max-width: 400px;
   }
 
   /* 6 columns */
   .col-6 {
-
+    
   }
 
   /* 12 columns */
@@ -470,5 +486,9 @@ ul {
 
   .not-full-screen {
     display: none;
+  }
+
+  .not-mobile {
+    display: inline-block;
   }
 }

@@ -1,0 +1,40 @@
+.example-image {
+  max-width: 100%;
+  max-height: 400px;
+  margin-bottom: 20px;
+}
+
+figcaption {
+  font-style: oblique;
+  font-size: 90%;
+}
+
+h3 {
+  font-size: 95%;
+}
+
+.home-div, .home-image {
+  justify-content: center;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.home-div-text {
+  width: 90%;
+}
+
+.home-page {
+  max-width: 80%;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.home-page-box, .home-image-box {
+  justify-content: center;
+}
+
+.banner, .blurb { 
+  width: 90%;
+  max-width: 800%;
+  margin: 0 auto 10px;
+}
