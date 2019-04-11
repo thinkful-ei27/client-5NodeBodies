@@ -34,7 +34,7 @@ export class AdventureBuilder extends React.Component {
     const adventure = this.props.currentAdventure
     let nodeForm;
     if (this.props.parentInt) {
-      nodeForm = <NewNodeForm />
+      nodeForm = <NewNodeForm autoFocus />
     }
     if (this.props.parentInt && this.props.useExistingNode) {
       nodeForm = <ExistingNodeSelector />;
@@ -43,21 +43,20 @@ export class AdventureBuilder extends React.Component {
       return <div className="loading">loading...</div>;
     }
     // needs 'key' prop below
-    const options = this.props.currentAdventure.nodes.map((node) =>
-      <option label={node.title} value={node.id}>{node.title ? node.title : node.question}</option>);
+    const options = this.props.currentAdventure.nodes.map((node, index) =>
+      <option key={index} label={node.title} value={node.id}>{node.title ? node.title : node.question}</option>);
 
     return (
       <div className='adventure-builder'>
         <GraphContainer />
-
         <select className="node-select"
           label="Current Question"
           name="nodeSelect"
           options={options}
           onChange={e => this.changeCurrentNode(e.target.value)}>{options}
         </select>
-        <CurrentNodeBrancher />
         {nodeForm}
+        <CurrentNodeBrancher />
       </div>
     );
   }
