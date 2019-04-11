@@ -1,0 +1,36 @@
+0ea697d7710d3657a4349283d6cfd7d0
+"use strict";
+
+var _interopRequireDefault = require("/home/flightlessbird/Thinkful/projects/CYOA/client-5NodeBodies/node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+var _react = _interopRequireDefault(require("react"));
+
+var _enzyme = require("enzyme");
+
+var _registration = _interopRequireDefault(require("../components/registration"));
+
+var _jsxFileName = "/home/flightlessbird/Thinkful/projects/CYOA/client-5NodeBodies/src/test/registration.test.js";
+describe('<RegisterForm />', () => {
+  it('renders without crashing', () => {
+    (0, _enzyme.shallow)(_react.default.createElement(_registration.default, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 8
+      },
+      __self: void 0
+    }));
+  });
+  it('should have one form, five fields, and a button', () => {
+    const wrapper = (0, _enzyme.shallow)(_react.default.createElement(_registration.default, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 11
+      },
+      __self: void 0
+    }));
+    expect(wrapper.find('Form')).to.have.lengthOf(1);
+    expect(wrapper.find('Field')).to.have.lengthOf(5);
+    expect(wrapper.find('button')).to.have.lengthOf(1);
+  });
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlZ2lzdHJhdGlvbi50ZXN0LmpzIl0sIm5hbWVzIjpbImRlc2NyaWJlIiwiaXQiLCJ3cmFwcGVyIiwiZXhwZWN0IiwiZmluZCIsInRvIiwiaGF2ZSIsImxlbmd0aE9mIl0sIm1hcHBpbmdzIjoiOzs7O0FBQUE7O0FBQ0E7O0FBQ0E7OztBQUdBQSxRQUFRLENBQUMsa0JBQUQsRUFBcUIsTUFBTTtBQUNqQ0MsRUFBQUEsRUFBRSxDQUFDLDBCQUFELEVBQTZCLE1BQU07QUFDbkMseUJBQVEsNkJBQUMscUJBQUQ7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsTUFBUjtBQUNELEdBRkMsQ0FBRjtBQUdBQSxFQUFBQSxFQUFFLENBQUMsaURBQUQsRUFBb0QsTUFBTTtBQUMxRCxVQUFNQyxPQUFPLEdBQUcscUJBQVEsNkJBQUMscUJBQUQ7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsTUFBUixDQUFoQjtBQUNBQyxJQUFBQSxNQUFNLENBQUNELE9BQU8sQ0FBQ0UsSUFBUixDQUFhLE1BQWIsQ0FBRCxDQUFOLENBQTZCQyxFQUE3QixDQUFnQ0MsSUFBaEMsQ0FBcUNDLFFBQXJDLENBQThDLENBQTlDO0FBQ0FKLElBQUFBLE1BQU0sQ0FBQ0QsT0FBTyxDQUFDRSxJQUFSLENBQWEsT0FBYixDQUFELENBQU4sQ0FBOEJDLEVBQTlCLENBQWlDQyxJQUFqQyxDQUFzQ0MsUUFBdEMsQ0FBK0MsQ0FBL0M7QUFDQUosSUFBQUEsTUFBTSxDQUFDRCxPQUFPLENBQUNFLElBQVIsQ0FBYSxRQUFiLENBQUQsQ0FBTixDQUErQkMsRUFBL0IsQ0FBa0NDLElBQWxDLENBQXVDQyxRQUF2QyxDQUFnRCxDQUFoRDtBQUNELEdBTEMsQ0FBRjtBQU1ELENBVk8sQ0FBUiIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCc7XG5pbXBvcnQgeyBzaGFsbG93IH0gZnJvbSAnZW56eW1lJztcbmltcG9ydCBSZWdpc3RlckZvcm0gZnJvbSAnLi4vY29tcG9uZW50cy9yZWdpc3RyYXRpb24nO1xuXG5cbmRlc2NyaWJlKCc8UmVnaXN0ZXJGb3JtIC8+JywgKCkgPT4ge1xuICBpdCgncmVuZGVycyB3aXRob3V0IGNyYXNoaW5nJywgKCkgPT4ge1xuICAgIHNoYWxsb3coPFJlZ2lzdGVyRm9ybSAvPik7XG4gIH0pO1xuICBpdCgnc2hvdWxkIGhhdmUgb25lIGZvcm0sIGZpdmUgZmllbGRzLCBhbmQgYSBidXR0b24nLCAoKSA9PiB7XG4gICAgY29uc3Qgd3JhcHBlciA9IHNoYWxsb3coPFJlZ2lzdGVyRm9ybSAvPik7XG4gICAgZXhwZWN0KHdyYXBwZXIuZmluZCgnRm9ybScpKS50by5oYXZlLmxlbmd0aE9mKDEpO1xuICAgIGV4cGVjdCh3cmFwcGVyLmZpbmQoJ0ZpZWxkJykpLnRvLmhhdmUubGVuZ3RoT2YoNSk7XG4gICAgZXhwZWN0KHdyYXBwZXIuZmluZCgnYnV0dG9uJykpLnRvLmhhdmUubGVuZ3RoT2YoMSk7XG4gIH0pXG59KTsiXX0=

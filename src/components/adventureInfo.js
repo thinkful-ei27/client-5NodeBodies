@@ -58,7 +58,8 @@ export class AdventureInfo extends React.Component {
     let onboarding;
     if (this.props.onboarding) {
       onboarding = <div className="wideOnboarding arrowBox_Top onboarding">
-        <span>This page contains the basic info for you LearnVenture. You can use the buttons at the bottom of the info
+        <span>This page contains the basic info for you LearnVenture. Use the <strong>Adventure Code</strong> to share this LearnVenture.
+        Potential Learners can use it to find this LearnVenture in the Student Portal. You can use the buttons at the bottom of the info
         section to go to the <strong>LearnVenture Builder</strong> to begin or continue building the checkpoints and pathways,
         <strong>Edit LearnVenture Starting Info</strong> to change the information you see here, <strong>Delete LearnVenture</strong>
           to permanently delete this LearnVenture, or <strong>Show Analytics</strong> to view info about how learners have used this
@@ -77,13 +78,13 @@ export class AdventureInfo extends React.Component {
           <h2>All data will be lost. This cannot be undone</h2>
           <div className="buttons">
             <button
-              className="delete-it"
+              className="delete-button on-left delete-it"
               type='button'
               onClick={() => this.onClickDelete()}
             >Delete It
             </button>
             <button
-              className="keep-it"
+              className="on-right keep-it"
               type='button'
               onClick={() => this.displayAdventureDeleting()}
             >Keep It
@@ -93,8 +94,7 @@ export class AdventureInfo extends React.Component {
       )
     } else if (adventure && adventure.startVideoURL && !this.props.isEditing) {
       if (adventure.hasPassword) {
-        console.log('has pass')
-        password = <span>This adventure is password protected</span>
+        password = <span>This LearnVenture is password protected</span>
       }
       let videoPlay = adventure.startVideoURL;
       let nodeVideo = (<iframe title='node-video' width="420" height="315" src={videoPlay}></iframe>)
@@ -111,12 +111,12 @@ export class AdventureInfo extends React.Component {
             <button
               type='button'
               onClick={() => this.toggleAdventureEditForm()}
-            >Edit adventure Starting Info
+            >Edit LearnVenture Starting Info
               </button>
             <button className="delete-it"
               type='button'
               onClick={() => this.displayAdventureDeleting()}
-            >Delete adventure
+            >Delete this LearnVenture
               </button>
             <button className="analyze-it"
               type='button'
@@ -149,14 +149,14 @@ export class AdventureInfo extends React.Component {
 
                 type='button'
                 onClick={() => this.toggleAdventureEditForm()}
-              >Edit adventure  Info
+              >Edit LearnVenture Info
               </button>
 
-              <button 
+              <button
                 className='on-left on-right'
                 type='button'
                 onClick={() => this.displayAdventureDeleting()}
-              >Delete adventure
+              >Delete LearnVenture
               </button>
               <button
                 className='on-right'

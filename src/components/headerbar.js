@@ -30,28 +30,31 @@ export class Headerbar extends React.Component {
       >Home</button>
     </Link>;
     if (this.props.loggedIn) {
-      navButtons = <div className="nav-buttons col-6">
+      navButtons = <nav 
+        role="navigation"
+        className="nav-buttons col-6">
         {!pathCheck && homeButton}
         <Link to="/dashboard">
           <button
-            className="home-button on-left on-right wide-button"
+            className="dashboard-button on-left on-right"
             type="button"
           >Dashboard</button>
         </Link>
         <button
-          className="logout-button on-right on-left"
+          className="logout-button on-right on-left wide-button"
           type="button"
           onClick={() => {
             this.logOut()
           }}>Log Out</button>
-      </div>
+      </nav>
     } else {
-      navButtons = <div className="nav-buttons col-6">
+      navButtons = <nav
+        role="navigation" className="nav-buttons col-6">
         {!pathCheck && homeButton}
-      </div>
+      </nav>
     }
     return (
-      <header className="header-bar row">
+      <header role="banner" className="header-bar">
         <h1 className="app-title col-6"
         >LearnVenture</h1>
         {navButtons}

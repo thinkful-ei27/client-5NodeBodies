@@ -3,15 +3,13 @@ import { connect } from 'react-redux';
 import './Tutorial.css';
 import { studentEndTutorial, studentNextTutorial } from '../../actions/student.js'
 
-class TutorialPage1 extends React.Component {
+export class TutorialPage1 extends React.Component {
 
     handleNextClick() {
-        console.log('page1 handleNextClick ran');
         this.props.dispatch(studentNextTutorial(this.props.tutorialPageNumber));
     }
 
     handleQuitClick() {
-        console.log('page1 handleQuitClick ran');
         this.props.dispatch(studentEndTutorial());
     }
 
@@ -19,12 +17,12 @@ class TutorialPage1 extends React.Component {
         const imgSrc1 = require('../../images/tutorialImage1.png');
         return (
             <div className="tutorialBox">
-                <img src={imgSrc1} alt="Student Landing Page containing an LearnVenture ID input and password"></img>
+                <img src={imgSrc1} alt="Student Landing Page containing a LearnVenture ID input and password"></img>
                 <p>If a teacher gave you a LearnVenture ID, please put it in the first white input box (with the numbers and letters)</p>
                 <p>If a teacher gave you a password, you may put it in the second white input box below the first one</p>
                 <p>Then click "Start LearnVenture!" to do just that</p>
-                <button onClick={e => { this.handleNextClick() }}>Next Tutorial Page</button>
-                <button onClick={e => { this.handleQuitClick() }}>Quit Tutorial</button>
+                <button onClick={e => { this.handleNextClick() }}>Next</button>
+                <button onClick={e => { this.handleQuitClick() }}>Close</button>
             </div>
         )
     }

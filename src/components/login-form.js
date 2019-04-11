@@ -4,7 +4,7 @@ import Input from "./input";
 import { loginUser } from '../actions/auth';
 import { required, nonEmpty } from "../utils/validators";
 
-class LoginForm extends React.Component {
+export class LoginForm extends React.Component {
 
   onSubmit(values) {
     let { password, username } = values;
@@ -24,7 +24,7 @@ class LoginForm extends React.Component {
       <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
         {error}
         <Field
-          placeholder="Username"
+        label="Username"
           className="username input-field on-top"
           name="username"
           component={Input}
@@ -32,7 +32,7 @@ class LoginForm extends React.Component {
           validate={[required, nonEmpty]}
         />
         <Field
-          placeholder="Password"
+          label="Password"
           className="password input-field below"
           name="password"
           component={Input}

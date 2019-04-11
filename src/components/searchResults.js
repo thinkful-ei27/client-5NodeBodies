@@ -4,17 +4,13 @@ import { getStudentAdventure } from '../actions/student.js'
 
 
 let passwordVal;
-class SearchResults extends React.Component{
+export class SearchResults extends React.Component{
 
 
     handleClick(id){
-        console.log(id.target.value);
-        console.log(id);
-        console.log(passwordVal);
         this.props.dispatch(getStudentAdventure(id.target.value, passwordVal));
     }
     handleChange(e){
-        console.log(e.target.value);
         passwordVal = e.target.value;
     }
 
@@ -24,13 +20,17 @@ class SearchResults extends React.Component{
             adventures = this.props.results.map((adventure) => {
             let pass;
             if(adventure.hasPassword){
-                pass = <input 
-                    className=" input-field on-top search-input"
-                    onChange={e => this.handleChange(e)} type='password' placeholder='Password Required'></input>
+                pass =
+                <div>
+                <input 
+                    className=" password-input-field"
+                    onChange={e => this.handleChange(e)} type='password' aria-label='password required' placeholder='
+                    password'></input>
+                    </div>
             }
             return (<li
                 className="adventure-list-item col-3 with-border" 
-                key={adventure.id}><p>title: {adventure.title}</p>
+                key={adventure.id}><p>Title: <strong>{adventure.title}</strong></p>
                 {pass}
                 <button 
                     className="adventure-link-button below" 
@@ -40,8 +40,8 @@ class SearchResults extends React.Component{
 
         }
         return(
-            <div className="searchResults row">
-                <ul>{adventures}</ul>
+            <div className="search-results row">
+                <ul className="search-results">{adventures}</ul>
             </div>
         )
     }

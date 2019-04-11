@@ -2,10 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Graph } from 'react-d3-graph';
 import { setCurrentNode } from '../actions/nodes'
-import { reRenderGraph } from '../actions/createAdventure'
 import { toggleOnboarding } from '../actions/auth'
 
-class GraphContainer extends React.Component {
+export class GraphContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -16,7 +15,6 @@ class GraphContainer extends React.Component {
     onClickNode(nodeId) {
         let nodeArr = this.props.nodez.filter((node) => node.id === nodeId)
         this.props.dispatch(setCurrentNode(nodeArr[0]))
-        console.log("reRender is: ", this.props.reRender)
         // this.props.dispatch(reRenderGraph())
     }
 
@@ -37,7 +35,7 @@ class GraphContainer extends React.Component {
         };
         for (let i = 0; i < this.props.nodez.length; i++) {
             if (i === 0) {
-                chartData.nodes.push({ id: this.props.nodez[i].id, title: this.props.nodez[i].title ? this.props.nodez[i].title : this.props.nodez[i].question, color: '#da8624', symbolType: "triangle" })
+                chartData.nodes.push({ id: this.props.nodez[i].id, title: this.props.nodez[i].title ? this.props.nodez[i].title : this.props.nodez[i].question, color: '#9D601B', symbolType: "triangle" })
                 if (this.props.nodez[i].pointerA) {
                     chartData.links.push({ source: this.props.nodez[i].id, target: this.props.nodez[i].pointerA })
                 }
@@ -66,15 +64,16 @@ class GraphContainer extends React.Component {
                 }
             }
         }
-        chartData.nodes[0].x = this.state.windowWidth / 2;
-        chartData.nodes[0].y = this.state.windowHeight / 2;
+        chartData.nodes[0].x = this.state.windowWidth / 2.55;
+        chartData.nodes[0].y = this.state.windowHeight / 3;
         return chartData;
     }
 
     resizeGraph() {
         let cyStyle = {
             margin: 'auto',
-            border: '1px solid lightgreen'
+            border: '2.5px solid #9D601B',
+            "box-shadow": "5px 5px 8px 10px #51646b"
         };
         cyStyle.maxHeight = Math.max(this.state.windowHeight * .5, 500);
         cyStyle.maxWidth = Math.max(this.state.windowWidth * .8, 300);
@@ -111,7 +110,7 @@ class GraphContainer extends React.Component {
                 <span>This is a graph of all the checkpoints and pathways of your LearnVenture. Clicking on a checkpoint
                 will set it to the current Checkpoint for the tools below which you can use to build new pathways, connect
                 checkpoints and expand your LearnVenture. You can also change the Current Checkpoint with the dropdown menu above.
-                The Orange Triangle is the start of your Learnventure and the Blue Squares are endpoints. Feel free to drag
+                The Orange Triangle is the start of your LearnVenture and the Blue Squares are endpoints. Feel free to drag
                 checkpoints around so you can better see how things connect.</span>
                 <button className="close-onboarding" onClick={() => this.toggleOnboardingClick()}>Close</button>
             </div>

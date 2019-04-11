@@ -16,12 +16,26 @@
 
 .adventure-link-button {
   display: inline-block;
-  background: #da8624;
-  border-color: #da8624;
+  background: #9D601B;
+  border-color: #9D601B;
 }
 
 .adventure-list-item {
-  padding-top: 10px;
+  padding-top: 10px 0;
+  height: auto
+}
+
+.adventure-password, .adventure-input, .search-input {
+  display: block;
+  border: 2px solid #b4cedd;
+  border-radius: 5px;
+  height: 40px;
+  width:250px;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+.answer-button {
+  width: 300px;
 }
 
 .app-title {
@@ -34,8 +48,8 @@
 
 .arrowBox_Top {
   position: relative;
-	background: #da8624;
-	border: 4px solid #da8624;
+	background: #9D601B;
+	border: 4px solid #9D601B;
 }
 
 .arrowBox_Top:after {
@@ -48,7 +62,7 @@
 	position: absolute;
 	pointer-events: none;
 	border-color: rgba(136, 183, 213, 0);
-	border-bottom-color: #da8624;
+	border-bottom-color: #9D601B;
 	border-width: 30px;
 	margin-left: -30px;
 }
@@ -134,13 +148,28 @@ code {
 }
 
 .dashboard-button {
-  background-color: #da8624;
-  border-color: #da8624;
-  width: 150px;
+  display: inline-block;
+  background-color: #9D601B;
+  border-color: #9D601B;
+  width: 130px;
+}
+
+.delete-button{
+  background-color: red;
+  border-color:  red;
+}
+.delete-button:hover{
+  color:red;
+  box-shadow: 0 12px 16px 0 rgba(255, 0, 0, 0.604), 0 17px 50px 0 rgba(255, 0, 0, 0.481);
+
+}
+
+.extra-below {
+  padding-bottom: 10px;
 }
 
 .footer {
-  border-top: 2px solid #da8624;
+  border-top: 2px solid #9D601B;
   font-size: 80%;
   width: 100%;
   min-width: 100%;
@@ -153,9 +182,10 @@ code {
 }
 
 .form-field {
+  background-color: #b4cedd;
   width: 75%;
   max-width: 600px;
-  border: 2px solid white;
+  border: 2px solid #51646b;
   border-radius: 5px;
   padding: 10px 0;
   margin-left: auto;
@@ -170,7 +200,7 @@ code {
 
 .form-input{
   position: relative;
-  width: 400px;
+  width: 250px;
 }
 
 .full-screen-only {
@@ -182,7 +212,7 @@ code {
 }
 
 h2 { 
-  color: #da8624;
+  color: #9D601B;
 }
 
 .header-bar {
@@ -193,7 +223,7 @@ h2 {
   min-width: 100vw;
   padding: 0 20px;
   max-width: 80%;
-  margin: 20px auto;
+  margin: 20px auto 40px;
 }
 
 .help-button {
@@ -204,13 +234,13 @@ h2 {
 
 .home-button {
   display: inline-block;
-  background: #da8624;
-  border-color: #da8624;
+  background: #9D601B;
+  border-color: #9D601B;
   width: 75px;
 }
 
 .home-button:hover {
-  background: #da8624;
+  background: #9D601B;
   widows: 67px;
   color: white;
 }
@@ -220,8 +250,29 @@ h2 {
   border: 2px solid #b4cedd;
   border-radius: 5px;
   height: 40px;
-  width:400px;
+  width:250px;
   margin-top: 25px;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.password-input-field {
+  display: block;
+  border: 2px solid #b4cedd;
+  border-radius: 5px;
+  height: 40px;
+  width:80%;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.search-input-field {
+  display: block;
+  border: 2px solid #b4cedd;
+  border-radius: 5px;
+  height: 40px;
+  width: 300px;
+  margin-top: 30px;
   margin-bottom: 10px;
   font-size: 18px;
 }
@@ -232,6 +283,10 @@ left : 0;
 top: -20px;
 }
 
+.input-field-label {
+  position: relative;
+  top: 28px;
+}
 
 .ui.checkbox {
 height: 20px;
@@ -239,26 +294,27 @@ margin: 15px;
 
 }
 
+.label {
+  text-justify: left;
+  justify-content: left;
+}
+
 .login-button {
   display: inline-block;
-  background: #da8624;
-  border-color: #da8624;
+  background: #9D601B;
+  border-color: #9D601B;
   width: 75px;
 }
 
 
-#student-question {
-  font-size: 26px;
-}
-
 .help-button{
   display: inline-block;
-  background: #da8624;
-  border-color: #da8624;
+  background: #9D601B;
+  border-color: #9D601B;
 }
 
 .login-button:hover, .adventure-link-button:hover, .help-button:hover {
-  background: #da8624;
+  background: #9D601B;
   color: white;
 }
 
@@ -268,7 +324,7 @@ margin: 15px;
 
 .logout-button {
   display: inline-block;
-  width: 75px;
+  width: 80px;
 }
 
 .mobile-only {
@@ -292,9 +348,7 @@ margin: 15px;
 
 .node-select {
   display: block;
-  margin: 10px ;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 35px auto 10px auto;
   height: 40px;
   font-size: 18px;
   width: 300px;
@@ -310,6 +364,10 @@ margin: 15px;
 
 .on-top {
   margin-bottom: 5px;
+}
+
+.onboarding {
+  color: white;
 }
 
 ::placeholder {
@@ -334,9 +392,42 @@ margin: 15px;
   clear: both;
 }
 
+.search-element {
+  width:90%;
+  margin: 10px auto;
+  padding: 10px;
+}
+
 .search-input{
   width: 80%;
   /* display:block; */
+}
+
+.search-results {
+  justify-content: center;
+  margin: 0 auto;
+}
+
+#description-question-box {
+  /* background-color:#da8624; */
+  margin:auto;
+  max-width: 70vw; /*vw is veiwport width, this box will be semi repsonsive.*/
+  min-width: 300px;
+  border: 2px solid #b4cedd;
+  border-radius: 5px;
+}
+#student-content {
+  /* color: white; */
+  font-size: 22px;
+  min-width: 300px; 
+  padding:5px;
+
+}
+#student-question {
+  /* color: white; */
+  font-size: 29px;
+  min-width: 300px;
+  padding:5px;
 }
 
 .teacher-button {
@@ -345,6 +436,11 @@ margin: 15px;
 
 .text-area{
   min-height:150px;
+}
+
+.tutorial-button {
+  background: #9D601B;
+  border: #9D601B;
 }
 
 .ui.checkbox{
@@ -357,8 +453,13 @@ ul {
   list-style-type: none;
 }
 
+.update-button{
+  background-color: #9D601B;
+  border: 1px solid #9D601B
+}
+
 .wide-button {
-  width: 105px;
+  width: 110px;
 }
 
 .wideOnboarding {
@@ -381,14 +482,26 @@ ul {
   .col-3 {
     float: left;
     width: 50%;
-    height: 150px;
+    height: 180px;
     align-content: center;
+  }
+
+  .col-4 {
+    align-content: center;
+    width: 80%;
   }
 
   .mobile-only {
     display: inline-block;
     margin-left: 5px;
   }
+  .answer-button {
+    width: 470px;
+  }
+}
+
+.not-mobile {
+  display: none;
 }
 
 @media only screen and (min-width: 640px) {
@@ -396,54 +509,61 @@ ul {
   .col-3 {
     float: left;
     width: 30%;
-    height: 150px;
+    height: 180px;
     align-content: center;
   }
 
   /* 4 columns */
   .col-4 {
+    align-content: center;
   }
-
-  /* 6 columns */
+/* 
+  6 columns
   .col-6 {
 
   }
 
-  /* 12 columns */
+  12 columns
   .col-12 {
-  }
+  } */
 
   .form-input{
     position: relative;
-    width: 250px;
+    width: 400px;
   }
 
   .input-field{
-    width:250px;
+    width:400px;
   }
 
+  .not-mobile {
+    display: block;
+  }
 }
   
 @media only screen and (min-width: 960px) {
 
   .col-3 {
-    float: left;
+    display: inline-block;
     width: 25%;
     display: block;
   }
 
   /* 4 columns */
   .col-4 {
+    display: inline-block;
+    width: 50%;
+    max-width: 400px;
   }
-
-  /* 6 columns */
+/* 
+  6 columns
   .col-6 {
-
+    
   }
 
-  /* 12 columns */
+  12 columns
   .col-12 {
-  }
+  } */
 
   .full-screen-only {
     display: inline-block;
@@ -455,5 +575,9 @@ ul {
 
   .not-full-screen {
     display: none;
+  }
+
+  .not-mobile {
+    display: inline-block;
   }
 }

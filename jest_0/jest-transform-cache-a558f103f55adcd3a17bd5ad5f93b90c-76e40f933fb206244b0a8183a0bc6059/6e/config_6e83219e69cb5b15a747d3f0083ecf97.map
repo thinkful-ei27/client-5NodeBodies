@@ -1,0 +1,1 @@
+{"version":3,"sources":["config.js"],"names":["API_BASE_URL"],"mappings":";;;;;;AAAA;AACA;AAES,MAAMA,YAAY,GAAE,2BAApB","sourcesContent":["// export const API_BASE_URL =\n//   process.env.REACT_APP_API_BASE_URL || 'http://localhost:8080/api';\n\n  export const API_BASE_URL ='http://localhost:8080/api';\n"]}

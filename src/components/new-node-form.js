@@ -9,7 +9,7 @@ import { Checkbox, Form } from 'semantic-ui-react';
 import { toggleOnboarding } from '../actions/auth'
 import RequiresLogin from './requires-login';
 
-class NewNodeForm extends React.Component {
+export class NewNodeForm extends React.Component {
   renderCheckBox = ({ input, label }) => {
     return (
       <Form.Field>
@@ -56,9 +56,6 @@ class NewNodeForm extends React.Component {
       title,
     };
     return this.props.dispatch(createNode(newNode))
-      .then(_res => {
-        console.log(_res)
-      })
   }
   render() {
     let error;
@@ -75,7 +72,8 @@ class NewNodeForm extends React.Component {
         <span>This form is for creating the information of the new checkpoint which will stem from the Choice you selected above.
         If you'd like you can connect the selected Choice to an existing checkpoint by clicking <strong>Use Existing Checkpoint</strong>.
         Make this a standard checkpoint with a<strong> Title</strong>, <strong> Scenario Description</strong>, <em>optional</em>
-          <strong> YouTube URL</strong>, a<strong> Question</strong>, and <strong>Choices</strong>. Or you can set it as an ending.
+          <strong> YouTube URL</strong> (<em>Only YouTube links work. Videos hosted
+            on other sites are not supported at this time</em>), a<strong> Question</strong>, and <strong>Choices</strong>. Or you can set it as an ending.
           Endings only have an <em>optional</em> <strong> YouTube URL</strong> and an<strong> Ending Description</strong>. If a learner
           gets to an ending, their LearnVenture will be over and they will be prompted to start over if they'd like. Once create, you will
           see your new checkpoint in the graph above.</span>
@@ -162,42 +160,46 @@ class NewNodeForm extends React.Component {
     }
 
     return (
-      <form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-        <h3>Add A New Checkpoint Node</h3>
+      <div className='form-field'>
+        <h2>Add A New Checkpoint Node</h2>
         <h4>Choice that points to this Checkpoint: {parentAnswer}</h4>
-        <button
-          onClick={() => this.toggleNewOrExistingNodeForm()}>
-          Use existing Checkpoint
+        <form
+          onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+          <button
+            onClick={() => this.toggleNewOrExistingNodeForm()}>
+            Use existing Checkpoint
          </button>
-        {error}
-        <Field
-          className="end-checkbox"
-          name="ending"
-          label="Checkpoint is an Ending"
-          component={this.renderCheckBox}
-          type="checkbox" />
-        <Field
-          className="title"
-          label="Checkpoint Title"
-          name="title"
-          component={Input}
-          type="text"
-          placeholder='optional'
+          {error}
+          <Field
+            className="end-checkbox"
+            name="ending"
+            label="Checkpoint is an Ending"
+            component={this.renderCheckBox}
+            type="checkbox" />
+          <Field
+            className="title"
+            label="Checkpoint Title"
+            name="title"
+            component={Input}
+            type="text"
+            placeholder='optional'
 
           // validate={[required, nonEmpty]} 
           />
-        <Field
-          className="videoURL"
-          label="Video URL (optional)"
-          placeholder="http://(videoURL)"
-          name="videoURL"
-          component={Input}
-          type="text" />
-        {questions}
-        {error}
-        <button>Add Checkpoint to LearnVenture</button>
-        {onboarding}
-      </form>)
+          <Field
+            className="videoURL"
+            label="YouTube URL (optional)"
+            placeholder="http://(videoURL)"
+            name="videoURL"
+            component={Input}
+            type="text" />
+          {questions}
+          {error}
+          <button>Add Checkpoint to LearnVenture</button>
+          {onboarding}
+        </form>
+      </div>
+    )
   }
 }
 
@@ -210,11 +212,11 @@ const mapStateToProps = state => {
     parentId: state.node.currentNode.id,
     isEnding: state.node.isEnding,
     onboarding: state.auth.onboarding,
-    error:state.node.nodeError
+    error: state.node.nodeError
   };
 };
 
-export default RequiresLogin(connect(mapStateToProps)(reduxForm({
+export default RequiresLogin()(connect(mapStateToProps)(reduxForm({
   form: 'NewNode',
   onSubmitFail: (errors, dispatch) =>
     dispatch(focus('NewNode'/*, Object.keys(errors)[0]*/

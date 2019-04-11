@@ -1,0 +1,87 @@
+520dd6eaffe5c66d384ab103623a822c
+"use strict";
+
+var _interopRequireDefault = require("/home/flightlessbird/Thinkful/projects/CYOA/client-5NodeBodies/node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactRedux = require("react-redux");
+
+require("./Tutorial.css");
+
+var _student = require("../../actions/student.js");
+
+var _jsxFileName = "/home/flightlessbird/Thinkful/projects/CYOA/client-5NodeBodies/src/components/studentTutorialComponents/TutorialPage4.js";
+
+class TutorialPage4 extends _react.default.Component {
+  handlePreviousClick() {
+    console.log('page4 handlePreviousClick ran');
+    this.props.dispatch((0, _student.studentPreviousTutorial)(this.props.tutorialPageNumber));
+  }
+
+  handleQuitClick() {
+    console.log('page4 handleQuitClick ran');
+    this.props.dispatch((0, _student.studentEndTutorial)());
+  }
+
+  render() {
+    const imgSrc4 = require('../../images/tutorialImage4.png');
+
+    return _react.default.createElement("div", {
+      className: "tutorialBox",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 23
+      },
+      __self: this
+    }, _react.default.createElement("img", {
+      className: "bigPicture",
+      src: imgSrc4,
+      alt: "The beginning of a LearnVenture!",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 24
+      },
+      __self: this
+    }), _react.default.createElement("p", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 25
+      },
+      __self: this
+    }, "Click Embark to start your LearnVenture! Have fun!"), _react.default.createElement("button", {
+      onClick: e => {
+        this.handlePreviousClick();
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 26
+      },
+      __self: this
+    }, "Previous Tutorial Page"), _react.default.createElement("button", {
+      onClick: e => {
+        this.handleQuitClick();
+      },
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 27
+      },
+      __self: this
+    }, "Quit Tutorial"));
+  }
+
+}
+
+const mapStateToProps = state => ({
+  tutorialPageNumber: state.student.tutorialPage
+});
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)(TutorialPage4);
+
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIlR1dG9yaWFsUGFnZTQuanMiXSwibmFtZXMiOlsiVHV0b3JpYWxQYWdlNCIsIlJlYWN0IiwiQ29tcG9uZW50IiwiaGFuZGxlUHJldmlvdXNDbGljayIsImNvbnNvbGUiLCJsb2ciLCJwcm9wcyIsImRpc3BhdGNoIiwidHV0b3JpYWxQYWdlTnVtYmVyIiwiaGFuZGxlUXVpdENsaWNrIiwicmVuZGVyIiwiaW1nU3JjNCIsInJlcXVpcmUiLCJlIiwibWFwU3RhdGVUb1Byb3BzIiwic3RhdGUiLCJzdHVkZW50IiwidHV0b3JpYWxQYWdlIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7QUFBQTs7QUFDQTs7QUFDQTs7QUFDQTs7OztBQUVBLE1BQU1BLGFBQU4sU0FBNEJDLGVBQU1DLFNBQWxDLENBQTRDO0FBR3hDQyxFQUFBQSxtQkFBbUIsR0FBRTtBQUNqQkMsSUFBQUEsT0FBTyxDQUFDQyxHQUFSLENBQVksK0JBQVo7QUFDQSxTQUFLQyxLQUFMLENBQVdDLFFBQVgsQ0FBb0Isc0NBQXdCLEtBQUtELEtBQUwsQ0FBV0Usa0JBQW5DLENBQXBCO0FBQ0g7O0FBRURDLEVBQUFBLGVBQWUsR0FBRTtBQUNiTCxJQUFBQSxPQUFPLENBQUNDLEdBQVIsQ0FBWSwyQkFBWjtBQUNBLFNBQUtDLEtBQUwsQ0FBV0MsUUFBWCxDQUFvQixrQ0FBcEI7QUFDSDs7QUFHREcsRUFBQUEsTUFBTSxHQUFFO0FBQ0osVUFBTUMsT0FBTyxHQUFHQyxPQUFPLENBQUMsaUNBQUQsQ0FBdkI7O0FBQ0EsV0FDSTtBQUFLLE1BQUEsU0FBUyxFQUFDLGFBQWY7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsT0FDSTtBQUFLLE1BQUEsU0FBUyxFQUFDLFlBQWY7QUFBNEIsTUFBQSxHQUFHLEVBQUVELE9BQWpDO0FBQTBDLE1BQUEsR0FBRyxFQUFDLGtDQUE5QztBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxNQURKLEVBRUk7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsNERBRkosRUFHSTtBQUFRLE1BQUEsT0FBTyxFQUFFRSxDQUFDLElBQUk7QUFBQyxhQUFLVixtQkFBTDtBQUEyQixPQUFsRDtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxnQ0FISixFQUlJO0FBQVEsTUFBQSxPQUFPLEVBQUVVLENBQUMsSUFBSTtBQUFDLGFBQUtKLGVBQUw7QUFBdUIsT0FBOUM7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsdUJBSkosQ0FESjtBQVFIOztBQXhCdUM7O0FBNEI1QyxNQUFNSyxlQUFlLEdBQUdDLEtBQUssS0FBSztBQUM5QlAsRUFBQUEsa0JBQWtCLEVBQUdPLEtBQUssQ0FBQ0MsT0FBTixDQUFjQztBQURMLENBQUwsQ0FBN0I7O2VBSWUseUJBQVFILGVBQVIsRUFBeUJkLGFBQXpCLEMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnO1xuaW1wb3J0IHsgY29ubmVjdCB9IGZyb20gJ3JlYWN0LXJlZHV4JztcbmltcG9ydCAnLi9UdXRvcmlhbC5jc3MnO1xuaW1wb3J0IHtzdHVkZW50RW5kVHV0b3JpYWwsIHN0dWRlbnRQcmV2aW91c1R1dG9yaWFsfSBmcm9tICcuLi8uLi9hY3Rpb25zL3N0dWRlbnQuanMnXG5cbmNsYXNzIFR1dG9yaWFsUGFnZTQgZXh0ZW5kcyBSZWFjdC5Db21wb25lbnQge1xuXG5cbiAgICBoYW5kbGVQcmV2aW91c0NsaWNrKCl7XG4gICAgICAgIGNvbnNvbGUubG9nKCdwYWdlNCBoYW5kbGVQcmV2aW91c0NsaWNrIHJhbicpO1xuICAgICAgICB0aGlzLnByb3BzLmRpc3BhdGNoKHN0dWRlbnRQcmV2aW91c1R1dG9yaWFsKHRoaXMucHJvcHMudHV0b3JpYWxQYWdlTnVtYmVyKSk7XG4gICAgfVxuXG4gICAgaGFuZGxlUXVpdENsaWNrKCl7XG4gICAgICAgIGNvbnNvbGUubG9nKCdwYWdlNCBoYW5kbGVRdWl0Q2xpY2sgcmFuJyk7XG4gICAgICAgIHRoaXMucHJvcHMuZGlzcGF0Y2goc3R1ZGVudEVuZFR1dG9yaWFsKCkpO1xuICAgIH1cblxuXG4gICAgcmVuZGVyKCl7XG4gICAgICAgIGNvbnN0IGltZ1NyYzQgPSByZXF1aXJlKCcuLi8uLi9pbWFnZXMvdHV0b3JpYWxJbWFnZTQucG5nJyk7XG4gICAgICAgIHJldHVybihcbiAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwidHV0b3JpYWxCb3hcIj5cbiAgICAgICAgICAgICAgICA8aW1nIGNsYXNzTmFtZT1cImJpZ1BpY3R1cmVcIiBzcmM9e2ltZ1NyYzR9IGFsdD1cIlRoZSBiZWdpbm5pbmcgb2YgYSBMZWFyblZlbnR1cmUhXCIvPlxuICAgICAgICAgICAgICAgIDxwPkNsaWNrIEVtYmFyayB0byBzdGFydCB5b3VyIExlYXJuVmVudHVyZSEgSGF2ZSBmdW4hPC9wPlxuICAgICAgICAgICAgICAgIDxidXR0b24gb25DbGljaz17ZSA9PiB7dGhpcy5oYW5kbGVQcmV2aW91c0NsaWNrKCl9fT5QcmV2aW91cyBUdXRvcmlhbCBQYWdlPC9idXR0b24+XG4gICAgICAgICAgICAgICAgPGJ1dHRvbiBvbkNsaWNrPXtlID0+IHt0aGlzLmhhbmRsZVF1aXRDbGljaygpfX0+UXVpdCBUdXRvcmlhbDwvYnV0dG9uPlxuICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgIClcbiAgICB9XG59XG5cblxuY29uc3QgbWFwU3RhdGVUb1Byb3BzID0gc3RhdGUgPT4gKHtcbiAgICB0dXRvcmlhbFBhZ2VOdW1iZXIgOiBzdGF0ZS5zdHVkZW50LnR1dG9yaWFsUGFnZVxufSlcblxuZXhwb3J0IGRlZmF1bHQgY29ubmVjdChtYXBTdGF0ZVRvUHJvcHMpKFR1dG9yaWFsUGFnZTQpOyJdfQ==

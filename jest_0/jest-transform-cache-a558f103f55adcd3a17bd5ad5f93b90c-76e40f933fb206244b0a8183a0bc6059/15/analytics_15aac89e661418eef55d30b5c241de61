@@ -1,0 +1,115 @@
+3abb7340f4fb532f6386f0c3be7645b5
+"use strict";
+
+var _interopRequireDefault = require("/home/flightlessbird/Thinkful/projects/CYOA/client-5NodeBodies/node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.Analytics = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactRedux = require("react-redux");
+
+var _requiresLogin = _interopRequireDefault(require("./requires-login"));
+
+var _jsxFileName = "/home/flightlessbird/Thinkful/projects/CYOA/client-5NodeBodies/src/components/analytics.js";
+
+class Analytics extends _react.default.Component {
+  render() {
+    let finishCount = 0;
+    const dataArray = this.props.currentAdventure.nodes.map(node => {
+      if (node.ending === true) {
+        finishCount += node.count;
+      }
+
+      return _react.default.createElement("li", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 15
+        },
+        __self: this
+      }, _react.default.createElement("h4", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 16
+        },
+        __self: this
+      }, node.title ? node.title : node.question), _react.default.createElement("p", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 17
+        },
+        __self: this
+      }, "This nodes total number of visits by all users: ", _react.default.createElement("span", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 17
+        },
+        __self: this
+      }, node.count)));
+    });
+    return _react.default.createElement("div", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 22
+      },
+      __self: this
+    }, _react.default.createElement("p", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 23
+      },
+      __self: this
+    }, "Adventure Start Count:", this.props.currentAdventure.count), _react.default.createElement("p", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 26
+      },
+      __self: this
+    }, "Adventure Completion Count:", finishCount), _react.default.createElement("h3", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 29
+      },
+      __self: this
+    }, " Number of visits per Node"), _react.default.createElement("ul", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 30
+      },
+      __self: this
+    }, dataArray), _react.default.createElement("p", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 33
+      },
+      __self: this
+    }, "Way to build an awesome adventure, ", _react.default.createElement("span", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 34
+      },
+      __self: this
+    }, this.props.name), "!"));
+  }
+
+}
+
+exports.Analytics = Analytics;
+
+const mapStateToProps = state => {
+  const currentUser = state.auth.currentUser;
+  return {
+    username: state.auth.currentUser.username,
+    name: `${currentUser.firstName} ${currentUser.lastName}`,
+    currentAdventure: state.adventure.currentAdventure,
+    loading: state.adventure.loading
+  };
+};
+
+var _default = (0, _requiresLogin.default)()((0, _reactRedux.connect)(mapStateToProps)(Analytics));
+
+exports.default = _default;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFuYWx5dGljcy5qcyJdLCJuYW1lcyI6WyJBbmFseXRpY3MiLCJSZWFjdCIsIkNvbXBvbmVudCIsInJlbmRlciIsImZpbmlzaENvdW50IiwiZGF0YUFycmF5IiwicHJvcHMiLCJjdXJyZW50QWR2ZW50dXJlIiwibm9kZXMiLCJtYXAiLCJub2RlIiwiZW5kaW5nIiwiY291bnQiLCJ0aXRsZSIsInF1ZXN0aW9uIiwibmFtZSIsIm1hcFN0YXRlVG9Qcm9wcyIsInN0YXRlIiwiY3VycmVudFVzZXIiLCJhdXRoIiwidXNlcm5hbWUiLCJmaXJzdE5hbWUiLCJsYXN0TmFtZSIsImFkdmVudHVyZSIsImxvYWRpbmciXSwibWFwcGluZ3MiOiI7Ozs7Ozs7OztBQUVBOztBQUNBOztBQUNBOzs7O0FBRU8sTUFBTUEsU0FBTixTQUF3QkMsZUFBTUMsU0FBOUIsQ0FBd0M7QUFFN0NDLEVBQUFBLE1BQU0sR0FBRztBQUNQLFFBQUlDLFdBQVcsR0FBRyxDQUFsQjtBQUNBLFVBQU1DLFNBQVMsR0FBRyxLQUFLQyxLQUFMLENBQVdDLGdCQUFYLENBQTRCQyxLQUE1QixDQUFrQ0MsR0FBbEMsQ0FBc0NDLElBQUksSUFBSTtBQUM5RCxVQUFJQSxJQUFJLENBQUNDLE1BQUwsS0FBZ0IsSUFBcEIsRUFBMEI7QUFDeEJQLFFBQUFBLFdBQVcsSUFBSU0sSUFBSSxDQUFDRSxLQUFwQjtBQUNEOztBQUNELGFBQVE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsU0FDTjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxTQUFLRixJQUFJLENBQUNHLEtBQUwsR0FBYUgsSUFBSSxDQUFDRyxLQUFsQixHQUEwQkgsSUFBSSxDQUFDSSxRQUFwQyxDQURNLEVBRU47QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsNkRBQW1EO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLFNBQU9KLElBQUksQ0FBQ0UsS0FBWixDQUFuRCxDQUZNLENBQVI7QUFJRCxLQVJpQixDQUFsQjtBQVVBLFdBQ0U7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsT0FDRTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxpQ0FDRSxLQUFLTixLQUFMLENBQVdDLGdCQUFYLENBQTRCSyxLQUQ5QixDQURGLEVBSUU7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsc0NBQ0VSLFdBREYsQ0FKRixFQU9FO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLG9DQVBGLEVBUUU7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsT0FDR0MsU0FESCxDQVJGLEVBV0U7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsOENBQ3FDO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLE9BQU8sS0FBS0MsS0FBTCxDQUFXUyxJQUFsQixDQURyQyxNQVhGLENBREY7QUFpQkQ7O0FBL0I0Qzs7OztBQWtDL0MsTUFBTUMsZUFBZSxHQUFHQyxLQUFLLElBQUk7QUFBQSxRQUN2QkMsV0FEdUIsR0FDUEQsS0FBSyxDQUFDRSxJQURDLENBQ3ZCRCxXQUR1QjtBQUUvQixTQUFPO0FBQ0xFLElBQUFBLFFBQVEsRUFBRUgsS0FBSyxDQUFDRSxJQUFOLENBQVdELFdBQVgsQ0FBdUJFLFFBRDVCO0FBRUxMLElBQUFBLElBQUksRUFBRyxHQUFFRyxXQUFXLENBQUNHLFNBQVUsSUFBR0gsV0FBVyxDQUFDSSxRQUFTLEVBRmxEO0FBR0xmLElBQUFBLGdCQUFnQixFQUFFVSxLQUFLLENBQUNNLFNBQU4sQ0FBZ0JoQixnQkFIN0I7QUFJTGlCLElBQUFBLE9BQU8sRUFBRVAsS0FBSyxDQUFDTSxTQUFOLENBQWdCQztBQUpwQixHQUFQO0FBTUQsQ0FSRDs7ZUFVZSw4QkFBZ0IseUJBQVFSLGVBQVIsRUFBeUJoQixTQUF6QixDQUFoQixDIiwic291cmNlc0NvbnRlbnQiOlsiXG5cbmltcG9ydCBSZWFjdCBmcm9tICdyZWFjdCc7XG5pbXBvcnQgeyBjb25uZWN0IH0gZnJvbSAncmVhY3QtcmVkdXgnO1xuaW1wb3J0IHJlcXVpcmVzTG9naW4gZnJvbSAnLi9yZXF1aXJlcy1sb2dpbic7XG5cbmV4cG9ydCBjbGFzcyBBbmFseXRpY3MgZXh0ZW5kcyBSZWFjdC5Db21wb25lbnQge1xuXG4gIHJlbmRlcigpIHtcbiAgICBsZXQgZmluaXNoQ291bnQgPSAwO1xuICAgIGNvbnN0IGRhdGFBcnJheSA9IHRoaXMucHJvcHMuY3VycmVudEFkdmVudHVyZS5ub2Rlcy5tYXAobm9kZSA9PiB7XG4gICAgICBpZiAobm9kZS5lbmRpbmcgPT09IHRydWUpIHtcbiAgICAgICAgZmluaXNoQ291bnQgKz0gbm9kZS5jb3VudDtcbiAgICAgIH1cbiAgICAgIHJldHVybiAoPGxpPlxuICAgICAgICA8aDQ+e25vZGUudGl0bGUgPyBub2RlLnRpdGxlIDogbm9kZS5xdWVzdGlvbn08L2g0PlxuICAgICAgICA8cD5UaGlzIG5vZGVzIHRvdGFsIG51bWJlciBvZiB2aXNpdHMgYnkgYWxsIHVzZXJzOiA8c3Bhbj57bm9kZS5jb3VudH08L3NwYW4+PC9wPlxuICAgICAgPC9saT4pXG4gICAgfSlcblxuICAgIHJldHVybiAoXG4gICAgICA8ZGl2PlxuICAgICAgICA8cD5BZHZlbnR1cmUgU3RhcnQgQ291bnQ6XG4gICAgICAgICB7dGhpcy5wcm9wcy5jdXJyZW50QWR2ZW50dXJlLmNvdW50fVxuICAgICAgICA8L3A+XG4gICAgICAgIDxwPkFkdmVudHVyZSBDb21wbGV0aW9uIENvdW50OlxuICAgICAgICAge2ZpbmlzaENvdW50fVxuICAgICAgICA8L3A+XG4gICAgICAgIDxoMz4gTnVtYmVyIG9mIHZpc2l0cyBwZXIgTm9kZTwvaDM+XG4gICAgICAgIDx1bD5cbiAgICAgICAgICB7ZGF0YUFycmF5fVxuICAgICAgICA8L3VsPlxuICAgICAgICA8cD5cbiAgICAgICAgICBXYXkgdG8gYnVpbGQgYW4gYXdlc29tZSBhZHZlbnR1cmUsIDxzcGFuPnt0aGlzLnByb3BzLm5hbWV9PC9zcGFuPiFcbiAgICAgICAgPC9wPlxuICAgICAgPC9kaXY+XG4gICAgKTtcbiAgfVxufVxuXG5jb25zdCBtYXBTdGF0ZVRvUHJvcHMgPSBzdGF0ZSA9PiB7XG4gIGNvbnN0IHsgY3VycmVudFVzZXIgfSA9IHN0YXRlLmF1dGg7XG4gIHJldHVybiB7XG4gICAgdXNlcm5hbWU6IHN0YXRlLmF1dGguY3VycmVudFVzZXIudXNlcm5hbWUsXG4gICAgbmFtZTogYCR7Y3VycmVudFVzZXIuZmlyc3ROYW1lfSAke2N1cnJlbnRVc2VyLmxhc3ROYW1lfWAsXG4gICAgY3VycmVudEFkdmVudHVyZTogc3RhdGUuYWR2ZW50dXJlLmN1cnJlbnRBZHZlbnR1cmUsXG4gICAgbG9hZGluZzogc3RhdGUuYWR2ZW50dXJlLmxvYWRpbmcsXG4gIH07XG59O1xuXG5leHBvcnQgZGVmYXVsdCByZXF1aXJlc0xvZ2luKCkoY29ubmVjdChtYXBTdGF0ZVRvUHJvcHMpKEFuYWx5dGljcykpOyJdfQ==

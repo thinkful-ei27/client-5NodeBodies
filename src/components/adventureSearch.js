@@ -4,7 +4,7 @@ import { getStudentSearch } from '../actions/student';
 
 
 let inputVal;
-class AdventureSearch extends React.Component {
+export class AdventureSearch extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
@@ -18,15 +18,19 @@ class AdventureSearch extends React.Component {
 
   render() {
     return (
-      <form onSubmit={e => this.handleSubmit(e)}>
-        <label className='above' for='input-field'>Search a LearnVenture</label>
-        <input
-          className="input-field"
-          onChange={e => this.onChange(e)} type="text"></input>
-        <button
-          className="search-adventures on-right"
-          type="submit">Search LearnVentures!</button>
-      </form>
+      <div role="search"
+        className="search-element above below with-border">
+        <form onSubmit={e => this.handleSubmit(e)}>
+          <label className='above below' for='input-field'>Search</label>
+          <input
+            className="search-input"
+            placeholder="Example: Making Breakfast"
+            onChange={e => this.onChange(e)} type="text"></input>
+          <button
+            className="search-adventures on-right"
+            type="submit">Search LearnVentures!</button>
+        </form>
+      </div>
     )
   }
 }

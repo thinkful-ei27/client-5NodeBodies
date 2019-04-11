@@ -1,0 +1,44 @@
+5ee5c6a3409f9083d1276407a6eb8e23
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.isTrimmedPassword = exports.matches = exports.length = exports.isTrimmed = exports.nonEmpty = exports.required = void 0;
+
+const required = value => value ? undefined : 'Required';
+
+exports.required = required;
+
+const nonEmpty = value => value.trim() !== '' ? undefined : 'Cannot be empty';
+
+exports.nonEmpty = nonEmpty;
+
+const isTrimmed = value => value.trim() === value ? undefined : 'Cannot start or end with whitespace';
+
+exports.isTrimmed = isTrimmed;
+
+const length = length => value => {
+  if (length.min && value.length < length.min) {
+    return `Must be at least ${length.min} characters long`;
+  }
+
+  if (length.max && value.length > length.max) {
+    return `Must be at most ${length.max} characters long`;
+  }
+};
+
+exports.length = length;
+
+const matches = field => (value, allValues) => field in allValues && value.trim() === allValues[field].trim() ? undefined : 'Does not match';
+
+exports.matches = matches;
+
+const isTrimmedPassword = value => {
+  if (value) {
+    return value.trim() === value ? undefined : 'Cannot start or end with whitespace';
+  }
+};
+
+exports.isTrimmedPassword = isTrimmedPassword;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZhbGlkYXRvcnMuanMiXSwibmFtZXMiOlsicmVxdWlyZWQiLCJ2YWx1ZSIsInVuZGVmaW5lZCIsIm5vbkVtcHR5IiwidHJpbSIsImlzVHJpbW1lZCIsImxlbmd0aCIsIm1pbiIsIm1heCIsIm1hdGNoZXMiLCJmaWVsZCIsImFsbFZhbHVlcyIsImlzVHJpbW1lZFBhc3N3b3JkIl0sIm1hcHBpbmdzIjoiOzs7Ozs7O0FBQU8sTUFBTUEsUUFBUSxHQUFHQyxLQUFLLElBQUtBLEtBQUssR0FBR0MsU0FBSCxHQUFlLFVBQS9DOzs7O0FBRUEsTUFBTUMsUUFBUSxHQUFHRixLQUFLLElBQ3pCQSxLQUFLLENBQUNHLElBQU4sT0FBaUIsRUFBakIsR0FBc0JGLFNBQXRCLEdBQWtDLGlCQUQvQjs7OztBQUdJLE1BQU1HLFNBQVMsR0FBR0osS0FBSyxJQUM5QkEsS0FBSyxDQUFDRyxJQUFOLE9BQWlCSCxLQUFqQixHQUF5QkMsU0FBekIsR0FBcUMscUNBRDlCOzs7O0FBR0EsTUFBTUksTUFBTSxHQUFHQSxNQUFNLElBQUlMLEtBQUssSUFBSTtBQUN6QyxNQUFJSyxNQUFNLENBQUNDLEdBQVAsSUFBY04sS0FBSyxDQUFDSyxNQUFOLEdBQWVBLE1BQU0sQ0FBQ0MsR0FBeEMsRUFBNkM7QUFDekMsV0FBUSxvQkFBbUJELE1BQU0sQ0FBQ0MsR0FBSSxrQkFBdEM7QUFDSDs7QUFDRCxNQUFJRCxNQUFNLENBQUNFLEdBQVAsSUFBY1AsS0FBSyxDQUFDSyxNQUFOLEdBQWVBLE1BQU0sQ0FBQ0UsR0FBeEMsRUFBNkM7QUFDekMsV0FBUSxtQkFBa0JGLE1BQU0sQ0FBQ0UsR0FBSSxrQkFBckM7QUFDSDtBQUNKLENBUFU7Ozs7QUFTSixNQUFNQyxPQUFPLEdBQUdDLEtBQUssSUFBSSxDQUFDVCxLQUFELEVBQVFVLFNBQVIsS0FDNUJELEtBQUssSUFBSUMsU0FBVCxJQUFzQlYsS0FBSyxDQUFDRyxJQUFOLE9BQWlCTyxTQUFTLENBQUNELEtBQUQsQ0FBVCxDQUFpQk4sSUFBakIsRUFBdkMsR0FDTUYsU0FETixHQUVNLGdCQUhIOzs7O0FBS0EsTUFBTVUsaUJBQWlCLEdBQUdYLEtBQUssSUFBSTtBQUN0QyxNQUFHQSxLQUFILEVBQVM7QUFDTixXQUFPQSxLQUFLLENBQUNHLElBQU4sT0FBaUJILEtBQWpCLEdBQXlCQyxTQUF6QixHQUFxQyxxQ0FBNUM7QUFDRjtBQUNKLENBSk0iLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgY29uc3QgcmVxdWlyZWQgPSB2YWx1ZSA9PiAodmFsdWUgPyB1bmRlZmluZWQgOiAnUmVxdWlyZWQnKTtcblxuZXhwb3J0IGNvbnN0IG5vbkVtcHR5ID0gdmFsdWUgPT5cbiAgICB2YWx1ZS50cmltKCkgIT09ICcnID8gdW5kZWZpbmVkIDogJ0Nhbm5vdCBiZSBlbXB0eSc7XG5cbiAgICBleHBvcnQgY29uc3QgaXNUcmltbWVkID0gdmFsdWUgPT5cbiAgICB2YWx1ZS50cmltKCkgPT09IHZhbHVlID8gdW5kZWZpbmVkIDogJ0Nhbm5vdCBzdGFydCBvciBlbmQgd2l0aCB3aGl0ZXNwYWNlJztcblxuICAgIGV4cG9ydCBjb25zdCBsZW5ndGggPSBsZW5ndGggPT4gdmFsdWUgPT4ge1xuICAgIGlmIChsZW5ndGgubWluICYmIHZhbHVlLmxlbmd0aCA8IGxlbmd0aC5taW4pIHtcbiAgICAgICAgcmV0dXJuIGBNdXN0IGJlIGF0IGxlYXN0ICR7bGVuZ3RoLm1pbn0gY2hhcmFjdGVycyBsb25nYDtcbiAgICB9XG4gICAgaWYgKGxlbmd0aC5tYXggJiYgdmFsdWUubGVuZ3RoID4gbGVuZ3RoLm1heCkge1xuICAgICAgICByZXR1cm4gYE11c3QgYmUgYXQgbW9zdCAke2xlbmd0aC5tYXh9IGNoYXJhY3RlcnMgbG9uZ2A7XG4gICAgfVxufTtcblxuZXhwb3J0IGNvbnN0IG1hdGNoZXMgPSBmaWVsZCA9PiAodmFsdWUsIGFsbFZhbHVlcykgPT5cbiAgICBmaWVsZCBpbiBhbGxWYWx1ZXMgJiYgdmFsdWUudHJpbSgpID09PSBhbGxWYWx1ZXNbZmllbGRdLnRyaW0oKVxuICAgICAgICA/IHVuZGVmaW5lZFxuICAgICAgICA6ICdEb2VzIG5vdCBtYXRjaCc7XG5cbmV4cG9ydCBjb25zdCBpc1RyaW1tZWRQYXNzd29yZCA9IHZhbHVlID0+IHtcbiAgICBpZih2YWx1ZSl7XG4gICAgICAgcmV0dXJuIHZhbHVlLnRyaW0oKSA9PT0gdmFsdWUgPyB1bmRlZmluZWQgOiAnQ2Fubm90IHN0YXJ0IG9yIGVuZCB3aXRoIHdoaXRlc3BhY2UnO1xuICAgIH1cbn0iXX0=

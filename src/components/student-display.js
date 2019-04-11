@@ -26,16 +26,11 @@ export class StudentDisplay extends React.Component {
     let display;
     let nodeVideo;
     let nodeText;
-    let nodeQuestion;
-    let answerA;
+    let nodeQuestion;  
     let buttonA;
-    let answerB;
     let buttonB;
-    let answerC;
     let buttonC;
-    let answerD;
     let buttonD;
-    let ending;
     if (this.props.currentNode) {
 
       if (this.props.currentNode.videoURL) {
@@ -43,33 +38,35 @@ export class StudentDisplay extends React.Component {
         nodeVideo = (<iframe title='node-video' width="420" height="315" src={videoPlay}></iframe>)
       }
       if (this.props.currentNode.textContent) {
-        nodeText = <p>{this.props.currentNode.textContent}</p>
+        nodeText = <p id="student-content">{this.props.currentNode.textContent}</p>
       }
       if (this.props.currentNode.question) {
         nodeQuestion = <strong><p id="student-question">{this.props.currentNode.question}</p></strong>
       }
       if (this.props.currentNode.answerA) {
         // answerA = <p>{this.props.currentNode.answerA}</p>
-        buttonA = <button onClick={() => this.updateNode(this.props.currentNode.pointerA)}>{this.props.currentNode.answerA}</button>
+        buttonA = <button className="answer-button" onClick={() => this.updateNode(this.props.currentNode.pointerA)}>{this.props.currentNode.answerA}</button>
       }
       if (this.props.currentNode.answerB) {
         // answerB = <p>{this.props.currentNode.answerB}</p>
-        buttonB = <button onClick={() => this.updateNode(this.props.currentNode.pointerB)}>{this.props.currentNode.answerB}</button>
+        buttonB = <button className="answer-button" onClick={() => this.updateNode(this.props.currentNode.pointerB)}>{this.props.currentNode.answerB}</button>
       }
       if (this.props.currentNode.answerC) {
         // answerC = <p>{this.props.currentNode.answerC}</p>
-        buttonC = <button onClick={() => this.updateNode(this.props.currentNode.pointerC)}>{this.props.currentNode.answerC}</button>
+        buttonC = <button className="answer-button" onClick={() => this.updateNode(this.props.currentNode.pointerC)}>{this.props.currentNode.answerC}</button>
       }
       if (this.props.currentNode.answerD) {
         // answerD = <p>{this.props.currentNode.answerD}</p>
-        buttonD = <button onClick={() => this.updateNode(this.props.currentNode.pointerD)}>{this.props.currentNode.answerD}</button>
+        buttonD = <button className="answer-button" onClick={() => this.updateNode(this.props.currentNode.pointerD)}>{this.props.currentNode.answerD}</button>
       }
       if (!this.props.currentNode.ending) {
         display = (
           <div>
             {nodeVideo}
-            {nodeText}
-            {nodeQuestion}
+            <div id="description-question-box">
+              {nodeText}
+              {nodeQuestion}
+            </div>
             {/*answerA*/}
             {buttonA}
             <br />
