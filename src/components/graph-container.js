@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Graph } from 'react-d3-graph';
 import { setCurrentNode } from '../actions/nodes'
-import { reRenderGraph } from '../actions/createAdventure'
 import { toggleOnboarding } from '../actions/auth'
 
 export class GraphContainer extends React.Component {

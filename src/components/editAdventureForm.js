@@ -1,6 +1,5 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-// import { url } from 'redux-form-validators'
 import Input from "./input";
 import TextArea from "./textarea";
 import RequiresLogin from './requires-login';
@@ -8,7 +7,6 @@ import { editAdventure, toggleAdventureEditing } from '../actions/createAdventur
 import { required, nonEmpty, isTrimmedPassword } from "../utils/validators";
 import { connect } from 'react-redux';
 import { Checkbox, Form } from 'semantic-ui-react';
-import { toggleOnboarding } from '../actions/auth'
 
 export class EditAdventureForm extends React.Component {
   renderCheckBox = ({ input, label }) => {

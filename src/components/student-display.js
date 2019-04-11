@@ -26,16 +26,11 @@ export class StudentDisplay extends React.Component {
     let display;
     let nodeVideo;
     let nodeText;
-    let nodeQuestion;
-    let answerA;
+    let nodeQuestion;  
     let buttonA;
-    let answerB;
     let buttonB;
-    let answerC;
     let buttonC;
-    let answerD;
     let buttonD;
-    let ending;
     if (this.props.currentNode) {
 
       if (this.props.currentNode.videoURL) {
