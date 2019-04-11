@@ -415,8 +415,8 @@ margin: 15px;
 }
 
 .tutorial-button {
-  background: #da8624;
-  border: #da8624;
+  background: #9D601B;
+  border: #9D601B;
 }
 
 .ui.checkbox{
@@ -517,7 +517,7 @@ ul {
 @media only screen and (min-width: 960px) {
 
   .col-3 {
-    float: left;
+    display: inline-block;
     width: 25%;
     display: block;
   }
