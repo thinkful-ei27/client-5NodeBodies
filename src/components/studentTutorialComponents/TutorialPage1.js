@@ -21,8 +21,8 @@ export class TutorialPage1 extends React.Component {
                 <p>If a teacher gave you a LearnVenture ID, please put it in the first white input box (with the numbers and letters)</p>
                 <p>If a teacher gave you a password, you may put it in the second white input box below the first one</p>
                 <p>Then click "Start LearnVenture!" to do just that</p>
-                <button onClick={e => { this.handleNextClick() }}>Next Tutorial Page</button>
-                <button onClick={e => { this.handleQuitClick() }}>Quit Tutorial</button>
+                <button onClick={e => { this.handleNextClick() }}>Next</button>
+                <button onClick={e => { this.handleQuitClick() }}>Close</button>
             </div>
         )
     }

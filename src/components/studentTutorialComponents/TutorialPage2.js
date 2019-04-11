@@ -29,9 +29,9 @@ export class TutorialPage2 extends React.Component {
                 <p>Below the "Start LearnVenture!" button is the search bar</p>
                 <p>Type in a title of a LearnVenture in the white input box</p>
                 <p>Press Enter and view the matching LearnVentures below</p>
-                <button onClick={e => { this.handlePreviousClick() }}>Previous Tutorial Page</button>
-                <button onClick={e => { this.handleNextClick() }}>Next Tutorial Page</button>
-                <button onClick={e => { this.handleQuitClick() }}>Quit Tutorial</button>
+                <button onClick={e => { this.handlePreviousClick() }}>Previous</button>
+                <button onClick={e => { this.handleNextClick() }}>Next</button>
+                <button onClick={e => { this.handleQuitClick() }}>Close</button>
             </div>
         )
     }

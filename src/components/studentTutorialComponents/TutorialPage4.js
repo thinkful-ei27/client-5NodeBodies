@@ -23,8 +23,8 @@ export class TutorialPage4 extends React.Component {
             <div className="tutorialBox">
                 <img className="bigPicture" src={imgSrc4} alt="The beginning of a LearnVenture!"/>
                 <p>Click Embark to start your LearnVenture! Have fun!</p>
-                <button onClick={e => {this.handlePreviousClick()}}>Previous Tutorial Page</button>
-                <button onClick={e => {this.handleQuitClick()}}>Quit Tutorial</button>
+                <button onClick={e => {this.handlePreviousClick()}}>Previous</button>
+                <button onClick={e => {this.handleQuitClick()}}>Close</button>
             </div>
         )
     }
