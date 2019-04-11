@@ -21,34 +21,34 @@ export class Headerbar extends React.Component {
   render() {
     // Only render log out button if we are logged in
     let navButtons, homeButton, pathCheck;
-      pathCheck = (this.props.location.pathname === '/');
-      homeButton = <Link to="/">
+    pathCheck = (this.props.location.pathname === '/');
+    homeButton = <Link to="/">
+      <button
+        className="home-button on-left"
+        type="button"
+        onClick={(e) => this.ifAdventureRemoveAdventure()}
+      >Home</button>
+    </Link>;
+    if (this.props.loggedIn) {
+      navButtons = <div className="nav-buttons col-6">
+        {!pathCheck && homeButton}
+        <Link to="/dashboard">
           <button
-            className="home-button on-left"
+            className="home-button on-left on-right wide-button"
             type="button"
-            onClick={(e) => this.ifAdventureRemoveAdventure()}
-          >Home</button>
-        </Link>;
-      if (this.props.loggedIn) {
-        navButtons = <div className="nav-buttons col-6">
-          <Link to="/dashboard">
-            {!pathCheck && homeButton}
-            <button
-              className="home-button on-left on-right wide-button"
-              type="button"
-            >Dashboard</button>
-          </Link>
-          <button
-            className="logout-button on-right on-left"
-            type="button"
-            onClick={() => {
-              this.logOut()
-            }}>Log Out</button>
-        </div>    
+          >Dashboard</button>
+        </Link>
+        <button
+          className="logout-button on-right on-left"
+          type="button"
+          onClick={() => {
+            this.logOut()
+          }}>Log Out</button>
+      </div>
     } else {
       navButtons = <div className="nav-buttons col-6">
-          {!pathCheck &&  homeButton}
-        </div>
+        {!pathCheck && homeButton}
+      </div>
     }
     return (
       <header className="header-bar row">
