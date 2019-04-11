@@ -35,7 +35,7 @@ export class SearchResults extends React.Component{
             }
             return (<li
                 className="adventure-list-item col-3 with-border" 
-                key={adventure.id}><p>title: {adventure.title}</p>
+                key={adventure.id}><p>Title: <strong>{adventure.title}</strong></p>
                 {pass}
                 <button 
                     className="adventure-link-button below" 

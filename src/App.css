@@ -177,9 +177,10 @@ code {
 }
 
 .form-field {
+  background-color: #b4cedd;
   width: 75%;
   max-width: 600px;
-  border: 2px solid white;
+  border: 2px solid #51646b;
   border-radius: 5px;
   padding: 10px 0;
   margin-left: auto;
@@ -217,7 +218,7 @@ h2 {
   min-width: 100vw;
   padding: 0 20px;
   max-width: 80%;
-  margin: 20px auto;
+  margin: 20px auto 40px;
 }
 
 .help-button {
@@ -250,12 +251,40 @@ h2 {
   font-size: 18px;
 }
 
+.password-input-field {
+  display: block;
+  border: 2px solid #b4cedd;
+  border-radius: 5px;
+  height: 40px;
+  min-width: 60px;
+  max-width:400px;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+.hidden {
+  visibility: hidden;
+}
+.search-input-field {
+  display: block;
+  border: 2px solid #b4cedd;
+  border-radius: 5px;
+  height: 40px;
+  width: 300px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
 .input-label{
 position:absolute;
 left : 0;
 top: -20px;
 }
 
+.input-field-label {
+  position: relative;
+  top: 28px;
+}
 
 .ui.checkbox {
 height: 20px;
@@ -321,9 +350,7 @@ margin: 15px;
 
 .node-select {
   display: block;
-  margin: 10px ;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 35px auto 10px auto;
   height: 40px;
   font-size: 18px;
   width: 300px;
@@ -385,6 +412,11 @@ margin: 15px;
 
 .text-area{
   min-height:150px;
+}
+
+.tutorial-button {
+  background: #da8624;
+  border: #da8624;
 }
 
 .ui.checkbox{

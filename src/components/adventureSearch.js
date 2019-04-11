@@ -24,6 +24,7 @@ export class AdventureSearch extends React.Component {
           <label className='above below' for='input-field'>Search</label>
           <input
             className="search-input"
+            placeholder="Example: Making Breakfast"
             onChange={e => this.onChange(e)} type="text"></input>
           <button
             className="search-adventures on-right"

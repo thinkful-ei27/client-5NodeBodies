@@ -36,7 +36,7 @@ export class StudentLanding extends React.Component {
     if (tutorialValue) {
       return <Tutorial />
     } else {
-      return <button onClick={e => { this.handleTutorialClick() }}>Start Tutorial</button>
+      return <button className='tutorial-button' onClick={e => { this.handleTutorialClick() }}>If you need help:<br />Click here to start a Tutorial</button>
     }
   }
 
@@ -56,7 +56,6 @@ export class StudentLanding extends React.Component {
             <p>
               Hello and welcome to Education Exploration!
             </p>
-            <p>If you need help, please click the button below for a tutorial</p>
             {this.tutorialDisplay(this.props.tutorial)}
             <p>
               Otherwise, please input your Exploration code below to begin your quest for learning.
@@ -66,13 +65,12 @@ export class StudentLanding extends React.Component {
             <form 
             className="below extra-below" onSubmit={e => this.handleSubmit(e)}>
               {error}
-              <label
-              for="adventureId">LearnVenture Id</label>
+              <label for="adventureId" > Search by AdventureId</label>
               <input className="adventure-input" type="text" name="adventureId" id="adventureId"
                 placeholder="5c9ceaeac543f706bf407cae"
                 onChange={e => this.onChange(e)}
               ></input><br />
-              <label className="label" for="adventurePass">Password, if it has one </label>
+              <label for="adventurePass"> Please enter a password if the adventure has one</label>
               <input className="adventure-password" type="password" name="adventurePass"
                 id="adventurePass"
                 onChange={e => this.onChangePassword(e)}
