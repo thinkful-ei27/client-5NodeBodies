@@ -64,21 +64,6 @@ class UpdateNodeForm extends React.Component {
     this.props.dispatch(updateNode(newNode))
   }
 
-  renderCheckBox = ({ input, label }) => {
-    return (
-      <Form.Field>
-        <Checkbox
-          label={label}
-          checked={input.value ? true : false}
-          onChange={(e, { checked }) => {
-            input.onChange(checked)
-            this.toggleIsEnding()
-          }}
-        />
-      </Form.Field>
-    );
-  };
-
   render() {
     let error;
     if (this.props.nodeError) {
@@ -218,12 +203,6 @@ class UpdateNodeForm extends React.Component {
                 this.props.currentNode.question}</h2>
             <h4>Choice that points to this Checkpoint: {parentAnswer}</h4>
 
-            <Field
-              className="end-checkbox"
-              name="ending"
-              label="Is this an Ending?"
-              component={this.renderCheckBox}
-              type="checkbox" />
             <Field
               className="title input-field"
               label="Checkpoint Title"
