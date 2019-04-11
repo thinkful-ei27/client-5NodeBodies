@@ -6,6 +6,7 @@
 ###### Server Side code can be found at https://github.com/thinkful-ei27/server-5NodeBodies
 
 Client Testing Status: [![Build Status](https://travis-ci.org/thinkful-ei27/client-5NodeBodies.svg?branch=master)](https://travis-ci.org/thinkful-ei27/client-5NodeBodies)
+
 Server Testing Status: [![Build Status](https://travis-ci.org/thinkful-ei27/server-5NodeBodies.svg?branch=master)](https://travis-ci.org/thinkful-ei27/server-5NodeBodies)
 
 ### What it is
@@ -15,9 +16,9 @@ Anyone can use this site to help teach any topic. Educators can put students in 
 In the professional landscape, employers can use it to create informational material on how to use new products and services. If you have knowledge to impart, LearnVenture is a
 fun tool to help share that information.
 
-Build a LearnVenture: ![screenshot of LearnVenture Builder](/src/components/images/teacherside.PNG?raw=true)
+Build a LearnVenture: ![screenshot of LearnVenture Builder](/src/images/teacherside.PNG)
 
-Embark on a LearnVenture: ![screenshot of LearnVenture Builder](/src/components/images/studentside.PNG?raw=true)
+Embark on a LearnVenture: ![screenshot of LearnVenture Builder](/src/images/studentside.PNG)
 
 ### Future Features
 - [ ] More detailed analytics
