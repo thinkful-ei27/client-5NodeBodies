@@ -186,15 +186,9 @@ export class NewNodeForm extends React.Component {
           component={Input}
           type="text"
           placeholder='optional'
-<<<<<<< HEAD
-          
-          // validate={[required, nonEmpty]} 
-          />
-=======
 
         // validate={[required, nonEmpty]} 
         />
->>>>>>> develop
         <Field
           className="videoURL"
           label="YouTube URL (optional)"
