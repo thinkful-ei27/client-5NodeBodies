@@ -1,9 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import CreateHeadNode from '../components/create-head-node';
+import { CreateHeadNode } from '../components/create-head-node';
 
 describe('<CreateHeadNode />', () => {
   it('renders without crashing', () => {
-    shallow(<CreateHeadNode />);
+    const props = {handleSubmit: jest.fn()};
+    shallow(<CreateHeadNode {...props}/>);
   })
 });
