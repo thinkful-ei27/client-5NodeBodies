@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import RequiresLogin from './requires-login';
 import { Link } from 'react-router-dom';
-import { getAllAdventures } from '../actions/createAdventure'
+import { getAllAdventures, clearCurrentAdventure } from '../actions/createAdventure'
 import { toggleOnboarding } from '../actions/auth'
+import { clearCurrentNode } from '../actions/nodes'
 
 export class Dashboard extends React.Component {
   componentDidMount() {
@@ -13,7 +14,11 @@ export class Dashboard extends React.Component {
     } else if (this.props.adventures && this.props.onboarding) {
       this.props.dispatch(toggleOnboarding())
     }
+    this.props.dispatch(clearCurrentNode())
+    this.props.dispatch(clearCurrentAdventure())
   }
+ 
+
 
   toggleOnboardingClick() {
     this.props.dispatch(toggleOnboarding())

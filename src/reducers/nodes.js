@@ -13,7 +13,7 @@ import {
   DELETE_NODE_ERROR,
   DELETE_NODE_REQUEST,
   DELETE_NODE_SUCCESS,
-
+  CLEAR_CURRENT_NODE,
   // UPDATE_CURRENT_NODE,
   TOGGLE_ENDING,
   TOGGLE_CHILD_TYPE,
@@ -140,6 +140,13 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         stagedChildNode: action.node,
         error: null,
+      })
+    }
+    case CLEAR_CURRENT_NODE: {
+      return Object.assign({}, state, {
+        nodeId: null,
+        parentInt: null,
+        currentNode: null,
       })
     }
     default:

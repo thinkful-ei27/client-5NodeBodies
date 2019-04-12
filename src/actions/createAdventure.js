@@ -8,6 +8,11 @@ export const toggleAdventureDeleting = () => ({
   type: TOGGLE_ADVENTURE_DELETING
 });
 
+export const CLEAR_CURRENT_ADVENTURE = 'CLEAR_CURRENT_ADVENTURE';
+export const clearCurrentAdventure = () => ({
+  type: CLEAR_CURRENT_ADVENTURE
+})
+
 export const TOGGLE_ADVENTURE_EDITING = 'TOGGLE_ADVENTURE_EDITING';
 export const toggleAdventureEditing = () => ({
   type: TOGGLE_ADVENTURE_EDITING
