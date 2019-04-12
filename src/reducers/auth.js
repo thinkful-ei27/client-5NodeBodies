@@ -48,7 +48,7 @@ export function reducer(state = initialState, action) {
         case AUTH_ERROR: {
             return Object.assign({}, state, {
                 loading: false,
-                error: action.err
+                error: action.error
             });
         }
         default:
