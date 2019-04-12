@@ -26,6 +26,7 @@ fun tool to help share that information.
 - [ ] More detailed analytics
 - [ ] Personalized results
 - [ ] Custom URLs to improve sharing
+- [ ] Support for images and sound files in addition to videos
 
 ### Tech Stack Frontend
 - React/Redux
