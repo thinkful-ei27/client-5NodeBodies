@@ -219,9 +219,7 @@ export const updateNode = nodeData => (dispatch, getState) => {
 
 // helper fn to find node in adventure
 function getNodeFromCurrentAdventure(nodeId, adventure) {
-  console.log(nodeId, adventure)
   let nodeToReturn = adventure.nodes.find(node => node.id === nodeId);
-  console.log(nodeToReturn)
   return nodeToReturn
 
 }
