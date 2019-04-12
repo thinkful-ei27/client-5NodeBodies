@@ -11,8 +11,14 @@ import { toggleOnboarding } from '../actions/auth'
 
 export class CreateHeadNode extends React.Component {
 
+  componentWillMount() {
+    if (!this.props.currentAdventure) {
+      this.props.history.push('/dashboard')
+    }
+  }
+
   onSubmit(values) {
-    const adventureId = this.props.adventureId;
+    const adventureId = this.props.currentAdventure.id;
     const nodeId = this.props.currentNodeId
     const ending = false
     let { question, answerA, answerB, answerC, answerD, videoURL, textContent, title } = values;
@@ -142,7 +148,8 @@ export class CreateHeadNode extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-  adventureId: state.adventure.currentAdventure.id,
+  currentAdventure:state.adventure.currentAdventure,
+
   onboarding: state.auth.onboarding,
   error: state.node.nodeError
 
