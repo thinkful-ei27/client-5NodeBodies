@@ -85,8 +85,6 @@ export const studentEndTutorial = () => ({
 });
 
 export const getStudentAdventure = (id, password) => (dispatch) => {
-  console.log('getStudentAdventure ran');
-  console.log(id);
   dispatch(getStudentAdventureRequest());
   return fetch(`${API_BASE_URL}/student/adventure/${id}`, {
     method: 'POST',
