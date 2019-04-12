@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getStudentAdventure, getStudentAll, studentStartTutorial } from '../actions/student';
+import { getStudentAdventure, getStudentAll, studentStartTutorial, endStudentAdventure } from '../actions/student';
 import StudentDisplay from './student-display';
 import AdventureSearch from './adventureSearch';
 import SearchResults from './searchResults';
@@ -10,6 +10,7 @@ let inputVal, error, passwordVal;
 export class StudentLanding extends React.Component {
 
   componentDidMount() {
+    this.props.dispatch(endStudentAdventure())
     this.props.dispatch(getStudentAll());
   }
 

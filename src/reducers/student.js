@@ -73,7 +73,10 @@ export default function reducer(state = initialState, action) {
     }
     case END_STUDENT_ADVENTURE: {
       return Object.assign({}, state, {
-        adventure: null
+        adventure: null,
+        currentNode: null,
+        searchResults: null,
+        tutorial: null
       });
     }
     case GET_STUDENT_SEARCH_REQUEST: {

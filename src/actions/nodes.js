@@ -11,6 +11,12 @@ export const nodeFormWithPointer = (parentInt) => {
   })
 };
 
+export const CLEAR_CURRENT_NODE = 'CLEAR_CURRENT_NODE';
+export const clearCurrentNode = () => ({
+  type: CLEAR_CURRENT_NODE
+})
+
+
 export const STAGE_CHILD_NODE = 'STAGE_CHILD_NODE';
 export const stageChildNode = (node) => ({
   type: STAGE_CHILD_NODE,
@@ -195,7 +201,7 @@ export const updateNode = nodeData => (dispatch, getState) => {
     body: JSON.stringify(nodeData)
   })
     .then(res => normalizeResponseErrors(res))
-    .then( () => {
+    .then(() => {
       // console.log("New Node From Backend is: ", res)
       // return dispatch(getAdventureById(node.adventureId));
       dispatch(toggleUpdateForm())
