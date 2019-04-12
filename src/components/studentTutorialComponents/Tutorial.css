@@ -13,6 +13,10 @@
    border-radius: 5px;
 }
 
+.tutorialBox > p {
+   color: white;
+}
+
 .tutorialBox > * {
    margin: 10px;
 }

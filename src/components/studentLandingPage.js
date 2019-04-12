@@ -53,9 +53,9 @@ export class StudentLanding extends React.Component {
       return (
         <div className="student-landing">
           <div className="student-instructions">
-            <h3>
+            <h2>
               Hello and welcome to Education Exploration!
-            </h3>
+            </h2>
             {this.tutorialDisplay(this.props.tutorial)}
             <p>
               Otherwise, please input your Exploration code below to begin your quest for learning.
