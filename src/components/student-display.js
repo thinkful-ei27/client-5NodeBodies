@@ -26,11 +26,16 @@ export class StudentDisplay extends React.Component {
     let display;
     let nodeVideo;
     let nodeText;
-    let nodeQuestion;  
+    let nodeQuestion;
+    let answerA;
     let buttonA;
+    let answerB;
     let buttonB;
+    let answerC;
     let buttonC;
+    let answerD;
     let buttonD;
+    let ending;
     if (this.props.currentNode) {
 
       if (this.props.currentNode.videoURL) {
@@ -85,7 +90,7 @@ export class StudentDisplay extends React.Component {
         display = (
           <div>
             {nodeVideo}
-            {nodeText}
+            <strong>{nodeText}</strong>
             <p>Congratulations! This is the end of your LearnVenture.</p>
             <button className="return-to-start" onClick={() => this.restart(this.props.adventure.id)}>Return to Start</button>
             <p>If you'd like to create your own LearnVenture, <Link to='/registration'>click here</Link> to create an account</p>
