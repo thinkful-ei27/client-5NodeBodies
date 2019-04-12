@@ -27,15 +27,10 @@ export class StudentDisplay extends React.Component {
     let nodeVideo;
     let nodeText;
     let nodeQuestion;
-    let answerA;
     let buttonA;
-    let answerB;
     let buttonB;
-    let answerC;
     let buttonC;
-    let answerD;
     let buttonD;
-    let ending;
     if (this.props.currentNode) {
 
       if (this.props.currentNode.videoURL) {
@@ -93,7 +88,7 @@ export class StudentDisplay extends React.Component {
             <strong>{nodeText}</strong>
             <p>Congratulations! This is the end of your LearnVenture.</p>
             <button className="return-to-start" onClick={() => this.restart(this.props.adventure.id)}>Return to Start</button>
-            <p>If you'd like to create your own LearnVenture, <Link to='/registration'>click here</Link> to create an account</p>
+            <p><strong>If you'd like to create your own LearnVenture, <Link to='/registration'>click here</Link> to create an account</strong></p>
           </div>
         )
       }
@@ -111,7 +106,7 @@ export class StudentDisplay extends React.Component {
           <p>Created by: {this.props.adventure.creator}</p>
           <h2>{this.props.adventure.startContent}</h2>
           <iframe title="starting-video" width="420" height="315" src={this.props.adventure.startVideoURL}></iframe><br />
-          <button 
+          <button
             className="embark-button"
             onClick={() => this.updateNode(this.props.adventure.head)}>Embark</button>
         </div>
