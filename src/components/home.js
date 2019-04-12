@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 export default class Home extends React.Component {
+
   render() {
     let banner = <h2 className="banner"> Welcome to the LearnVenture home page!</h2>;
     let blurb = <h3 className="blurb">LearnVenture is a tool to build fun learning programs that pose unique questions based upon previous choices. You can build the storyline with videos, text, and multiple endings.</h3>
