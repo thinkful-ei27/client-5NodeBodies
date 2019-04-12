@@ -20,9 +20,14 @@ export class AdventureBuilder extends React.Component {
   }
 
   componentWillMount() {
-    if (!this.props.currentAdventure.head) {
+    if (!this.props.currentAdventure) {
+      const { id } = this.props.match.params;
+      this.props.dispatch(getAdventureById(id))
+    }
+    else if (!this.props.currentAdventure.head) {
       this.props.history.push('/adventure/headnode')
     }
+
   }
 
   changeCurrentNode(value) {

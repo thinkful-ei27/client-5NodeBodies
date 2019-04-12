@@ -18,16 +18,16 @@ import {
   EDIT_ADVENTURE_SUCCESS,
   TOGGLE_ADVENTURE_EDITING,
   TOGGLE_ANALYTICS_DISPLAY,
-  RERENDER_GRAPH
+  RERENDER_GRAPH,
+  CLEAR_CURRENT_ADVENTURE
 } from '../actions/createAdventure'
 
 const initialState = {
+  adventures: [],
   loading: false,
   error: null,
   adventureId: null,
-  adventures: [],
   currentAdventure: null,
-  currentNode: null,
   isDeleting: false,
   isEditing: true,
   showAnalytics: false,
@@ -146,6 +146,14 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         loading: false,
         showAnalytics: !state.showAnalytics
+      })
+    }
+    case CLEAR_CURRENT_ADVENTURE: {
+      return Object.assign({}, state, {
+        error: null,
+        adventureId: null,
+        currentAdventure: null,
+        isDeleting: false,
       })
     }
     default:
