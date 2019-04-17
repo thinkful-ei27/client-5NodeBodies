@@ -3,13 +3,21 @@ import { connect } from 'react-redux';
 import {
   getStudentCurrentNode,
   restartStudentAdventure,
-  getStudentAdventure
+  getStudentAdventure,
+  getStudentCurrentNodeError
 } from '../actions/student'
 import { Link } from 'react-router-dom'
 
 export class StudentDisplay extends React.Component {
 
   updateNode(nodeId) {
+    console.log(nodeId)
+    if(!nodeId){
+      const error ={
+        message: 'The creator of this LearnVenture did not specify the next checkpoint for the answer you selected. We bet you can create a better LearnVenture!'
+      }
+      return this.props.dispatch(getStudentCurrentNodeError(error))
+    }
     this.props.dispatch(getStudentCurrentNode(this.props.adventure.id, nodeId))
   }
 
@@ -31,6 +39,13 @@ export class StudentDisplay extends React.Component {
     let buttonB;
     let buttonC;
     let buttonD;
+    let errorMessage;
+    if (this.props.error){
+      errorMessage = <div>
+        <p className='error-message'>{this.props.error.message}
+        </p>
+      </div>
+    }
     if (this.props.currentNode) {
 
       if (this.props.currentNode.videoURL) {
@@ -67,6 +82,8 @@ export class StudentDisplay extends React.Component {
               {nodeText}
               {nodeQuestion}
             </div>
+            {errorMessage}
+            <br />
             {/*answerA*/}
             {buttonA}
             <br />
@@ -105,6 +122,7 @@ export class StudentDisplay extends React.Component {
           <h1>{this.props.adventure.title}</h1>
           <p>Created by: {this.props.adventure.creator}</p>
           <h2>{this.props.adventure.startContent}</h2>
+          {errorMessage}
           <iframe title="starting-video" width="420" height="315" src={this.props.adventure.startVideoURL}></iframe><br />
           <button
             className="embark-button"
