@@ -193,7 +193,7 @@ code {
   margin-top: 20px;
 }
 
-.form-error, .form-warning{
+.form-error, .form-warning, .error-message{
   color: red;
   font-weight: bold;
 }
