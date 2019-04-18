@@ -1,7 +1,7 @@
 # LearnVenture
 ## Developed by 5NodeBodies
 
-##### This is the frontend code for [LearnVenture.org](www.learnventure.org). 
+##### This is the frontend code for [LearnVenture.org](https://www.learnventure.org). 
 
 ###### Server Side code can be found at https://github.com/thinkful-ei27/server-5NodeBodies
 
