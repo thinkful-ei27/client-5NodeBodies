@@ -42,6 +42,10 @@ fun tool to help share that information.
 - Chai/Mocha
 - Deployed via heroku
 
+### Demo Teacher Account
+- username: fryshake
+- password: password123
+
 ### Contributers
 - [David Johnson](https://github.com/Clack321)
 - [Jason Hoffman](https://github.com/publikwerker)
