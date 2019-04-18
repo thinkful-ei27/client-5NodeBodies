@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom'
 export class StudentDisplay extends React.Component {
 
   updateNode(nodeId) {
-    console.log(nodeId)
     if(!nodeId){
       const error ={
         message: 'The creator of this LearnVenture did not specify the next checkpoint for the answer you selected. We bet you can create a better LearnVenture!'
