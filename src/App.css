@@ -34,6 +34,7 @@
   margin-bottom: 10px;
   font-size: 18px;
 }
+
 .answer-button {
   width: 300px;
 }
@@ -109,8 +110,6 @@ button {
 }
 
 button:hover {
-  background: #b4cedd;
-  color: #51646b;
   border: none;
   padding: 9px 12px;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
@@ -158,10 +157,20 @@ code {
   background-color: red;
   border-color:  red;
 }
+
 .delete-button:hover{
   color:red;
   box-shadow: 0 12px 16px 0 rgba(255, 0, 0, 0.604), 0 17px 50px 0 rgba(255, 0, 0, 0.481);
 
+}
+
+#description-question-box {
+  /* background-color:#da8624; */
+  margin:auto;
+  max-width: 70vw; /*vw is veiwport width, this box will be semi repsonsive.*/
+  min-width: 300px;
+  border: 2px solid #b4cedd;
+  border-radius: 5px;
 }
 
 .extra-below {
@@ -226,10 +235,12 @@ h2 {
   margin: 20px auto 40px;
 }
 
-.help-button {
-  margin-bottom: 10px;
-  display: block;
+.help-button{
   margin-right: 5px;
+  margin-bottom: 10px;
+  display: inline-block;
+  background: #9D601B;
+  border-color: #9D601B;
 }
 
 .home-button {
@@ -256,27 +267,6 @@ h2 {
   font-size: 18px;
 }
 
-.password-input-field {
-  display: block;
-  border: 2px solid #b4cedd;
-  border-radius: 5px;
-  height: 40px;
-  width:80%;
-  margin-bottom: 5px;
-  font-size: 18px;
-}
-
-.search-input-field {
-  display: block;
-  border: 2px solid #b4cedd;
-  border-radius: 5px;
-  height: 40px;
-  width: 300px;
-  margin-top: 30px;
-  margin-bottom: 10px;
-  font-size: 18px;
-}
-
 .input-label{
 position:absolute;
 left : 0;
@@ -286,12 +276,6 @@ top: -20px;
 .input-field-label {
   position: relative;
   top: 28px;
-}
-
-.ui.checkbox {
-height: 20px;
-margin: 15px;
-
 }
 
 .label {
@@ -304,13 +288,6 @@ margin: 15px;
   background: #9D601B;
   border-color: #9D601B;
   width: 75px;
-}
-
-
-.help-button{
-  display: inline-block;
-  background: #9D601B;
-  border-color: #9D601B;
 }
 
 .login-button:hover, .adventure-link-button:hover, .help-button:hover {
@@ -370,6 +347,16 @@ margin: 15px;
   color: white;
 }
 
+.password-input-field {
+  display: block;
+  border: 2px solid #b4cedd;
+  border-radius: 5px;
+  height: 40px;
+  width:80%;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
 ::placeholder {
   color: #51646b;
 }
@@ -403,19 +390,22 @@ margin: 15px;
   /* display:block; */
 }
 
+.search-input-field {
+  display: block;
+  border: 2px solid #b4cedd;
+  border-radius: 5px;
+  height: 40px;
+  width: 300px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
 .search-results {
   justify-content: center;
   margin: 0 auto;
 }
 
-#description-question-box {
-  /* background-color:#da8624; */
-  margin:auto;
-  max-width: 70vw; /*vw is veiwport width, this box will be semi repsonsive.*/
-  min-width: 300px;
-  border: 2px solid #b4cedd;
-  border-radius: 5px;
-}
 #student-content {
   /* color: white; */
   font-size: 25px;
@@ -423,6 +413,7 @@ margin: 15px;
   padding:5px;
 
 }
+
 #student-question {
   /* color: white; */
   font-size: 29px;
@@ -479,6 +470,7 @@ ul {
 	.app-title {
     font-size: 275%;
   }
+
   .col-3 {
     float: left;
     width: 50%;
@@ -495,6 +487,7 @@ ul {
     display: inline-block;
     margin-left: 5px;
   }
+
   .answer-button {
     width: 470px;
   }
@@ -517,15 +510,6 @@ ul {
   .col-4 {
     align-content: center;
   }
-/* 
-  6 columns
-  .col-6 {
-
-  }
-
-  12 columns
-  .col-12 {
-  } */
 
   .form-input{
     position: relative;
@@ -555,15 +539,6 @@ ul {
     width: 50%;
     max-width: 400px;
   }
-/* 
-  6 columns
-  .col-6 {
-    
-  }
-
-  12 columns
-  .col-12 {
-  } */
 
   .full-screen-only {
     display: inline-block;
