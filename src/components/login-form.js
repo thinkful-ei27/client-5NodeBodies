@@ -11,6 +11,14 @@ export class LoginForm extends React.Component {
     let user = { password, username };
     return this.props.dispatch(loginUser(user))
   }
+
+  demoLogin() {
+    let user = {
+      username: 'fryshake',
+      password: 'password123'
+    }
+    return this.props.dispatch(loginUser(user))
+  }
   render() {
     let error;
     if (this.props.error) {
@@ -21,25 +29,28 @@ export class LoginForm extends React.Component {
       );
     }
     return (
-      <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-        {error}
-        <Field
-        label="Username"
-          className="username input-field on-top"
-          name="username"
-          component={Input}
-          type="text"
-          validate={[required, nonEmpty]}
-        />
-        <Field
-          label="Password"
-          className="password input-field below"
-          name="password"
-          component={Input}
-          type="password"
-          validate={[required, nonEmpty]} />
-        <button className="login-button">Login</button>
-      </Form>)
+      <div>
+        <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+          {error}
+          <Field
+            label="Username"
+            className="username input-field on-top"
+            name="username"
+            component={Input}
+            type="text"
+            validate={[required, nonEmpty]}
+          />
+          <Field
+            label="Password"
+            className="password input-field below"
+            name="password"
+            component={Input}
+            type="password"
+            validate={[required, nonEmpty]} />
+          <button className="login-button" type="submit">Login</button>
+        </Form>
+        <button className="demo-button" onClick={() => this.demoLogin()}>Demo Login</button>
+      </div>)
   }
 }
 
