@@ -9,7 +9,7 @@ import TutorialPage4 from './TutorialPage4';
 
 export class Tutorial extends React.Component {
     currentPage = pageNumber => {
-        switch(pageNumber){
+        switch (pageNumber) {
             case 0: {
                 return <TutorialPage1 />
             }
@@ -29,18 +29,18 @@ export class Tutorial extends React.Component {
 
 
 
-    render(){
-        return(
-            <div>
+    render() {
+        return (
+            <section>
                 {this.currentPage(this.props.tutorialPageNumber)}
-            </div>
+            </section>
         )
     }
 }
 
 
 const mapStateToProps = state => ({
-    tutorialPageNumber : state.student.tutorialPage
+    tutorialPageNumber: state.student.tutorialPage
 })
 
 export default connect(mapStateToProps)(Tutorial);

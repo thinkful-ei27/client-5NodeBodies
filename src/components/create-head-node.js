@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 
 import RequiresLogin from './requires-login';
-import { createNode  } from '../actions/nodes'
+import { createNode } from '../actions/nodes'
 import { Field, reduxForm } from 'redux-form';
 import TextArea from "./textarea";
 import Input from "./input";
@@ -56,7 +56,7 @@ export class CreateHeadNode extends React.Component {
     }
     let onboarding;
     if (this.props.onboarding) {
-      onboarding = <div className="wideOnboarding arrowBox_Top onboarding">
+      onboarding = <section className="wideOnboarding arrowBox_Top onboarding">
         <span>Here, we'll make the beginning checkpoint that learners will branch off from onto the various
         pathways of your LearnVenture Use the form above to add a <strong> Title</strong>, a<strong> Scenario Description </strong>
           describing a choice to make, an <em>optional</em><strong> YouTube URL</strong> (<em>Only YouTube links work. Videos hosted
@@ -64,19 +64,17 @@ export class CreateHeadNode extends React.Component {
           and <em>at least one</em><strong> Choices</strong>. You can include more Choices which will lead learners down different
           pathways of your LearnVenture.</span>
         <button className="close-onboarding" onClick={() => this.toggleOnboardingClick()}>Close</button>
-      </div>
+      </section>
     } else {
       onboarding = null
     }
 
     return (
-      <div>
-        <div className='form-field'>
+      <section className='form-field'>
         <h2>Please create a LearnVenture Starting Checkpoint</h2>
         <form
           onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
           <div className="form-questions">
-
             <Field
               className="title input-field"
               label="Checkpoint Title: "
@@ -141,14 +139,14 @@ export class CreateHeadNode extends React.Component {
           <button>New Checkpoint!</button>
           {onboarding}
         </form>
-      </div>
-      </div>
+      </section>
+
     )
   }
 }
 
 const mapStateToProps = (state, props) => ({
-  currentAdventure:state.adventure.currentAdventure,
+  currentAdventure: state.adventure.currentAdventure,
 
   onboarding: state.auth.onboarding,
   error: state.node.nodeError

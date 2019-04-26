@@ -47,7 +47,7 @@ export class AdventureForm extends React.Component {
     }
     let onboarding;
     if (this.props.onboarding) {
-      onboarding = <div className="narrowOnboarding arrowBox_Top onboarding">
+      onboarding = <section className="narrowOnboarding arrowBox_Top onboarding">
         <span>This page will help you create the start of your LearnVenture. Use the form above to add a
         <strong> Title</strong>, an<strong> Introduction</strong> setting the stage, an <em>optional</em>
           <strong> YouTube URL</strong> with relevant content (<em>Only YouTube links work. Videos hosted
@@ -55,14 +55,13 @@ export class AdventureForm extends React.Component {
           <strong> Password</strong> for potential learners to access your LearnVenture. Next we'll build
           the first checkpoint where learners will have to make a decision on how they want to continue.</span>
         <button className="close-onboarding" onClick={() => this.toggleOnboardingClick()}>Close</button>
-      </div>
+      </section>
     } else {
       onboarding = null
     }
-    return (<div>
-      {/* <Sidebar /> */}
-      <div className="form-field">
-          <h2>Create a new LearnVenture!</h2>
+    return (
+      <section className="form-field">
+        <h2>Create a new LearnVenture!</h2>
         <Form onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
           {error}
           <Field
@@ -102,8 +101,7 @@ export class AdventureForm extends React.Component {
           <button>New LearnVenture!</button>
           {onboarding}
         </Form>
-      </div>
-    </div>
+      </section>
     )
   }
 }
