@@ -19,7 +19,7 @@ export class Analytics extends React.Component {
     })
 
     return (
-      <div>
+      <section>
         <p>LearnVentures Start Count:
          {this.props.currentAdventure.count}
         </p>
@@ -33,7 +33,7 @@ export class Analytics extends React.Component {
         <p>
           Way to build an awesome LearnVenture, <span>{this.props.name}</span>!
         </p>
-      </div>
+      </section>
     );
   }
 }
