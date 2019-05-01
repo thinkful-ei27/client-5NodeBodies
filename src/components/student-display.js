@@ -11,8 +11,8 @@ import { Link } from 'react-router-dom'
 export class StudentDisplay extends React.Component {
 
   updateNode(nodeId) {
-    if(!nodeId){
-      const error ={
+    if (!nodeId) {
+      const error = {
         message: 'The creator of this LearnVenture did not specify the next checkpoint for the answer you selected. We bet you can create a better LearnVenture!'
       }
       return this.props.dispatch(getStudentCurrentNodeError(error))
@@ -39,7 +39,7 @@ export class StudentDisplay extends React.Component {
     let buttonC;
     let buttonD;
     let errorMessage;
-    if (this.props.error){
+    if (this.props.error) {
       errorMessage = <div>
         <p className='error-message'>{this.props.error.message}
         </p>
@@ -75,7 +75,7 @@ export class StudentDisplay extends React.Component {
       }
       if (!this.props.currentNode.ending) {
         display = (
-          <div>
+          <section>
             {nodeVideo}
             <div id="description-question-box">
               {nodeText}
@@ -95,29 +95,26 @@ export class StudentDisplay extends React.Component {
             {/*answerD*/}
             {buttonD}
             <br />
-          </div>
+          </section>
         )
       } else {
         display = (
-          <div>
+          <section>
             {nodeVideo}
             <strong>{nodeText}</strong>
             <p>Congratulations! This is the end of your LearnVenture.</p>
             <button className="return-to-start" onClick={() => this.restart(this.props.adventure.id)}>Return to Start</button>
             <p><strong>If you'd like to create your own LearnVenture, <Link to='/registration'>click here</Link> to create an account</strong></p>
-          </div>
+          </section>
         )
       }
 
       return (
-
-        <div>
-          {display}
-        </div>
+        { display }
       )
     } else {
       return (
-        <div>
+        <section>
           <h1>{this.props.adventure.title}</h1>
           <p>Created by: {this.props.adventure.creator}</p>
           <h2>{this.props.adventure.startContent}</h2>
@@ -126,7 +123,7 @@ export class StudentDisplay extends React.Component {
           <button
             className="embark-button"
             onClick={() => this.updateNode(this.props.adventure.head)}>Embark</button>
-        </div>
+        </section>
       )
     }
   }
