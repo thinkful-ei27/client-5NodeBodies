@@ -21,7 +21,7 @@ export class AdventureSearch extends React.Component {
       <div role="search"
         className="search-element above below with-border">
         <form onSubmit={e => this.handleSubmit(e)}>
-          <label className='above below' for='input-field'>Search</label>
+          <label className='above below' htmlFor='input-field'>Search</label>
           <input
             className="search-input"
             placeholder="Example: Making Breakfast"
