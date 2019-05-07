@@ -110,7 +110,9 @@ export class StudentDisplay extends React.Component {
       }
 
       return (
-        { display }
+        <div>
+          {display}
+        </div>
       )
     } else {
       return (
