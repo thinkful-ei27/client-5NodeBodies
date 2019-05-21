@@ -9,16 +9,18 @@ import CurrentNodeBrancher from '../components/current-node-brancher';
 
 describe('<AdventureBuilder />', () => {
   it('renders without crashing', () => {
-    const currentAdventure = {head: 1, nodes: []};
-    const match = {params: 1};
+    const currentAdventure = { head: 1, nodes: [] };
+    const match = { params: 1 };
     const dispatch = jest.fn();
-    shallow(<AdventureBuilder currentAdventure={currentAdventure} match={match} dispatch={dispatch}/>);
+    const currentNode = { id: 1 }
+    shallow(<AdventureBuilder currentNode={currentNode} currentAdventure={currentAdventure} match={match} dispatch={dispatch} />);
   });
   it('triggers dispatch when mounting', () => {
     const props = {
       dispatch: jest.fn(),
-      currentAdventure: {head: 1, nodes: []},
-      match: {params: 1}
+      currentAdventure: { head: 1, nodes: [] },
+      match: { params: 1 },
+      currentNode: { id: 1 }
     };
     const wrapper = shallow(<AdventureBuilder {...props} />)
     wrapper.instance().componentDidMount();
@@ -27,9 +29,11 @@ describe('<AdventureBuilder />', () => {
   it('should contain <NewNodeForm /> if parentInt exists', () => {
     const props = {
       dispatch: jest.fn(),
-      currentAdventure: {head: 1, nodes: []},
-      match: {params: 1},
-      parentInt: 1
+      currentAdventure: { head: 1, nodes: [] },
+      match: { params: 1 },
+      parentInt: 1,
+      currentNode: { id: 1 }
+
     };
     const wrapper = shallow(<AdventureBuilder {...props} />);
     expect(wrapper.find(NewNodeForm).length).toBe(1);
@@ -37,10 +41,12 @@ describe('<AdventureBuilder />', () => {
   it('should contain <ExistingNodeSelector /> ONLY if parentInt and useExistingNode exist', () => {
     const props = {
       dispatch: jest.fn(),
-      currentAdventure: {head: 1, nodes: []},
-      match: {params: 1},
+      currentAdventure: { head: 1, nodes: [] },
+      match: { params: 1 },
       parentInt: 1,
-      useExistingNode: true
+      useExistingNode: true,
+      currentNode: { id: 1 }
+
     };
     const wrapper = shallow(<AdventureBuilder {...props} />);
     expect(wrapper.find(NewNodeForm).length).toBe(0);
@@ -49,8 +55,10 @@ describe('<AdventureBuilder />', () => {
   it('should contain <GraphContainer /> and <CurrentNodeBrancher />', () => {
     const props = {
       dispatch: jest.fn(),
-      currentAdventure: {head: 1, nodes: []},
-      match: {params: 1},
+      currentAdventure: { head: 1, nodes: [] },
+      match: { params: 1 },
+      currentNode: { id: 1 }
+
     };
     const wrapper = shallow(<AdventureBuilder {...props} />);
     expect(wrapper.find(GraphContainer).length).toBe(1);
