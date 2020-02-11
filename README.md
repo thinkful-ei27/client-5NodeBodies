@@ -31,7 +31,7 @@ fun tool to help share that information.
 ### Tech Stack Frontend
 - React/Redux
 - Redux-Form
-- d3 Cytoscape for grapchical interface
+- d3 Cytoscape for graphical interface
 - Enzyme/Jest
 - Deployed via Netlify
 
